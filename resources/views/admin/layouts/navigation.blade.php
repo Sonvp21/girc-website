@@ -16,7 +16,10 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                     <x-nav-link :href="route('admin.categories.index')" :active="request()->routeIs('admin.categories.index')">
-                        @lang('admin.category')
+                        @lang('admin.categories')
+                    </x-nav-link>
+                    <x-nav-link :href="route('admin.posts.index')" :active="request()->routeIs('admin.posts.index')">
+                        @lang('admin.posts')
                     </x-nav-link>
                 </div>
             </div>
@@ -83,7 +86,11 @@
             </x-responsive-nav-link>
 
             <x-nav-link :href="route('admin.categories.index')" :active="request()->routeIs('admin.categories.index')">
-                @lang('admin.category')
+                @lang('admin.categories')
+            </x-nav-link>
+
+            <x-nav-link :href="route('admin.posts.index')" :active="request()->routeIs('admin.posts.index')">
+                @lang('admin.posts')
             </x-nav-link>
         </div>
 

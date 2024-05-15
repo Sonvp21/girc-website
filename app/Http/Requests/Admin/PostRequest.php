@@ -6,23 +6,27 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class PostRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
     public function authorize(): bool
     {
-        return true;
+        return auth()->user()->id === 1; //sample only, it should be auth()->user()->role === 'admin'
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
-     */
     public function rules(): array
     {
         return [
-            //
+            'category_id' => 'required',
+            'title' => 'required|unique:posts,title',
+            'content' => 'required'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'category_id.required' => trans('admin.field.required'),
+            'title.unique' => trans('admin.field.unique'),
+            'title.required' => trans('admin.field.required'),
+            'content.required' => trans('admin.field.required'),
         ];
     }
 }

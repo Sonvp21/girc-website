@@ -11,11 +11,20 @@ use Illuminate\View\View;
 
 class CategoryController extends Controller
 {
-    public function index() : View
+    public function index(Request $request)
     {
-        $categories = Category::orderBy('id')->get();
-        return view('admin.categories.index', compact('categories'));
+        $perPage = 10;
+        $query = Category::latest();
+        if ($request->has('search')) {
+            $query->where('title', 'like', '%' . $request->search . '%');
+        }
+
+        $categories = $query->paginate($perPage);
+        $startIndex = ($categories->currentPage() - 1) * $perPage + 1;
+        return view('admin.categories.index', compact('categories', 'startIndex'));
     }
+
+
 
     /**
      * @return Factory|View
@@ -84,14 +93,18 @@ class CategoryController extends Controller
     /**
      * @return RedirectResponse
      */
-    public function destroy(Request $request): RedirectResponse
+    public function destroy($id)
     {
-        Category::destroy($request->id);
+        // Tìm và xóa danh mục dựa trên id
+        $category = Category::findOrFail($id);
+        $category->delete();
 
         return back()->with([
             'icon' => 'success',
             'heading' => 'Success',
-            'message' => 'The data was successfully deleted',
+            'message' => trans('admin.alert.deleted-success'),
         ]);
     }
+
+    
 }

@@ -22,9 +22,4 @@ class Tag extends Model
     {
         return $this->belongsToMany(Post::class, 'post_tags');
     }
-
-    public function getNameUcFistAttribute()
-    {
-        return Str::ucfirst($this->name);
-    }
 }

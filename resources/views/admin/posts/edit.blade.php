@@ -17,27 +17,12 @@
 
                             <div class="row mb-3 ">
                                 <div class="col-md-6">
-                                    <div class="row mb-3 ">
-                                        <div class="col-md-6">
-                                            <div>
-                                                <x-input-label for="title" :value="__('Title')" />
-                                                <input type="text" name="title" placeholder="Type here" value="{{ old('title', $category->title) }}"
-                                                    @class([
-                                                        'input',
-                                                        'input-bordered',
-                                                        'input-error' => $errors->has('title'),
-                                                        'w-full',
-                                                        'max-w-xs',
-                                                    ]) />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    {{-- <div>
+                                    <div>
                                         <x-input-label for="title" :value="__('Title')" />
                                         <x-text-input id="title" name="title" type="text"
                                             class="mt-1 block w-full" :value="old('title', $category->title)" required autofocus
                                             autocomplete="title" />
-                                    </div> --}}
+                                    </div>
                                 </div>
                             </div>
                             <div>

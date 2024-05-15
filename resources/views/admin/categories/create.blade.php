@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="text-xl font-semibold leading-tight text-gray-800">
-            @lang('admin.category')
+            @lang('admin.categories')
         </h2>
     </x-slot>
 
@@ -17,41 +17,23 @@
                                 <div class="col-md-6">
                                     <div>
                                         <x-input-label for="title" :value="__('Title')" />
-                                        <x-text-input id="title" type="text" name="title"
-                                            class="form-control @error('title') is-invalid @enderror" required />
+                                        <input type="text" name="title" placeholder="Type here"
+                                            @class([
+                                                'input',
+                                                'input-bordered',
+                                                'input-error' => $errors->has('title'),
+                                                'w-full',
+                                                'max-w-xs',
+                                            ]) />
                                     </div>
-
                                 </div>
-
-
                             </div>
                             <div>
                                 <a href="{{ route('admin.categories.index') }}"
                                     class="btn btn-light">@lang('app.btn.cancel')</a>
                                 <button type="submit" class="btn btn-success ml-2">@lang('app.btn.submit')</button>
                             </div>
-                            <script>
-                                (function() {
-                                    'use strict';
-                                    window.addEventListener('load', function() {
-                                        let inputName = document.getElementById('title');
-                                        inputName.addEventListener("keyup", () => {
-                                            inputName.value = inputName.value.replace(/^\w/, c => c.toUpperCase());
-                                        });
 
-                                        var forms = document.getElementsByClassName('needs-validation');
-                                        var validation = Array.prototype.filter.call(forms, function(form) {
-                                            form.addEventListener('submit', function(event) {
-                                                if (form.checkValidity() === false) {
-                                                    event.preventDefault();
-                                                    event.stopPropagation();
-                                                }
-                                                form.classList.add('was-validated');
-                                            }, false);
-                                        });
-                                    }, false);
-                                })();
-                            </script>
                         </form>
                     </div>
                 </div>

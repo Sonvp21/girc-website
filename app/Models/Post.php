@@ -9,13 +9,7 @@ use Illuminate\Support\Carbon;
 class Post extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'category_id',
-        'title',
-        'slug',
-        'content',
-        'published_at',
-    ];
+    protected $guarded = [];
 
     protected $table = 'posts';
 
