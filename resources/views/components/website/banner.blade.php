@@ -28,7 +28,7 @@
                         class="flex items-center justify-center gap-1 hover:text-green-700"
                         href=""
                     >
-                        <x-heroicon-s-envelope  class="size-4" />
+                        <x-heroicon-s-envelope class="size-4" />
                         <span>girc@tuaf.edu.vn</span>
                     </a>
                 </div>
