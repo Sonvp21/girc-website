@@ -21,6 +21,10 @@
                     <x-nav-link :href="route('admin.posts.index')" :active="request()->routeIs('admin.posts.index')">
                         @lang('admin.posts')
                     </x-nav-link>
+
+                    <x-nav-link :href="route('admin.announcements.index')" :active="request()->routeIs('admin.announcements.index')">
+                        @lang('admin.announcements')
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -91,6 +95,10 @@
 
             <x-nav-link :href="route('admin.posts.index')" :active="request()->routeIs('admin.posts.index')">
                 @lang('admin.posts')
+            </x-nav-link>
+
+            <x-nav-link :href="route('admin.announcements.index')" :active="request()->routeIs('admin.announcements.index')">
+                @lang('admin.announcements')
             </x-nav-link>
         </div>
 

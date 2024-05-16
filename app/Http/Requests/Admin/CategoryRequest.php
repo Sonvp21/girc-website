@@ -6,7 +6,6 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class CategoryRequest extends FormRequest
 {
-
     public function authorize(): bool
     {
         return auth()->user()->id === 1; //sample only, it should be auth()->user()->role === 'admin'
@@ -15,7 +14,7 @@ class CategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|unique:categories,title'
+            'title' => 'required|unique:categories,title',
         ];
     }
 
@@ -26,5 +25,4 @@ class CategoryRequest extends FormRequest
             'title.required' => trans('admin.field.required'),
         ];
     }
-
 }

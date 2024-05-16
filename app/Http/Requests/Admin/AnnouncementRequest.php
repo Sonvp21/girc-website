@@ -4,7 +4,7 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PostRequest extends FormRequest
+class AnnouncementRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -14,8 +14,7 @@ class PostRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'category_id' => 'required',
-            'title' => 'required|unique:posts,title',
+            'title' => 'required|unique:announcements,title',
             'content' => 'required',
         ];
     }
@@ -23,7 +22,6 @@ class PostRequest extends FormRequest
     public function messages()
     {
         return [
-            'category_id.required' => trans('admin.field.required'),
             'title.unique' => trans('admin.field.unique'),
             'title.required' => trans('admin.field.required'),
             'content.required' => trans('admin.field.required'),

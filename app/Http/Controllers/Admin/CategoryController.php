@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CategoryRequest;
-use Illuminate\Http\RedirectResponse;
 use App\Models\Category;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -16,27 +16,23 @@ class CategoryController extends Controller
         $perPage = 10;
         $query = Category::latest();
         if ($request->has('search')) {
-            $query->where('title', 'like', '%' . $request->search . '%');
+            $query->where('title', 'like', '%'.$request->search.'%');
         }
 
         $categories = $query->paginate($perPage);
         $startIndex = ($categories->currentPage() - 1) * $perPage + 1;
+
         return view('admin.categories.index', compact('categories', 'startIndex'));
     }
-
-
 
     /**
      * @return Factory|View
      */
-    public function create() : View
+    public function create(): View
     {
         return view('admin.categories.create');
     }
 
-    /**
-     * @return RedirectResponse
-     */
     public function store(CategoryRequest $request): RedirectResponse
     {
         $category = Category::updateOrCreate(
@@ -59,11 +55,9 @@ class CategoryController extends Controller
                 'message' => 'Category updated successfully',
             ]);
         }
-        
 
         return back();
     }
-
 
     /**
      * @return Factory|View
@@ -76,9 +70,6 @@ class CategoryController extends Controller
             ]);
     }
 
-    /**
-     * @return RedirectResponse
-     */
     public function update(Category $category, CategoryRequest $request): RedirectResponse
     {
         $category->update($request->all());
@@ -105,6 +96,4 @@ class CategoryController extends Controller
             'message' => trans('admin.alert.deleted-success'),
         ]);
     }
-
-    
 }

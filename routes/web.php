@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AnnouncementController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\TagController;
@@ -22,8 +23,10 @@ Route::middleware('auth')->group(function () {
         Route::resource('posts', PostController::class);
         Route::resource('categories', CategoryController::class);
         Route::resource('tags', TagController::class);
+
+        Route::resource('announcements', AnnouncementController::class);
     });
-    
+
 });
 
 require __DIR__.'/auth.php';
