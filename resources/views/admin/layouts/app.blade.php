@@ -11,7 +11,7 @@
         content="{{ csrf_token() }}"
     />
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'GIRC') }}</title>
 
     <!-- Fonts -->
     <link
@@ -28,7 +28,7 @@
 </head>
 <body class="font-sans antialiased">
     <div class="min-h-screen bg-gray-100">
-        @include('layouts.navigation')
+        @include('admin.layouts.navigation')
 
         <!-- Page Heading -->
         @if (isset($header))
