@@ -150,15 +150,19 @@
                                 </div>
                             </div>
                             <div class="row mb-3 ">
-                                <label for="content">Nội dung</label>
+                                <label for="content">@lang('admin.content')</label>
                                 <x-trix-input name="content" id="content" value="{!! old('content', $post->content) !!}" />
                                 <x-rich-text::styles />
+                                <style>
+                                    trix-editor {
+                                        min-height: 240px;
+                                    }
+                                </style>
                             </div>
 
 
                             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css">
                             <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.min.js"></script>
-
                             <div class="row mb-3">
                                 <label for="tags">Tags:</label>
                                 <input type="text" name="tags" id="tags"

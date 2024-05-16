@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     use HasFactory;
+
     protected $guarded = [];
 
     protected $table = 'categories';
@@ -28,7 +29,7 @@ class Category extends Model
     }
 
     /**
-     * @param $limit
+     * @param  $limit
      * @return HasMany
      */
     public function newsWithLimit()
@@ -37,5 +38,4 @@ class Category extends Model
 
             ->orderBy('published_at', 'desc')->limit(5);
     }
-
 }

@@ -13,6 +13,7 @@ class Post extends Model implements HasMedia
 {
     use HasFactory;
     use InteractsWithMedia;
+
     protected $guarded = [];
 
     protected $table = 'posts';
@@ -31,7 +32,6 @@ class Post extends Model implements HasMedia
     {
         return $this->belongsToMany(Tag::class, 'post_tags');
     }
-
 
     public function registerMediaConversions(?Media $media = null): void
     {
@@ -60,6 +60,7 @@ class Post extends Model implements HasMedia
             ->singleFile()
             ->useDisk('post');
     }
+
     /*
     * -------------------------------------------------------------------------------------
     * SCOPES
