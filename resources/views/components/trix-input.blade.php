@@ -8,7 +8,7 @@
 />
 
 <trix-toolbar
-    class="[&_.trix-button]:bg-white [&_.trix-button.trix-active]:bg-gray-300"
+    class="[&_.trix-button.trix-active]:bg-gray-300 [&_.trix-button]:bg-white"
     id="{{ $id }}_toolbar"
 ></trix-toolbar>
 

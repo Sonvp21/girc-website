@@ -25,14 +25,17 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <x-rich-text::styles theme="richtextlaravel" data-turbo-track="false" />
+    <x-rich-text::styles
+        theme="richtextlaravel"
+        data-turbo-track="false"
+    />
 </head>
-<body class="font-sans text-gray-900 antialiased">
-    <div class="flex min-h-screen flex-col items-center bg-gray-100 pt-6 sm:justify-center sm:pt-0">
+<body class="text-gray-900 font-sans antialiased">
+    <div class="bg-gray-100 flex min-h-screen flex-col items-center pt-6 sm:justify-center sm:pt-0">
         <div>
             <a href="/">
                 <img
-                    class="h-20 w-auto fill-current text-gray-500"
+                    class="text-gray-500 h-20 w-auto fill-current"
                     src="{{ asset('files/images/logo.png') }}"
                     alt=""
                 />
