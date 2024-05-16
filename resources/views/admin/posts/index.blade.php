@@ -28,7 +28,7 @@
                         <tbody>
                             @foreach ($posts as $post)
                                 <tr>
-                                    <th>{{ $post->id }}</th>
+                                    <th>{{ $startIndex++ }}</th>
                                     <td>{{ $post->title }}</td>
                                     <td>{{ $post->category->title }}</td>
                                     <td>{{ $post->published_at }}</td>
@@ -37,12 +37,31 @@
                                     <td class="flex gap-3">
                                         <a href="{{ route('admin.posts.edit', $post->id) }}"><x-heroicon-s-pencil-square
                                                 class="size-4 text-green-600" /></a>
-                                        <a href=""><x-heroicon-o-trash class="size-4 text-red-500" /></a>
+                                        <form id="delete-form-{{ $post->id }}"
+                                            action="{{ route('admin.posts.destroy', ['post' => $post->id]) }}"
+                                            method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="button" onclick="confirmDelete({{ $post->id }})">
+                                                <x-heroicon-o-trash class="size-4 text-red-500" />
+                                            </button>
+                                        </form>
+
+                                        <script>
+                                            function confirmDelete(postId) {
+                                                if (confirm('Are you sure you want to delete this post?')) {
+                                                    document.getElementById('delete-form-' + postId).submit();
+                                                }
+                                            }
+                                        </script>
                                     </td>
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
+                    <div class="mt-4">
+                        {{ $posts->links() }}
+                    </div>
                 </div>
             </div>
         </div>

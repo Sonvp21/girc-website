@@ -5,10 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class Post extends Model
+class Post extends Model implements HasMedia
 {
     use HasFactory;
+    use InteractsWithMedia;
     protected $guarded = [];
 
     protected $table = 'posts';
@@ -28,6 +32,34 @@ class Post extends Model
         return $this->belongsToMany(Tag::class, 'post_tags');
     }
 
+
+    public function registerMediaConversions(?Media $media = null): void
+    {
+        $this->addMediaConversion('lg')
+            ->crop(1020, 603)
+            ->sharpen(5)
+            ->format('jpg')
+            ->performOnCollections('featured_image');
+
+        $this->addMediaConversion('md')
+            ->crop(541, 320)
+            ->sharpen(5)
+            ->format('jpg')
+            ->performOnCollections('featured_image');
+
+        $this->addMediaConversion('thumb')
+            ->crop(368, 276)
+            ->sharpen(10)
+            ->format('jpg')
+            ->performOnCollections('featured_image');
+    }
+
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('featured_image')
+            ->singleFile()
+            ->useDisk('post');
+    }
     /*
     * -------------------------------------------------------------------------------------
     * SCOPES
