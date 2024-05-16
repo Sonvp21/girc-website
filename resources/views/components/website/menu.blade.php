@@ -1,5 +1,5 @@
 <nav
-    class="sticky top-0 z-50 w-full bg-blue-800/90 shadow backdrop-blur"
+    class="sticky top-0 z-50 w-full bg-blue-700 shadow"
     x-data="{ navOpen: false }"
 >
     <div class="lg:hidden">
