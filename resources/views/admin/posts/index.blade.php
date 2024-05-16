@@ -1,7 +1,12 @@
 <x-app-layout>
     <x-slot name="header">
+<<<<<<< HEAD
         <h2 class="text-gray-800 text-xl font-semibold leading-tight">
             @lang('admin.post')
+=======
+        <h2 class="text-xl font-semibold leading-tight text-gray-800">
+            @lang('admin.posts')
+>>>>>>> create-lang
         </h2>
         <div>
             <a
@@ -17,6 +22,14 @@
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                 <div class="overflow-x-auto">
+                    <div class="py-4 px-6">
+                        <form action="{{ route('admin.posts.index') }}" method="GET">
+                            <div class="flex items-center">
+                                <input type="text" name="search" placeholder="Search by title" class="rounded-l-lg p-2 border-t mr-0 border-b border-l text-gray-800 border-gray-200 bg-white" />
+                                <button type="submit" class="px-4 rounded-r-lg bg-gray-200 text-gray-800 font-semibold p-2 border-t border-b border-r">Search</button>
+                            </div>
+                        </form>
+                    </div>
                     <table class="table">
                         <!-- head -->
                         <thead>
