@@ -30,8 +30,8 @@
                             </div>
                             <div>
                                 <a href="{{ route('admin.categories.index') }}"
-                                    class="btn btn-light">@lang('app.btn.cancel')</a>
-                                <button type="submit" class="btn btn-success ml-2">@lang('app.btn.submit')</button>
+                                    class="btn btn-light">@lang('admin.btn.cancel')</a>
+                                <button type="submit" class="btn btn-success ml-2">@lang('admin.btn.submit')</button>
                             </div>
 
                         </form>
