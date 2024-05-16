@@ -23,7 +23,7 @@
                             <article>
                                 <figure class="">
                                     <div class="h-60 bg-red-50"></div>
-                                    <h2 class="text-bold py-2 text-justify font-anton text-xl text-green-700 group-hover:text-blue-800">
+                                    <h2 class="py-2 text-justify font-roboto text-xl font-extrabold tracking-tight text-green-700 group-hover:text-blue-800">
                                         Nghiệm thu gói thầu: Xây dựng hệ thống công bố công khai quy hoạch xây dựng đô thị tỉnh Bắc Kạn
                                     </h2>
                                 </figure>
@@ -128,6 +128,13 @@
                     </div>
                 </div>
                 <div class="col-span-8 space-y-3 md:col-span-6 lg:col-span-6">
+                    <h2 class="font-semibold text-green-700">Education Program</h2>
+                    <p class="mb-4 mt-3 text-4xl font-extrabold">Nurturing Potential, Shaping Futures.</p>
+                    <p class="mb-6 text-slate-500">
+                        Our Education Program is designed to provide students with a comprehensive and engaging learning experience. Through a
+                        combination of rigorous coursework, hands-on projects, and collaborative learning, we aim to foster critical thinking,
+                        creativity, and a passion for lifelong learning. Join us on a journey of discovery and achievement.
+                    </p>
                     <div class="relative flex items-center">
                         <img
                             src="{{ asset('files/images/banner_m.jpeg') }}"
@@ -145,6 +152,85 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <section class="mx-auto my-8 max-w-7xl flex-col justify-between px-3 sm:px-6 md:items-center lg:flex lg:flex-row lg:px-8">
+        <div class="">
+            <h2 class="font-semibold text-green-700">Partners</h2>
+            <p class="mb-4 mt-3 text-4xl font-extrabold">Collaborating with Universities.</p>
+            <p class="mb-6 text-slate-500">
+                Collaborating with leading universities, we are at the forefront of advancing science and technology. These partnerships are essential
+                in our pursuit of excellence and our mission to contribute to significant scientific and technological advancements.
+            </p>
+            <ul class="grid grid-cols-4 py-5 backdrop-blur">
+                <li class="flex items-center justify-center">
+                    <a
+                        href="#"
+                        class="w-48"
+                    >
+                        <figure>
+                            <img
+                                class="h-48 w-48 rounded-full"
+                                src="{{ asset('files/images/partners/cbttng.jpeg') }}"
+                                alt=""
+                            />
+                            <figcaption class="mt-4 text-center text-sm font-bold text-blue-700">
+                                Trang thông tin quốc gia về bảo tồn thiên nhiên và đa dạng sinh học
+                            </figcaption>
+                        </figure>
+                    </a>
+                </li>
+                <li class="flex items-center justify-center">
+                    <a
+                        href="#"
+                        class="w-48"
+                    >
+                        <figure>
+                            <img
+                                class="rounded-full"
+                                src="{{ asset('files/images/partners/cres.png') }}"
+                                alt=""
+                            />
+                            <figcaption class="mt-4 text-center text-sm font-bold text-blue-700">
+                                Viện Tài Nguyên và môi Trường Đại học quốc gia Hà nội(VNU-CRES)
+                            </figcaption>
+                        </figure>
+                    </a>
+                </li>
+                <li class="flex items-center justify-center">
+                    <a
+                        href="#"
+                        class="w-48"
+                    >
+                        <figure>
+                            <img
+                                class="rounded-full"
+                                src="{{ asset('files/images/partners/itet.jpeg') }}"
+                                alt=""
+                            />
+                            <figcaption class="mt-4 text-center text-sm font-bold text-blue-700">
+                                Viện Kỹ Thuật và Công Nghệ Môi Trường - ITET
+                            </figcaption>
+                        </figure>
+                    </a>
+                </li>
+                <li class="flex items-center justify-center">
+                    <a
+                        href="#"
+                        class="w-48"
+                    >
+                        <figure>
+                            <img
+                                class="rounded-full"
+                                src="{{ asset('files/images/partners/vtnnh.png') }}"
+                                alt=""
+                            />
+                            <figcaption class="mt-4 text-center text-sm font-bold text-blue-700">Viện Thổ Nhưỡng Nông hóa</figcaption>
+                        </figure>
+                    </a>
+                </li>
+            </ul>
         </div>
     </section>
     @pushOnce('scripts_bottom')

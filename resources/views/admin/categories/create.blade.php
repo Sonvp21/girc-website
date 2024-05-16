@@ -45,7 +45,7 @@
                                     href="{{ route('admin.categories.index') }}"
                                     class="btn-light btn"
                                     >@lang('app.btn.cancel')
-                                     </a>
+                                </a>
                                 <button
                                     type="submit"
                                     class="btn btn-success ml-2"

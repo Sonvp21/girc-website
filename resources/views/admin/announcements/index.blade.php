@@ -14,7 +14,7 @@
                 href="{{ route('admin.announcements.create') }}"
                 ><x-heroicon-o-plus-circle class="size-4" />
                 @lang('admin.add')
-                </a>
+            </a>
         </div>
     </x-slot>
 

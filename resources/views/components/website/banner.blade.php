@@ -63,11 +63,13 @@
                 src="{{ asset('files/images/tuaf-logo.png') }}"
                 alt=""
             />
-            <div class="font-anton">
-                <h1 class="text-center text-xl font-extrabold tracking-wider text-[#32813d] md:text-3xl lg:text-4xl">
+            <div class="font-roboto">
+                <h1 class="text-center text-xl font-extrabold uppercase tracking-normal text-[#32813d] md:text-3xl lg:text-4xl">
                     Trường Đại học Nông Lâm Thái Nguyên
                 </h1>
-                <h2 class="text-l mt-2 text-center font-extrabold text-blue-800 md:text-2xl lg:text-3xl">Trung tâm Nghiên cứu Đia tin học</h2>
+                <h2 class="text-l mt-2 text-center font-extrabold uppercase text-blue-800 md:text-2xl lg:text-3xl">
+                    Trung tâm Nghiên cứu Đia tin học
+                </h2>
             </div>
             <img
                 class="h-12 md:h-20 lg:h-24"
