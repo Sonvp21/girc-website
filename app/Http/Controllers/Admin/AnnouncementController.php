@@ -52,7 +52,7 @@ class AnnouncementController extends Controller
         return view('admin.announcements.edit', compact('announcement'));
     }
 
-    public function update(Announcement $announcement, Request $request): RedirectResponse
+    public function update(AnnouncementRequest $announcement, Request $request): RedirectResponse
     {
         $announcement->update([
             'title' => $request->title,
