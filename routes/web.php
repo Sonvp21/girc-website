@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\Album\VideoController;
 use App\Http\Controllers\Admin\AlbumController;
 use App\Http\Controllers\Admin\AnnouncementController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\ProfileController;
@@ -32,6 +33,9 @@ Route::middleware('auth')->group(function () {
         Route::resource('albums', AlbumController::class);
         Route::resource('photos', PhotoController::class);
         Route::resource('videos', VideoController::class);
+
+        //contact
+        Route::resource('contacts', ContactController::class);
     });
 
 });
