@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use App\Enums\VideoSourceEnum;
 use Illuminate\Support\Carbon;
 
 class Video extends Model
@@ -13,7 +14,9 @@ class Video extends Model
     protected $guarded = [];
 
     protected $table = 'videos';
-
+    protected $casts = [
+        'source' => VideoSourceEnum::class
+    ];
     public function album()
     {
         return $this->belongsTo(Album::class);
