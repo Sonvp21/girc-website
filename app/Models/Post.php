@@ -8,6 +8,7 @@ use Illuminate\Support\Carbon;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class Post extends Model implements HasMedia
 {
@@ -86,9 +87,11 @@ class Post extends Model implements HasMedia
         return ucfirst(Carbon::parse($this->published_at)->translatedFormat('l, d/m/Y'));
     }
 
-    public function getUpdatedAtViAttribute()
+    protected function updatedAtVi(): Attribute
     {
-        return Carbon::parse($this->updated_at)->format('d.m.Y h:i');
+        return Attribute::make(
+            get: fn () => Carbon::parse($this->updated_at)->format('d.m.Y h:i'),
+        );
     }
 
     public function getPublishedDateAttribute()

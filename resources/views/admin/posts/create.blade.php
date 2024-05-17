@@ -4,112 +4,43 @@
             @lang('admin.posts')
         </h2>
     </x-slot>
-    <link
-        rel="stylesheet"
-        href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
-    />
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" />
     <div class="py-12">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                 <div class="bg-white p-4 shadow sm:rounded-lg sm:p-8">
                     <div class="max-w-4xl">
-                        <form
-                            action="{{ route('admin.posts.store') }}"
-                            method="POST"
-                            class="needs-validation"
-                            novalidate
-                            enctype="multipart/form-data"
-                        >
+                        <form action="{{ route('admin.posts.store') }}" method="POST" class="needs-validation" novalidate enctype="multipart/form-data">
                             @csrf
 
-                            <div
-                                class="float-right max-w-xs"
-                                x-data="app()"
-                                x-init="[initDate(), getNoOfDays()]"
-                                x-cloak
-                            >
+                            <div class="float-right max-w-xs" x-data="app()" x-init="[initDate(), getNoOfDays()]" x-cloak>
                                 <div class="mx-auto px-4 py-2">
                                     <div class="mb-5 w-64">
-                                        <label
-                                            for="datepicker"
-                                            class="text-gray-700 mb-1 block font-bold"
-                                        >
+                                        <label for="datepicker" class="text-gray-700 mb-1 block font-bold">
                                         </label>
                                         <div class="relative">
-                                            <input
-                                                type="hidden"
-                                                name="published_at"
-                                                x-ref="date"
-                                            />
-                                            <input
-                                                type="text"
-                                                id="published_at"
-                                                name="published_at"
-                                                readonly
-                                                x-model="datepickerValue"
-                                                @click="showDatepicker = !showDatepicker"
-                                                @keydown.escape="showDatepicker = false"
-                                                class="focus:shadow-outline text-gray-600 w-full rounded-lg py-3 pl-4 pr-10 font-medium leading-none shadow-sm focus:outline-none"
-                                                placeholder="Select date"
-                                            />
+                                            <input type="hidden" name="published_at" x-ref="date" />
+                                            <input type="text" id="published_at" name="published_at" readonly x-model="datepickerValue" @click="showDatepicker = !showDatepicker" @keydown.escape="showDatepicker = false" class="focus:shadow-outline text-gray-600 w-full rounded-lg py-3 pl-4 pr-10 font-medium leading-none shadow-sm focus:outline-none" placeholder="Select date" />
 
                                             <div class="absolute right-0 top-0 px-3 py-2">
-                                                <svg
-                                                    class="text-gray-400 h-6 w-6"
-                                                    fill="none"
-                                                    viewBox="0 0 24 24"
-                                                    stroke="currentColor"
-                                                >
+                                                <svg class="text-gray-400 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                                 </svg>
                                             </div>
-                                            <div
-                                                class="absolute left-0 top-0 mt-12 rounded-lg bg-white p-4 shadow"
-                                                style="width: 17rem"
-                                                x-show.transition="showDatepicker"
-                                                @click.away="showDatepicker = false"
-                                            >
+                                            <div class="absolute left-0 top-0 mt-12 rounded-lg bg-white p-4 shadow" style="width: 17rem" x-show.transition="showDatepicker" @click.away="showDatepicker = false">
                                                 <div class="mb-2 flex items-center justify-between">
                                                     <div>
-                                                        <span
-                                                            x-text="MONTH_NAMES[month]"
-                                                            class="text-gray-800 text-lg font-bold"
-                                                        ></span>
-                                                        <span
-                                                            x-text="year"
-                                                            class="text-gray-600 ml-1 text-lg font-normal"
-                                                        ></span>
+                                                        <span x-text="MONTH_NAMES[month]" class="text-gray-800 text-lg font-bold"></span>
+                                                        <span x-text="year" class="text-gray-600 ml-1 text-lg font-normal"></span>
                                                     </div>
                                                     <div>
-                                                        <button
-                                                            type="button"
-                                                            class="hover:bg-gray-200 inline-flex cursor-pointer rounded-full p-1 transition duration-100 ease-in-out"
-                                                            :class="{ 'cursor-not-allowed opacity-25': month == 0 }"
-                                                            :disabled="month == 0 ? true : false"
-                                                            @click="month--; getNoOfDays()"
-                                                        >
-                                                            <svg
-                                                                class="text-gray-500 inline-flex h-6 w-6"
-                                                                fill="none"
-                                                                viewBox="0 0 24 24"
-                                                                stroke="currentColor"
-                                                            >
+                                                        <button type="button" class="hover:bg-gray-200 inline-flex cursor-pointer rounded-full p-1 transition duration-100 ease-in-out" :class="{ 'cursor-not-allowed opacity-25': month == 0 }" :disabled="month == 0 ? true : false" @click="month--; getNoOfDays()">
+                                                            <svg class="text-gray-500 inline-flex h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
                                                             </svg>
                                                         </button>
-                                                        <button
-                                                            type="button"
-                                                            class="hover:bg-gray-200 inline-flex cursor-pointer rounded-full p-1 transition duration-100 ease-in-out"
-                                                            :class="{ 'cursor-not-allowed opacity-25': month == 11 }"
-                                                            :disabled="month == 11 ? true : false"
-                                                            @click="month++; getNoOfDays()"
-                                                        >
-                                                            <svg
-                                                                class="text-gray-500 inline-flex h-6 w-6"
-                                                                fill="none"
-                                                                viewBox="0 0 24 24"
-                                                                stroke="currentColor"
-                                                            >
+                                                        <button type="button" class="hover:bg-gray-200 inline-flex cursor-pointer rounded-full p-1 transition duration-100 ease-in-out" :class="{ 'cursor-not-allowed opacity-25': month == 11 }" :disabled="month == 11 ? true : false" @click="month++; getNoOfDays()">
+                                                            <svg class="text-gray-500 inline-flex h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                                                             </svg>
                                                         </button>
@@ -117,48 +48,28 @@
                                                 </div>
 
                                                 <div class="-mx-1 mb-3 flex flex-wrap">
-                                                    <template
-                                                        x-for="(day, index) in DAYS"
-                                                        :key="index"
-                                                    >
-                                                        <div
-                                                            style="width: 14.26%"
-                                                            class="px-1"
-                                                        >
-                                                            <div
-                                                                x-text="day"
-                                                                class="text-gray-800 text-center text-xs font-medium"
-                                                            ></div>
+                                                    <template x-for="(day, index) in DAYS" :key="index">
+                                                        <div style="width: 14.26%" class="px-1">
+                                                            <div x-text="day" class="text-gray-800 text-center text-xs font-medium">
+                                                            </div>
                                                         </div>
                                                     </template>
                                                 </div>
 
                                                 <div class="-mx-1 flex flex-wrap">
                                                     <template x-for="blankday in blankdays">
-                                                        <div
-                                                            style="width: 14.28%"
-                                                            class="border border-transparent p-1 text-center text-sm"
-                                                        ></div>
+                                                        <div style="width: 14.28%" class="border border-transparent p-1 text-center text-sm">
+                                                        </div>
                                                     </template>
-                                                    <template
-                                                        x-for="(date, dateIndex) in no_of_days"
-                                                        :key="dateIndex"
-                                                    >
-                                                        <div
-                                                            style="width: 14.28%"
-                                                            class="mb-1 px-1"
-                                                        >
-                                                            <div
-                                                                @click="getDateValue(date)"
-                                                                x-text="date"
-                                                                class="cursor-pointer rounded-full text-center text-sm leading-loose leading-none transition duration-100 ease-in-out"
-                                                                :class="{
-                                                                    'bg-blue-500 text-white': isToday(date) ==
-                                                                        true,
-                                                                    'text-gray-700 hover:bg-blue-200': isToday(
-                                                                        date) == false
-                                                                }"
-                                                            ></div>
+                                                    <template x-for="(date, dateIndex) in no_of_days" :key="dateIndex">
+                                                        <div style="width: 14.28%" class="mb-1 px-1">
+                                                            <div @click="getDateValue(date)" x-text="date" class="cursor-pointer rounded-full text-center text-sm leading-loose leading-none transition duration-100 ease-in-out" :class="{
+                                                                'bg-blue-500 text-white': isToday(date) ==
+                                                                    true,
+                                                                'text-gray-700 hover:bg-blue-200': isToday(
+                                                                    date) == false
+                                                            }">
+                                                            </div>
                                                         </div>
                                                     </template>
                                                 </div>
@@ -169,21 +80,13 @@
                             </div>
 
                             <div class="mb-3 max-w-xs">
-                                <x-input-label
-                                    for="category_id"
-                                    :value="__('Category')"
-                                />
-                                <select
-                                    name="category_id"
-                                    id="category_id"
-                                    @class([
-                                        'input',
-                                        'input-bordered',
-                                        'input-error' => $errors->has('category_id'),
-                                        'w-full',
-                                    ])
-                                    class="select select-bordered w-full max-w-xs"
-                                >
+                                <x-input-label for="category_id" :value="__('Category')" />
+                                <select name="category_id" id="category_id" @class([
+                                    'input',
+                                    'input-bordered',
+                                    'input-error' => $errors->has('category_id'),
+                                    'w-full',
+                                ]) class="select select-bordered w-full max-w-xs">
                                     <option value="">Select Category</option>
                                     @foreach ($categories as $category)
                                         <option value="{{ $category->id }}">{{ $category->title }}</option>
@@ -191,31 +94,20 @@
                                 </select>
                             </div>
                             <div class="mb-3 max-w-xs">
-                                <x-input-label
-                                    for="title"
-                                    :value="__('Title')"
-                                />
-                                <input
-                                    type="text"
-                                    name="title"
-                                    placeholder="Type here"
-                                    @class([
-                                        'input',
-                                        'input-bordered',
-                                        'input-error' => $errors->has('title'),
-                                        'w-full',
-                                        'max-w-xs',
-                                    ])
-                                />
+                                <x-input-label for="title" :value="__('Title')" />
+                                <input type="text" name="title" placeholder="Type here" @class([
+                                    'input',
+                                    'input-bordered',
+                                    'input-error' => $errors->has('title'),
+                                    'w-full',
+                                    'max-w-xs',
+                                ]) />
                             </div>
                             <div class="row mb-3">
                                 <div class="col-md-6">
                                     <div>
                                         <label for="content">@lang('admin.content')</label>
-                                        <x-trix-input
-                                            name="content"
-                                            id="content"
-                                        />
+                                        <x-trix-input name="content" id="content" />
                                         <x-rich-text::styles />
                                         <style>
                                             trix-editor {
@@ -230,64 +122,45 @@
 
                             <div class="row mb-3">
                                 <label for="tags">Tags:</label>
-                                <input
-                                    type="text"
-                                    name="tags"
-                                    id="tags"
-                                    @class([
-                                        'input',
-                                        'input-bordered',
-                                        'input-error' => $errors->has('tags'),
-                                        'w-full',
-                                        'max-w-xs',
-                                    ])
-                                />
+                                <input type="text" name="tags" id="tags" placeholder="Enter tags separated by spaces" @class([
+                                    'input',
+                                    'input-bordered',
+                                    'input-error' => $errors->has('tags'),
+                                    'w-full',
+                                    'max-w-xs',
+                                ]) />
                             </div>
                             <script>
                                 // Initialize Tagify on the input element
                                 var input = document.querySelector('input[name=tags]');
                                 var tagify = new Tagify(input, {
-                                    delimiters: " ", // Sử dụng dấu cách để tách các tag
-                                    pattern: /[^ ]+/ // Chỉ cho phép các ký tự không phải dấu cách
-                                });
-                        
-                                // Thêm các tag hiện tại vào Tagify khi trang tải lên
-                                var existingTags = @json($tags);
-                                tagify.addTags(existingTags);
-                        
-                                // Sử dụng phím Space để thêm tag mới
+                                    delimiters: ' ', // Sử dụng dấu cách để tách các tag
+                                    pattern: /[^ ]+/, // Chỉ cho phép các ký tự không phải dấu cách
+                                })
+                                var existingTags = @json($tags)
+                                tagify.addTags(existingTags)
                                 tagify.on('add', function(e) {
                                     if (e.detail.data.value.indexOf(' ') > -1) {
-                                        var splitTags = e.detail.data.value.split(' ');
+                                        var splitTags = e.detail.data.value.split(' ')
                                         splitTags.forEach(function(tag) {
-                                            tagify.addTags(tag.trim());
-                                        });
-                                        tagify.removeTag(e.detail.data.value);
+                                            tagify.addTags(tag.trim())
+                                        })
+                                        tagify.removeTag(e.detail.data.value)
                                     }
                                 });
                             </script>
 
                             <div class="flex items-center space-x-6">
                                 <div class="shrink-0">
-                                    <img
-                                        id="preview_img"
-                                        class="h-16 w-16 rounded-full object-cover"
-                                        src="https://lh3.googleusercontent.com/a-/AFdZucpC_6WFBIfaAbPHBwGM9z8SxyM1oV4wB4Ngwp_UyQ=s96-c"
-                                        alt="Current photo"
-                                    />
+                                    <img id="preview_img" class="h-16 w-16 rounded-full object-cover" src="https://lh3.googleusercontent.com/a-/AFdZucpC_6WFBIfaAbPHBwGM9z8SxyM1oV4wB4Ngwp_UyQ=s96-c" alt="Current photo" />
                                 </div>
                                 <label class="block">
                                     <span class="sr-only">Choose photo</span>
-                                    <input
-                                        type="file"
-                                        name="image"
-                                        onchange="loadFile(event)"
-                                        class="file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100 block w-full text-sm text-slate-500 file:mr-4 file:rounded-full file:border-0 file:px-4 file:py-2 file:text-sm file:font-semibold"
-                                    />
+                                    <input type="file" name="image" onchange="loadFile(event)" class="file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100 block w-full text-sm text-slate-500 file:mr-4 file:rounded-full file:border-0 file:px-4 file:py-2 file:text-sm file:font-semibold" />
                                 </label>
                             </div>
                             <script>
-                                var loadFile = function (event) {
+                                var loadFile = function(event) {
                                     var input = event.target
                                     var file = input.files[0]
                                     var type = file.type
@@ -295,13 +168,13 @@
                                     var output = document.getElementById('preview_img')
 
                                     output.src = URL.createObjectURL(event.target.files[0])
-                                    output.onload = function () {
+                                    output.onload = function() {
                                         URL.revokeObjectURL(output.src) // free memory
                                     }
                                 }
                             </script>
                             <div>
-                                <a href="{{ route('admin.posts.index') }}" class="btn btn-light">@lang('admin.btn.cancel')</a>
+                                <a href="{{ route('admin.posts.index') }}" class="btn-light btn">@lang('admin.btn.cancel')</a>
                                 <button type="submit" class="btn btn-success ml-2">@lang('admin.btn.submit')</button>
                             </div>
                         </form>
@@ -316,7 +189,9 @@
         }
     </style>
     <script>
-        const MONTH_NAMES = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+        const MONTH_NAMES = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September',
+            'October', 'November', 'December'
+        ]
         const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 
         function app() {
@@ -349,7 +224,8 @@
                     this.datepickerValue = selectedDate.toDateString()
 
                     this.$refs.date.value =
-                        selectedDate.getFullYear() + '-' + ('0' + selectedDate.getMonth()).slice(-2) + '-' + ('0' + selectedDate.getDate()).slice(-2)
+                        selectedDate.getFullYear() + '-' + ('0' + selectedDate.getMonth()).slice(-2) + '-' + ('0' +
+                            selectedDate.getDate()).slice(-2)
 
                     console.log(this.$refs.date.value)
 

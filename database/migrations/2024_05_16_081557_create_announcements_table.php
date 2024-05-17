@@ -16,8 +16,9 @@ return new class extends Migration
             $table->unsignedInteger('user_id');
             $table->string('title');
             $table->string('slug')->index();
-            $table->string('keep_on_top')->nullable();
+            $table->boolean('keep_on_top')->default(false);
             $table->longText('content');
+            $table->timestamp('published_at');
             $table->timestamps();
         });
     }

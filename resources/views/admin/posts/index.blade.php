@@ -45,8 +45,8 @@
                                     <th>{{ $startIndex++ }}</th>
                                     <td>{{ $post->title }}</td>
                                     <td>{{ $post->category->title }}</td>
-                                    <td>{{ $post->published_at }}</td>
-                                    <td>{{ $post->updated_at }}</td>
+                                    <td>{{ $post->publishedAtVi }}</td>
+                                    <td>{{ $post->updatedAtVi }}</td>
 
                                     <td class="flex gap-3">
                                         <a href="{{ route('admin.posts.edit', $post->id) }}"

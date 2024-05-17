@@ -44,7 +44,7 @@
                                     <th>{{ $startIndex++ }}</th>
                                     <td>{{ $announcement->title }}</td>
                                     <td>{{ $announcement->publishedAtVi }}</td>
-                                    <td>{{ $announcement->updated_at }}</td>
+                                    <td>{{ $announcement->updatedAtVi }}</td>
 
                                     <td class="flex gap-3">
                                         <a href="{{ route('admin.announcements.edit', $announcement->id) }}"

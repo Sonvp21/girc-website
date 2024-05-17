@@ -2,27 +2,28 @@
 
 namespace App\Models;
 
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Support\Carbon;
 
-class Announcement extends Model
+class Video extends Model
 {
     use HasFactory;
-
     protected $guarded = [];
 
-    protected $table = 'announcements';
+    protected $table = 'videos';
 
-    public function scopePublished($query)
+    public function album()
     {
-        return $query->whereDate('published_at', '<=', now());
+        return $this->belongsTo(Album::class);
     }
 
-    public function getPublishedAtViAttribute()
+    protected function createddAtVi(): Attribute
     {
-        return ucfirst(Carbon::parse($this->published_at)->translatedFormat('l, d/m/Y'));
+        return Attribute::make(
+            get: fn () => Carbon::parse($this->created_at)->format('d.m.Y h:i'),
+        );
     }
 
     protected function updatedAtVi(): Attribute
