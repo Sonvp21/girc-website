@@ -1,12 +1,12 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="text-gray-800 text-xl font-semibold leading-tight">
-            @lang('admin.videos')
+            @lang('admin.contacts')
         </h2>
         <div>
             <a
                 class="flex items-center justify-end"
-                href="{{ route('admin.videos.create') }}"
+                href="{{ route('admin.contacts.create') }}"
                 ><x-heroicon-o-plus-circle class="size-4" />
                 @lang('admin.add')
             </a>
@@ -19,7 +19,7 @@
                 <div class="overflow-x-auto">
                     <div class="px-6 py-4">
                         <form
-                            action="{{ route('admin.videos.index') }}"
+                            action="{{ route('admin.contacts.index') }}"
                             method="GET"
                         >
                             <div class="flex items-center">
@@ -44,45 +44,52 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>@lang('admin.videos.name')</th>
-                                <th>@lang('admin.videos.album_name')</th>
-                                <th>@lang('admin.videos.created_at')</th>
-                                <th>@lang('admin.videos.updated_at')</th>
+                                <th>@lang('admin.contacts.name')</th>
+                                <th>@lang('admin.contacts.email')</th>
+                                <th>@lang('admin.contacts.phone')</th>
+                                <th>@lang('admin.contacts.read_at')</th>
+                                {{-- ngày xem --}}
+                                <th>@lang('admin.contacts.created_at')</th>
+                                {{-- ngày gửi --}}
                                 <th>@lang('admin.funtion')</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($videos as $video)
+                            @foreach ($contacts as $contact)
                                 <tr>
                                     <th>{{ $startIndex++ }}</th>
-                                    <td>{{ $video->name }}</td>
-                                    <td>{{ $video->album->name }}</td>
-                                    <td>{{ $video->createddAtVi }}</td>
-                                    <td>{{ $video->updatedAtVi }}</td>
+                                    <td>{{ $contact->name }}</td>
+                                    <td>{{ $contact->email }}</td>
+                                    <td>{{ $contact->phone }}</td>
+                                    <td>{{ $contact->read_at }}</td>
+                                    <td>{{ $contact->createdAtVi }}</td>
 
                                     <td class="flex gap-3">
-                                        <a href="{{ route('admin.videos.edit', $video->id) }}"
+                                        <a href="{{ route('admin.contacts.edit', $contact->id) }}"
                                             ><x-heroicon-s-pencil-square class="size-4 text-green-600"
                                         /></a>
+                                        <a href="{{ route('admin.contacts.show', $contact->id) }}"
+                                            ><x-heroicon-o-eye class="size-4 text-green-600"
+                                        /></a>
                                         <form
-                                            id="delete-form-{{ $video->id }}"
-                                            action="{{ route('admin.videos.destroy', ['video' => $video->id]) }}"
+                                            id="delete-form-{{ $contact->id }}"
+                                            action="{{ route('admin.contacts.destroy', ['contact' => $contact->id]) }}"
                                             method="POST"
                                         >
                                             @csrf
                                             @method('DELETE')
                                             <button
                                                 type="button"
-                                                onclick="confirmDelete({{ $video->id }})"
+                                                onclick="confirmDelete({{ $contact->id }})"
                                             >
                                                 <x-heroicon-o-trash class="size-4 text-red-500" />
                                             </button>
                                         </form>
 
                                         <script>
-                                            function confirmDelete(videoId) {
-                                                if (confirm('Are you sure you want to delete this video?')) {
-                                                    document.getElementById('delete-form-' + videoId).submit()
+                                            function confirmDelete(contactId) {
+                                                if (confirm('Are you sure you want to delete this contact?')) {
+                                                    document.getElementById('delete-form-' + contactId).submit()
                                                 }
                                             }
                                         </script>
@@ -92,7 +99,7 @@
                         </tbody>
                     </table>
                     <div class="mt-4">
-                        {{ $videos->links() }}
+                        {{ $contacts->links() }}
                     </div>
                 </div>
             </div>

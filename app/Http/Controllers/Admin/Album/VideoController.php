@@ -32,6 +32,7 @@ class VideoController extends Controller
     public function create(): View
     {
         $albums = Album::query()->select('id', 'name')->get();
+
         return view('admin.albums.videos.create', compact('albums'));
     }
 
@@ -44,9 +45,9 @@ class VideoController extends Controller
             'source' => $request->source,
         ]);
         $video->save();
+
         return redirect()->route('admin.videos.index')->with('success', 'Video created successfully.');
     }
-
 
     /**
      * @return Factory|View
@@ -55,6 +56,7 @@ class VideoController extends Controller
     {
         $video = Video::findOrFail($id);
         $albums = Album::query()->select('id', 'name')->get();
+
         return view('admin.albums.videos.edit')
             ->with([
                 'video' => $video,
@@ -74,13 +76,13 @@ class VideoController extends Controller
         return redirect()->route('admin.videos.index')->with('success', 'Video updated successfully.');
     }
 
-
     /**
      * @return RedirectResponse
      */
     public function destroy(Video $video)
     {
         $video->delete();
+
         return redirect()->route('admin.videos.index')->with('success', 'Video deleted successfully.');
     }
 }

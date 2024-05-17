@@ -4,8 +4,10 @@
             @lang('admin.albums')
         </h2>
         <div>
-            <a class="flex items-center justify-end" href="{{ route('admin.albums.create') }}"><x-heroicon-o-plus-circle
-                    class="size-4" />
+            <a
+                class="flex items-center justify-end"
+                href="{{ route('admin.albums.create') }}"
+                ><x-heroicon-o-plus-circle class="size-4" />
                 @lang('admin.add')
             </a>
         </div>
@@ -13,15 +15,24 @@
 
     <div class="py-12">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg" >
-                <div class="overflow-x-auto ">
+            <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
+                <div class="overflow-x-auto">
                     <div class="px-6 py-4">
-                        <form action="{{ route('admin.albums.index') }}" method="GET">
+                        <form
+                            action="{{ route('admin.albums.index') }}"
+                            method="GET"
+                        >
                             <div class="flex items-center">
-                                <input type="text" name="search" placeholder="Search by title"
-                                    class="text-gray-800 border-gray-200 mr-0 rounded-l-lg border-b border-l border-t bg-white p-2" />
-                                <button type="submit"
-                                    class="bg-gray-200 text-gray-800 rounded-r-lg border-b border-r border-t p-2 px-4 font-semibold">
+                                <input
+                                    type="text"
+                                    name="search"
+                                    placeholder="Search by title"
+                                    class="text-gray-800 border-gray-200 mr-0 rounded-l-lg border-b border-l border-t bg-white p-2"
+                                />
+                                <button
+                                    type="submit"
+                                    class="bg-gray-200 text-gray-800 rounded-r-lg border-b border-r border-t p-2 px-4 font-semibold"
+                                >
                                     Search
                                 </button>
                             </div>
@@ -48,14 +59,20 @@
                                     <td>{{ $album->updatedAtVi }}</td>
 
                                     <td class="flex gap-3">
-                                        <a href="{{ route('admin.albums.edit', $album->id) }}"><x-heroicon-s-pencil-square
-                                                class="size-4 text-green-600" /></a>
-                                        <form id="delete-form-{{ $album->id }}"
+                                        <a href="{{ route('admin.albums.edit', $album->id) }}"
+                                            ><x-heroicon-s-pencil-square class="size-4 text-green-600"
+                                        /></a>
+                                        <form
+                                            id="delete-form-{{ $album->id }}"
                                             action="{{ route('admin.albums.destroy', ['album' => $album->id]) }}"
-                                            method="POST">
+                                            method="POST"
+                                        >
                                             @csrf
                                             @method('DELETE')
-                                            <button type="button" onclick="confirmDelete({{ $album->id }})">
+                                            <button
+                                                type="button"
+                                                onclick="confirmDelete({{ $album->id }})"
+                                            >
                                                 <x-heroicon-o-trash class="size-4 text-red-500" />
                                             </button>
                                         </form>
