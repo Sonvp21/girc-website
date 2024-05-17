@@ -27,20 +27,15 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="font-sans antialiased">
-    <div class="bg-gray-100 min-h-screen">
-        @include('admin.layouts.navigation')
-
-        <!-- Page Heading -->
-        @if (isset($header))
-            <header class="bg-white shadow">
-                <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-                    {{ $header }}
-                </div>
-            </header>
-        @endif
-
-        <!-- Page Content -->
-        <main>
+    <div class="bg-gray-100 flex min-h-screen">
+        {{-- @include('admin.layouts.navigation') --}}
+        <x-admin.sidebar />
+        <main class="w-full bg-blue-50">
+            <div class="h-auto bg-white p-3">
+                <button class="btn btn-square btn-ghost btn-sm">
+                    <x-heroicon-c-bars-3 class="size-5" />
+                </button>
+            </div>
             {{ $slot }}
         </main>
     </div>

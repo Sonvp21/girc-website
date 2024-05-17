@@ -104,7 +104,7 @@
                                     href="{{ route('admin.contacts.index') }}"
                                     class="btn-light btn"
                                     >@lang('admin.btn.cancel')
-                                     </a>
+                                </a>
                                 <button
                                     type="submit"
                                     class="btn btn-success ml-2"
