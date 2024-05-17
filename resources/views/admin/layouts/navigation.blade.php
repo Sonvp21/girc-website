@@ -46,6 +46,10 @@
                             </li>
                         </ul>
                     </div>
+
+                    <x-nav-link :href="route('admin.contacts.index')" :active="request()->routeIs('admin.contacts.index')">
+                        @lang('admin.contacts')
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -132,6 +136,10 @@
 
             <x-nav-link :href="route('admin.videos.index')" :active="request()->routeIs('admin.videos.index')">
                 @lang('admin.videos.all')
+            </x-nav-link>
+
+            <x-nav-link :href="route('admin.contacts.index')" :active="request()->routeIs('admin.contacts.index')">
+                @lang('admin.contacts')
             </x-nav-link>
         </div>
 
