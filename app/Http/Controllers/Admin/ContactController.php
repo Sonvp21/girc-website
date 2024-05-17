@@ -32,6 +32,7 @@ class ContactController extends Controller
     public function store(Request $request): RedirectResponse
     {
         Contact::create($request->all());
+
         return back();
     }
 
@@ -60,6 +61,7 @@ class ContactController extends Controller
     public function update(Contact $contact, Request $request): RedirectResponse
     {
         $contact->update($request->all());
+
         return redirect()->route('admin.contacts.index')->with([
             'icon' => 'success',
             'heading' => 'Success',
@@ -74,6 +76,7 @@ class ContactController extends Controller
     {
         $contact = Contact::findOrFail($id);
         $contact->delete();
+
         return back()->with([
             'icon' => 'success',
             'heading' => 'Success',

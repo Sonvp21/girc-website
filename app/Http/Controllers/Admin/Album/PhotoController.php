@@ -32,6 +32,7 @@ class PhotoController extends Controller
     public function create(): View
     {
         $albums = Album::query()->select('id', 'name')->get();
+
         return view('admin.albums.photos.create', compact('albums'));
     }
 
@@ -50,9 +51,9 @@ class PhotoController extends Controller
                 ->usingName($imageFile->getClientOriginalName())
                 ->toMediaCollection('album_photo');
         }
+
         return redirect()->route('admin.photos.index')->with('success', 'Photo created successfully.');
     }
-
 
     /**
      * @return Factory|View
@@ -61,6 +62,7 @@ class PhotoController extends Controller
     {
         $photo = Photo::findOrFail($id);
         $albums = Album::query()->select('id', 'name')->get();
+
         return view('admin.albums.photos.edit')
             ->with([
                 'photo' => $photo,
@@ -86,13 +88,13 @@ class PhotoController extends Controller
         return redirect()->route('admin.photos.index')->with('success', 'Photo updated successfully.');
     }
 
-
     /**
      * @return RedirectResponse
      */
     public function destroy(Photo $photo)
     {
         $photo->delete();
+
         return redirect()->route('admin.photos.index')->with('success', 'Photo deleted successfully.');
     }
 }

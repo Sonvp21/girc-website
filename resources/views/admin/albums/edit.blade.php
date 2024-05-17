@@ -35,8 +35,11 @@
                                     'input-error' => $errors->has('type'),
                                     'w-full',
                                 ])>
-                                    <option value="video" {{ $album->type == 'video' ? 'selected' : '' }}>Video</option>
-                                    <option value="photo" {{ $album->type == 'photo' ? 'selected' : '' }}>Photo</option>
+                                    @foreach (App\Enums\AlbumTypeEnum::cases() as $type)
+                                        <option value="{{ $type->value }}"
+                                            {{ $album->type == $type ? 'selected' : '' }}>{{ $type->value }}
+                                        </option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div>

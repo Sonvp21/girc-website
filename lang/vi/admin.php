@@ -25,7 +25,7 @@ return [
     'categories.title' => 'Tiêu đề',
     'categories.created_at' => 'Ngày tạo',
     'categories.updated_at' => 'Ngày cập nhật',
-    
+
     //Liên hệ
     'contacts' => 'Liên hệ',
     'contacts.name' => 'Người gửi',
@@ -54,4 +54,4 @@ return [
     'videos.updated_at' => 'Cập nhật',
     'videos.album_name' => 'Thuộc bộ sưu tập',
 
- ];
+];

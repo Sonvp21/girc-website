@@ -2,16 +2,17 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Support\Carbon;
-
 
 class Contact extends Model
 {
     use HasFactory;
+
     protected $table = 'contacts';
+
     protected $guarded = [];
 
     protected function createdAtVi(): Attribute

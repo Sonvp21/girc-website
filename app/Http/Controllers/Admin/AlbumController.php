@@ -31,15 +31,18 @@ class AlbumController extends Controller
     {
         return view('admin.albums.create');
     }
+
     public function store(Request $request)
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'type' => 'required|in:video,photo',
+            'type' => 'required',
         ]);
         Album::create($request->all());
+
         return redirect()->route('admin.albums.index')->with('success', 'Album created successfully.');
     }
+
     /**
      * @return Factory|View
      */
@@ -55,10 +58,11 @@ class AlbumController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'type' => 'required|in:video,photo',
+            'type' => 'required',
         ]);
 
         $album->update($request->all());
+
         return redirect()->route('admin.albums.index')->with('success', 'Album updated successfully.');
     }
 
@@ -68,6 +72,7 @@ class AlbumController extends Controller
     public function destroy(Album $album)
     {
         $album->delete();
+
         return redirect()->route('admin.albums.index')->with('success', 'Album deleted successfully.');
     }
 }

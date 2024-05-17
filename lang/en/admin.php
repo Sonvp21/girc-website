@@ -61,4 +61,4 @@ return [
     'videos.created_at' => 'Created at',
     'videos.updated_at' => 'Updated at',
     'videos.album_name' => 'Album"s',
- ];
+];
