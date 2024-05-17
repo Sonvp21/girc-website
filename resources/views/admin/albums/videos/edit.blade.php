@@ -34,8 +34,8 @@
                                 </div>
                                 <div class="mb-3 max-w-xs w-full">
                                     <x-input-label for="name" :value="__('Title')" />
-                                    <input type="text" name="name" value="{{ old('name', $video->name) }}" placeholder="title video..."
-                                        @class([
+                                    <input type="text" name="name" value="{{ old('name', $video->name) }}"
+                                        placeholder="title video..." @class([
                                             'input',
                                             'input-bordered',
                                             'input-error' => $errors->has('name'),
@@ -53,14 +53,18 @@
                                         'input-error' => $errors->has('source'),
                                         'w-full',
                                     ])>
-                                        <option value="youtube" {{ $video->source == 'youtube' ? 'selected' : '' }}>Youtube</option>
-                                        <option value="driver" {{ $video->source == 'driver' ? 'selected' : '' }}>Google Driver</option>
+                                        @foreach (App\Enums\VideoSourceEnum::cases() as $source)
+                                            <option value="{{ $source->value }}"
+                                                {{ $video->source == $source ? 'selected' : '' }}>{{ $source->value }}
+                                            </option>
+                                        @endforeach
                                     </select>
                                 </div>
 
                                 <div class="mb-3 max-w-xs w-full">
                                     <x-input-label for="video_id" :value="__('VideoID')" />
-                                    <input type="text" name="video_id" value="{{ old('video_id', $video->video_id) }}" placeholder="put on video ID..."
+                                    <input type="text" name="video_id"
+                                        value="{{ old('video_id', $video->video_id) }}" placeholder="put on video ID..."
                                         @class([
                                             'input',
                                             'input-bordered',

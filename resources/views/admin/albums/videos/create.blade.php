@@ -43,14 +43,15 @@
                             <div class="row mb-3 flex w-full">
                                 <div class="mb-3 max-w-xs w-full mr-12">
                                     <x-input-label for="source" :value="__('Source')" />
-                                    <select name="source" required @class([
+                                    <select name="source" id="source" required @class([
                                         'input',
                                         'input-bordered',
                                         'input-error' => $errors->has('source'),
                                         'w-full',
                                     ])>
-                                        <option value="youtube">Youtube</option>
-                                        <option value="driver">Google Driver</option>
+                                        @foreach (App\Enums\VideoSourceEnum::cases() as $source)
+                                            <option value="{{ $source->value }}">{{ $source->value }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
 
