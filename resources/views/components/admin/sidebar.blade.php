@@ -18,7 +18,7 @@
                 </li>
                 <li>
                     <details>
-                        <summary>@lang('admin.albums')</summary>
+                        <summary>@lang('admin.album')</summary>
                         <ul>
                             <li>
                                 <a href="{{ route('admin.albums.index') }}"> @lang('admin.albums.all')</a>

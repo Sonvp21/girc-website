@@ -1,32 +1,28 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="text-gray-800 text-xl font-semibold leading-tight">
-            @lang('admin.albums')
-        </h2>
-    </x-slot>
-
-    <div class="py-12">
-        <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
-                <div
-                    class="bg-white p-4 shadow sm:rounded-lg sm:p-8"
-                    style="text-align: -webkit-center"
-                >
-                    <div class="max-w-xl text-start">
-                        <form
-                            action="{{ route('admin.albums.update', ['album' => $album->id]) }}"
-                            method="POST"
-                            class="needs-validation"
-                            novalidate
-                        >
-                            @csrf
-                            @method('patch')
-
-                            <div class="row mb-3">
-                                <x-input-label
-                                    for="name"
-                                    :value="__('Name')"
-                                />
+    <div class="p-6">
+        <div class="text-gray-800 text-normal font-semibold leading-tight">
+            <span class="text-gray-800 text-normal flex items-center gap-2 font-semibold leading-tight">
+                @lang('admin.album')
+                <x-heroicon-m-arrow-small-right class="size-4" />
+                @lang('admin.edit')
+            </span>
+        </div>
+        <div class="mt-6">
+            <div class="overflow-hidden bg-white p-6 sm:rounded-lg">
+                <div class="max-w-xl text-start">
+                    <form
+                        action="{{ route('admin.albums.update', ['album' => $album->id]) }}"
+                        method="POST"
+                        class="needs-validation"
+                        novalidate
+                    >
+                        @csrf
+                        @method('patch')
+                        <div class="mb-3">
+                            <label class="form-control w-full max-w-xs">
+                                <div class="label">
+                                    <span class="label-text">@lang('admin.albums.name')</span>
+                                </div>
                                 <input
                                     type="text"
                                     name="name"
@@ -40,13 +36,11 @@
                                         'max-w-xs',
                                     ])
                                 />
-                            </div>
-
-                            <div class="mb-3 max-w-xs">
-                                <x-input-label
-                                    for="type"
-                                    :value="__('Type')"
-                                />
+                            </label>
+                            <label class="form-control w-full max-w-xs">
+                                <div class="label">
+                                    <span class="label-text">@lang('admin.albums.type')</span>
+                                </div>
                                 <select
                                     name="type"
                                     required
@@ -66,22 +60,22 @@
                                         </option>
                                     @endforeach
                                 </select>
-                            </div>
-                            <div>
-                                <a
-                                    href="{{ route('admin.albums.index') }}"
-                                    class="btn-light btn"
-                                    >@lang('admin.btn.cancel')
-                                </a>
-                                <button
-                                    type="submit"
-                                    class="btn btn-success ml-2"
-                                >
-                                    @lang('admin.btn.submit')
-                                </button>
-                            </div>
-                        </form>
-                    </div>
+                            </label>
+                        </div>
+                        <div>
+                            <a
+                                href="{{ route('admin.albums.index') }}"
+                                class="btn-light btn"
+                                >@lang('admin.btn.cancel')
+                            </a>
+                            <button
+                                type="submit"
+                                class="btn btn-success ml-2"
+                            >
+                                @lang('admin.btn.submit')
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

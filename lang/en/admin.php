@@ -43,12 +43,14 @@ return [
     '' => '',
 
     //Album
-    'albums' => 'Album',
-    'albums.all' => 'Album',
-    'albums.name' => 'Album Name',
-    'albums.created_at' => 'Created at',
-    'albums.updated_at' => 'Updated at',
+    'album' => 'Album',
+    'albums' => [
+        'all' => 'Album list',
+        'type' => 'Type',
+        'name' => 'Name',
+    ],
 
+    'photo' => 'Photo',
     'photos.all' => 'Photo',
     'photos.name' => 'Photo Name',
     'photos.created_at' => 'Created at',
@@ -56,9 +58,19 @@ return [
     'photos.album_name' => 'Album"s',
     'description' => 'Description',
 
+    'video' => 'Video',
     'videos.all' => 'Video',
     'videos.name' => 'Video Name',
     'videos.created_at' => 'Created at',
     'videos.updated_at' => 'Updated at',
     'videos.album_name' => 'Album"s',
+
+    // Common
+    'select' => 'Select',
+    'create' => 'Create',
+    'edit' => 'Edit',
+
+    // Dates
+    'created_at' => 'Created at',
+    'updated_at' => 'Updated at',
 ];
