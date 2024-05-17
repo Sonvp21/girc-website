@@ -46,8 +46,8 @@
                                     <th>{{ $startIndex++ }}</th>
                                     <td>{{ $photo->name }}</td>
                                     <td>{{ $photo->album->name }}</td>
-                                    <td>{{ $photo->created_at }}</td>
-                                    <td>{{ $photo->updated_at }}</td>
+                                    <td>{{ $photo->createddAtVi }}</td>
+                                    <td>{{ $photo->updatedAtVi }}</td>
 
                                     <td class="flex gap-3">
                                         <a href="{{ route('admin.photos.edit', $photo->id) }}"><x-heroicon-s-pencil-square

@@ -36,6 +36,7 @@ class AnnouncementController extends Controller
             'user_id' => auth()->id(),
             'title' => $request->title,
             'content' => $request->content,
+            'published_at' => $request->published_at,
         ]);
         $announcement->save();
 
@@ -52,11 +53,12 @@ class AnnouncementController extends Controller
         return view('admin.announcements.edit', compact('announcement'));
     }
 
-    public function update(AnnouncementRequest $announcement, Request $request): RedirectResponse
+    public function update(Announcement $announcement, Request $request): RedirectResponse
     {
         $announcement->update([
             'title' => $request->title,
             'content' => $request->content,
+            'published_at' => $request->published_at,
         ]);
 
         return redirect()->route('admin.announcements.index')->with([

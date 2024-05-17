@@ -55,8 +55,8 @@
                                 <tr>
                                     <th>{{ $startIndex++ }}</th>
                                     <td>{{ $category->title }}</td>
-                                    <td>{{ $category->created_at }}</td>
-                                    <td>{{ $category->updated_at }}</td>
+                                    <td>{{ $category->createddAtVi }}</td>
+                                    <td>{{ $category->updatedAtVi }}</td>
 
                                     <td class="flex gap-3">
                                         <a href="{{ route('admin.categories.edit', $category->id) }}"

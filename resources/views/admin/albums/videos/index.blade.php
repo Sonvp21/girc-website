@@ -46,8 +46,8 @@
                                     <th>{{ $startIndex++ }}</th>
                                     <td>{{ $video->name }}</td>
                                     <td>{{ $video->album->name }}</td>
-                                    <td>{{ $video->created_at }}</td>
-                                    <td>{{ $video->updated_at }}</td>
+                                    <td>{{ $video->createddAtVi }}</td>
+                                    <td>{{ $video->updatedAtVi }}</td>
 
                                     <td class="flex gap-3">
                                         <a href="{{ route('admin.videos.edit', $video->id) }}"><x-heroicon-s-pencil-square

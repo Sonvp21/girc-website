@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Support\Carbon;
 
 class Photo extends Model implements HasMedia
 {
@@ -47,5 +49,19 @@ class Photo extends Model implements HasMedia
         $this->addMediaCollection('album_photo')
             ->singleFile()
             ->useDisk('album');
+    }
+
+    protected function createddAtVi(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => Carbon::parse($this->created_at)->format('d.m.Y h:i'),
+        );
+    }
+
+    protected function updatedAtVi(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => Carbon::parse($this->updated_at)->format('d.m.Y h:i'),
+        );
     }
 }
