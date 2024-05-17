@@ -64,6 +64,14 @@ return [
             'throw' => false,
         ],
 
+        'album' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/album/photo'),
+            'url' => env('APP_URL').'/storage/album/photo',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
     ],
 
     /*

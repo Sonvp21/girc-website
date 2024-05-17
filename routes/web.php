@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\Album\PhotoController;
+use App\Http\Controllers\Admin\Album\VideoController;
+use App\Http\Controllers\Admin\AlbumController;
 use App\Http\Controllers\Admin\AnnouncementController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\PostController;
@@ -25,6 +28,10 @@ Route::middleware('auth')->group(function () {
         Route::resource('tags', TagController::class);
 
         Route::resource('announcements', AnnouncementController::class);
+        //album-photo-video
+        Route::resource('albums', AlbumController::class);
+        Route::resource('photos', PhotoController::class);
+        Route::resource('videos', VideoController::class);
     });
 
 });
