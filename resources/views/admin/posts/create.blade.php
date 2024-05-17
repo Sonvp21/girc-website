@@ -225,10 +225,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <link
-                                rel="stylesheet"
-                                href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css"
-                            />
+                            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css">
                             <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.min.js"></script>
 
                             <div class="row mb-3">
@@ -237,7 +234,6 @@
                                     type="text"
                                     name="tags"
                                     id="tags"
-                                    placeholder="Enter tags separated by spaces"
                                     @class([
                                         'input',
                                         'input-bordered',
@@ -248,22 +244,27 @@
                                 />
                             </div>
                             <script>
-                                var input = document.querySelector('input[name=tags]')
+                                // Initialize Tagify on the input element
+                                var input = document.querySelector('input[name=tags]');
                                 var tagify = new Tagify(input, {
-                                    delimiters: ' ', // Sử dụng dấu cách để tách các tag
-                                    pattern: /[^ ]+/, // Chỉ cho phép các ký tự không phải dấu cách
-                                })
-                                var existingTags = @json($tags)
-                                tagify.addTags(existingTags)
-                                tagify.on('add', function (e) {
+                                    delimiters: " ", // Sử dụng dấu cách để tách các tag
+                                    pattern: /[^ ]+/ // Chỉ cho phép các ký tự không phải dấu cách
+                                });
+                        
+                                // Thêm các tag hiện tại vào Tagify khi trang tải lên
+                                var existingTags = @json($tags);
+                                tagify.addTags(existingTags);
+                        
+                                // Sử dụng phím Space để thêm tag mới
+                                tagify.on('add', function(e) {
                                     if (e.detail.data.value.indexOf(' ') > -1) {
-                                        var splitTags = e.detail.data.value.split(' ')
-                                        splitTags.forEach(function (tag) {
-                                            tagify.addTags(tag.trim())
-                                        })
-                                        tagify.removeTag(e.detail.data.value)
+                                        var splitTags = e.detail.data.value.split(' ');
+                                        splitTags.forEach(function(tag) {
+                                            tagify.addTags(tag.trim());
+                                        });
+                                        tagify.removeTag(e.detail.data.value);
                                     }
-                                })
+                                });
                             </script>
 
                             <div class="flex items-center space-x-6">
@@ -300,22 +301,8 @@
                                 }
                             </script>
                             <div>
-<<<<<<< HEAD
-                                <a
-                                    href="{{ route('admin.posts.index') }}"
-                                    class="btn-light btn"
-                                    >@lang('app.btn.cancel')
-                                </a>
-                                <button
-                                    type="submit"
-                                    class="btn btn-success ml-2"
-                                >
-                                    @lang('app.btn.submit')
-                                </button>
-=======
                                 <a href="{{ route('admin.posts.index') }}" class="btn btn-light">@lang('admin.btn.cancel')</a>
                                 <button type="submit" class="btn btn-success ml-2">@lang('admin.btn.submit')</button>
->>>>>>> create-lang
                             </div>
                         </form>
                     </div>
