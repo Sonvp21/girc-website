@@ -40,16 +40,6 @@ return new class extends Migration
             $table->string('source')->default('google_drive');
             $table->timestamps();
         });
-
-        Schema::create('cooperations', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedInteger('album_id')->index();
-            $table->foreign('album_id')->references('id')->on('albums')->onDelete('cascade');
-            $table->string('name')->nullable();
-            $table->string('link_website');
-            $table->string('description')->nullable();
-            $table->timestamps();
-        });
     }
 
     /**
