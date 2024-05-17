@@ -1,12 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
-<<<<<<< HEAD
-        <h2 class="text-gray-800 text-xl font-semibold leading-tight">
-            @lang('admin.post')
-=======
         <h2 class="text-xl font-semibold leading-tight text-gray-800">
             @lang('admin.posts')
->>>>>>> create-lang
         </h2>
         <div>
             <a
