@@ -8,11 +8,19 @@
             <ul class="menu w-full rounded-box">
                 <li><a href="{{ route('dashboard') }}">{{ __('Dashboard') }}</a></li>
                 <li>
-                    <a href="{{ route('admin.categories.index') }}">@lang('admin.categories')</a>
+                    <details>
+                        <summary>@lang('admin.posts')</summary>
+                        <ul>
+                            <li>
+                                <a href="{{ route('admin.categories.index') }}">@lang('admin.categories')</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.posts.index') }}">@lang('admin.posts')</a>
+                            </li>
+                        </ul>
+                    </details>
                 </li>
-                <li>
-                    <a href="{{ route('admin.posts.index') }}">@lang('admin.posts')</a>
-                </li>
+                
                 <li>
                     <a href="{{ route('admin.announcements.index') }}">@lang('admin.announcements')</a>
                 </li>
