@@ -110,22 +110,7 @@
                     </div>
                 </div>
                 <div class="col-span-8 hidden space-y-3 md:col-span-2 lg:block">
-                    <div>
-                        <div class="flex items-center gap-2 bg-blue-700 px-4 py-3 font-semibold uppercase text-white">
-                            <x-heroicon-o-megaphone class="size-5" />
-                            <span>Thông báo</span>
-                        </div>
-                        <ul
-                            id="scroll-container-document"
-                            class="flex h-[400px] flex-col divide-y divide-dashed divide-blue-500 overflow-scroll overflow-y-auto overscroll-contain border text-sm text-blue-500 scrollbar-hide"
-                        >
-                            @for ($i=1;$i<10;$i++)
-                                <li class="p-3 text-sm">
-                                    Thông báo số 467/TB-BGDĐT của Bộ Giáo dục avf Đào tạo V/v Tuyển sinh đi học tại Ma-rốc năm 2024
-                                </li>
-                            @endfor
-                        </ul>
-                    </div>
+                    <x-website.announcement />
                 </div>
                 <div class="col-span-8 space-y-3 md:col-span-6 lg:col-span-6">
                     <h2 class="font-semibold text-green-700">Education Program</h2>
@@ -233,39 +218,4 @@
             </ul>
         </div>
     </section>
-    @pushOnce('scripts_bottom')
-    <script>
-        const scrollContainerDocument = document.getElementById('scroll-container-document')
-        let isScrollingDown = true
-        let isMouseOver = false
-
-        scrollContainerDocument.addEventListener('mouseenter', function () {
-            isMouseOver = true
-        })
-
-        scrollContainerDocument.addEventListener('mouseleave', function () {
-            isMouseOver = false
-        })
-
-        function scroll() {
-            if (!isMouseOver) {
-                if (scrollContainerDocument.scrollTop === scrollContainerDocument.scrollHeight - scrollContainerDocument.offsetHeight) {
-                    isScrollingDown = false
-                } else if (scrollContainerDocument.scrollTop === 0) {
-                    isScrollingDown = true
-                }
-
-                if (isScrollingDown) {
-                    scrollContainerDocument.scrollTop += 1
-                } else {
-                    scrollContainerDocument.scrollTop -= 1
-                }
-            }
-
-            setTimeout(scroll, 50)
-        }
-
-        scroll()
-    </script>
-    @endPushOnce
 </x-website-layout>
