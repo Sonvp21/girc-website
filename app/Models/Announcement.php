@@ -15,6 +15,10 @@ class Announcement extends Model
 
     protected $table = 'announcements';
 
+    protected $casts = [
+        'published_at' => 'datetime:Y-m-d H:i:s',
+    ];
+
     public function scopePublished($query)
     {
         return $query->whereDate('published_at', '<=', now());
@@ -29,6 +33,13 @@ class Announcement extends Model
     {
         return Attribute::make(
             get: fn () => Carbon::parse($this->updated_at)->format('d.m.Y h:i'),
+        );
+    }
+
+    protected function publishedAt(): Attribute
+    {
+        return Attribute::make(
+            set: fn ($value) => Carbon::parse($value)->format('Y-m-d H:i:s'),
         );
     }
 }
