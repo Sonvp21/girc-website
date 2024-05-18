@@ -11,67 +11,45 @@
         <div class="mt-6">
             <div class="overflow-hidden bg-white p-6 sm:rounded-lg">
                 <div class="max-w-xl text-start">
-                    <form
-                        action="{{ route('admin.albums.store') }}"
-                        method="POST"
-                        class="needs-validation"
-                        novalidate
-                    >
+                    <form action="{{ route('admin.albums.store') }}" method="POST" class="needs-validation" novalidate>
                         @csrf
                         <div class="row mb-3">
                             <label class="form-control w-full max-w-xs">
                                 <div class="label">
                                     <span class="label-text">@lang('admin.albums.name')</span>
                                 </div>
-                                <input
-                                    name="name"
-                                    type="text"
-                                    placeholder="Type here"
+                                <input name="name" type="text" placeholder="Type here"
                                     @class([
                                         'input',
                                         'input-bordered',
                                         'input-error' => $errors->has('name'),
                                         'w-full',
                                         'max-w-xs',
-                                    ])
-                                />
+                                    ]) />
                             </label>
                             <label class="form-control w-full max-w-xs">
                                 <div class="label">
                                     <span class="label-text">@lang('admin.albums.type')</span>
                                 </div>
-                                <select
-                                    name="type"
-                                    required
-                                    @class([
-                                        'input',
-                                        'input-bordered',
-                                        'input-error' => $errors->has('type'),
-                                        'w-full',
-                                    ])
-                                >
+                                <select name="type" required @class([
+                                    'input',
+                                    'input-bordered',
+                                    'input-error' => $errors->has('type'),
+                                    'w-full',
+                                ])>
                                     <option value="">@lang('admin.select')</option>
                                     @foreach (App\Enums\AlbumTypeEnum::cases() as $type)
-                                        <option
-                                            @selected($type->value == old('type'))
-                                            value="{{ $type->value }}"
-                                        >
-                                            @lang('admin.'.$type->value)
+                                        <option @selected($type->value == old('type')) value="{{ $type->value }}">
+                                            @lang('admin.' . $type->value)
                                         </option>
                                     @endforeach
                                 </select>
                             </label>
                         </div>
                         <div>
-                            <a
-                                href="{{ route('admin.albums.index') }}"
-                                class="btn-light btn"
-                                >@lang('admin.btn.cancel')
+                            <a href="{{ route('admin.albums.index') }}" class="btn-light btn">@lang('admin.btn.cancel')
                             </a>
-                            <button
-                                type="submit"
-                                class="btn btn-success ml-2"
-                            >
+                            <button type="submit" class="btn btn-success ml-2">
                                 @lang('admin.btn.submit')
                             </button>
                         </div>

@@ -73,4 +73,10 @@ return [
     // Dates
     'created_at' => 'Created at',
     'updated_at' => 'Updated at',
+
+    //Cooperation
+    'cooperations.all' => 'Cooperation',
+    'cooperations.name' => 'Name',
+    'cooperations.album_name' => 'Album"s',
+
 ];

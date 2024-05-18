@@ -50,6 +50,5 @@ return new class extends Migration
         Schema::dropIfExists('albums');
         Schema::dropIfExists('photos');
         Schema::dropIfExists('videos');
-        Schema::dropIfExists('cooperations');
     }
 };
