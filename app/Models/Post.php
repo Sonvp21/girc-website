@@ -124,4 +124,11 @@ class Post extends Model implements HasMedia
     {
         return Carbon::parse($this->published_at)->diffForHumans();
     }
+
+    protected function publishedAt(): Attribute
+    {
+        return Attribute::make(
+            set: fn ($value) => \Carbon\Carbon::parse($value)->format('Y-m-d H:i:s'),
+        );
+    }
 }

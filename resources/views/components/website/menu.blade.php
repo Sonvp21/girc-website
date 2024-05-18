@@ -18,7 +18,7 @@
             <li>
                 <a
                     class="flex h-full w-full flex-row items-center justify-start gap-2 bg-blue-500 py-2 text-center font-semibold uppercase tracking-wider text-white hover:bg-blue-500 focus:outline-none"
-                    href=""
+                    href="/"
                 >
                     <span class="border-white px-2">
                         <x-heroicon-o-home class="size-5" />
@@ -36,9 +36,9 @@
             <li class="relative flex-row whitespace-nowrap">
                 <a
                     class="flex h-full items-center justify-start py-4 font-semibold uppercase tracking-wider text-white hover:bg-blue-500 hover:text-white"
-                    href=""
+                    href="{{ route('news.index') }}"
                 >
-                    <span class="border-white px-2"> Tin tức </span>
+                    <span class="border-white px-2">@lang('web.news')</span>
                 </a>
             </li>
             <li
