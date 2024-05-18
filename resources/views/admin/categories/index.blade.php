@@ -3,40 +3,32 @@
         <h2 class="text-gray-800 text-xl font-semibold leading-tight">
             @lang('admin.categories')
         </h2>
-        <div>
-            <a
-                class="flex items-center justify-end"
-                href="{{ route('admin.categories.create') }}"
-                ><x-heroicon-o-plus-circle class="size-4" />
-                @lang('admin.add')
-            </a>
-        </div>
+
     </x-slot>
 
     <div class="py-12">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                 <div class="overflow-x-auto">
-                    <div class="px-6 py-4">
-                        <form
-                            action="{{ route('admin.categories.index') }}"
-                            method="GET"
-                        >
+                    <div class="px-6 py-4 flex">
+                        <form action="{{ route('admin.categories.index') }}" method="GET">
                             <div class="flex items-center">
-                                <input
-                                    type="text"
-                                    name="search"
-                                    placeholder="Search by title"
-                                    class="text-gray-800 border-gray-200 mr-0 rounded-l-lg border-b border-l border-t bg-white p-2"
-                                />
-                                <button
-                                    type="submit"
-                                    class="bg-gray-200 text-gray-800 rounded-r-lg border-b border-r border-t p-2 px-4 font-semibold"
-                                >
+                                <input type="text" name="search" placeholder="Search by title"
+                                    class="text-gray-800 border-gray-200 mr-0 rounded-l-lg border-b border-l border-t bg-white p-2" />
+                                <button type="submit"
+                                    class="bg-gray-200 text-gray-800 rounded-r-lg border-b border-r border-t p-2 px-4 font-semibold">
                                     Search
                                 </button>
                             </div>
                         </form>
+                        <div class="ml-auto self-center">
+                            <a
+                                class="flex items-center justify-end"
+                                href="{{ route('admin.categories.create') }}"
+                                ><x-heroicon-o-plus-circle class="size-4" />
+                                @lang('admin.add')
+                            </a>
+                        </div>
                     </div>
 
                     <table class="table">
@@ -59,20 +51,14 @@
                                     <td>{{ $category->updatedAtVi }}</td>
 
                                     <td class="flex gap-3">
-                                        <a href="{{ route('admin.categories.edit', $category->id) }}"
-                                            ><x-heroicon-s-pencil-square class="size-4 text-green-600"
-                                        /></a>
-                                        <form
-                                            id="delete-form-{{ $category->id }}"
+                                        <a href="{{ route('admin.categories.edit', $category->id) }}"><x-heroicon-s-pencil-square
+                                                class="size-4 text-green-600" /></a>
+                                        <form id="delete-form-{{ $category->id }}"
                                             action="{{ route('admin.categories.destroy', ['category' => $category->id]) }}"
-                                            method="POST"
-                                        >
+                                            method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button
-                                                type="button"
-                                                onclick="confirmDelete({{ $category->id }})"
-                                            >
+                                            <button type="button" onclick="confirmDelete({{ $category->id }})">
                                                 <x-heroicon-o-trash class="size-4 text-red-500" />
                                             </button>
                                         </form>
