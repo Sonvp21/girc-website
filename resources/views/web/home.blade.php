@@ -8,7 +8,6 @@
                 muted
                 src="{{ asset('files/videos/slider_3.mp4') }}"
             ></video>
-            {{-- <img src="{{ asset('files/images/banner_2.jpeg') }}" alt=""> --}}
         </div>
     </section>
     <section>

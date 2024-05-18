@@ -1,14 +1,14 @@
 <div>
     <div class="grid h-auto grid-cols-5 gap-2">
         <a
-            href="#"
+            href="{{ route('news.show', $latestPost) }}"
             class="group col-span-5 flex md:col-span-3"
         >
             <article>
                 <figure>
-                    <div class="relative bg-red-500">
+                    <div class="relative bg-red-500 overflow-hidden">
                         <img
-                            class="h-auto w-full"
+                            class="h-auto w-full group-hover:scale-110 transition-all"
                             src="{{ $latestPost->getFirstMedia('featured_image')->getUrl('lg') }}"
                             alt=""
                         />
@@ -36,16 +36,16 @@
                 @foreach ($posts as $post)
                     <div
                         class="block"
-                        href="#"
+                        href="{{ route('news.show', $post) }}"
                     >
                         <article>
-                            <figure class="relative flex rounded-t-xl">
+                            <figure class="relative flex rounded-t-xl group">
                                 <a
-                                    href=""
+                                    href="{{ route('news.show', $post) }}"
                                     class="h-20 w-28 flex-none overflow-hidden"
                                 >
                                     <img
-                                        class="h-auto w-auto"
+                                        class="h-auto w-auto group-hover:scale-110 transition-all"
                                         src="{{ $post->getFirstMedia('featured_image')->getUrl('md') }}"
                                         alt=""
                                     />
@@ -53,13 +53,13 @@
                                 <figcaption class="w-full px-3 text-sm">
                                     <div class="">
                                         <a
-                                            href=""
+                                            href="{{ route('news.show', $post) }}"
                                             class="hover:text-rose-600 line-clamp-3 leading-5"
                                             >{{ $post->title }}</a
                                         >
                                         <div class="flex justify-between gap-2 pt-2 text-xs text-green-700">
                                             <a
-                                                href="#"
+                                                href="{{ route('news.show', $post) }}"
                                                 class="text-xs hover:underline"
                                                 >{{ $post->category->title }}</a
                                             >
