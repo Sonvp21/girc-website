@@ -14,14 +14,15 @@ class CooperationController extends Controller
 {
     public function index(Request $request)
     {
-        $perPage = 10;
-        $query = Cooperation::latest();
-        if ($request->has('search')) {
-            $query->where('name', 'like', '%'.$request->search.'%');
-        }
-        $cooperations = $query->paginate($perPage);
-        $startIndex = ($cooperations->currentPage() - 1) * $perPage + 1;
-        return view('admin.albums.cooperations.index', compact('cooperations', 'startIndex'));
+        return view('admin.albums.cooperations.index', [
+            'cooperations' => Cooperation::query()
+                ->when(
+                    $request->search,
+                    fn($query) => $query->where('name', 'like', '%'.$request->search.'%')
+                )
+                ->latest()
+                ->paginate(10)
+        ]);
     }
 
     /**

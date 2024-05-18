@@ -46,7 +46,7 @@
                         <tbody>
                             @foreach ($faqs as $faq)
                                 <tr>
-                                    <th>{{ $startIndex++ }}</th>
+                                    <th>{{ $faqs->firstItem() + $loop->index }}</th>
                                     <td>{{ $faq->name }}</td>
                                     <td>{{ $faq->email }}</td>
                                     <td>{!! Str::limit($faq->question, 50) !!}</td>

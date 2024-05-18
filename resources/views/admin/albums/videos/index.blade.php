@@ -42,7 +42,7 @@
                         <tbody>
                             @foreach ($videos as $video)
                                 <tr>
-                                    <th>{{ $startIndex++ }}</th>
+                                    <th>{{ $videos->firstItem() + $loop->index }}</th>
                                     <td>{{ $video->name }}</td>
                                     <td>{{ $video->album->name }}</td>
                                     <td>{{ $video->createddAtVi }}</td>

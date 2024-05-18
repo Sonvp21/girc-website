@@ -45,7 +45,7 @@
                         <tbody>
                             @foreach ($categories as $category)
                                 <tr>
-                                    <th>{{ $startIndex++ }}</th>
+                                    <th>{{ $categories->firstItem() + $loop->index }}</th>
                                     <td>{{ $category->title }}</td>
                                     <td>{{ $category->createddAtVi }}</td>
                                     <td>{{ $category->updatedAtVi }}</td>

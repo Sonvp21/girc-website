@@ -43,7 +43,7 @@
                         <tbody>
                             @foreach ($cooperations as $cooperation)
                                 <tr>
-                                    <th>{{ $startIndex++ }}</th>
+                                    <th>{{ $cooperations->firstItem() + $loop->index }}</th>
                                     <td>
                                         <a target="_blank"
                                             href="{{ Str::startsWith($cooperation->link_website, ['http://', 'https://']) ? $cooperation->link_website : 'http://' . $cooperation->link_website }}">

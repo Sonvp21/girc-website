@@ -45,7 +45,7 @@
                         <tbody>
                             @foreach ($posts as $post)
                                 <tr>
-                                    <th>{{ $startIndex++ }}</th>
+                                    <th>{{ $posts->firstItem() + $loop->index }}</th>
                                     <td>{{ $post->title }}</td>
                                     <td>{{ $post->category->title }}</td>
                                     <td>{{ $post->publishedAtVi }}</td>

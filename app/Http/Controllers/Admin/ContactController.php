@@ -12,16 +12,15 @@ class ContactController extends Controller
 {
     public function index(Request $request)
     {
-        $perPage = 10;
-        $query = Contact::latest();
-        if ($request->has('search')) {
-            $query->where('name', 'like', '%'.$request->search.'%');
-        }
-
-        $contacts = $query->paginate($perPage);
-        $startIndex = ($contacts->currentPage() - 1) * $perPage + 1;
-
-        return view('admin.contacts.index', compact('contacts', 'startIndex'));
+        return view('admin.contacts.index', [
+            'contacts' => Contact::query()
+                ->when(
+                    $request->search,
+                    fn($query) => $query->where('name', 'like', '%'.$request->search.'%')
+                )
+                ->latest()
+                ->paginate(10)
+        ]);
     }
 
     public function create(): View

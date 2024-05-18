@@ -15,16 +15,15 @@ class PostController extends Controller
 {
     public function index(Request $request)
     {
-        $perPage = 10;
-        $query = Post::latest();
-        if ($request->has('search')) {
-            $query->where('title', 'like', '%'.$request->search.'%');
-        }
-
-        $posts = $query->paginate($perPage);
-        $startIndex = ($posts->currentPage() - 1) * $perPage + 1;
-
-        return view('admin.posts.index', compact('posts', 'startIndex'));
+        return view('admin.posts.index', [
+            'posts' => Post::query()
+                ->when(
+                    $request->search,
+                    fn($query) => $query->where('title', 'like', '%'.$request->search.'%')
+                )
+                ->latest()
+                ->paginate(10)
+        ]);
     }
 
     public function create(): View

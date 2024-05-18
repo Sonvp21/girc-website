@@ -45,7 +45,7 @@
                         <tbody>
                             @foreach ($contacts as $contact)
                                 <tr>
-                                    <th>{{ $startIndex++ }}</th>
+                                    <th>{{ $contacts->firstItem() + $loop->index }}</th>
                                     <td>{{ $contact->name }}</td>
                                     <td>{{ $contact->email }}</td>
                                     <td>{{ $contact->phone }}</td>

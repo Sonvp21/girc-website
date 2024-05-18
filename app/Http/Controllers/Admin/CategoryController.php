@@ -13,16 +13,15 @@ class CategoryController extends Controller
 {
     public function index(Request $request)
     {
-        $perPage = 10;
-        $query = Category::latest();
-        if ($request->has('search')) {
-            $query->where('title', 'like', '%'.$request->search.'%');
-        }
-
-        $categories = $query->paginate($perPage);
-        $startIndex = ($categories->currentPage() - 1) * $perPage + 1;
-
-        return view('admin.categories.index', compact('categories', 'startIndex'));
+        return view('admin.categories.index', [
+            'categories' => Category::query()
+                ->when(
+                    $request->search,
+                    fn($query) => $query->where('title', 'like', '%'.$request->search.'%')
+                )
+                ->latest()
+                ->paginate(10)
+        ]);
     }
 
     /**

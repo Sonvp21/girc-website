@@ -43,7 +43,7 @@
                         <tbody>
                             @foreach ($announcements as $announcement)
                                 <tr>
-                                    <th>{{ $startIndex++ }}</th>
+                                    <th>{{ $announcements->firstItem() + $loop->index }}</th>
                                     <td>{{ $announcement->title }}</td>
                                     <td>{{ $announcement->publishedAtVi }}</td>
                                     <td>{{ $announcement->updatedAtVi }}</td>

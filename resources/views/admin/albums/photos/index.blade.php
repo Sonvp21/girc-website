@@ -42,7 +42,7 @@
                         <tbody>
                             @foreach ($photos as $photo)
                                 <tr>
-                                    <th>{{ $startIndex++ }}</th>
+                                    <th>{{ $photos->firstItem() + $loop->index }}</th>
                                     <td>{{ $photo->name }}</td>
                                     <td>{{ $photo->album->name }}</td>
                                     <td>{{ $photo->createddAtVi }}</td>
