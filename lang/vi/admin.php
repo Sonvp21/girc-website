@@ -34,6 +34,18 @@ return [
     'contacts.read_at' => 'Ngày đọc',
     'contacts.created_at' => 'Ngày gửi',
 
+    //Hỏi đáp
+    'faqs' => 'Hỏi đáp',
+    'faqs.name' => 'Họ & tên',
+    'faqs.email' => 'Email',
+    'faqs.phone' => 'Số điện thoại',
+    'faqs.address' => 'Địa chỉ',
+    'faqs.question' => 'Câu hỏi',
+    'faqs.answer_at' => 'Ngày trả lời',
+    'faqs.answer' => 'Câu trả lời',
+    'faqs.read_at' => 'Ngày xem',
+    'faqs.created_at' => 'Ngày gửi',
+
     //Album
     'albums' => 'Bộ sưu tập',
     'albums.all' => 'Bộ sưu tập',

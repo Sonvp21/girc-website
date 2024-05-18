@@ -46,6 +46,9 @@
                 <li>
                     <a href="{{ route('admin.contacts.index') }}">@lang('admin.contacts')</a>
                 </li>
+                <li>
+                    <a href="{{ route('admin.faqs.index') }}">@lang('admin.faqs')</a>
+                </li>
             </ul>
         </div>
     </div>
