@@ -11,12 +11,12 @@
                             <li>
                                 <article class="group">
                                     <div class="flex gap-3">
-                                        <a href="" class="w-48 h-32 overflow-hidden flex-none">
+                                        <a href="{{ route('news.show', $post) }}" class="w-48 h-32 overflow-hidden flex-none">
                                             <img class="w-full h-auto group-hover:scale-110 transition-all" src="{{ $post->getFirstMedia('featured_image')->getUrl('thumb') }}" alt="">
                                         </a>
                                         <div class="flex flex-col justify-between items-start">
-                                            <div class="">
-                                                <a href="" class="group-hover:underline">
+                                            <div>
+                                                <a href="{{ route('news.show', $post) }}" class="group-hover:underline">
                                                     <h3 class="font-semibold text-lg text-blue-950 line-clamp-2 leading-5">{{ $post->title }}</h3>
                                                 </a>
                                                 <p class="text-sm text-slate-500 line-clamp-3 mt-2">{{ Str::limit(html_entity_decode(strip_tags($post->content)), 500) }}</p>

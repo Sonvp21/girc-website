@@ -19,4 +19,11 @@ class NewsController extends Controller
                 ->paginate(10),
         ]);
     }
+
+    public function show(Post $post): View
+    {
+        return view('web.news.show', [
+            'post' => $post,
+        ]);
+    }
 }

@@ -10,4 +10,5 @@ return [
     'to' => 'to',
     'of' => 'of',
     'results' => 'results',
+    'post_tags' => 'Post Tags',
 ];

@@ -10,4 +10,5 @@ return [
     'to' => 'đến',
     'of' => 'của',
     'results' => 'kết quả',
+    'post_tags' => 'Thẻ bài viết',
 ];
