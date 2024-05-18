@@ -26,7 +26,7 @@ return [
     '' => '',
 
     //Category
-    'categories' => 'Category Post',
+    'categories' => 'Category',
     'categories.title' => 'Title',
     'categories.created_at' => 'Create at',
     'categories.updated_at' => 'Update at',
