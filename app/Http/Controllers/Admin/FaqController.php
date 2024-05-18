@@ -16,10 +16,10 @@ class FaqController extends Controller
             'faqs' => Faq::query()
                 ->when(
                     $request->search,
-                    fn($query) => $query->where('name', 'like', '%'.$request->search.'%')
+                    fn ($query) => $query->where('name', 'like', '%'.$request->search.'%')
                 )
                 ->latest()
-                ->paginate(10)
+                ->paginate(10),
         ]);
     }
 
@@ -31,6 +31,7 @@ class FaqController extends Controller
     public function store(Request $request): RedirectResponse
     {
         Faq::create($request->all());
+
         return redirect()->route('admin.faqs.index');
     }
 
@@ -59,6 +60,7 @@ class FaqController extends Controller
         if (! $faq->answer_at) {
             $faq->update(['answer_at' => now()->format('d.m.Y h:i')]);
         }
+
         return redirect()->route('admin.faqs.index');
     }
 

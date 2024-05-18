@@ -17,10 +17,10 @@ class CategoryController extends Controller
             'categories' => Category::query()
                 ->when(
                     $request->search,
-                    fn($query) => $query->where('title', 'like', '%'.$request->search.'%')
+                    fn ($query) => $query->where('title', 'like', '%'.$request->search.'%')
                 )
                 ->latest()
-                ->paginate(10)
+                ->paginate(10),
         ]);
     }
 

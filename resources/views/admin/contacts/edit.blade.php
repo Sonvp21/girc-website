@@ -10,9 +10,7 @@
         <div class="mt-6">
             <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                 <div class="bg-white p-4 shadow sm:rounded-lg sm:p-8">
-                    <div
-                        class="max-w-2xl"
-                    >
+                    <div class="max-w-2xl">
                         <form
                             action="{{ route('admin.contacts.update', ['contact' => $contact->id]) }}"
                             method="POST"

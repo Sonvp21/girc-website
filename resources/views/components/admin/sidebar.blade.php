@@ -20,7 +20,7 @@
                         </ul>
                     </details>
                 </li>
-                
+
                 <li>
                     <a href="{{ route('admin.announcements.index') }}">@lang('admin.announcements')</a>
                 </li>

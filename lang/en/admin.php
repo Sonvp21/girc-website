@@ -41,7 +41,6 @@ return [
     'contacts.show' => 'Show',
     'contacts.read_at' => 'Readed at',
     'contacts.created_at' => 'Created at',
-    
 
     //Faq
     'faqs' => 'Faq',

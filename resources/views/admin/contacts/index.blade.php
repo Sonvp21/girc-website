@@ -8,20 +8,31 @@
         <div class="mt-6">
             <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                 <div class="overflow-x-auto">
-                    <div class="px-6 py-4 flex">
-                        <form action="{{ route('admin.contacts.index') }}" method="GET">
+                    <div class="flex px-6 py-4">
+                        <form
+                            action="{{ route('admin.contacts.index') }}"
+                            method="GET"
+                        >
                             <div class="flex items-center">
-                                <input type="text" name="search" placeholder="Search by title"
-                                    class="text-gray-800 border-gray-200 mr-0 rounded-l-lg border-b border-l border-t bg-white p-2" />
-                                <button type="submit"
-                                    class="bg-gray-200 text-gray-800 rounded-r-lg border-b border-r border-t p-2 px-4 font-semibold">
+                                <input
+                                    type="text"
+                                    name="search"
+                                    placeholder="Search by title"
+                                    class="text-gray-800 border-gray-200 mr-0 rounded-l-lg border-b border-l border-t bg-white p-2"
+                                />
+                                <button
+                                    type="submit"
+                                    class="bg-gray-200 text-gray-800 rounded-r-lg border-b border-r border-t p-2 px-4 font-semibold"
+                                >
                                     Search
                                 </button>
                             </div>
                         </form>
                         <div class="ml-auto self-center">
-                            <a class="flex items-center justify-end"
-                                href="{{ route('admin.contacts.create') }}"><x-heroicon-o-plus-circle class="size-4" />
+                            <a
+                                class="flex items-center justify-end"
+                                href="{{ route('admin.contacts.create') }}"
+                                ><x-heroicon-o-plus-circle class="size-4" />
                                 @lang('admin.add')
                             </a>
                         </div>
@@ -53,16 +64,23 @@
                                     <td>{{ $contact->createdAtVi }}</td>
 
                                     <td class="flex gap-3">
-                                        <a href="{{ route('admin.contacts.edit', $contact->id) }}"><x-heroicon-s-pencil-square
-                                                class="size-4 text-green-600" /></a>
-                                        <a href="{{ route('admin.contacts.show', $contact->id) }}"><x-heroicon-o-eye
-                                                class="size-4 text-green-600" /></a>
-                                        <form id="delete-form-{{ $contact->id }}"
+                                        <a href="{{ route('admin.contacts.edit', $contact->id) }}"
+                                            ><x-heroicon-s-pencil-square class="size-4 text-green-600"
+                                        /></a>
+                                        <a href="{{ route('admin.contacts.show', $contact->id) }}"
+                                            ><x-heroicon-o-eye class="size-4 text-green-600"
+                                        /></a>
+                                        <form
+                                            id="delete-form-{{ $contact->id }}"
                                             action="{{ route('admin.contacts.destroy', ['contact' => $contact->id]) }}"
-                                            method="POST">
+                                            method="POST"
+                                        >
                                             @csrf
                                             @method('DELETE')
-                                            <button type="button" onclick="confirmDelete({{ $contact->id }})">
+                                            <button
+                                                type="button"
+                                                onclick="confirmDelete({{ $contact->id }})"
+                                            >
                                                 <x-heroicon-o-trash class="size-4 text-red-500" />
                                             </button>
                                         </form>

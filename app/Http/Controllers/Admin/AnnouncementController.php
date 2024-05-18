@@ -17,10 +17,10 @@ class AnnouncementController extends Controller
             'announcements' => Announcement::query()
                 ->when(
                     $request->search,
-                    fn($query) => $query->where('title', 'like', '%'.$request->search.'%')
+                    fn ($query) => $query->where('title', 'like', '%'.$request->search.'%')
                 )
                 ->latest()
-                ->paginate(10)
+                ->paginate(10),
         ]);
     }
 

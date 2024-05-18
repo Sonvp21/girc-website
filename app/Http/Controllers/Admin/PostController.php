@@ -19,10 +19,10 @@ class PostController extends Controller
             'posts' => Post::query()
                 ->when(
                     $request->search,
-                    fn($query) => $query->where('title', 'like', '%'.$request->search.'%')
+                    fn ($query) => $query->where('title', 'like', '%'.$request->search.'%')
                 )
                 ->latest()
-                ->paginate(10)
+                ->paginate(10),
         ]);
     }
 

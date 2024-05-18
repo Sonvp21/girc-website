@@ -21,5 +21,4 @@ class Faq extends Model
             get: fn () => Carbon::parse($this->created_at)->format('d.m.Y h:i'),
         );
     }
-    
 }

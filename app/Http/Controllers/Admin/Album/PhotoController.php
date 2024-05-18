@@ -18,10 +18,10 @@ class PhotoController extends Controller
             'photos' => Photo::query()
                 ->when(
                     $request->search,
-                    fn($query) => $query->where('name', 'like', '%'.$request->search.'%')
+                    fn ($query) => $query->where('name', 'like', '%'.$request->search.'%')
                 )
                 ->latest()
-                ->paginate(10)
+                ->paginate(10),
         ]);
     }
 
