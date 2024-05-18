@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\AlbumController;
 use App\Http\Controllers\Admin\AnnouncementController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\ProfileController;
@@ -38,6 +39,8 @@ Route::middleware('auth')->group(function () {
 
         //contact
         Route::resource('contacts', ContactController::class);
+        //faq
+        Route::resource('faqs', FaqController::class);
     });
 
 });

@@ -93,7 +93,7 @@
                                                         :key="dateIndex">
                                                         <div style="width: 14.28%" class="mb-1 px-1">
                                                             <div @click="getDateValue(date)" x-text="date"
-                                                                class="cursor-pointer rounded-full text-center text-sm leading-loose leading-none transition duration-100 ease-in-out"
+                                                                class="cursor-pointer rounded-full text-center text-sm transition duration-100 ease-in-out"
                                                                 :class="{
                                                                     'bg-blue-500 text-white': isToday(date) ==
                                                                         true,

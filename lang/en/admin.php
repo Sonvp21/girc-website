@@ -40,6 +40,19 @@ return [
     'contacts.phone' => 'Phone',
     'contacts.read_at' => 'Readed at',
     'contacts.created_at' => 'Created at',
+    
+
+    //Faq
+    'faqs' => 'Faq',
+    'faqs.name' => 'Name',
+    'faqs.email' => 'Email',
+    'faqs.phone' => 'Phone',
+    'faqs.address' => 'Address',
+    'faqs.question' => 'Question',
+    'faqs.answer_at' => 'Answer at',
+    'faqs.answer' => 'Answer',
+    'faqs.read_at' => 'Readed at',
+    'faqs.created_at' => 'Created at',
     '' => '',
 
     //Album
