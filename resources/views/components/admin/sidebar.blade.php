@@ -29,6 +29,9 @@
                             <li>
                                 <a href="{{ route('admin.videos.index') }}"> @lang('admin.videos.all')</a>
                             </li>
+                            <li>
+                                <a href="{{ route('admin.cooperations.index') }}"> @lang('admin.cooperations.all')</a>
+                            </li>
                         </ul>
                     </details>
                 </li>

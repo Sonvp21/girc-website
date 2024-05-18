@@ -54,4 +54,10 @@ return [
     'videos.updated_at' => 'Cập nhật',
     'videos.album_name' => 'Thuộc bộ sưu tập',
 
+    'cooperations.all' => 'Quan hệ, hợp tác',
+    'cooperations.name' => 'Tên Đơn vị',
+    'cooperations.album_name' => 'Thuộc bộ sưu tập',
+    'created_at' => 'Ngày tạo',
+    'updated_at' => 'Ngày cập nhật',
+
 ];
