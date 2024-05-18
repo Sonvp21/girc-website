@@ -1,13 +1,13 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="text-gray-800 text-xl font-semibold leading-tight">
-            @lang('admin.faq_details')
-            {{-- Assuming you have a language key for this --}}
-        </h2>
-    </x-slot>
-
-    <div class="py-12">
-        <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+    <div class="p-6">
+        <div class="text-gray-800 text-normal font-semibold leading-tight">
+            <span class="text-gray-800 text-normal flex items-center gap-2 font-semibold leading-tight">
+                @lang('admin.faqs')
+                <x-heroicon-m-arrow-small-right class="size-4" />
+                @lang('admin.faqs.show')
+            </span>
+        </div>
+        <div class="mt-6">
             <a href="{{ route('admin.faqs.index') }}"
                 class="bg-gray-300 text-gray-700 hover:bg-gray-400 active:bg-gray-500 focus:border-gray-500 focus:ring-gray-300 inline-flex items-center rounded-md px-4 py-2 text-xs font-semibold uppercase tracking-widest transition focus:outline-none focus:ring disabled:opacity-25">
                 <x-heroicon-o-arrow-left class="mr-2 size-4" />

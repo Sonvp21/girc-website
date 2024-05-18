@@ -1,12 +1,14 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="text-gray-800 text-xl font-semibold leading-tight">
-            @lang('admin.posts')
-        </h2>
-    </x-slot>
     <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" />
-    <div class="py-12">
-        <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+    <div class="p-6">
+        <div class="text-gray-800 text-normal font-semibold leading-tight">
+            <span class="text-gray-800 text-normal flex items-center gap-2 font-semibold leading-tight">
+                @lang('admin.posts')
+                <x-heroicon-m-arrow-small-right class="size-4" />
+                @lang('admin.add')
+            </span>
+        </div>
+        <div class="mt-6">
             <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                 <div class="bg-white p-4 shadow sm:rounded-lg sm:p-8">
                     <div class="max-w-4xl">
@@ -36,7 +38,7 @@
                                                 </svg>
                                             </div>
                                             <div class="absolute left-0 top-0 mt-12 rounded-lg bg-white p-4 shadow"
-                                                style="width: 17rem" x-show.transition="showDatepicker"
+                                                style="width: 17rem; z-index: 1;" x-show.transition="showDatepicker"
                                                 @click.away="showDatepicker = false">
                                                 <div class="mb-2 flex items-center justify-between">
                                                     <div>
@@ -161,7 +163,7 @@
                                         'input-bordered',
                                         'input-error' => $errors->has('tags'),
                                         'w-full',
-                                        'max-w-xs',
+                                        'h-fit',
                                     ]) />
                             </div>
                             <script>

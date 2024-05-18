@@ -1,17 +1,17 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="text-gray-800 text-xl font-semibold leading-tight">
-            @lang('admin.contacts')
-        </h2>
-    </x-slot>
-
-    <div class="py-12">
-        <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+    <div class="p-6">
+        <div class="text-gray-800 text-normal font-semibold leading-tight">
+            <span class="text-gray-800 text-normal flex items-center gap-2 font-semibold leading-tight">
+                @lang('admin.contacts')
+                <x-heroicon-m-arrow-small-right class="size-4" />
+                @lang('admin.edit')
+            </span>
+        </div>
+        <div class="mt-6">
             <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                 <div class="bg-white p-4 shadow sm:rounded-lg sm:p-8">
                     <div
                         class="max-w-2xl"
-                        style="margin-left: 30%"
                     >
                         <form
                             action="{{ route('admin.contacts.update', ['contact' => $contact->id]) }}"
