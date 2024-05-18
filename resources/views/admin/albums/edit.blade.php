@@ -10,8 +10,12 @@
         <div class="mt-6">
             <div class="overflow-hidden bg-white p-6 sm:rounded-lg">
                 <div class="max-w-xl text-start">
-                    <form action="{{ route('admin.albums.update', ['album' => $album->id]) }}" method="POST"
-                        class="needs-validation" novalidate>
+                    <form
+                        action="{{ route('admin.albums.update', ['album' => $album->id]) }}"
+                        method="POST"
+                        class="needs-validation"
+                        novalidate
+                    >
                         @csrf
                         @method('patch')
                         <div class="mb-3">
@@ -19,28 +23,39 @@
                                 <div class="label">
                                     <span class="label-text">@lang('admin.albums.name')</span>
                                 </div>
-                                <input type="text" name="name" placeholder="Type here"
-                                    value="{{ old('name', $album->name) }}" @class([
+                                <input
+                                    type="text"
+                                    name="name"
+                                    placeholder="Type here"
+                                    value="{{ old('name', $album->name) }}"
+                                    @class([
                                         'input',
                                         'input-bordered',
                                         'input-error' => $errors->has('name'),
                                         'w-full',
                                         'max-w-xs',
-                                    ]) />
+                                    ])
+                                />
                             </label>
                             <label class="form-control w-full max-w-xs">
                                 <div class="label">
                                     <span class="label-text">@lang('admin.albums.type')</span>
                                 </div>
-                                <select name="type" required @class([
-                                    'input',
-                                    'input-bordered',
-                                    'input-error' => $errors->has('type'),
-                                    'w-full',
-                                ])>
+                                <select
+                                    name="type"
+                                    required
+                                    @class([
+                                        'input',
+                                        'input-bordered',
+                                        'input-error' => $errors->has('type'),
+                                        'w-full',
+                                    ])
+                                >
                                     @foreach (App\Enums\AlbumTypeEnum::cases() as $type)
-                                        <option value="{{ $type->value }}"
-                                            {{ $album->type == $type ? 'selected' : '' }}>
+                                        <option
+                                            value="{{ $type->value }}"
+                                            {{ $album->type == $type ? 'selected' : '' }}
+                                        >
                                             {{ $type->value }}
                                         </option>
                                     @endforeach
@@ -48,9 +63,15 @@
                             </label>
                         </div>
                         <div>
-                            <a href="{{ route('admin.albums.index') }}" class="btn-light btn">@lang('admin.btn.cancel')
+                            <a
+                                href="{{ route('admin.albums.index') }}"
+                                class="btn-light btn"
+                                >@lang('admin.btn.cancel')
                             </a>
-                            <button type="submit" class="btn btn-success ml-2">
+                            <button
+                                type="submit"
+                                class="btn btn-success ml-2"
+                            >
                                 @lang('admin.btn.submit')
                             </button>
                         </div>

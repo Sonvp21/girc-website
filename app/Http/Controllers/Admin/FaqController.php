@@ -12,16 +12,15 @@ class FaqController extends Controller
 {
     public function index(Request $request)
     {
-        $perPage = 10;
-        $query = Faq::latest();
-        if ($request->has('search')) {
-            $query->where('name', 'like', '%'.$request->search.'%');
-        }
-
-        $faqs = $query->paginate($perPage);
-        $startIndex = ($faqs->currentPage() - 1) * $perPage + 1;
-
-        return view('admin.faqs.index', compact('faqs', 'startIndex'));
+        return view('admin.faqs.index', [
+            'faqs' => Faq::query()
+                ->when(
+                    $request->search,
+                    fn ($query) => $query->where('name', 'like', '%'.$request->search.'%')
+                )
+                ->latest()
+                ->paginate(10),
+        ]);
     }
 
     public function create(): View
@@ -32,6 +31,7 @@ class FaqController extends Controller
     public function store(Request $request): RedirectResponse
     {
         Faq::create($request->all());
+
         return redirect()->route('admin.faqs.index');
     }
 
@@ -60,6 +60,7 @@ class FaqController extends Controller
         if (! $faq->answer_at) {
             $faq->update(['answer_at' => now()->format('d.m.Y h:i')]);
         }
+
         return redirect()->route('admin.faqs.index');
     }
 

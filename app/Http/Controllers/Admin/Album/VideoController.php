@@ -14,16 +14,15 @@ class VideoController extends Controller
 {
     public function index(Request $request)
     {
-        $perPage = 10;
-        $query = Video::latest();
-        if ($request->has('search')) {
-            $query->where('name', 'like', '%'.$request->search.'%');
-        }
-
-        $videos = $query->paginate($perPage);
-        $startIndex = ($videos->currentPage() - 1) * $perPage + 1;
-
-        return view('admin.albums.videos.index', compact('videos', 'startIndex'));
+        return view('admin.albums.videos.index', [
+            'videos' => Video::query()
+                ->when(
+                    $request->search,
+                    fn ($query) => $query->where('name', 'like', '%'.$request->search.'%')
+                )
+                ->latest()
+                ->paginate(10),
+        ]);
     }
 
     /**

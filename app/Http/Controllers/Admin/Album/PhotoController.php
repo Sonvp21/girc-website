@@ -14,16 +14,15 @@ class PhotoController extends Controller
 {
     public function index(Request $request)
     {
-        $perPage = 10;
-        $query = Photo::latest();
-        if ($request->has('search')) {
-            $query->where('name', 'like', '%'.$request->search.'%');
-        }
-
-        $photos = $query->paginate($perPage);
-        $startIndex = ($photos->currentPage() - 1) * $perPage + 1;
-
-        return view('admin.albums.photos.index', compact('photos', 'startIndex'));
+        return view('admin.albums.photos.index', [
+            'photos' => Photo::query()
+                ->when(
+                    $request->search,
+                    fn ($query) => $query->where('name', 'like', '%'.$request->search.'%')
+                )
+                ->latest()
+                ->paginate(10),
+        ]);
     }
 
     /**

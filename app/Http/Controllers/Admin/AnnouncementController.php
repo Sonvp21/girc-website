@@ -13,16 +13,15 @@ class AnnouncementController extends Controller
 {
     public function index(Request $request)
     {
-        $perPage = 10;
-        $query = Announcement::latest();
-        if ($request->has('search')) {
-            $query->where('title', 'like', '%'.$request->search.'%');
-        }
-
-        $announcements = $query->paginate($perPage);
-        $startIndex = ($announcements->currentPage() - 1) * $perPage + 1;
-
-        return view('admin.announcements.index', compact('announcements', 'startIndex'));
+        return view('admin.announcements.index', [
+            'announcements' => Announcement::query()
+                ->when(
+                    $request->search,
+                    fn ($query) => $query->where('title', 'like', '%'.$request->search.'%')
+                )
+                ->latest()
+                ->paginate(10),
+        ]);
     }
 
     public function create(): View

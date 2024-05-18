@@ -11,7 +11,6 @@ use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\Web\HomeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/dashboard', function () {
@@ -42,4 +41,4 @@ Route::middleware('auth')->group(function () {
     });
 });
 
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';

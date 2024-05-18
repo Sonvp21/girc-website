@@ -12,16 +12,15 @@ class AlbumController extends Controller
 {
     public function index(Request $request)
     {
-        $perPage = 10;
-        $query = Album::latest();
-        if ($request->has('search')) {
-            $query->where('name', 'like', '%'.$request->search.'%');
-        }
-
-        $albums = $query->paginate($perPage);
-        $startIndex = ($albums->currentPage() - 1) * $perPage + 1;
-
-        return view('admin.albums.index', compact('albums', 'startIndex'));
+        return view('admin.albums.index', [
+            'albums' => Album::query()
+                ->when(
+                    $request->search,
+                    fn ($query) => $query->where('name', 'like', '%'.$request->search.'%')
+                )
+                ->latest()
+                ->paginate(10),
+        ]);
     }
 
     /**
