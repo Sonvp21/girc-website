@@ -1,12 +1,13 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="text-gray-800 text-xl font-semibold leading-tight">
-            @lang('admin.videos')
-        </h2>
-    </x-slot>
-
-    <div class="py-12">
-        <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+    <div class="p-6">
+        <div class="text-gray-800 text-normal font-semibold leading-tight">
+            <span class="text-gray-800 text-normal flex items-center gap-2 font-semibold leading-tight">
+                @lang('admin.video')
+                <x-heroicon-m-arrow-small-right class="size-4" />
+                @lang('admin.add')
+            </span>
+        </div>
+        <div class="mt-6">
             <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                 <div
                     class="bg-white p-4 shadow sm:rounded-lg sm:p-8"
@@ -106,7 +107,7 @@
                             </div>
                             <div>
                                 <a
-                                    href="{{ route('admin.albums.index') }}"
+                                    href="{{ route('admin.videos.index') }}"
                                     class="btn-light btn"
                                     >@lang('admin.btn.cancel')
                                 </a>
