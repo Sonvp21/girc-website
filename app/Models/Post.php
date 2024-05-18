@@ -19,6 +19,10 @@ class Post extends Model implements HasMedia
 
     protected $table = 'posts';
 
+    protected $casts = [
+        'published_at' => 'datetime',
+    ];
+
     /*
     * -------------------------------------------------------------------------------------
     * RELATIONSHIPS
@@ -37,19 +41,22 @@ class Post extends Model implements HasMedia
     public function registerMediaConversions(?Media $media = null): void
     {
         $this->addMediaConversion('lg')
-            ->crop(1020, 603)
+            ->width(1020)
+            ->height(603)
             ->sharpen(5)
             ->format('jpg')
             ->performOnCollections('featured_image');
 
         $this->addMediaConversion('md')
-            ->crop(541, 320)
+            ->width(541)
+            ->height(320)
             ->sharpen(5)
             ->format('jpg')
             ->performOnCollections('featured_image');
 
         $this->addMediaConversion('thumb')
-            ->crop(368, 276)
+            ->width(368)
+            ->height(276)
             ->sharpen(10)
             ->format('jpg')
             ->performOnCollections('featured_image');
@@ -94,6 +101,20 @@ class Post extends Model implements HasMedia
         );
     }
 
+    protected function publishedPostDate(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => $this->published_at->translatedFormat('l, d/m/Y'),
+        );
+    }
+
+    protected function publishedPostDateThumb(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => $this->published_at->diffForHumans(),
+        );
+    }
+
     public function getPublishedDateAttribute()
     {
         return Carbon::parse($this->published_at)->format('M d, Y H:i');
@@ -102,5 +123,12 @@ class Post extends Model implements HasMedia
     public function getPublishedDateSearchAttribute()
     {
         return Carbon::parse($this->published_at)->diffForHumans();
+    }
+
+    protected function publishedAt(): Attribute
+    {
+        return Attribute::make(
+            set: fn ($value) => \Carbon\Carbon::parse($value)->format('Y-m-d H:i:s'),
+        );
     }
 }
