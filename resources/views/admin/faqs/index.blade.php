@@ -20,7 +20,7 @@
                                     placeholder="Search by title"
                                     class="text-gray-800 border-gray-200 mr-0 rounded-l-lg border-b border-l border-t bg-white p-2"
                                     value="{{ request()->search }}"
-                                    />
+                                />
                                 <button
                                     type="submit"
                                     class="bg-gray-200 text-gray-800 rounded-r-lg border-b border-r border-t p-2 px-4 font-semibold"

@@ -20,14 +20,14 @@
                                     class="{{ request()->routeIs('admin.categories.index') ? 'active' : '' }}"
                                     href="{{ route('admin.categories.index') }}"
                                     >@lang('admin.categories')
-                                     </a>
+                                </a>
                             </li>
                             <li>
                                 <a
                                     class="{{ request()->routeIs('admin.posts.index') ? 'active' : '' }}"
                                     href="{{ route('admin.posts.index') }}"
                                     >@lang('admin.posts')
-                                     </a>
+                                </a>
                             </li>
                         </ul>
                     </details>
@@ -49,7 +49,7 @@
                                     href="{{ route('admin.albums.index') }}"
                                 >
                                     @lang('admin.albums.all')
-                                    </a>
+                                </a>
                             </li>
                             <li>
                                 <a
@@ -57,7 +57,7 @@
                                     href="{{ route('admin.photos.index') }}"
                                 >
                                     @lang('admin.photos.all')
-                                    </a>
+                                </a>
                             </li>
                             <li>
                                 <a
@@ -65,7 +65,7 @@
                                     href="{{ route('admin.videos.index') }}"
                                 >
                                     @lang('admin.videos.all')
-                                    </a>
+                                </a>
                             </li>
                             <li>
                                 <a
@@ -73,7 +73,7 @@
                                     href="{{ route('admin.cooperations.index') }}"
                                 >
                                     @lang('admin.cooperations.all')
-                                    </a>
+                                </a>
                             </li>
                         </ul>
                     </details>
