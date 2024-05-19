@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\RichTextAttachmentController;
 use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -38,6 +39,8 @@ Route::middleware('auth')->group(function () {
         Route::resource('contacts', ContactController::class);
         //faq
         Route::resource('faqs', FaqController::class);
+
+        Route::post('rich-text-attachment', RichTextAttachmentController::class)->name('rich-text.attachment');
     });
 });
 
