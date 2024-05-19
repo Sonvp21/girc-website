@@ -34,7 +34,6 @@ class AnnouncementController extends Controller
         $announcement = new Announcement([
             'user_id' => auth()->id(),
             'title' => $request->title,
-            'content' => $request->content,
             'published_at' => $request->published_at,
         ]);
         $announcement->save();
@@ -56,7 +55,6 @@ class AnnouncementController extends Controller
     {
         $announcement->update([
             'title' => $request->title,
-            'content' => $request->content,
             'published_at' => $request->published_at,
         ]);
 
