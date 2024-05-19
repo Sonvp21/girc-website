@@ -2,7 +2,7 @@
     'id',
     'value',
     'name',
-    'model'
+    'model',
 ])
 
 <x-trix-input
@@ -30,4 +30,4 @@
     }"
     x-on:trix-attachment-add="upload"
 />
-<x-rich-text::styles theme="richtextlaravel"/>
+<x-rich-text::styles theme="richtextlaravel" />
