@@ -192,16 +192,12 @@
                                 <div class="col-md-6">
                                     <div>
                                         <label for="content">@lang('admin.content')</label>
-                                        <x-trix-input
-                                            name="content"
+                                        <x-admin.forms.rich-text
                                             id="content"
+                                            name="content"
+                                            model="announcement"
+                                            :value="old('content')"
                                         />
-                                        <x-rich-text::styles />
-                                        <style>
-                                            trix-editor {
-                                                min-height: 240px;
-                                            }
-                                        </style>
                                     </div>
                                 </div>
                             </div>

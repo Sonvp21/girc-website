@@ -1,8 +1,4 @@
 <x-app-layout>
-    <link
-        rel="stylesheet"
-        href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
-    />
     <div class="p-6">
         <div class="text-gray-800 text-normal font-semibold leading-tight">
             <span class="text-gray-800 text-normal flex items-center gap-2 font-semibold leading-tight">
@@ -196,17 +192,12 @@
                             </div>
                             <div class="row mb-3">
                                 <label for="content">@lang('admin.content')</label>
-                                <x-trix-input
-                                    name="content"
+                                <x-admin.forms.rich-text
                                     id="content"
-                                    value="{!! old('content', $announcement->content) !!}"
+                                    name="content"
+                                    model="announcement"
+                                    :value="$announcement->content"
                                 />
-                                <x-rich-text::styles />
-                                <style>
-                                    trix-editor {
-                                        min-height: 240px;
-                                    }
-                                </style>
                             </div>
                             <div>
                                 <a
