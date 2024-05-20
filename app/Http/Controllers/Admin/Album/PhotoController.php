@@ -69,7 +69,7 @@ class PhotoController extends Controller
             ]);
     }
 
-    public function update(PhotoRequest $request, Photo $photo)
+    public function update(Request $request, Photo $photo)
     {
         $photo->update([
             'album_id' => $request->album_id,

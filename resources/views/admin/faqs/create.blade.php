@@ -91,17 +91,13 @@
                             <div class="row mb-3">
                                 <div class="col-md-6">
                                     <div>
-                                        <label for="question">@lang('admin.faqs.question')</label>
-                                        <x-trix-input
+                                        <label for="content">@lang('admin.faqs.question')</label>
+                                        <x-admin.forms.rich-text
+                                            id="content"
                                             name="question"
-                                            id="question"
+                                            model="faq"
+                                            :value="old('question')"
                                         />
-                                        <x-rich-text::styles />
-                                        <style>
-                                            trix-editor {
-                                                min-height: 240px;
-                                            }
-                                        </style>
                                     </div>
                                 </div>
                             </div>
