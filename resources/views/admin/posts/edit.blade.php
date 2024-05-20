@@ -252,26 +252,26 @@
                             </div>
                             <script>
                                 // Initialize Tagify on the input element
-                                var input = document.querySelector('input[name=tags]')
+                                var input = document.querySelector('input[name=tags]');
                                 var tagify = new Tagify(input, {
-                                    delimiters: ' ', // Sử dụng dấu cách để tách các tag
-                                    pattern: /[^ ]+/, // Chỉ cho phép các ký tự không phải dấu cách
-                                })
-
+                                    delimiters: " ", // Sử dụng dấu cách để tách các tag
+                                    pattern: /[^ ]+/ // Chỉ cho phép các ký tự không phải dấu cách
+                                });
+                        
                                 // Thêm các tag hiện tại vào Tagify khi trang tải lên
-                                var existingTags = @json($tags)
-                                tagify.addTags(existingTags)
-
+                                var existingTags = @json($tags);
+                                tagify.addTags(existingTags);
+                        
                                 // Sử dụng phím Space để thêm tag mới
-                                tagify.on('add', function (e) {
+                                tagify.on('add', function(e) {
                                     if (e.detail.data.value.indexOf(' ') > -1) {
-                                        var splitTags = e.detail.data.value.split(' ')
-                                        splitTags.forEach(function (tag) {
-                                            tagify.addTags(tag.trim())
-                                        })
-                                        tagify.removeTag(e.detail.data.value)
+                                        var splitTags = e.detail.data.value.split(' ');
+                                        splitTags.forEach(function(tag) {
+                                            tagify.addTags(tag.trim());
+                                        });
+                                        tagify.removeTag(e.detail.data.value);
                                     }
-                                })
+                                });
                             </script>
                             <div class="flex items-center space-x-6">
                                 <div class="shrink-0">
