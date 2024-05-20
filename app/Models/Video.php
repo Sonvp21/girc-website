@@ -12,7 +12,7 @@ class Video extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $fillable = ['name', 'source', 'album_id', 'video_id'];
 
     protected $table = 'videos';
 

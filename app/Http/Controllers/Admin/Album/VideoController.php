@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Album;
 
+use App\Enums\AlbumTypeEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\VideoRequest;
 use App\Models\Album;
@@ -30,20 +31,17 @@ class VideoController extends Controller
      */
     public function create(): View
     {
-        $albums = Album::query()->select('id', 'name')->get();
+        $albums = Album::query()
+            ->where('type', AlbumTypeEnum::VIDEO)
+            ->select('id', 'name')
+            ->get();
 
         return view('admin.albums.videos.create', compact('albums'));
     }
 
-    public function store(VideoRequest $request)
+    public function store(VideoRequest $request): RedirectResponse
     {
-        $video = new Video([
-            'album_id' => $request->album_id,
-            'name' => $request->name,
-            'video_id' => $request->video_id,
-            'source' => $request->source,
-        ]);
-        $video->save();
+        Video::create($request->all());
 
         return redirect()->route('admin.videos.index')->with('success', 'Video created successfully.');
     }

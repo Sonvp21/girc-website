@@ -10,73 +10,60 @@
         <div class="mt-6">
             <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                 <div class="bg-white p-4 shadow sm:rounded-lg sm:p-8">
-                    <div class="max-w-4xl text-start">
                         <form action="{{ route('admin.videos.update', ['video' => $video->id]) }}" method="POST"
-                            class="needs-validation" novalidate enctype="multipart/form-data">
+                            class="space-y-4 needs-validation" novalidate enctype="multipart/form-data">
                             @csrf
                             @method('patch')
-                            <div class="row mb-3 flex w-full">
-                                <div class="mb-3 mr-12 w-full max-w-xs">
-                                    <label class="form-control w-full max-w-xs">
-                                        <div class="label" for="album_id">
-                                            <span class="label-text">@lang('admin.album')</span>
-                                        </div>
-                                        <select name="album_id" required @class([
-                                            'input',
-                                            'input-bordered',
-                                            'input-error' => $errors->has('album_id'),
-                                            'w-full',
-                                        ])>
-                                            <option value="">Select Album</option>
-                                            @foreach ($albums as $album)
-                                                <option value="{{ $album->id }}"
-                                                    {{ $video->album_id == $album->id ? 'selected' : '' }}>
-                                                    {{ $album->name }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                    </label>
+                            <label class="form-control w-full">
+                                <div class="label" for="album_id">
+                                    <span class="label-text">@lang('admin.album')</span>
                                 </div>
-                                <div class="mb-3 w-full max-w-xs">
-                                    <label class="form-control w-full max-w-xs">
-                                        <div class="label">
-                                            <span class="label-text">@lang('admin.post.title')</span>
-                                        </div>
-                                        <input type="text" name="name" value="{{ old('name', $video->name) }}"
-                                            placeholder="title video..." @class([
-                                                'input',
-                                                'input-bordered',
-                                                'input-error' => $errors->has('name'),
-                                                'w-full',
-                                                'max-w-xs',
-                                            ]) />
-                                    </label>
+                                <select name="album_id" required @class([
+                                    'input',
+                                    'input-bordered',
+                                    'input-error' => $errors->has('album_id'),
+                                    'w-full',
+                                ])>
+                                    <option value="">Select Album</option>
+                                    @foreach ($albums as $album)
+                                        <option value="{{ $album->id }}"
+                                            {{ $video->album_id == $album->id ? 'selected' : '' }}>
+                                            {{ $album->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </label>
+                            <label class="form-control w-full">
+                                <div class="label">
+                                    <span class="label-text">@lang('admin.post.title')</span>
                                 </div>
-                            </div>
-                            <div class="row mb-3 flex w-full">
-                                <div class="mb-3 mr-12 w-full max-w-xs">
-                                    <label class="form-control w-full max-w-xs">
-                                        <div class="label" for="source">
-                                            <span class="label-text">@lang('admin.videos.source')</span>
-                                        </div>
-                                        <select name="source" required @class([
-                                            'input',
-                                            'input-bordered',
-                                            'input-error' => $errors->has('source'),
-                                            'w-full',
-                                        ])>
-                                            @foreach (App\Enums\VideoSourceEnum::cases() as $source)
-                                                <option value="{{ $source->value }}"
-                                                    {{ $video->source == $source ? 'selected' : '' }}>
-                                                    {{ $source->value }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                    </label>
+                                <input type="text" name="name" value="{{ old('name', $video->name) }}"
+                                    placeholder="title video..." @class([
+                                        'input',
+                                        'input-bordered',
+                                        'input-error' => $errors->has('name'),
+                                        'w-full',
+                                    ]) />
+                            </label>
+                            <label class="form-control w-full">
+                                <div class="label" for="source">
+                                    <span class="label-text">@lang('admin.videos.source')</span>
                                 </div>
-
-                                <div class="mb-3 w-full max-w-xs">
-                                    <label class="form-control w-full max-w-xs">
+                                <select name="source" required @class([
+                                    'input',
+                                    'input-bordered',
+                                    'input-error' => $errors->has('source'),
+                                    'w-full',
+                                ])>
+                                    @foreach (App\Enums\VideoSourceEnum::cases() as $source)
+                                        <option value="{{ $source->value }}"
+                                            {{ $video->source == $source ? 'selected' : '' }}>
+                                            {{ $source->value }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </label>
+                            <label class="form-control w-full">
                                         <div class="label">
                                             <span class="label-text">@lang('admin.videos.videoID')</span>
                                         </div>
@@ -87,13 +74,11 @@
                                                 'input-bordered',
                                                 'input-error' => $errors->has('video_id'),
                                                 'w-full',
-                                                'max-w-xs',
                                             ]) />
                                     </label>
-                                </div>
-                            </div>
-                            <div>
-                                <a href="{{ route('admin.videos.index') }}" class="btn-light btn">@lang('admin.btn.cancel')
+                            <div class="flex justify-end gap-4">
+                                <a href="{{ route('admin.videos.index') }}" class="btn-light btn">
+                                    @lang('admin.btn.cancel')
                                 </a>
                                 <button type="submit" class="btn btn-success ml-2">
                                     @lang('admin.btn.submit')
