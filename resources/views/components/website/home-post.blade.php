@@ -73,13 +73,13 @@
                     @endforeach
                 </div>
             </div>
-            <div class="mt-4 w-full text-center">
-                <a
-                    class="flex w-full justify-center border-blue-800 bg-blue-700 py-3 text-sm font-bold text-white hover:bg-blue-800 hover:shadow-lg"
-                    href="{{ route('news.index') }}"
-                    >@lang('web.show_more_posts')
-                </a>
-            </div>
+{{--            <div class="mt-4 w-full text-center">--}}
+{{--                <a--}}
+{{--                    class="flex w-full justify-center border-blue-800 bg-blue-700 py-3 text-sm font-bold text-white hover:bg-blue-800 hover:shadow-lg"--}}
+{{--                    href="{{ route('news.index') }}"--}}
+{{--                    >@lang('web.show_more_posts')--}}
+{{--                </a>--}}
+{{--            </div>--}}
         </div>
     </div>
 </div>
