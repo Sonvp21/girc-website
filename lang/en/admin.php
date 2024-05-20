@@ -81,7 +81,6 @@ return [
     'videos.album_name' => 'Album"s',
     'videos.source' => 'Source',
     'videos.videoID' => 'Video ID',
-    
 
     // Common
     'select' => 'Select',

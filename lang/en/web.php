@@ -27,4 +27,7 @@ return [
     'staffs' => 'Staffs',
     'staffs_title' => 'Dedicated to Your Success',
     'staffs_text' => 'Our staff includes highly qualified individuals with extensive teaching and research experience in the field of geoinformatics. They are all leading experts in their field and are always ready to share knowledge and experience with students.',
+    'infrastructure' => 'Infrastructure',
+    'infrastructure_title' => 'State-of-the-Art Facilities',
+    'infrastructure_text' => 'Our campus is equipped with state-of-the-art facilities to provide students with a conducive learning environment. Our classrooms, laboratories, and research centers are all equipped with the latest technology to support teaching and research activities.',
 ];
