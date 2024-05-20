@@ -57,8 +57,9 @@
                             </div>
                             <div class="row mb-3">
                                 <label for="content">@lang('admin.content')</label>
-                                <x-admin.forms.rich-text id="content" name="content" model="post"
-                                    :value="$post->content" />
+                                <textarea name="content" id="content" class="hidden" column="content">
+                                    {!! $post->content !!}
+                                </textarea>
                             </div>
 
                             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" />
@@ -143,4 +144,7 @@
             </div>
         </div>
     </div>
+    @pushonce('bottom_scripts')
+        <x-admin.forms.tinymce-config column="content"/>
+    @endpushonce
 </x-app-layout>

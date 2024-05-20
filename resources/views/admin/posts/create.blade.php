@@ -54,11 +54,15 @@
                                     ]) />
                                 </label>
                             </div>
-                            <div class="row mb-3">
-                                <label for="content">@lang('admin.content')</label>
-                                <x-admin.forms.rich-text id="content" name="content" model="post"
-                                    :value="old('content')" />
-                            </div>
+
+                            <textarea name="content" id="content" class="hidden" column="content"></textarea>
+
+
+{{--                            <div class="row mb-3">--}}
+{{--                                <label for="content">@lang('admin.content')</label>--}}
+{{--                                <x-admin.forms.rich-text id="content" name="content" model="post"--}}
+{{--                                    :value="old('content')" />--}}
+{{--                            </div>--}}
 
 
                             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" />
@@ -137,4 +141,7 @@
             </div>
         </div>
     </div>
+    @pushonce('bottom_scripts')
+        <x-admin.forms.tiny-mce-config column="content"/>
+    @endpushonce
 </x-app-layout>

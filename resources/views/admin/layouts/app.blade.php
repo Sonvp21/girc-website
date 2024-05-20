@@ -93,5 +93,6 @@
             {{ $slot }}
         </main>
     </div>
+    @stack('bottom_scripts')
 </body>
 </html>
