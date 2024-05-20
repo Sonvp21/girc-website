@@ -9,26 +9,15 @@ use Illuminate\Support\Carbon;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
-use Tonysm\RichTextLaravel\Casts\AsRichTextContent;
-use Tonysm\RichTextLaravel\Models\Traits\HasRichText;
 
 class Cooperation extends Model implements HasMedia
 {
     use HasFactory;
-    use HasRichText;
     use InteractsWithMedia;
 
     protected $guarded = [];
 
     protected $table = 'cooperations';
-
-    protected $richTextAttributes = [
-        'description',
-    ];
-
-    protected $casts = [
-        'description' => AsRichTextContent::class,
-    ];
 
     public function album()
     {

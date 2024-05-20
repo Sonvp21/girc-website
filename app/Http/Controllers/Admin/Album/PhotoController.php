@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Album;
 
+use App\Enums\AlbumTypeEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\PhotoRequest;
 use App\Models\Album;
@@ -30,7 +31,10 @@ class PhotoController extends Controller
      */
     public function create(): View
     {
-        $albums = Album::query()->select('id', 'name')->get();
+        $albums = Album::query()
+            ->where('type', AlbumTypeEnum::PHOTO)
+            ->select('id', 'name')
+            ->get();
 
         return view('admin.albums.photos.create', compact('albums'));
     }
@@ -60,7 +64,10 @@ class PhotoController extends Controller
     public function edit($id): View
     {
         $photo = Photo::findOrFail($id);
-        $albums = Album::query()->select('id', 'name')->get();
+        $albums = Album::query()
+            ->where('type', AlbumTypeEnum::PHOTO)
+            ->select('id', 'name')
+            ->get();
 
         return view('admin.albums.photos.edit')
             ->with([

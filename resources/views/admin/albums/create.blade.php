@@ -10,24 +10,21 @@
 
         <div class="mt-6">
             <div class="overflow-hidden bg-white p-6 sm:rounded-lg">
-                <div class="max-w-xl text-start">
-                    <form action="{{ route('admin.albums.store') }}" method="POST" class="needs-validation" novalidate>
+                    <form action="{{ route('admin.albums.store') }}" method="POST" class="space-y-4 needs-validation" novalidate>
                         @csrf
-                        <div class="row mb-3">
-                            <label class="form-control w-full max-w-xs">
-                                <div class="label">
-                                    <span class="label-text">@lang('admin.albums.name')</span>
-                                </div>
-                                <input name="name" type="text" placeholder="Type here"
-                                    @class([
-                                        'input',
-                                        'input-bordered',
-                                        'input-error' => $errors->has('name'),
-                                        'w-full',
-                                        'max-w-xs',
-                                    ]) />
-                            </label>
-                            <label class="form-control w-full max-w-xs">
+                        <label class="form-control w-full">
+                            <div class="label">
+                                <span class="label-text">@lang('admin.albums.name')</span>
+                            </div>
+                            <input name="name" type="text" placeholder="Type here"
+                                @class([
+                                    'input',
+                                    'input-bordered',
+                                    'input-error' => $errors->has('name'),
+                                    'w-full',
+                                ]) />
+                        </label>
+                        <label class="form-control w-full">
                                 <div class="label">
                                     <span class="label-text">@lang('admin.albums.type')</span>
                                 </div>
@@ -45,9 +42,9 @@
                                     @endforeach
                                 </select>
                             </label>
-                        </div>
-                        <div>
-                            <a href="{{ route('admin.albums.index') }}" class="btn-light btn">@lang('admin.btn.cancel')
+                        <div class="flex justify-end gap-4">
+                            <a href="{{ route('admin.albums.index') }}" class="btn-light btn">
+                                @lang('admin.btn.cancel')
                             </a>
                             <button type="submit" class="btn btn-success ml-2">
                                 @lang('admin.btn.submit')

@@ -12,15 +12,14 @@
         <div class="mt-6">
             <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                 <div class="bg-white p-4 shadow sm:rounded-lg sm:p-8">
-                    <div class="max-w-xl">
                         <form action="{{ route('admin.categories.update', ['category' => $category->id]) }}"
-                            method="POST" class="needs-validation" novalidate>
+                            method="POST" class="space-y-4 needs-validation" novalidate>
                             @csrf
                             @method('patch')
 
-                            <div class="row mb-3">
+                            <label class="form-control w-full">
                                 <div class="label">
-                                    <span class="label-text">Title</span>
+                                    <span class="label-text">@lang('admin.post.title')</span>
                                 </div>
                                 <input type="text" name="title" placeholder="Type here"
                                     value="{{ old('title', $category->title) }}" @class([
@@ -28,11 +27,11 @@
                                         'input-bordered',
                                         'input-error' => $errors->has('title'),
                                         'w-full',
-                                        'max-w-xs',
                                     ]) />
-                            </div>
-                            <div>
-                                <a href="{{ route('admin.categories.index') }}" class="btn-light btn">@lang('admin.btn.cancel')
+                            </label>
+                            <div class="flex justify-end gap-4">
+                                <a href="{{ route('admin.categories.index') }}" class="btn-light btn">
+                                    @lang('admin.btn.cancel')
                                 </a>
                                 <button type="submit" class="btn btn-success ml-2">
                                     @lang('admin.btn.submit')

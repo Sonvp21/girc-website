@@ -10,12 +10,10 @@
         <div class="mt-6">
             <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                 <div class="bg-white p-4 shadow sm:rounded-lg sm:p-8">
-                    <div class="max-w-2xl">
                         <form action="{{ route('admin.faqs.store') }}" method="POST" class="needs-validation" novalidate>
                             @csrf
-                            <div class="flex">
-                                <div class="row mb-3 w-52 p-1">
-                                    <label class="form-control w-full max-w-xs">
+                            <div class="space-y-4">
+                                <label class="form-control w-full">
                                         <div class="label">
                                             <span class="label-text">@lang('admin.faqs.name')</span>
                                         </div>
@@ -27,9 +25,7 @@
                                             'w-full',
                                         ]) />
                                     </label>
-                                </div>
-                                <div class="row mb-3 w-52  p-1">
-                                    <label class="form-control w-full max-w-xs">
+                                <label class="form-control w-full">
                                         <div class="label">
                                             <span class="label-text">@lang('admin.faqs.email')</span>
                                         </div>
@@ -41,9 +37,7 @@
                                             'w-full',
                                         ]) />
                                     </label>
-                                </div>
-                                <div class="row mb-3 w-52  p-1">
-                                    <label class="form-control w-full max-w-xs">
+                                <label class="form-control w-full">
                                         <div class="label">
                                             <span class="label-text">@lang('admin.faqs.phone')</span>
                                         </div>
@@ -55,9 +49,7 @@
                                             'w-full',
                                         ]) />
                                     </label>
-                                </div>
-                                <div class="row mb-3 w-52  p-1">
-                                    <label class="form-control w-full max-w-xs">
+                                <label class="form-control w-full">
                                         <div class="label">
                                             <span class="label-text">@lang('admin.faqs.address')</span>
                                         </div>
@@ -69,24 +61,22 @@
                                             'w-full',
                                         ]) />
                                     </label>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col-md-6">
-                                    <div>
-                                        <label for="content">@lang('admin.faqs.question')</label>
-                                        <x-admin.forms.rich-text id="content" name="question" model="faq"
-                                            :value="old('question')" />
+                                <label class="form-control w-full">
+                                    <div class="label">
+                                        <span class="label-text">@lang('admin.faqs.question')</span>
                                     </div>
-                                </div>
-                            </div>
+                                    <textarea name="question" id="question" class="hidden">
+                                        {{ old('question') }}
+                                    </textarea>
+                                </label>
 
-                            <div>
-                                <a href="{{ route('admin.faqs.index') }}" class="btn-light btn">@lang('admin.btn.cancel')
-                                </a>
-                                <button type="submit" class="btn btn-success ml-2">
-                                    @lang('admin.btn.submit')
-                                </button>
+                                <div class="flex justify-end gap-4">
+                                    <a href="{{ route('admin.faqs.index') }}" class="btn-light btn">@lang('admin.btn.cancel')
+                                    </a>
+                                    <button type="submit" class="btn btn-success ml-2">
+                                        @lang('admin.btn.submit')
+                                    </button>
+                                </div>
                             </div>
                         </form>
                     </div>
@@ -94,4 +84,7 @@
             </div>
         </div>
     </div>
+    @pushonce('bottom_scripts')
+        <x-admin.forms.tinymce-config column="question"/>
+    @endpushonce
 </x-app-layout>

@@ -81,6 +81,8 @@ return [
     'videos.album_name' => 'Album"s',
     'videos.source' => 'Source',
     'videos.videoID' => 'Video ID',
+    'youtube' => 'Youtube',
+    'google_drive' => 'Google Drive',
 
     // Common
     'select' => 'Select',

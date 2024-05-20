@@ -71,6 +71,8 @@ return [
     'videos.album_name' => 'Thuộc bộ sưu tập',
     'videos.source' => 'Nguồn video',
     'videos.videoID' => 'Video ID',
+    'youtube' => 'Youtube',
+    'google_drive' => 'Google Drive',
 
     'cooperations.all' => 'Quan hệ, hợp tác',
     'cooperations.name' => 'Tên Đơn vị',
