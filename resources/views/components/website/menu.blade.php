@@ -30,7 +30,7 @@
                     class="flex h-full items-center justify-start py-4 font-semibold uppercase tracking-wider text-white hover:bg-blue-500 hover:text-white"
                     href=""
                 >
-                    <span class="border-white px-2"> Giới thiệu </span>
+                    <span class="border-white px-2">@lang('web.about')</span>
                 </a>
             </li>
             <li class="relative flex-row whitespace-nowrap">

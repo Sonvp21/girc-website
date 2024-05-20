@@ -11,4 +11,5 @@ return [
     'of' => 'của',
     'results' => 'kết quả',
     'post_tags' => 'Thẻ bài viết',
+    'about' => 'Giới thiệu'
 ];
