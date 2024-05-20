@@ -28,17 +28,18 @@
                                             'input-error' => $errors->has('title'),
                                             'w-full',
                                             'max-w-xs',
-                                        ]) />
-                                </label>
+                                        ])
+                                    />
+                            </label>
 
                             <label class="form-control w-full">
-                            <div class="label">
-                                <span class="label-text">@lang('admin.content')</span>
-                            </div>
-                            <textarea name="content" id="content" class="hidden" column="content">
-                                {!! $announcement->content !!}
-                            </textarea>
-                        </label>
+                                <div class="label">
+                                    <span class="label-text">@lang('admin.content')</span>
+                                </div>
+                                <textarea name="content" id="content" class="hidden" column="content">
+                                    {!! $announcement->content !!}
+                                </textarea>
+                            </label>
 
                             <div>
                                 <a href="{{ route('admin.announcements.index') }}"

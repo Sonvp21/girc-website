@@ -9,32 +9,28 @@
         </div>
         <div class="mt-6">
             <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
-                <div class="bg-white p-4 shadow sm:rounded-lg sm:p-8" style="text-align: -webkit-center">
-                    <div class="max-w-4xl text-start">
-                        <form action="{{ route('admin.cooperations.store') }}" method="POST" class="needs-validation"
+                <div class="bg-white p-4 shadow sm:rounded-lg sm:p-8">
+                    <form action="{{ route('admin.cooperations.store') }}" method="POST" class="needs-validation"
                             novalidate enctype="multipart/form-data">
                             @csrf
-                            <div class="row mb-3 flex">
-                                <div class="mb-3 mr-10 w-52">
-                                    <label class="form-control w-full max-w-xs">
-                                        <div class="label" for="album_id">
-                                            <span class="label-text">@lang('admin.album')</span>
-                                        </div>
-                                        <select name="album_id" required @class([
-                                            'input',
-                                            'input-bordered',
-                                            'input-error' => $errors->has('album_id'),
-                                            'w-full',
-                                        ])>
-                                            <option value="">Select Album</option>
-                                            @foreach ($albums as $album)
-                                                <option value="{{ $album->id }}">{{ $album->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </label>
-                                </div>
-                                <div class="mb-3 w-60">
-                                    <label class="form-control w-full max-w-xs">
+                            <div class="space-y-4">
+                                <label class="form-control w-full">
+                                    <div class="label" for="album_id">
+                                        <span class="label-text">@lang('admin.album')</span>
+                                    </div>
+                                    <select name="album_id" required @class([
+                                        'input',
+                                        'input-bordered',
+                                        'input-error' => $errors->has('album_id'),
+                                        'w-full',
+                                    ])>
+                                        <option value="">Select Album</option>
+                                        @foreach ($albums as $album)
+                                            <option value="{{ $album->id }}">{{ $album->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </label>
+                                <label class="form-control w-full">
                                         <div class="label">
                                             <span class="label-text">@lang('admin.post.title')</span>
                                         </div>
@@ -46,30 +42,27 @@
                                                 'w-full',
                                             ]) />
                                     </label>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="row mb-3">
-                                    <label class="form-control w-full max-w-xs">
-                                        <div class="label">
-                                            <span class="label-text">@lang('admin.cooperations.link')</span>
-                                        </div>
-                                        <input type="text" name="link_website" placeholder="link website..."
-                                            @class([
-                                                'input',
-                                                'input-bordered',
-                                                'input-error' => $errors->has('link_website'),
-                                                'w-full',
-                                                'max-w-xs',
-                                            ]) />
-                                    </label>
-                                </div>
-
-                                <div class="row mb-3">
-                                    <label for="content">@lang('admin.description')</label>
-                                    <x-admin.forms.rich-text id="content" name="description" model="cooperation"
-                                        :value="old('description')" />
-                                </div>
+                                <label class="form-control w-full">
+                                    <div class="label">
+                                        <span class="label-text">@lang('admin.cooperations.link')</span>
+                                    </div>
+                                    <input type="text" name="link_website" placeholder="link website..."
+                                        @class([
+                                            'input',
+                                            'input-bordered',
+                                            'input-error' => $errors->has('link_website'),
+                                            'w-full',
+                                        ])
+                                    />
+                                </label>
+                                <label class="form-control w-full">
+                                    <div class="label">
+                                        <span class="label-text">@lang('admin.description')</span>
+                                    </div>
+                                    <textarea name="description" id="description" class="hidden" column="description">
+                                        {{ old('description') }}
+                                    </textarea>
+                                </label>
 
                                 <div class="flex items-center space-x-6">
                                     <div class="shrink-0">
@@ -98,7 +91,7 @@
                                     }
                                 </script>
                             </div>
-                            <div>
+                            <div class="flex justify-end gap-4">
                                 <a href="{{ route('admin.cooperations.index') }}"
                                     class="btn-light btn">@lang('admin.btn.cancel')
                                 </a>
@@ -107,9 +100,11 @@
                                 </button>
                             </div>
                         </form>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
+    @pushonce('bottom_scripts')
+        <x-admin.forms.tinymce-config column="description"/>
+    @endpushonce
 </x-app-layout>
