@@ -14,32 +14,31 @@
                           method="POST" class="space-y-4 needs-validation"
                         novalidate enctype="multipart/form-data">
                         @csrf
-
-                        <x-admin.forms.calendar />
-
-                        <label class="form-control w-full max-w-xs">
-                            <div class="label">
-                                <span class="label-text">@lang('admin.post.title')</span>
-                            </div>
-                            <input type="text" name="title" placeholder="title" @class([
-                                'input',
-                                'input-bordered',
-                                'input-error' => $errors->has('title'),
-                                'w-full',
-                                'max-w-xs',
-                            ]) />
-                        </label>
+                        <div class="flex gap-4">
+                            <label class="form-control w-full">
+                                <span class="label">
+                                    <span class="label-text">@lang('admin.post.title')</span>
+                                </span>
+                                <input type="text" name="title" placeholder="title" @class([
+                                    'input',
+                                    'input-bordered',
+                                    'input-error' => $errors->has('title'),
+                                    'w-full',
+                                ]) />
+                            </label>
+                            <x-admin.forms.calendar />
+                        </div>
 
                         <label class="form-control w-full">
-                            <div class="label">
+                            <span class="label">
                                 <span class="label-text">@lang('admin.content')</span>
-                            </div>
-                                <textarea name="content" id="content" class="hidden">
-                                    {{ old('content') }}
-                                </textarea>
+                            </span>
+                            <textarea name="content" id="content" class="hidden">
+                                {{ old('content') }}
+                            </textarea>
                         </label>
 
-                        <div>
+                        <div class="flex justify-end gap-4">
                             <a href="{{ route('admin.announcements.index') }}"
                                 class="btn-light btn">@lang('admin.btn.cancel')
                             </a>
