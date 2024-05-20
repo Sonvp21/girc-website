@@ -42,6 +42,7 @@
         <main>
             {{ $slot }}
         </main>
+        <x-website.footer />
     </div>
     @stack('scripts_bottom')
 </body>
