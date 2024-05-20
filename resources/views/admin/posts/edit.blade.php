@@ -10,15 +10,13 @@
         <div class="mt-6">
             <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                 <div class="bg-white p-4 shadow sm:rounded-lg sm:p-8">
-                    <div class="max-w-2xl">
-                        <form action="{{ route('admin.posts.update', ['post' => $post->id]) }}" method="POST"
+                    <form action="{{ route('admin.posts.update', ['post' => $post->id]) }}" method="POST"
                             class="needs-validation" novalidate enctype="multipart/form-data">
                             @csrf
                             @method('patch')
 
-                            <div class="row mb-3 flex">
-                                <div class="w-80">
-                                    <label class="form-control w-full max-w-xs">
+                            <div class="flex gap-4">
+                                <label class="form-control w-full max-w-xs">
                                         <div class="label">
                                             <span class="label-text">@lang('admin.categories')</span>
                                         </div>
@@ -38,11 +36,7 @@
                                             @endforeach
                                         </select>
                                     </label>
-                                </div>
-
-                                <div class="row mb-3">
-                                    <x-admin.forms.calendar :publish_at="$post->published_at" />
-                                </div>
+                                <x-admin.forms.calendar :publish_at="$post->published_at" />
                             </div>
 
                             <div class="row mb-3">
@@ -145,7 +139,6 @@
                                 </button>
                             </div>
                         </form>
-                    </div>
                 </div>
             </div>
         </div>

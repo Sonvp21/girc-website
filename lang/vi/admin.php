@@ -76,7 +76,9 @@ return [
     'cooperations.name' => 'Tên Đơn vị',
     'cooperations.album_name' => 'Thuộc bộ sưu tập',
     'cooperations.link' => 'Link',
+
     'created_at' => 'Ngày tạo',
     'updated_at' => 'Ngày cập nhật',
+    'publish_at' => 'Ngày đăng',
 
 ];
