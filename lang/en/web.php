@@ -24,4 +24,7 @@ return [
     'quick_links' => 'Quick Links',
     'contact' => 'Contact',
     'footer_girc_text' => 'The Center is a unit under the University of Agriculture and Forestry, Thai Nguyen University (NLU), has legal status, can use its own seal and open accounts at the Treasury and State Bank to operate according to the law. provisions of law.',
+    'staffs' => 'Staffs',
+    'staffs_title' => 'Dedicated to Your Success',
+    'staffs_text' => 'Our staff includes highly qualified individuals with extensive teaching and research experience in the field of geoinformatics. They are all leading experts in their field and are always ready to share knowledge and experience with students.',
 ];
