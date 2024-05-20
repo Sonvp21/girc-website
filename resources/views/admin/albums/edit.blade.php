@@ -9,35 +9,31 @@
         </div>
         <div class="mt-6">
             <div class="overflow-hidden bg-white p-6 sm:rounded-lg">
-                <div class="max-w-xl text-start">
-                    <form
-                        action="{{ route('admin.albums.update', ['album' => $album->id]) }}"
-                        method="POST"
-                        class="needs-validation"
-                        novalidate
-                    >
+                <form
+                    action="{{ route('admin.albums.update', ['album' => $album->id]) }}"
+                    method="POST"
+                    class="space-y-4 needs-validation"
+                    novalidate>
                         @csrf
                         @method('patch')
-                        <div class="mb-3">
-                            <label class="form-control w-full max-w-xs">
-                                <div class="label">
-                                    <span class="label-text">@lang('admin.albums.name')</span>
-                                </div>
-                                <input
-                                    type="text"
-                                    name="name"
-                                    placeholder="Type here"
-                                    value="{{ old('name', $album->name) }}"
-                                    @class([
-                                        'input',
-                                        'input-bordered',
-                                        'input-error' => $errors->has('name'),
-                                        'w-full',
-                                        'max-w-xs',
-                                    ])
-                                />
-                            </label>
-                            <label class="form-control w-full max-w-xs">
+                        <label class="form-control w-full">
+                            <div class="label">
+                                <span class="label-text">@lang('admin.albums.name')</span>
+                            </div>
+                            <input
+                                type="text"
+                                name="name"
+                                placeholder="Type here"
+                                value="{{ old('name', $album->name) }}"
+                                @class([
+                                    'input',
+                                    'input-bordered',
+                                    'input-error' => $errors->has('name'),
+                                    'w-full',
+                                ])
+                            />
+                        </label>
+                        <label class="form-control w-full">
                                 <div class="label">
                                     <span class="label-text">@lang('admin.albums.type')</span>
                                 </div>
@@ -56,13 +52,12 @@
                                             value="{{ $type->value }}"
                                             {{ $album->type == $type ? 'selected' : '' }}
                                         >
-                                            {{ $type->value }}
+                                            @lang('admin.' . $type->value )
                                         </option>
                                     @endforeach
                                 </select>
                             </label>
-                        </div>
-                        <div>
+                        <div class="flex justify-end gap-4">
                             <a
                                 href="{{ route('admin.albums.index') }}"
                                 class="btn-light btn"
