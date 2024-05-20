@@ -9,7 +9,7 @@
         </div>
         <div class="mt-6">
             <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
-                <div class="bg-white p-4 shadow sm:rounded-lg sm:p-8" style="text-align: -webkit-center">
+                <div class="bg-white p-4 shadow sm:rounded-lg sm:p-8">
                     <div class="max-w-4xl text-start">
                         <form action="{{ route('admin.videos.update', ['video' => $video->id]) }}" method="POST"
                             class="needs-validation" novalidate enctype="multipart/form-data">
