@@ -30,7 +30,14 @@ class FaqController extends Controller
 
     public function store(Request $request): RedirectResponse
     {
-        Faq::create($request->all());
+        $faq = new Faq([
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'address' => $request->address,
+            'question' => $request->question,
+        ]);
+        $faq->save();
 
         return redirect()->route('admin.faqs.index');
     }

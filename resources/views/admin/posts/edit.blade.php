@@ -221,17 +221,12 @@
                             </div>
                             <div class="row mb-3">
                                 <label for="content">@lang('admin.content')</label>
-                                <x-trix-input
-                                    name="content"
+                                <x-admin.forms.rich-text
                                     id="content"
-                                    value="{!! old('content', $post->content) !!}"
+                                    name="content"
+                                    model="post"
+                                    :value="$post->content"
                                 />
-                                <x-rich-text::styles />
-                                <style>
-                                    trix-editor {
-                                        min-height: 240px;
-                                    }
-                                </style>
                             </div>
 
                             <link

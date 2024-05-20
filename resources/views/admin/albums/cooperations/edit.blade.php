@@ -91,18 +91,13 @@
                                     />
                                 </div>
                                 <div class="row mb-3">
-                                    <label for="description">@lang('admin.description')</label>
-                                    <x-trix-input
+                                    <label for="content">@lang('admin.description')</label>
+                                    <x-admin.forms.rich-text
+                                        id="content"
                                         name="description"
-                                        id="description"
-                                        value="{!! old('description', $cooperation->description) !!}"
+                                        model="cooperation"
+                                        :value="$cooperation->description"
                                     />
-                                    <x-rich-text::styles />
-                                    <style>
-                                        trix-editor {
-                                            min-height: 240px;
-                                        }
-                                    </style>
                                 </div>
 
                                 <div class="flex items-center space-x-6">
