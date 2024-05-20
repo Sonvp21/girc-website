@@ -74,11 +74,12 @@
                             @endforeach
                         </tbody>
                     </table>
-                    <div class="mt-4">
-                        {{ $albums->links() }}
-                    </div>
+
                 </div>
             </div>
+        </div>
+        <div class="mt-4">
+            {{ $albums->links('pagination.web-tailwind') }}
         </div>
     </div>
 </x-app-layout>
