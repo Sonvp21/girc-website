@@ -28,7 +28,7 @@
             <li class="relative flex-row whitespace-nowrap">
                 <a
                     class="flex h-full items-center justify-start py-4 font-semibold uppercase tracking-wider text-white hover:bg-blue-500 hover:text-white"
-                    href=""
+                    href="{{ route('about') }}"
                 >
                     <span class="border-white px-2">@lang('web.about')</span>
                 </a>

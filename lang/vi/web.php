@@ -11,5 +11,6 @@ return [
     'of' => 'của',
     'results' => 'kết quả',
     'post_tags' => 'Thẻ bài viết',
-    'about' => 'Giới thiệu'
+    'about' => 'Giới thiệu',
+    'about_title' => 'Giới thiệu về Trung tâm GIRC',
 ];
