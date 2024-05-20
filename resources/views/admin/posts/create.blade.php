@@ -97,7 +97,7 @@
         </div>
     </div>
     @pushonce('bottom_scripts')
-        <x-admin.forms.tiny-mce-config column="content"/>
+        <x-admin.forms.tinymce-config column="content"/>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" />
         <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.min.js"></script>
         <script>
