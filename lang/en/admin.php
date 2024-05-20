@@ -90,6 +90,7 @@ return [
     // Dates
     'created_at' => 'Created at',
     'updated_at' => 'Updated at',
+    'publish_at' => 'Publish at',
 
     //Cooperation
     'cooperations.all' => 'Cooperation',

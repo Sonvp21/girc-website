@@ -1,5 +1,6 @@
 @props([
     'publish_at' => now(),
+    'field' => 'publish_at',
 ])
 <div>
     <!-- No surplus words or unnecessary actions. - Marcus Aurelius -->
@@ -9,44 +10,33 @@
         x-init="[initDate(), getNoOfDays()]"
         x-cloak
     >
-        <div class="mx-auto px-4 py-2">
-            <div class="mb-5 w-64">
-                <label
-                    for="datepicker"
-                    class="text-gray-700 mb-1 block font-bold"
-                >
-                </label>
                 <div class="relative">
                     <input
                         type="hidden"
                         name="published_at"
                         x-ref="date"
                     />
-                    <input
-                        type="text"
-                        id="published_at"
-                        name="published_at"
-                        readonly
-                        x-model="datepickerValue"
-                        @click="showDatepicker = !showDatepicker"
-                        @keydown.escape="showDatepicker = false"
-                        class="focus:shadow-outline text-gray-600 w-full rounded-lg py-3 pl-4 pr-10 font-medium leading-none shadow-sm focus:outline-none"
-                        placeholder="Select date"
-                    />
+                    <label class="form-control w-full max-w-xs">
+                        <span class="label">
+                            <span class="label-text">@lang('admin.' . $field)</span>
+                        </span>
+                        <input
+                            type="text"
+                            id="published_at"
+                            name="published_at"
+                            readonly
+                            x-model="datepickerValue"
+                            @click="showDatepicker = !showDatepicker"
+                            @keydown.escape="showDatepicker = false"
+                            class="input input-bordered pr-12"
+                            placeholder="Select date"
+                        />
+                        <x-heroicon-s-calendar  class="absolute size-6 bottom-3 right-4 text-slate-500"/>
+                    </label>
 
-                    <div class="absolute right-0 top-0 px-3 py-2">
-                        <svg
-                            class="text-gray-400 h-6 w-6"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                        >
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                        </svg>
-                    </div>
+
                     <div
-                        class="absolute left-0 top-0 mt-12 rounded-lg bg-white p-4 shadow"
-                        style="width: 17rem; z-index: 1"
+                        class="absolute right-0 top-24 rounded-lg bg-white p-4 shadow-lg z-10 w-64"
                         x-show.transition="showDatepicker"
                         @click.away="showDatepicker = false"
                     >
@@ -145,8 +135,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
     </div>
 </div>
 <style>
