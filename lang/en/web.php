@@ -11,4 +11,6 @@ return [
     'of' => 'of',
     'results' => 'results',
     'post_tags' => 'Post Tags',
+    'about' => 'About',
+    'about_title' => 'About',
 ];
