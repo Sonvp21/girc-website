@@ -23,7 +23,7 @@ return [
     'post.category_of' => 'Category Post',
     'post.published_at' => 'Publish',
     'post.updated_at' => 'Update at',
-    '' => '',
+    'post.tag' => 'Tags',
 
     //Category
     'categories' => 'Category',
@@ -39,6 +39,7 @@ return [
     'contacts.email' => 'Email',
     'contacts.phone' => 'Phone',
     'contacts.show' => 'Show',
+    'contacts.content' => 'Content',
     'contacts.read_at' => 'Readed at',
     'contacts.created_at' => 'Created at',
 
@@ -78,6 +79,9 @@ return [
     'videos.created_at' => 'Created at',
     'videos.updated_at' => 'Updated at',
     'videos.album_name' => 'Album"s',
+    'videos.source' => 'Source',
+    'videos.videoID' => 'Video ID',
+    
 
     // Common
     'select' => 'Select',
@@ -92,5 +96,6 @@ return [
     'cooperations.all' => 'Cooperation',
     'cooperations.name' => 'Name',
     'cooperations.album_name' => 'Album"s',
+    'cooperations.link' => 'Link',
 
 ];

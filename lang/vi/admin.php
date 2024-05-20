@@ -19,6 +19,7 @@ return [
     'post.category_of' => 'Danh mục thuộc',
     'post.published_at' => 'Ngày đăng',
     'post.updated_at' => 'Ngày cập nhật',
+    'post.tag' => 'Từ khoá',
 
     //Danh mục bài viết
     'categories' => 'Danh mục bài viết',
@@ -31,6 +32,7 @@ return [
     'contacts.name' => 'Người gửi',
     'contacts.email' => 'Email',
     'contacts.show' => 'Xem',
+    'contacts.content' => 'Nội dung',
     'contacts.phone' => 'Số điện thoại',
     'contacts.read_at' => 'Ngày đọc',
     'contacts.created_at' => 'Ngày gửi',
@@ -67,10 +69,13 @@ return [
     'videos.created_at' => 'Ngày tạo',
     'videos.updated_at' => 'Cập nhật',
     'videos.album_name' => 'Thuộc bộ sưu tập',
+    'videos.source' => 'Nguồn video',
+    'videos.videoID' => 'Video ID',
 
     'cooperations.all' => 'Quan hệ, hợp tác',
     'cooperations.name' => 'Tên Đơn vị',
     'cooperations.album_name' => 'Thuộc bộ sưu tập',
+    'cooperations.link' => 'Link',
     'created_at' => 'Ngày tạo',
     'updated_at' => 'Ngày cập nhật',
 
