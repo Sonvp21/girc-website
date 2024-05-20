@@ -15,8 +15,8 @@ use Tonysm\RichTextLaravel\Models\Traits\HasRichText;
 class Cooperation extends Model implements HasMedia
 {
     use HasFactory;
-    use InteractsWithMedia;
     use HasRichText;
+    use InteractsWithMedia;
 
     protected $guarded = [];
 
