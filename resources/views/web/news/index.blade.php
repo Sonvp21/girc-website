@@ -1,7 +1,7 @@
 <x-website-layout>
     <section>
         <div class="mx-auto max-w-7xl px-3 sm:px-6 md:items-center lg:px-8">
-            <div class="grid grid-cols-8 gap-4 overflow-hidden">
+            <div class="grid grid-cols-8 gap-4">
                 <div class="col-span-8 space-y-3 md:col-span-6 lg:col-span-6">
                     <div class="border-b-2 border-blue-700">
                         <h2 class="inline-block bg-blue-700 px-6 py-3 text-xl font-bold text-white">@lang('web.news_events')</h2>
