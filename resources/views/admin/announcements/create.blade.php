@@ -34,7 +34,7 @@
                             <div class="label">
                                 <span class="label-text">@lang('admin.content')</span>
                             </div>
-                                <textarea name="content" id="content" class="hidden" column="content">
+                                <textarea name="content" id="content" class="hidden">
                                     {{ old('content') }}
                                 </textarea>
                         </label>
