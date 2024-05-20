@@ -15,8 +15,8 @@ use Tonysm\RichTextLaravel\Models\Traits\HasRichText;
 class Post extends Model implements HasMedia
 {
     use HasFactory;
-    use InteractsWithMedia;
     use HasRichText;
+    use InteractsWithMedia;
 
     protected $guarded = [];
 
@@ -30,6 +30,7 @@ class Post extends Model implements HasMedia
         'published_at' => 'datetime:Y-m-d H:i:s',
         'content' => AsRichTextContent::class,
     ];
+
     /*
     * -------------------------------------------------------------------------------------
     * RELATIONSHIPS

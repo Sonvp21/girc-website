@@ -13,6 +13,7 @@ class Faq extends Model
 {
     use HasFactory;
     use HasRichText;
+
     protected $table = 'faqs';
 
     protected $guarded = [];
