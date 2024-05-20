@@ -1,4 +1,4 @@
-<div>
+<div class="sticky top-16">
     <div class="flex items-center gap-2 bg-blue-700 px-4 py-3 font-semibold uppercase text-white">
         <x-heroicon-o-megaphone class="size-5" />
         <span>@lang('web.announcements')</span>
