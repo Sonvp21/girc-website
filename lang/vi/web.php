@@ -27,4 +27,7 @@ return [
     'staffs' => 'Đội ngũ giảng viên',
     'staffs_title' => 'Tận tâm với sự thành công của bạn',
     'staffs_text' => 'Đội ngũ giảng viên của chúng tôi bao gồm những người có trình độ học vị cao, có kinh nghiệm giảng dạy và nghiên cứu sâu rộng trong lĩnh vực địa tin học. Họ đều là những chuyên gia hàng đầu trong lĩnh vực của mình và luôn sẵn lòng chia sẻ kiến thức và kinh nghiệm với sinh viên.',
+    'infrastructure' => 'Cơ sở vật chất',
+    'infrastructure_title' => 'Cơ sở vật chất hiện đại',
+    'infrastructure_text' => 'Khuôn viên của chúng tôi được trang bị cơ sở vật chất hiện đại để cung cấp cho sinh viên một môi trường học tập thuận lợi. Các phòng học, phòng thí nghiệm và trung tâm nghiên cứu của chúng tôi đều được trang bị công nghệ mới nhất để hỗ trợ các hoạt động giảng dạy và nghiên cứu.',
 ];
