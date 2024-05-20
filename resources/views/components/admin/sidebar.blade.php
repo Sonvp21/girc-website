@@ -92,7 +92,12 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('admin.faqs.index') }}">@lang('admin.faqs')</a>
+                    <a @class([
+                            'active' => request()->routeIs('admin.faqs.*'),
+                        ])
+                       href="{{ route('admin.faqs.index') }}">
+                        @lang('admin.faqs')
+                    </a>
                 </li>
             </ul>
         </div>
