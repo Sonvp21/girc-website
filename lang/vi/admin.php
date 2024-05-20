@@ -5,6 +5,14 @@ return [
     'btn.cancel' => 'Huỷ',
     'btn.submit' => 'Lưu',
     'add' => 'Thêm',
+    'login' => 'Đăng nhập',
+    'logout' => 'Đăng xuất',
+    'register' => 'Đăng ký',
+    'link_to_website' => 'Đi tới trang chủ',
+    'profile' => 'Thông tin cá nhân',
+    'Update your accounts profile information and email address.' => 'Cập nhật thông tin hồ sơ tài khoản của bạn và địa chỉ email.',
+    'update_password' => 'Cập nhật mật khẩu mới',
+    'delete_account' => 'Xoá tài khoản',
 
     //Thông báo
     'announcements' => 'Thông báo',

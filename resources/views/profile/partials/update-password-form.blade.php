@@ -1,7 +1,7 @@
 <section>
     <header>
         <h2 class="text-gray-900 text-lg font-medium">
-            {{ __('Update Password') }}
+            @lang('admin.update_password')
         </h2>
 
         <p class="text-gray-600 mt-1 text-sm">
