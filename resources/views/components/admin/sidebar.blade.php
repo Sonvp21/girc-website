@@ -10,21 +10,21 @@
                 <li><a href="{{ route('dashboard') }}">{{ __('Dashboard') }}</a></li>
                 <li>
                     <details
-                        @if (request()->routeIs('admin.categories.index', 'admin.posts.index')) open @endif
-                        class="{{ request()->routeIs('admin.categories.index', 'admin.posts.index') ? 'active' : '' }}"
+                        @if (request()->routeIs('admin.categories.*', 'admin.posts.*')) open @endif
+                        class="{{ request()->routeIs('admin.categories.*', 'admin.posts.*') ? 'active' : '' }}"
                     >
                         <summary>@lang('admin.posts')</summary>
                         <ul>
                             <li>
                                 <a
-                                    class="{{ request()->routeIs('admin.categories.index') ? 'active' : '' }}"
+                                    class="{{ request()->routeIs('admin.categories.*') ? 'active' : '' }}"
                                     href="{{ route('admin.categories.index') }}"
                                     >@lang('admin.categories')
                                 </a>
                             </li>
                             <li>
                                 <a
-                                    class="{{ request()->routeIs('admin.posts.index') ? 'active' : '' }}"
+                                    class="{{ request()->routeIs('admin.posts.*') ? 'active' : '' }}"
                                     href="{{ route('admin.posts.index') }}"
                                     >@lang('admin.posts')
                                 </a>
@@ -38,14 +38,14 @@
                 </li>
                 <li>
                     <details
-                        @if (request()->routeIs('admin.albums.index', 'admin.photos.index', 'admin.videos.index', 'admin.cooperations.index')) open @endif
-                        class="{{ request()->routeIs('admin.albums.index', 'admin.photos.index', 'admin.videos.index', 'admin.cooperations.index') ? 'open' : '' }}"
+                        @if (request()->routeIs('admin.albums.*', 'admin.photos.*', 'admin.videos.*', 'admin.cooperations.*')) open @endif
+                        class="{{ request()->routeIs('admin.albums.*', 'admin.photos.*', 'admin.videos.*', 'admin.cooperations.*') ? 'open' : '' }}"
                     >
                         <summary>@lang('admin.album')</summary>
                         <ul>
                             <li>
                                 <a
-                                    class="{{ request()->routeIs('admin.albums.index') ? 'active' : '' }}"
+                                    class="{{ request()->routeIs('admin.albums.*') ? 'active' : '' }}"
                                     href="{{ route('admin.albums.index') }}"
                                 >
                                     @lang('admin.albums.all')
@@ -53,7 +53,7 @@
                             </li>
                             <li>
                                 <a
-                                    class="{{ request()->routeIs('admin.photos.index') ? 'active' : '' }}"
+                                    class="{{ request()->routeIs('admin.photos.*') ? 'active' : '' }}"
                                     href="{{ route('admin.photos.index') }}"
                                 >
                                     @lang('admin.photos.all')
@@ -61,7 +61,7 @@
                             </li>
                             <li>
                                 <a
-                                    class="{{ request()->routeIs('admin.videos.index') ? 'active' : '' }}"
+                                    class="{{ request()->routeIs('admin.videos.*') ? 'active' : '' }}"
                                     href="{{ route('admin.videos.index') }}"
                                 >
                                     @lang('admin.videos.all')
@@ -69,7 +69,7 @@
                             </li>
                             <li>
                                 <a
-                                    class="{{ request()->routeIs('admin.cooperations.index') ? 'active' : '' }}"
+                                    class="{{ request()->routeIs('admin.cooperations.*') ? 'active' : '' }}"
                                     href="{{ route('admin.cooperations.index') }}"
                                 >
                                     @lang('admin.cooperations.all')
