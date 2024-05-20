@@ -11,111 +11,149 @@
             <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                 <div class="bg-white p-4 shadow sm:rounded-lg sm:p-8">
                     <div class="max-w-2xl">
-                        <form action="{{ route('admin.posts.update', ['post' => $post->id]) }}" method="POST"
-                            class="needs-validation" novalidate enctype="multipart/form-data">
+                        <form
+                            action="{{ route('admin.posts.update', ['post' => $post->id]) }}"
+                            method="POST"
+                            class="needs-validation"
+                            novalidate
+                            enctype="multipart/form-data"
+                        >
                             @csrf
                             @method('patch')
 
                             <div class="row mb-3 flex">
                                 <div class="w-80">
-                                    <x-input-label for="category_id" :value="__('Category')" />
-                                    <select name="category_id" id="category_id" @class([
-                                        'input',
-                                        'input-bordered',
-                                        'input-error' => $errors->has('category_id'),
-                                        'w-full',
-                                    ])
-                                        class="select select-bordered w-full max-w-xs">
+                                    <x-input-label
+                                        for="category_id"
+                                        :value="__('Category')"
+                                    />
+                                    <select
+                                        name="category_id"
+                                        id="category_id"
+                                        @class([
+                                            'input',
+                                            'input-bordered',
+                                            'input-error' => $errors->has('category_id'),
+                                            'w-full',
+                                        ])
+                                        class="select select-bordered w-full max-w-xs"
+                                    >
                                         <option value="">Select Category</option>
                                         @foreach ($categories as $category)
-                                            <option value="{{ $category->id }}"
-                                                {{ $post->category_id == $category->id ? 'selected' : '' }}>
+                                            <option
+                                                value="{{ $category->id }}"
+                                                {{ $post->category_id == $category->id ? 'selected' : '' }}
+                                            >
                                                 {{ $category->title }}
                                             </option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="row mb-3">
-                                    <x-admin.forms.calendar
-                                        :publish_at="$post->published_at"
-                                    />
+                                    <x-admin.forms.calendar :publish_at="$post->published_at" />
                                 </div>
                             </div>
 
                             <div class="row mb-3">
-                                <x-input-label for="title" :value="__('Title')" />
-                                <input type="text" name="title" placeholder="Type here" value="{{ $post->title }}"
+                                <x-input-label
+                                    for="title"
+                                    :value="__('Title')"
+                                />
+                                <input
+                                    type="text"
+                                    name="title"
+                                    placeholder="Type here"
+                                    value="{{ $post->title }}"
                                     @class([
                                         'input',
                                         'input-bordered',
                                         'input-error' => $errors->has('title'),
                                         'w-full',
                                         'max-w-xs',
-                                    ]) />
+                                    ])
+                                />
                             </div>
                             <div class="row mb-3">
                                 <label for="content">@lang('admin.content')</label>
-                                <x-admin.forms.rich-text id="content" name="content" model="post"
-                                    :value="$post->content" />
+                                <x-admin.forms.rich-text
+                                    id="content"
+                                    name="content"
+                                    model="post"
+                                    :value="$post->content"
+                                />
                             </div>
 
-                            <link rel="stylesheet"
-                                href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" />
+                            <link
+                                rel="stylesheet"
+                                href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css"
+                            />
                             <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.min.js"></script>
                             <div class="row mb-3">
                                 <label for="tags">Tags:</label>
-                                <input type="text" name="tags" id="tags" @class([
-                                    'input',
-                                    'input-bordered',
-                                    'input-error' => $errors->has('tags'),
-                                    'w-full',
-                                    'h-fit',
-                                ])
-                                    value="{{ implode(' ', $tags) }}" />
+                                <input
+                                    type="text"
+                                    name="tags"
+                                    id="tags"
+                                    @class([
+                                        'input',
+                                        'input-bordered',
+                                        'input-error' => $errors->has('tags'),
+                                        'w-full',
+                                        'h-fit',
+                                    ])
+                                    value="{{ implode(' ', $tags) }}"
+                                />
                             </div>
                             <script>
                                 // Initialize Tagify on the input element
-                                var input = document.querySelector('input[name=tags]');
+                                var input = document.querySelector('input[name=tags]')
                                 var tagify = new Tagify(input, {
-                                    delimiters: " ", // Sử dụng dấu cách để tách các tag
-                                    pattern: /[^ ]+/ // Chỉ cho phép các ký tự không phải dấu cách
-                                });
+                                    delimiters: ' ', // Sử dụng dấu cách để tách các tag
+                                    pattern: /[^ ]+/, // Chỉ cho phép các ký tự không phải dấu cách
+                                })
 
                                 // Thêm các tag hiện tại vào Tagify khi trang tải lên
-                                var existingTags = @json($tags);
-                                tagify.addTags(existingTags);
+                                var existingTags = @json($tags)
+                                tagify.addTags(existingTags)
 
                                 // Sử dụng phím Space để thêm tag mới
-                                tagify.on('add', function(e) {
+                                tagify.on('add', function (e) {
                                     if (e.detail.data.value.indexOf(' ') > -1) {
-                                        var splitTags = e.detail.data.value.split(' ');
-                                        splitTags.forEach(function(tag) {
-                                            tagify.addTags(tag.trim());
-                                        });
-                                        tagify.removeTag(e.detail.data.value);
+                                        var splitTags = e.detail.data.value.split(' ')
+                                        splitTags.forEach(function (tag) {
+                                            tagify.addTags(tag.trim())
+                                        })
+                                        tagify.removeTag(e.detail.data.value)
                                     }
-                                });
+                                })
                             </script>
                             <div class="flex items-center space-x-6">
                                 <div class="shrink-0">
-                                    <img id="preview_img" class="h-16 w-16 rounded-full object-cover"
+                                    <img
+                                        id="preview_img"
+                                        class="h-16 w-16 rounded-full object-cover"
                                         src="{{ $post->getFirstMedia('featured_image')->getUrl('thumb') }}"
-                                        alt="{{ $post->getFirstMedia('featured_image')->name }}" />
+                                        alt="{{ $post->getFirstMedia('featured_image')->name }}"
+                                    />
                                 </div>
                                 <label class="block">
                                     <span class="sr-only">Choose photo</span>
                                     <div class="input input-bordered flex items-center gap-2 border px-3 py-2">
                                         File:
-                                        <span
-                                            id="selected_file_name">{{ $post->getFirstMedia('featured_image')->name }}</span>
+                                        <span id="selected_file_name">{{ $post->getFirstMedia('featured_image')->name }}</span>
                                     </div>
 
-                                    <input class="hidden" type="file" name="image" onchange="loadFile(event)"
-                                        class="file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100 block w-full text-sm text-slate-500 file:mr-4 file:rounded-full file:border-0 file:px-4 file:py-2 file:text-sm file:font-semibold" />
+                                    <input
+                                        class="hidden"
+                                        type="file"
+                                        name="image"
+                                        onchange="loadFile(event)"
+                                        class="file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100 block w-full text-sm text-slate-500 file:mr-4 file:rounded-full file:border-0 file:px-4 file:py-2 file:text-sm file:font-semibold"
+                                    />
                                 </label>
                             </div>
                             <script>
-                                var loadFile = function(event) {
+                                var loadFile = function (event) {
                                     var input = event.target
                                     var file = input.files[0]
                                     var type = file.type
@@ -124,7 +162,7 @@
                                     var fileNameSpan = document.getElementById('selected_file_name')
 
                                     output.src = URL.createObjectURL(event.target.files[0])
-                                    output.onload = function() {
+                                    output.onload = function () {
                                         URL.revokeObjectURL(output.src) // free memory
                                     }
 
@@ -132,9 +170,15 @@
                                 }
                             </script>
                             <div>
-                                <a href="{{ route('admin.posts.index') }}" class="btn-light btn">@lang('admin.btn.cancel')
+                                <a
+                                    href="{{ route('admin.posts.index') }}"
+                                    class="btn-light btn"
+                                    >@lang('admin.btn.cancel')
                                 </a>
-                                <button type="submit" class="btn btn-success ml-2">
+                                <button
+                                    type="submit"
+                                    class="btn btn-success ml-2"
+                                >
                                     @lang('admin.btn.submit')
                                 </button>
                             </div>

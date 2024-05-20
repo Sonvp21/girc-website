@@ -83,13 +83,13 @@
                                 </div>
 
                                 <div class="row mb-3">
-                                            <label for="content">@lang('admin.description')</label>
-                                            <x-admin.forms.rich-text
-                                                id="content"
-                                                name="description"
-                                                model="cooperation"
-                                                :value="old('description')"
-                                            />
+                                    <label for="content">@lang('admin.description')</label>
+                                    <x-admin.forms.rich-text
+                                        id="content"
+                                        name="description"
+                                        model="cooperation"
+                                        :value="old('description')"
+                                    />
                                 </div>
 
                                 <div class="flex items-center space-x-6">
