@@ -24,4 +24,7 @@ return [
     'quick_links' => 'Liên kết nhanh',
     'contact' => 'Liên hệ',
     'footer_girc_text' => 'Trung tâm là một đơn vị trực thuộc Trường Đại học Nông Lâm Thái Nguyên, có tư cách pháp lý, có thể sử dụng con dấu riêng và mở tài khoản tại Kho bạc và Ngân hàng Nhà nước để hoạt động theo quy định của pháp luật.',
+    'staffs' => 'Đội ngũ giảng viên',
+    'staffs_title' => 'Tận tâm với sự thành công của bạn',
+    'staffs_text' => 'Đội ngũ giảng viên của chúng tôi bao gồm những người có trình độ học vị cao, có kinh nghiệm giảng dạy và nghiên cứu sâu rộng trong lĩnh vực địa tin học. Họ đều là những chuyên gia hàng đầu trong lĩnh vực của mình và luôn sẵn lòng chia sẻ kiến thức và kinh nghiệm với sinh viên.',
 ];
