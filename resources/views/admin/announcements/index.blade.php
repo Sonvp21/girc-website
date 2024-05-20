@@ -12,31 +12,40 @@
                         <form
                             action="{{ route('admin.announcements.index') }}"
                             method="GET"
+                            class="w-full"
                         >
-                            <div class="flex items-center">
-                                <input
-                                    type="text"
-                                    name="search"
-                                    placeholder="Search by title"
-                                    class="text-gray-800 border-gray-200 mr-0 rounded-l-lg border-b border-l border-t bg-white p-2"
-                                    value="{{ request()->search }}"
-                                />
-                                <button
-                                    type="submit"
-                                    class="bg-gray-200 text-gray-800 rounded-r-lg border-b border-r border-t p-2 px-4 font-semibold"
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <label class="input input-bordered flex items-center gap-2">
+                                        <input
+                                            name="search"
+                                            type="text"
+                                            class="grow"
+                                            placeholder="Search by name"
+                                            style="border: unset"
+                                            value="{{ request()->search }}"
+                                        />
+                                        <button type="submit">
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                viewBox="0 0 16 16"
+                                                fill="currentColor"
+                                                class="h-4 w-4 opacity-70"
+                                            >
+                                                <path fill-rule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clip-rule="evenodd" />
+                                            </svg>
+                                        </button>
+                                    </label>
+                                </div>
+                                <a
+                                    class="btn-ghosdt btn"
+                                    href="{{ route('admin.announcements.create') }}"
                                 >
-                                    Search
-                                </button>
+                                    <x-heroicon-s-plus class="size-4" />
+                                    <span>@lang('admin.add')</span>
+                                </a>
                             </div>
                         </form>
-                        <div class="ml-auto self-center">
-                            <a
-                                class="flex items-center justify-end"
-                                href="{{ route('admin.announcements.create') }}"
-                                ><x-heroicon-o-plus-circle class="size-4" />
-                                @lang('admin.add')
-                            </a>
-                        </div>
                     </div>
                     <table class="table">
                         <!-- head -->
@@ -90,11 +99,11 @@
                             @endforeach
                         </tbody>
                     </table>
-                    <div class="mt-4">
-                        {{ $announcements->links() }}
-                    </div>
                 </div>
             </div>
+        </div>
+        <div class="mt-4">
+            {{ $announcements->links('pagination.web-tailwind') }}
         </div>
     </div>
 </x-app-layout>
