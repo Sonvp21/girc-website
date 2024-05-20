@@ -10,18 +10,14 @@
         <div class="mt-6">
             <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                 <div class="bg-white p-4 shadow sm:rounded-lg sm:p-8">
-                    <div class="max-w-2xl">
-                        <form action="{{ route('admin.announcements.update', ['announcement' => $announcement->id]) }}"
-                            method="POST" class="needs-validation" novalidate enctype="multipart/form-data">
+                    <form action="{{ route('admin.announcements.update', ['announcement' => $announcement->id]) }}"
+                            method="POST" class="space-y-4 needs-validation" novalidate enctype="multipart/form-data">
                             @csrf
                             @method('patch')
 
-                            <div class="row mb-3">
-                                <x-admin.forms.calendar :publish_at="$announcement->published_at" />
-                            </div>
+                            <x-admin.forms.calendar :publish_at="$announcement->published_at" />
 
-                            <div class="row mb-3">
-                                <label class="form-control w-full max-w-xs">
+                            <label class="form-control w-full max-w-xs">
                                     <div class="label">
                                         <span class="label-text">@lang('admin.post.title')</span>
                                     </div>
@@ -34,12 +30,16 @@
                                             'max-w-xs',
                                         ]) />
                                 </label>
+
+                            <label class="form-control w-full">
+                            <div class="label">
+                                <span class="label-text">@lang('admin.content')</span>
                             </div>
-                            <div class="row mb-3">
-                                <label for="content">@lang('admin.content')</label>
-                                <x-admin.forms.rich-text id="content" name="content" model="announcement"
-                                    :value="$announcement->content" />
-                            </div>
+                            <textarea name="content" id="content" class="hidden" column="content">
+                                {!! $announcement->content !!}
+                            </textarea>
+                        </label>
+
                             <div>
                                 <a href="{{ route('admin.announcements.index') }}"
                                     class="btn-light btn">@lang('admin.btn.cancel')
@@ -49,9 +49,11 @@
                                 </button>
                             </div>
                         </form>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
+    @pushonce('bottom_scripts')
+        <x-admin.forms.tinymce-config column="content"/>
+    @endpushonce
 </x-app-layout>

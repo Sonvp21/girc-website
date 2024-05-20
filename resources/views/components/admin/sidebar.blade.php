@@ -34,7 +34,12 @@
                 </li>
 
                 <li>
-                    <a href="{{ route('admin.announcements.index') }}">@lang('admin.announcements')</a>
+                    <a @class([
+                            'active' => request()->routeIs('admin.announcements.*'),
+                        ])
+                        href="{{ route('admin.announcements.index') }}">
+                        @lang('admin.announcements')
+                    </a>
                 </li>
                 <li>
                     <details
