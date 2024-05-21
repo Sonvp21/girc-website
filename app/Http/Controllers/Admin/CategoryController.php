@@ -11,25 +11,30 @@ use Illuminate\View\View;
 
 class CategoryController extends Controller
 {
-    public function index(Request $request)
+    public function index(Request $request): View
     {
+        $categories = Category::query()
+            ->when(
+                $request->search,
+                fn ($query) => $query->where('title', 'like', '%'.$request->search.'%')
+            )
+            ->latest()
+            ->get();
+
+        $buildCategoryTree = $this->buildCategoryTree($categories);
+
         return view('admin.categories.index', [
-            'categories' => Category::query()
-                ->when(
-                    $request->search,
-                    fn ($query) => $query->where('title', 'like', '%'.$request->search.'%')
-                )
-                ->latest()
-                ->paginate(10),
+            'categories' => $categories,
+            'buildCategoryTree' => $buildCategoryTree,
         ]);
     }
 
-    /**
-     * @return Factory|View
-     */
     public function create(): View
     {
-        $categories = Category::where('parent_id', null)->orderBy('order')->get();
+        $categories = Category::query()
+            ->whereNull('parent_id')
+            ->where('in_menu', true)
+            ->orderBy('order')->get();
 
         return view('admin.categories.create',
             [
@@ -67,18 +72,31 @@ class CategoryController extends Controller
         }
     }
 
-
-    /**
-     * @return Factory|View
-     */
-    public function edit($id)
+    public function edit($id): View
     {
-        $category = Category::findOrFail($id);
-        $categories = Category::where('parent_id', null)->where('id', '!=', $id)->orderBy('order')->get();
+        $selectedCategory = Category::findOrFail($id);
 
-        return view('admin.categories.edit', compact('category', 'categories'));
+        $categories = Category::query()
+            ->whereNull('parent_id')
+            ->where('in_menu', true)
+            ->orderBy('order')->get();
+
+        return view('admin.categories.edit', compact('categories', 'selectedCategory'));
     }
 
+    private function renderCategoryOptions($categories, $level = 0)
+    {
+        $html = '';
+        foreach ($categories as $category) {
+            $indentClass = 'level-'.$level;
+            $html .= '<option class="'.$indentClass.'" value="'.$category->id.'">'.htmlspecialchars($category->name).'</option>';
+            if ($category->recursiveChildren->isNotEmpty()) {
+                $html .= $this->renderCategoryOptions($category->recursiveChildren, $level + 1);
+            }
+        }
+
+        return $html;
+    }
 
     public function update(CategoryRequest $request, $id): RedirectResponse
     {
@@ -94,10 +112,9 @@ class CategoryController extends Controller
 
         return redirect()->route('admin.categories.index')->with([
             'icon' => 'success',
-            'message' => 'Category updated successfully'
+            'message' => 'Category updated successfully',
         ]);
     }
-
 
     /**
      * Remove the specified category only if it has no posts.
@@ -124,6 +141,20 @@ class CategoryController extends Controller
         ]);
     }
 
-    
-    
+    private function buildCategoryTree($categories, $parentId = null)
+    {
+        $branch = collect();
+
+        foreach ($categories as $category) {
+            if ($category->parent_id == $parentId) {
+                $children = $this->buildCategoryTree($categories, $category->id);
+                if ($children->isNotEmpty()) {
+                    $category->children = $children;
+                }
+                $branch->push($category);
+            }
+        }
+
+        return $branch;
+    }
 }

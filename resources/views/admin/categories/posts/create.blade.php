@@ -13,11 +13,6 @@
                     <div class="space-y-4">
                         <form action="{{ route('admin.categories.posts.store', $category->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
-                            <div class="flex gap-4">
-                                <label class="form-control w-full">
-                                    <span class="label">
-                                        <span class="label-text">@lang('admin.categories')</span>
-                                    </span>
 
                             <div class="space-y-4">
                                 <input type="hidden" name="category_id" value="{{ $category->id }}">
@@ -80,6 +75,7 @@
                                         @lang('admin.btn.submit')
                                     </button>
                                 </div>
+                            </div>
                         </form>
                         @if ($errors->any())
                             <div class="alert alert-danger">

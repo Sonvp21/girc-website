@@ -33,5 +33,4 @@ class PostRequest extends FormRequest
             'published_at.date' => trans('admin.field.invalid_date'), // Custom message for invalid date
         ];
     }
-
 }

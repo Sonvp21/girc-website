@@ -8,7 +8,6 @@ use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
@@ -18,9 +17,10 @@ class PostController extends Controller
     {
         $category = Category::where('slug', $slug)->firstOrFail();
         $posts = $category->posts()->orderBy('published_at', 'desc')->paginate(10);
+
         return view('admin.categories.posts.index', [
             'category' => $category,
-            'posts' => $posts
+            'posts' => $posts,
         ]);
     }
 
@@ -29,7 +29,8 @@ class PostController extends Controller
         $categories = Category::all();
         $tags = Tag::all();
         $category = Category::findOrFail($categoryId);
-        return view('admin.categories.posts.create', compact('tags', 'categories','category'));
+
+        return view('admin.categories.posts.create', compact('tags', 'categories', 'category'));
     }
 
     public function store(PostRequest $request): RedirectResponse
@@ -61,13 +62,13 @@ class PostController extends Controller
                 ->toMediaCollection('featured_image');
         }
         $category = Category::findOrFail($request->category_id);
-        return redirect()->route('admin.categories.posts.index',['slug' => $category->slug])->with('success', 'Post created successfully.');
+
+        return redirect()->route('admin.categories.posts.index', ['slug' => $category->slug])->with('success', 'Post created successfully.');
     }
 
     /**
      * @return RedirectResponse
      */
-
     public function edit($categoryId, $postId): View
     {
         $category = Category::findOrFail($categoryId);
@@ -78,18 +79,17 @@ class PostController extends Controller
         return view('admin.categories.posts.edit', compact('category', 'post', 'tags', 'tagNames'));
     }
 
-
     public function update(PostRequest $request, $categoryId, $postId): RedirectResponse
     {
         $post = Post::findOrFail($postId);
-        
+
         DB::beginTransaction();
         try {
             $post->update([
                 'title' => $request->title,
                 'content' => $request->content,
                 'published_at' => $request->published_at,
-                'category_id' => $categoryId
+                'category_id' => $categoryId,
             ]);
 
             if ($request->tags) {
@@ -101,7 +101,7 @@ class PostController extends Controller
                 foreach ($unusedTags as $unusedTag) {
                     $unusedTag->delete();
                 }
-            }          
+            }
             if ($request->hasFile('image')) {
                 $imageFile = $request->file('image');
                 $post->clearMediaCollection('featured_image');
@@ -113,10 +113,12 @@ class PostController extends Controller
 
             DB::commit();
             $category = Category::findOrFail($categoryId);
+
             return redirect()->route('admin.categories.posts.index', ['slug' => $category->slug])->with('success', 'Post updated successfully.');
         } catch (\Exception $e) {
             DB::rollBack();
-            return redirect()->back()->with('error', 'Error updating post: ' . $e->getMessage());
+
+            return redirect()->back()->with('error', 'Error updating post: '.$e->getMessage());
         }
     }
 
@@ -131,12 +133,11 @@ class PostController extends Controller
         foreach ($unusedTags as $unusedTag) {
             $unusedTag->delete();
         }
+
         return back()->with([
             'icon' => 'success',
             'heading' => 'Success',
             'message' => trans('admin.alert.deleted-success'),
         ]);
     }
-
-
 }

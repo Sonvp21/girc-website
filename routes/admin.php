@@ -35,7 +35,6 @@ Route::middleware('auth')->group(function () {
         Route::put('category/{category}/posts/{post}', [PostController::class, 'update'])->name('categories.posts.update');
         Route::delete('category/{category}/posts/{post}', [PostController::class, 'destroy'])->name('categories.posts.destroy');
 
-
         Route::resource('announcements', AnnouncementController::class);
         //album-photo-video
         Route::resource('albums', AlbumController::class);

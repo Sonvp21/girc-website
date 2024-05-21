@@ -53,13 +53,11 @@
                             ])>
                                 <option value="">@lang('admin.categories.select_parent')</option>
                                 @foreach ($categories as $category)
-                                    @if ($category->parent_id == null)
-                                        <option value="{{ $category->id }}">{{ app()->getLocale() === 'en' ? $category->title_en : $category->title }}</option>
-                                    @endif
+                                    <x-admin.forms.select.category :category="$category" />
                                 @endforeach
                             </select>
                         </label>
-                        
+
                         <label class="form-control w-full">
                             <div class="label">
                                 <span class="label-text">@lang('admin.categories.in_menu')</span>
@@ -82,7 +80,7 @@
                             </button>
                         </div>
                     </form>
-                    
+
                 </div>
             </div>
         </div>

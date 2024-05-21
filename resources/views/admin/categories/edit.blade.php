@@ -16,7 +16,7 @@
         <div class="mt-6">
             <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                 <div class="bg-white p-4 shadow sm:rounded-lg sm:p-8">
-                    <form action="{{ route('admin.categories.update', $category->id) }}" method="POST"
+                    <form action="{{ route('admin.categories.update', $selectedCategory) }}" method="POST"
                         class="space-y-4 needs-validation" novalidate>
                         @csrf
                         @method('PUT')
@@ -26,7 +26,7 @@
                                 <span class="label-text">@lang('admin.categories.order')</span>
                             </div>
                             <input type="number" min="0" max="99" name="order"
-                                value="{{ $category->order }}" @class([
+                                value="{{ $selectedCategory->order }}" @class([
                                     'input',
                                     'input-bordered',
                                     'input-error' => $errors->has('order'),
@@ -38,7 +38,7 @@
                             <div class="label">
                                 <span class="label-text">@lang('admin.categories.title')</span>
                             </div>
-                            <input type="text" name="title" value="{{ $category->title }}"
+                            <input type="text" name="title" value="{{ $selectedCategory->title }}"
                                 @class([
                                     'input',
                                     'input-bordered',
@@ -51,7 +51,7 @@
                             <div class="label">
                                 <span class="label-text">@lang('admin.categories.title_en')</span>
                             </div>
-                            <input type="text" name="title_en" value="{{ $category->title_en }}"
+                            <input type="text" name="title_en" value="{{ $selectedCategory->title_en }}"
                                 @class([
                                     'input',
                                     'input-bordered',
@@ -66,11 +66,8 @@
                             </div>
                             <select name="parent_id" @class(['input', 'input-bordered', 'w-full'])>
                                 <option value="">@lang('admin.categories.select_parent')</option>
-                                @foreach ($categories as $cat)
-                                    <option value="{{ $cat->id }}"
-                                        {{ isset($category) && $category->parent_id == $cat->id ? 'selected' : '' }}>
-                                        {{ app()->getLocale() === 'en' ? $cat->title_en : $cat->title }}
-                                    </option>
+                                @foreach ($categories as $category)
+                                    <x-admin.forms.select.category :category="$category" :selectedCategory="$selectedCategory" />
                                 @endforeach
                             </select>
                         </label>
@@ -80,9 +77,9 @@
                                 <span class="label-text">@lang('admin.categories.in_menu')</span>
                             </div>
                             <select name="in_menu" @class(['input', 'input-bordered', 'w-full'])>
-                                <option value="0" {{ $category->in_menu ? '' : 'selected' }}>@lang('admin.false')
+                                <option value="0" {{ $selectedCategory->in_menu ? '' : 'selected' }}>@lang('admin.false')
                                 </option>
-                                <option value="1" {{ $category->in_menu ? 'selected' : '' }}>@lang('admin.true')
+                                <option value="1" {{ $selectedCategory->in_menu ? 'selected' : '' }}>@lang('admin.true')
                                 </option>
                             </select>
                         </label>

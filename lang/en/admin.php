@@ -48,7 +48,6 @@ return [
     'false' => 'False',
     'true' => 'True',
 
-
     //Contact
     'contacts' => 'Contact',
     'contacts.name' => 'Name',

@@ -14,7 +14,7 @@ class CategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|string|max:255|unique:categories,title,' . $this->category,
+            'title' => 'required|string|max:255|unique:categories,title,'.$this->category,
             'parent_id' => 'nullable|exists:categories,id',
             'title_en' => 'sometimes|required|string|min:3|max:255',
             'order' => 'nullable',

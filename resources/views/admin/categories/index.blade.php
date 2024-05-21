@@ -39,6 +39,10 @@
                         </form>
                     </div>
 
+{{--                    @foreach ($buildCategoryTree as $category)--}}
+{{--                        <x-admin.sidebar.category :category="$category" />--}}
+{{--                    @endforeach--}}
+
                     <table class="table">
                         <!-- head -->
                         <thead>
@@ -54,8 +58,12 @@
                         <tbody>
                             @foreach ($categories as $category)
                                 <tr>
-                                    <th>{{ $categories->firstItem() + $loop->index }}</th>
-                                    <td>{{ $category->order }}</td>
+                                    <th>
+                                        {{ $loop->index + 1 }}
+                                    </th>
+                                    <td>
+                                        <div class="badge bg-blue-700 text-white">{{ $category->order }}</div>
+                                    </td>
                                     <td>{{ app()->getLocale() === 'en' ? $category->title_en : $category->title }}</td>
                                     <td>{{ $category->createddAtVi }}</td>
                                     <td>{{ $category->updatedAtVi }}</td>
@@ -80,14 +88,14 @@
                                                     $(".alert").fadeOut(2000);
                                                 }, 3000); // thông báo sẽ ẩn sau 3 giây
                                             });
-                                        
+
                                             function confirmDelete(categoryId) {
                                                 if (confirm('Are you sure you want to delete this category?')) {
                                                     document.getElementById('delete-form-' + categoryId).submit();
                                                 }
                                             }
                                         </script>
-                                        
+
                                     </td>
                                 </tr>
                             @endforeach
@@ -97,7 +105,7 @@
             </div>
         </div>
         <div class="mt-4">
-            {{ $categories->links('pagination.web-tailwind') }}
+{{--            {{ $categories->links('pagination.web-tailwind') }}--}}
         </div>
     </div>
 </x-app-layout>

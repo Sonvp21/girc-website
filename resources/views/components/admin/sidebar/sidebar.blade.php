@@ -26,8 +26,8 @@
                                     @lang('admin.categories.list')
                                 </a>
                             </li>
-                            @foreach ($categoryTree as $category)
-                                @include('components.admin.partials.category', ['category' => $category])
+                            @foreach ($categories as $category)
+                                <x-admin.sidebar.category :category="$category" />
                             @endforeach
                         </ul>
                     </details>
