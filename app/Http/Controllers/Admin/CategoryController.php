@@ -80,12 +80,12 @@ class CategoryController extends Controller
         ]);
     }
 
-/**
- * Remove the specified category only if it has no posts.
- *
- * @param  int  $id
- * @return \Illuminate\Http\RedirectResponse
- */
+    /**
+     * Remove the specified category only if it has no posts.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function destroy($id)
     {
         $category = Category::findOrFail($id);
@@ -97,11 +97,11 @@ class CategoryController extends Controller
             ]);
         }
         $category->delete();
+
         return back()->with([
             'icon' => 'success',
             'heading' => 'Success',
             'message' => trans('Deleted success'),
         ]);
     }
-
 }
