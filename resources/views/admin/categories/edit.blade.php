@@ -9,6 +9,12 @@
                 @lang('admin.edit')
             </span>
         </div>
+        @if (session('icon') && session('heading') && session('message'))
+            <div class="alert alert-{{ session('icon') === 'success' ? 'success' : 'danger' }}" role="alert">
+                <strong>{{ session('heading') }}:</strong>
+                {{ session('message') }}
+            </div>
+        @endif
         <div class="mt-6">
             <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                 <div class="bg-white p-4 shadow sm:rounded-lg sm:p-8">
