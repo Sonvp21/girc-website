@@ -69,7 +69,7 @@
                                 @foreach ($categories as $cat)
                                     <option value="{{ $cat->id }}"
                                         {{ isset($category) && $category->parent_id == $cat->id ? 'selected' : '' }}>
-                                        {{ $cat->title }}
+                                        {{ app()->getLocale() === 'en' ? $cat->title_en : $cat->title }}
                                     </option>
                                 @endforeach
                             </select>

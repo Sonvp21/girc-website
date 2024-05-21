@@ -56,7 +56,7 @@
                                 <tr>
                                     <th>{{ $categories->firstItem() + $loop->index }}</th>
                                     <td>{{ $category->order }}</td>
-                                    <td>{{ $category->title }}</td>
+                                    <td>{{ app()->getLocale() === 'en' ? $category->title_en : $category->title }}</td>
                                     <td>{{ $category->createddAtVi }}</td>
                                     <td>{{ $category->updatedAtVi }}</td>
 

@@ -54,7 +54,7 @@
                                 <option value="">@lang('admin.categories.select_parent')</option>
                                 @foreach ($categories as $category)
                                     @if ($category->parent_id == null)
-                                        <option value="{{ $category->id }}">{{ $category->title }}</option>
+                                        <option value="{{ $category->id }}">{{ app()->getLocale() === 'en' ? $category->title_en : $category->title }}</option>
                                     @endif
                                 @endforeach
                             </select>
