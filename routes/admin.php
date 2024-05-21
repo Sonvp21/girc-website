@@ -24,9 +24,16 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::prefix('admin')->name('admin.')->group(function () {
-        Route::resource('posts', PostController::class);
         Route::resource('categories', CategoryController::class);
         Route::resource('tags', TagController::class);
+
+        //post of category
+        Route::get('category/{slug}', [PostController::class, 'index'])->name('categories.posts.index');
+        Route::get('category/{category}/posts/create', [PostController::class, 'create'])->name('categories.posts.create');
+        Route::post('category/{category}/posts', [PostController::class, 'store'])->name('categories.posts.store');
+        Route::get('category/{category}/posts/{post}/edit', [PostController::class, 'edit'])->name('categories.posts.edit');
+        Route::put('category/{category}/posts/{post}', [PostController::class, 'update'])->name('categories.posts.update');
+        Route::delete('category/{category}/posts/{post}', [PostController::class, 'destroy'])->name('categories.posts.destroy');
 
         Route::resource('announcements', AnnouncementController::class);
         //album-photo-video

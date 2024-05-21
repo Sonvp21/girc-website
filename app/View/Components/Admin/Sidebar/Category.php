@@ -1,19 +1,20 @@
 <?php
 
-namespace App\View\Components\Admin;
+namespace App\View\Components\Admin\Sidebar;
 
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class Sidebar extends Component
+class Category extends Component
 {
     /**
      * Create a new component instance.
      */
-    public function __construct()
-    {
-        //
+    public function __construct(
+        public \App\Models\Category $category
+    ) {
+
     }
 
     /**
@@ -21,6 +22,6 @@ class Sidebar extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.admin.sidebar');
+        return view('components.admin.sidebar.category');
     }
 }

@@ -8,15 +8,16 @@ class PostRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return auth()->user()->id === 1; //sample only, it should be auth()->user()->role === 'admin'
+        return true;
     }
 
     public function rules(): array
     {
         return [
-            'category_id' => 'required',
-            'title' => 'required|unique:posts,title',
+            'category_id' => 'required|exists:categories,id',
+            'title' => 'required',
             'content' => 'required',
+            'published_at' => 'required|date', // Ensure this is a valid date
         ];
     }
 
@@ -24,9 +25,12 @@ class PostRequest extends FormRequest
     {
         return [
             'category_id.required' => trans('admin.field.required'),
+            'category_id.exists' => trans('admin.field.invalid_category'), // Custom message for non-existing category
             'title.unique' => trans('admin.field.unique'),
             'title.required' => trans('admin.field.required'),
             'content.required' => trans('admin.field.required'),
+            'published_at.required' => trans('admin.field.required'),
+            'published_at.date' => trans('admin.field.invalid_date'), // Custom message for invalid date
         ];
     }
 }

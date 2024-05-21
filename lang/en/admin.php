@@ -34,12 +34,19 @@ return [
     'post.tag' => 'Tags',
 
     //Category
-    'categories' => 'Category',
+    'categories' => 'Category Post',
     'categories.title' => 'Title',
     'categories.created_at' => 'Create at',
     'categories.updated_at' => 'Update at',
-    '' => '',
-    '' => '',
+    'categories.add' => 'Add Category',
+    'categories.order' => 'Order',
+    'categories.title_en' => 'English title',
+    'categories.parent' => 'Category parent',
+    'categories.in_menu' => 'Show In menu',
+    'categories.list' => 'Category list',
+    'categories.select_parent' => 'Select parent',
+    'false' => 'False',
+    'true' => 'True',
 
     //Contact
     'contacts' => 'Contact',

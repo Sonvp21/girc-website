@@ -8,7 +8,7 @@ class CooperationRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return auth()->user()->id === 1; //sample only, it should be auth()->user()->role === 'admin'
+        return true;
     }
 
     public function rules(): array

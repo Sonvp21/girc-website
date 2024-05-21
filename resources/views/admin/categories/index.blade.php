@@ -2,9 +2,7 @@
     <div class="p-6">
         <div class="text-gray-800 text-normal font-semibold leading-tight">
             <span class="text-gray-800 text-normal flex items-center gap-2 font-semibold leading-tight">
-                @lang('admin.posts')
-                <x-heroicon-m-arrow-small-right class="size-4" />
-                @lang('admin.categories')
+                @lang('admin.categories.list')
             </span>
         </div>
         @if (session('icon') && session('heading') && session('message'))
@@ -21,7 +19,7 @@
                             <div class="flex items-center justify-between">
                                 <div class="flex items-center">
                                     <label class="input input-bordered flex items-center gap-2">
-                                        <input name="search" type="text" class="grow" placeholder="Search by name"
+                                        <input name="search" type="text" class="grow" placeholder="Search by title"
                                             style="border: unset" value="{{ request()->search }}" />
                                         <button type="submit">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"
@@ -41,11 +39,16 @@
                         </form>
                     </div>
 
+{{--                    @foreach ($buildCategoryTree as $category)--}}
+{{--                        <x-admin.sidebar.category :category="$category" />--}}
+{{--                    @endforeach--}}
+
                     <table class="table">
                         <!-- head -->
                         <thead>
                             <tr>
                                 <th>#</th>
+                                <th>@lang('admin.categories.order')</th>
                                 <th>@lang('admin.categories.title')</th>
                                 <th>@lang('admin.categories.created_at')</th>
                                 <th>@lang('admin.categories.updated_at')</th>
@@ -55,8 +58,13 @@
                         <tbody>
                             @foreach ($categories as $category)
                                 <tr>
-                                    <th>{{ $categories->firstItem() + $loop->index }}</th>
-                                    <td>{{ $category->title }}</td>
+                                    <th>
+                                        {{ $loop->index + 1 }}
+                                    </th>
+                                    <td>
+                                        <div class="badge bg-blue-700 text-white">{{ $category->order }}</div>
+                                    </td>
+                                    <td>{{ app()->getLocale() === 'en' ? $category->title_en : $category->title }}</td>
                                     <td>{{ $category->createddAtVi }}</td>
                                     <td>{{ $category->updatedAtVi }}</td>
 
@@ -80,14 +88,14 @@
                                                     $(".alert").fadeOut(2000);
                                                 }, 3000); // thông báo sẽ ẩn sau 3 giây
                                             });
-                                        
+
                                             function confirmDelete(categoryId) {
                                                 if (confirm('Are you sure you want to delete this category?')) {
                                                     document.getElementById('delete-form-' + categoryId).submit();
                                                 }
                                             }
                                         </script>
-                                        
+
                                     </td>
                                 </tr>
                             @endforeach
@@ -97,7 +105,7 @@
             </div>
         </div>
         <div class="mt-4">
-            {{ $categories->links('pagination.web-tailwind') }}
+{{--            {{ $categories->links('pagination.web-tailwind') }}--}}
         </div>
     </div>
 </x-app-layout>

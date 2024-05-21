@@ -8,30 +8,29 @@ use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
 class PostController extends Controller
 {
-    public function index(Request $request)
+    public function index($slug)
     {
-        return view('admin.posts.index', [
-            'posts' => Post::query()
-                ->when(
-                    $request->search,
-                    fn ($query) => $query->where('title', 'like', '%'.$request->search.'%')
-                )
-                ->latest()
-                ->paginate(10),
+        $category = Category::where('slug', $slug)->firstOrFail();
+        $posts = $category->posts()->orderBy('published_at', 'desc')->paginate(10);
+
+        return view('admin.categories.posts.index', [
+            'category' => $category,
+            'posts' => $posts,
         ]);
     }
 
-    public function create(): View
+    public function create($categoryId): View
     {
         $categories = Category::all();
         $tags = Tag::all();
+        $category = Category::findOrFail($categoryId);
 
-        return view('admin.posts.create', compact('tags', 'categories'));
+        return view('admin.categories.posts.create', compact('tags', 'categories', 'category'));
     }
 
     public function store(PostRequest $request): RedirectResponse
@@ -62,61 +61,74 @@ class PostController extends Controller
                 ->usingName($imageFile->getClientOriginalName())
                 ->toMediaCollection('featured_image');
         }
+        $category = Category::findOrFail($request->category_id);
 
-        return redirect()->route('admin.posts.index')->with('success', 'Post created successfully.');
+        return redirect()->route('admin.categories.posts.index', ['slug' => $category->slug])->with('success', 'Post created successfully.');
     }
 
     /**
      * @return RedirectResponse
      */
-    public function edit($id): View
+    public function edit($categoryId, $postId): View
     {
-        $post = Post::findOrFail($id);
-        $categories = Category::all();
-        $tags = $post->tags->pluck('name')->toArray();
+        $category = Category::findOrFail($categoryId);
+        $post = Post::with('tags')->findOrFail($postId);
+        $tags = Tag::all();
+        $tagNames = $post->tags->pluck('name')->toJson();
 
-        return view('admin.posts.edit', compact('tags', 'categories', 'post'));
+        return view('admin.categories.posts.edit', compact('category', 'post', 'tags', 'tagNames'));
     }
 
-    public function update(Post $post, Request $request): RedirectResponse
+    public function update(PostRequest $request, $categoryId, $postId): RedirectResponse
     {
-        $post->update([
-            'category_id' => $request->category_id,
-            'title' => $request->title,
-            'content' => $request->content,
-            'published_at' => $request->published_at,
-        ]);
-        if ($request->hasFile('image')) {
-            $imageFile = $request->file('image');
-            $post->clearMediaCollection('featured_image');
-            $post->addMedia($imageFile->getRealPath())
-                ->usingFileName($imageFile->getClientOriginalName())
-                ->usingName($imageFile->getClientOriginalName())
-                ->toMediaCollection('featured_image');
-        }
-        if ($request->tags) {
-            $tagIds = [];
-            $tags = json_decode($request->tags);
-            foreach ($tags as $tagObj) {
-                $tag = Tag::firstOrCreate(['name' => trim($tagObj->value)]);
-                $tagIds[] = $tag->id;
+        $post = Post::findOrFail($postId);
+
+        DB::beginTransaction();
+        try {
+            $post->update([
+                'title' => $request->title,
+                'content' => $request->content,
+                'published_at' => $request->published_at,
+                'category_id' => $categoryId,
+            ]);
+
+            if ($request->tags) {
+                $tagIds = collect(json_decode($request->tags, true))->pluck('value')->map(function ($name) {
+                    return Tag::firstOrCreate(['name' => trim($name)])->id;
+                });
+                $post->tags()->sync($tagIds);
+                $unusedTags = Tag::whereDoesntHave('posts')->get();
+                foreach ($unusedTags as $unusedTag) {
+                    $unusedTag->delete();
+                }
             }
-            $post->tags()->sync($tagIds);
-        }
+            if ($request->hasFile('image')) {
+                $imageFile = $request->file('image');
+                $post->clearMediaCollection('featured_image');
+                $post->addMedia($imageFile->getRealPath())
+                    ->usingFileName($imageFile->getClientOriginalName())
+                    ->usingName($imageFile->getClientOriginalName())
+                    ->toMediaCollection('featured_image');
+            }
 
-        return redirect()->route('admin.posts.index')->with([
-            'icon' => 'success',
-            'heading' => 'Success',
-            'message' => 'Update successfully',
-        ]);
+            DB::commit();
+            $category = Category::findOrFail($categoryId);
+
+            return redirect()->route('admin.categories.posts.index', ['slug' => $category->slug])->with('success', 'Post updated successfully.');
+        } catch (\Exception $e) {
+            DB::rollBack();
+
+            return redirect()->back()->with('error', 'Error updating post: '.$e->getMessage());
+        }
     }
 
-    public function destroy($id)
+    public function destroy($category_id, $post_id)
     {
-        $post = Post::findOrFail($id);
+        $category = Category::findOrFail($category_id);
+        $post = $category->posts()->findOrFail($post_id);
+        $post->clearMediaCollection('featured_image');
         $post->tags()->detach();
         $post->delete();
-        $post->clearMediaCollection('featured_image');
         $unusedTags = Tag::doesntHave('posts')->get();
         foreach ($unusedTags as $unusedTag) {
             $unusedTag->delete();

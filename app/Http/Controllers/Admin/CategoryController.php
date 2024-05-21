@@ -11,72 +11,108 @@ use Illuminate\View\View;
 
 class CategoryController extends Controller
 {
-    public function index(Request $request)
+    public function index(Request $request): View
     {
+        $categories = Category::query()
+            ->when(
+                $request->search,
+                fn ($query) => $query->where('title', 'like', '%'.$request->search.'%')
+            )
+            ->latest()
+            ->get();
+
+        $buildCategoryTree = $this->buildCategoryTree($categories);
+
         return view('admin.categories.index', [
-            'categories' => Category::query()
-                ->when(
-                    $request->search,
-                    fn ($query) => $query->where('title', 'like', '%'.$request->search.'%')
-                )
-                ->latest()
-                ->paginate(10),
+            'categories' => $categories,
+            'buildCategoryTree' => $buildCategoryTree,
         ]);
     }
 
-    /**
-     * @return Factory|View
-     */
     public function create(): View
     {
-        return view('admin.categories.create');
+        $categories = Category::query()
+            ->whereNull('parent_id')
+            ->where('in_menu', true)
+            ->orderBy('order')->get();
+
+        return view('admin.categories.create',
+            [
+                'categories' => $categories,
+            ]);
     }
 
     public function store(CategoryRequest $request): RedirectResponse
     {
+        $data = [
+            'title_en' => $request->title_en,
+            'parent_id' => $request->parent_id,
+            'in_menu' => $request->in_menu,
+            'user_id' => auth()->id(),
+        ];
+        if ($request->filled('order')) {
+            $data['order'] = $request->order;
+        }
         $category = Category::updateOrCreate(
             ['title' => $request->title],
-            ['user_id' => auth()->id()]
+            $data
         );
-
         if ($category->wasRecentlyCreated) {
-            // Nếu là tạo mới
             return back()->with([
                 'icon' => 'success',
                 'heading' => 'Success',
                 'message' => 'Category created successfully',
             ]);
         } else {
-            // Nếu là cập nhật
             return back()->with([
                 'icon' => 'info',
                 'heading' => 'Updated',
                 'message' => 'Category updated successfully',
             ]);
         }
-
-        return back();
     }
 
-    /**
-     * @return Factory|View
-     */
-    public function edit(Category $category): View
+    public function edit($id): View
     {
-        return view('admin.categories.edit')
-            ->with([
-                'category' => $category,
-            ]);
+        $selectedCategory = Category::findOrFail($id);
+
+        $categories = Category::query()
+            ->whereNull('parent_id')
+            ->where('in_menu', true)
+            ->orderBy('order')->get();
+
+        return view('admin.categories.edit', compact('categories', 'selectedCategory'));
     }
 
-    public function update(Category $category, CategoryRequest $request): RedirectResponse
+    private function renderCategoryOptions($categories, $level = 0)
     {
-        $category->update($request->all());
+        $html = '';
+        foreach ($categories as $category) {
+            $indentClass = 'level-'.$level;
+            $html .= '<option class="'.$indentClass.'" value="'.$category->id.'">'.htmlspecialchars($category->name).'</option>';
+            if ($category->recursiveChildren->isNotEmpty()) {
+                $html .= $this->renderCategoryOptions($category->recursiveChildren, $level + 1);
+            }
+        }
+
+        return $html;
+    }
+
+    public function update(CategoryRequest $request, $id): RedirectResponse
+    {
+        $category = Category::findOrFail($id);
+
+        $category->update([
+            'order' => $request->order,
+            'title' => $request->title,
+            'title_en' => $request->title_en,
+            'parent_id' => $request->parent_id ?: null,
+            'in_menu' => $request->in_menu,
+        ]);
 
         return redirect()->route('admin.categories.index')->with([
             'icon' => 'success',
-            'heading' => 'Success',
-            'message' => 'Update successfully',
+            'message' => 'Category updated successfully',
         ]);
     }
 
@@ -103,5 +139,22 @@ class CategoryController extends Controller
             'heading' => 'Success',
             'message' => trans('Deleted success'),
         ]);
+    }
+
+    private function buildCategoryTree($categories, $parentId = null)
+    {
+        $branch = collect();
+
+        foreach ($categories as $category) {
+            if ($category->parent_id == $parentId) {
+                $children = $this->buildCategoryTree($categories, $category->id);
+                if ($children->isNotEmpty()) {
+                    $category->children = $children;
+                }
+                $branch->push($category);
+            }
+        }
+
+        return $branch;
     }
 }
