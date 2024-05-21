@@ -9,7 +9,7 @@
         </div>
         <div class="mt-6">
             <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
-                <div class="bg-white p-4 shadow sm:rounded-lg sm:p-8">
+                <div class="bg-white px-8 pb-8 pt-0 shadow sm:rounded-lg">
                     <div class="space-y-4">
                         <form action="{{ route('admin.categories.posts.store', $category->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
@@ -17,7 +17,7 @@
                             <div class="space-y-4">
                                 <input type="hidden" name="category_id" value="{{ $category->id }}">
 
-                                <div class="flex gap-4">
+                                <div class="flex">
                                     <x-admin.forms.calendar />
                                 </div>
                                 <label class="form-control w-full">
@@ -34,7 +34,7 @@
                                         @if($errors->has('title'))
                                         <div class="text-red-500 text-sm">{{ $errors->first('title') }}</div>
                                     @endif
-                                    
+
                                 </label>
                                 <label class="form-control w-full">
                                     <div class="label">
@@ -43,7 +43,7 @@
                                     <textarea name="content" id="content" class="form-input rounded-md shadow-sm mt-1 block w-full" rows="5">{{ old('content', $post->content ?? '') }}</textarea>
 
                                 </label>
-                                <label class="form-control w-full max-w-xs">
+                                <label class="form-control w-full">
                                     <div class="label" for="tags">
                                         <span class="label-text">@lang('admin.post.tag')</span>
                                     </div>

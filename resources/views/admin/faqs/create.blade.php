@@ -9,7 +9,7 @@
         </div>
         <div class="mt-6">
             <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
-                <div class="bg-white p-4 shadow sm:rounded-lg sm:p-8">
+                <div class="bg-white px-8 pb-8 pt-0 shadow sm:rounded-lg">
                         <form action="{{ route('admin.faqs.store') }}" method="POST" class="needs-validation" novalidate>
                             @csrf
                             <div class="space-y-4">

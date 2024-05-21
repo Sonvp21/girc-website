@@ -19,7 +19,10 @@
                             <input type="hidden" name="category_id" value="{{ $category->id }}">
 
                             <div class="space-y-4">
-                                <x-admin.forms.calendar :publish_at="$post->published_at"/>
+                                <div class="flex">
+                                    <x-admin.forms.calendar :publish_at="$post->published_at"/>
+                                </div>
+
                                 <label class="form-control w-full">
                                     <div class="label">
                                         <span class="label-text">@lang('admin.post.title')</span>
@@ -38,7 +41,7 @@
                                     </div>
                                     <textarea name="content" id="content" class="form-input rounded-md shadow-sm mt-1 block w-full" rows="5">{{ old('content', $post->content) }}</textarea>
                                 </label>
-                                <label class="form-control w-full max-w-xs">
+                                <label class="form-control w-full">
                                     <div class="label">
                                         <span class="label-text">@lang('admin.post.tag')</span>
                                     </div>
