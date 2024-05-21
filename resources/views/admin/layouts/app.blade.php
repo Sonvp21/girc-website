@@ -19,7 +19,7 @@
 <body class="font-sans antialiased">
     <div class="bg-gray-100 flex min-h-screen">
         {{-- @include('admin.layouts.navigation') --}}
-        <x-admin.sidebar />
+        <x-admin.sidebar.sidebar />
         <main class="w-full bg-blue-50">
             <div class="flex h-auto bg-white p-3">
                 <button class="btn btn-square btn-ghost btn-sm">
