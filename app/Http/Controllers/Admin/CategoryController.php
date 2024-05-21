@@ -81,18 +81,27 @@ class CategoryController extends Controller
     }
 
     /**
-     * @return RedirectResponse
+     * Remove the specified category only if it has no posts.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
     {
-        // Tìm và xóa danh mục dựa trên id
         $category = Category::findOrFail($id);
+        if ($category->posts()->exists()) {
+            return back()->with([
+                'icon' => 'error',
+                'heading' => 'Failed',
+                'message' => 'Category cannot be deleted because it has posts associated with it.',
+            ]);
+        }
         $category->delete();
 
         return back()->with([
             'icon' => 'success',
             'heading' => 'Success',
-            'message' => trans('admin.alert.deleted-success'),
+            'message' => trans('Deleted success'),
         ]);
     }
 }

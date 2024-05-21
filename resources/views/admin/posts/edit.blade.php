@@ -38,6 +38,7 @@
                                     </label>
                                     <x-admin.forms.calendar :publish_at="$post->published_at" />
                                 </div>
+<<<<<<< HEAD
                                 <label class="form-control w-full">
                                         <div class="label">
                                             <span class="label-text">@lang('admin.post.title')</span>
@@ -53,6 +54,97 @@
                                 <label class="form-control w-full">
                                     <div class="label">
                                         <span class="label-text">@lang('admin.content')</span>
+=======
+                            </div>
+
+                            <div class="row mb-3">
+                                <x-input-label
+                                    for="title"
+                                    :value="__('Title')"
+                                />
+                                <input
+                                    type="text"
+                                    name="title"
+                                    placeholder="Type here"
+                                    value="{{ $post->title }}"
+                                    @class([
+                                        'input',
+                                        'input-bordered',
+                                        'input-error' => $errors->has('title'),
+                                        'w-full',
+                                        'max-w-xs',
+                                    ])
+                                />
+                            </div>
+                            <div class="row mb-3">
+                                <label for="content">@lang('admin.content')</label>
+                                <x-admin.forms.rich-text
+                                    id="content"
+                                    name="content"
+                                    model="post"
+                                    :value="$post->content"
+                                />
+                            </div>
+
+                            <link
+                                rel="stylesheet"
+                                href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css"
+                            />
+                            <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.min.js"></script>
+                            <div class="row mb-3">
+                                <label for="tags">Tags:</label>
+                                <input
+                                    type="text"
+                                    name="tags"
+                                    id="tags"
+                                    @class([
+                                        'input',
+                                        'input-bordered',
+                                        'input-error' => $errors->has('tags'),
+                                        'w-full',
+                                        'h-fit',
+                                    ])
+                                    value="{{ implode(' ', $tags) }}"
+                                />
+                            </div>
+                            <script>
+                                // Initialize Tagify on the input element
+                                var input = document.querySelector('input[name=tags]');
+                                var tagify = new Tagify(input, {
+                                    delimiters: " ", // Sử dụng dấu cách để tách các tag
+                                    pattern: /[^ ]+/ // Chỉ cho phép các ký tự không phải dấu cách
+                                });
+                        
+                                // Thêm các tag hiện tại vào Tagify khi trang tải lên
+                                var existingTags = @json($tags);
+                                tagify.addTags(existingTags);
+                        
+                                // Sử dụng phím Space để thêm tag mới
+                                tagify.on('add', function(e) {
+                                    if (e.detail.data.value.indexOf(' ') > -1) {
+                                        var splitTags = e.detail.data.value.split(' ');
+                                        splitTags.forEach(function(tag) {
+                                            tagify.addTags(tag.trim());
+                                        });
+                                        tagify.removeTag(e.detail.data.value);
+                                    }
+                                });
+                            </script>
+                            <div class="flex items-center space-x-6">
+                                <div class="shrink-0">
+                                    <img
+                                        id="preview_img"
+                                        class="h-16 w-16 rounded-full object-cover"
+                                        src="{{ $post->getFirstMedia('featured_image')->getUrl('thumb') }}"
+                                        alt="{{ $post->getFirstMedia('featured_image')->name }}"
+                                    />
+                                </div>
+                                <label class="block">
+                                    <span class="sr-only">Choose photo</span>
+                                    <div class="input input-bordered flex items-center gap-2 border px-3 py-2">
+                                        File:
+                                        <span id="selected_file_name">{{ $post->getFirstMedia('featured_image')->name }}</span>
+>>>>>>> 9c4db81 (done and show alert)
                                     </div>
                                     <textarea name="content" id="content" class="hidden" column="content">
                                         {!! $post->content !!}
