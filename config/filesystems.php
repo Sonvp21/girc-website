@@ -80,6 +80,14 @@ return [
             'throw' => false,
         ],
 
+        'department' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/department'),
+            'url' => env('APP_URL').'/storage/department',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
     ],
 
     /*

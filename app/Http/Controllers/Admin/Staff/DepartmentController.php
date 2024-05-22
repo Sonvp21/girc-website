@@ -47,6 +47,13 @@ class DepartmentController extends Controller
             ['name' => $request->name],
             $data
         );
+        if ($request->hasFile('image')) {
+            $imageFile = $request->file('image');
+            $department->addMedia($imageFile->getRealPath())
+                ->usingFileName($imageFile->getClientOriginalName())
+                ->usingName($imageFile->getClientOriginalName())
+                ->toMediaCollection('department_image');
+        }
         if ($department->wasRecentlyCreated) {
             return back()->with([
                 'icon' => 'success',
@@ -77,7 +84,14 @@ class DepartmentController extends Controller
             'name' => $request->name,
             'description' => $request->description,
         ]);
-
+        if ($request->hasFile('image')) {
+            $imageFile = $request->file('image');
+            $department->clearMediaCollection('department_image');
+            $department->addMedia($imageFile->getRealPath())
+                ->usingFileName($imageFile->getClientOriginalName())
+                ->usingName($imageFile->getClientOriginalName())
+                ->toMediaCollection('department_image');
+        }
         return redirect()->route('admin.departments.index')->with([
             'icon' => 'success',
             'message' => 'Department updated successfully',
