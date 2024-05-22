@@ -2,6 +2,7 @@
 
 return [
     'content' => 'Nội dung',
+    'dashboard' => 'Bảng điều khiển',
     'btn.cancel' => 'Huỷ',
     'btn.submit' => 'Lưu',
     'add' => 'Tạo mới',
@@ -96,6 +97,17 @@ return [
     'cooperations.name' => 'Tên Đơn vị',
     'cooperations.album_name' => 'Thuộc bộ sưu tập',
     'cooperations.link' => 'Link',
+
+    //Đội ngũ giảng viên
+    'teaching_staff' => 'Đội ngũ giảng viên',
+    'departments' => 'Phòng ban',
+    'departments.list' => 'Phòng ban',
+    'departments.name' => 'Tên phòng ban',
+    'departments.description' => 'Mô tả phòng ban',
+    'staffs' => 'Nhân viên',
+    'staffs.list' => 'Nhân viên',
+    'staffs.name' => 'Họ tên',
+    '' => '',
 
     'created_at' => 'Ngày tạo',
     'updated_at' => 'Ngày cập nhật',

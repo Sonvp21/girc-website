@@ -2,6 +2,7 @@
 
 return [
     'content' => 'Content',
+    'dashboard' => 'Dashboard',
     'btn.cancel' => 'Cancel',
     'btn.submit' => 'Submit',
     'add' => 'Add',
@@ -98,6 +99,17 @@ return [
     'videos.videoID' => 'Video ID',
     'youtube' => 'Youtube',
     'google_drive' => 'Google Drive',
+
+    ///Teaching Staff
+    'teaching_staff' => 'Teaching Staff',
+    'departments' => 'Department',
+    'departments.list' => 'Department',
+    'departments.name' => 'Department name',
+    'departments.description' => 'Description',
+    'staffs' => 'Staff',
+    'staffs.list' => 'Staff',
+    'staffs.name' => 'Staff name',
+    '' => '',
 
     // Common
     'select' => 'Select',

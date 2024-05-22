@@ -72,6 +72,14 @@ return [
             'throw' => false,
         ],
 
+        'staff' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/staff'),
+            'url' => env('APP_URL').'/storage/staff',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
     ],
 
     /*
