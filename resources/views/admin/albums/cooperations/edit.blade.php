@@ -17,24 +17,6 @@
 
                         <div class="space-y-4">
                             <label class="form-control w-full">
-                                <div class="label" for="album_id">
-                                    <span class="label-text">@lang('admin.album')</span>
-                                </div>
-                                <select name="album_id" required @class([
-                                    'input',
-                                    'input-bordered',
-                                    'input-error' => $errors->has('album_id'),
-                                    'w-full',
-                                ])>
-                                    @foreach ($albums as $album)
-                                        <option value="{{ $album->id }}"
-                                            {{ $cooperation->album_id == $album->id ? 'selected' : '' }}>
-                                            {{ $album->name }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                            </label>
-                            <label class="form-control w-full">
                                 <div class="label">
                                     <span class="label-text">@lang('admin.post.title')</span>
                                 </div>

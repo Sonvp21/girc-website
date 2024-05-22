@@ -2,6 +2,7 @@
 
 namespace App\View\Components\Website;
 
+use App\Models\Cooperation;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
@@ -21,6 +22,11 @@ class Partners extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.website.partners');
+        $cooperations = Cooperation::query()
+            ->latest()
+            ->get();
+        return view('components.website.partners', [
+            'cooperations' => $cooperations,
+        ]);
     }
 }

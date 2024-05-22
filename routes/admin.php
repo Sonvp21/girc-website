@@ -1,12 +1,12 @@
 <?php
 
-use App\Http\Controllers\Admin\Album\CooperationController;
 use App\Http\Controllers\Admin\Album\PhotoController;
 use App\Http\Controllers\Admin\Album\VideoController;
 use App\Http\Controllers\Admin\AlbumController;
 use App\Http\Controllers\Admin\AnnouncementController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Admin\CooperationController;
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\RichTextAttachmentController;
@@ -42,6 +42,7 @@ Route::middleware('auth')->group(function () {
         Route::resource('albums', AlbumController::class);
         Route::resource('photos', PhotoController::class);
         Route::resource('videos', VideoController::class);
+        
         Route::resource('cooperations', CooperationController::class);
 
         //contact

@@ -54,7 +54,6 @@
                             <tr>
                                 <th>#</th>
                                 <th>@lang('admin.cooperations.name')</th>
-                                <th>@lang('admin.cooperations.album_name')</th>
                                 <th>@lang('admin.created_at')</th>
                                 <th>@lang('admin.updated_at')</th>
                                 <th>@lang('admin.funtion')</th>
@@ -72,7 +71,6 @@
                                             {{ $cooperation->name }}
                                         </a>
                                     </td>
-                                    <td>{{ $cooperation->album->name }}</td>
                                     <td>{{ $cooperation->createddAtVi }}</td>
                                     <td>{{ $cooperation->updatedAtVi }}</td>
 

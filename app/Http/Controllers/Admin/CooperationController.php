@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Album;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CooperationRequest;
@@ -30,15 +30,12 @@ class CooperationController extends Controller
      */
     public function create(): View
     {
-        $albums = Album::query()->select('id', 'name')->get();
-
-        return view('admin.albums.cooperations.create', compact('albums'));
+        return view('admin.albums.cooperations.create');
     }
 
     public function store(CooperationRequest $request)
     {
         $cooperation = new Cooperation([
-            'album_id' => $request->album_id,
             'name' => $request->name,
             'link_website' => $request->link_website,
             'description' => $request->description,
@@ -61,16 +58,13 @@ class CooperationController extends Controller
     public function edit($id): View
     {
         $cooperation = Cooperation::findOrFail($id);
-        $albums = Album::query()->select('id', 'name')->get();
-
-        return view('admin.albums.cooperations.edit', compact('albums', 'cooperation'));
+        return view('admin.albums.cooperations.edit', compact('cooperation'));
     }
 
     public function update(Request $request, Cooperation $cooperation)
     {
 
         $cooperation->update([
-            'album_id' => $request->album_id,
             'name' => $request->name,
             'link_website' => $request->link_website,
             'description' => $request->description,
@@ -92,7 +86,6 @@ class CooperationController extends Controller
     public function destroy(Cooperation $cooperation)
     {
         $cooperation->delete();
-
         return redirect()->route('admin.cooperations.index')->with('success', 'cooperation deleted successfully.');
     }
 }

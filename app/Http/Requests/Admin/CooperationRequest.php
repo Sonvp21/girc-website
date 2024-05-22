@@ -14,7 +14,6 @@ class CooperationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'album_id' => 'required|exists:albums,id',
             'name' => 'required|string|max:255',
             'link_website' => 'required|string',
             'description' => 'required|string',
@@ -25,7 +24,6 @@ class CooperationRequest extends FormRequest
     public function messages()
     {
         return [
-            'album_id.required' => trans('admin.field.required'),
             'name.required' => trans('admin.field.required'),
             'link_website.required' => trans('admin.field.required'),
             'description.required' => trans('admin.field.required'),

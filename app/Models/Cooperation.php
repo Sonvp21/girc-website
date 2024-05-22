@@ -19,11 +19,6 @@ class Cooperation extends Model implements HasMedia
 
     protected $table = 'cooperations';
 
-    public function album()
-    {
-        return $this->belongsTo(Album::class);
-    }
-
     public function registerMediaConversions(?Media $media = null): void
     {
         $this->addMediaConversion('lg')
