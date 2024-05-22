@@ -20,6 +20,11 @@
                         class="space-y-4 needs-validation" novalidate>
                         @csrf
                         @method('PUT')
+                        @error('title')
+                            <div class="alert alert-error">
+                                {{ $message }}
+                            </div>
+                        @endif
                         <input type="hidden" name="user_id" value="{{ auth()->id() }}">
                         <label class="form-control w-full">
                             <div class="label">

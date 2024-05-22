@@ -38,11 +38,6 @@
                             </div>
                         </form>
                     </div>
-
-{{--                    @foreach ($buildCategoryTree as $category)--}}
-{{--                        <x-admin.sidebar.category :category="$category" />--}}
-{{--                    @endforeach--}}
-
                     <table class="table">
                         <!-- head -->
                         <thead>
@@ -50,6 +45,7 @@
                                 <th>#</th>
                                 <th>@lang('admin.categories.order')</th>
                                 <th>@lang('admin.categories.title')</th>
+                                <th>@lang('admin.categories.title_en')</th>
                                 <th>@lang('admin.categories.created_at')</th>
                                 <th>@lang('admin.categories.updated_at')</th>
                                 <th>@lang('admin.funtion')</th>
@@ -64,7 +60,8 @@
                                     <td>
                                         <div class="badge bg-blue-700 text-white">{{ $category->order }}</div>
                                     </td>
-                                    <td>{{ app()->getLocale() === 'en' ? $category->title_en : $category->title }}</td>
+                                    <td>{{ $category->title }}</td>
+                                    <td>{{ $category->title_en }}</td>
                                     <td>{{ $category->createddAtVi }}</td>
                                     <td>{{ $category->updatedAtVi }}</td>
 
