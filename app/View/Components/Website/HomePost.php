@@ -13,7 +13,7 @@ class HomePost extends Component
     {
         $posts = Post::query()
             ->with('category')
-            ->latest()->take(6)->get();
+            ->latest()->take(5)->get();
         $latestPost = $posts->first();
 
         return view('components.website.home-post', [

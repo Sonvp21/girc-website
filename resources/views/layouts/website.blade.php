@@ -39,7 +39,7 @@
         <x-website.menu />
         <x-website.date-time />
 
-        <main>
+        <main class="bg-[#2213390] bg-white">
             {{ $slot }}
         </main>
         <x-website.footer />

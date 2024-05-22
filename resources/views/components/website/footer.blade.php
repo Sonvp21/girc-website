@@ -1,5 +1,5 @@
-<section>
-    <div class="mx-auto mt-6 max-w-7xl px-3 sm:px-6 md:items-center lg:px-8">
+<section class="bg-[#2213390] bg-white">
+    <div class="mx-auto max-w-7xl px-3 sm:px-6 md:items-center lg:px-8">
         <div class="grid grid-cols-8 gap-4">
             <div class="col-span-8 space-y-10 ">
                 <x-website.partners />
@@ -8,7 +8,7 @@
     </div>
 </section>
 <footer class="relative">
-    <div class="relative mt-10 h-auto overflow-hidden bg-blue-700">
+    <div class="relative h-auto overflow-hidden bg-blue-700">
         <div class="absolute top-0 z-0">
             <x-website.girc-logo-svg class="absolute -top-10 z-10 size-96 text-blue-600" />
         </div>

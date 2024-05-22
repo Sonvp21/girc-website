@@ -10,7 +10,7 @@
             ></video>
         </div>
     </section>
-    <section>
+    <section class="bg-[#2213390] bg-white">
         <div class="mx-auto mt-6 max-w-7xl px-3 sm:px-6 md:items-center lg:px-8">
             <div class="grid grid-cols-8 gap-4">
                 <div class="col-span-8 space-y-10 md:col-span-6 lg:col-span-6">

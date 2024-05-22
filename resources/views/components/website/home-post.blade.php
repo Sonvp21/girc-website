@@ -20,9 +20,9 @@
                     </h2>
                 </figure>
 
-                <p class="line-clamp-6 text-justify font-roboto font-normal leading-5 text-slate-500">
+                {{-- <p class="line-clamp-6 text-justify font-roboto font-normal leading-5 text-slate-500">
                     {{ optional($latestPost)->content ? Str::limit(html_entity_decode(strip_tags($latestPost->content)), 500) : 'No content available' }}
-                </p>
+                </p> --}}
             </article>
         </a>
         <div class="col-span-5 flex flex-col justify-between md:col-span-2">
@@ -52,7 +52,7 @@
                                         </div>
                                         <figcaption class="w-full px-3 text-sm">
                                             <div class="">
-                                                <div class="hover:text-rose-600 line-clamp-3 leading-5">{{ $post->title }}</div>
+                                                <div class="hover:text-red-600 line-clamp-3 leading-5 group-hover:text-rose-600">{{ $post->title }}</div>
                                                 <div class="flex justify-between gap-2 pt-2 text-xs text-green-700">
                                                     <div class="text-xs hover:underline">{{ $post->category->title }}</div>
                                                     <div
