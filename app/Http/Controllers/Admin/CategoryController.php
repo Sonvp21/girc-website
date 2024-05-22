@@ -5,12 +5,18 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CategoryRequest;
 use App\Models\Category;
+use App\Services\CategoryService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class CategoryController extends Controller
 {
+    public function __construct(
+        public CategoryService $categoryService
+    ) {
+    }
+
     public function index(Request $request): View
     {
         $categories = Category::query()
@@ -28,14 +34,9 @@ class CategoryController extends Controller
 
     public function create(): View
     {
-        $categories = Category::query()
-            ->whereNull('parent_id')
-            ->where('in_menu', true)
-            ->orderBy('order')->get();
-
         return view('admin.categories.create',
             [
-                'categories' => $categories,
+                'categories' => $this->categoryService->cachedCategoriesForMenu(),
             ]);
     }
 
@@ -50,16 +51,12 @@ class CategoryController extends Controller
         ]);
     }
 
-    public function edit($id): View
+    public function edit(Category $category): View
     {
-        $selectedCategory = Category::findOrFail($id);
-
-        $categories = Category::query()
-            ->whereNull('parent_id')
-            ->where('in_menu', true)
-            ->orderBy('order')->get();
-
-        return view('admin.categories.edit', compact('categories', 'selectedCategory'));
+        return view('admin.categories.edit', [
+            'categories' => $this->categoryService->cachedCategoriesForMenu(),
+            'selectedCategory' => $category,
+        ]);
     }
 
     public function update(CategoryRequest $request, Category $category): RedirectResponse
@@ -72,15 +69,8 @@ class CategoryController extends Controller
         ]);
     }
 
-    /**
-     * Remove the specified category only if it has no posts.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function destroy($id)
+    public function destroy(Category $category): RedirectResponse
     {
-        $category = Category::findOrFail($id);
         if ($category->posts()->exists()) {
             return back()->with([
                 'icon' => 'error',
@@ -88,6 +78,7 @@ class CategoryController extends Controller
                 'message' => 'Category cannot be deleted because it has posts associated with it.',
             ]);
         }
+
         $category->delete();
 
         return back()->with([
