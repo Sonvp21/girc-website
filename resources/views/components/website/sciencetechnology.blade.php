@@ -1,5 +1,5 @@
 <div>
-    <h2 class="font-semibold text-green-700">@lang('web.infrastructure')</h2>
+    <h2 class="font-semibold text-green-700">@lang('web.sciencetechnology')</h2>
     {{-- <p class="mb-4 mt-3 text-4xl font-extrabold">@lang('web.infrastructure_title')</p>
     <p class="mb-6 text-slate-500">@lang('web.infrastructure_text')</p> --}}
     <ul class="grid grid-cols-4 gap-5 py-5 backdrop-blur">

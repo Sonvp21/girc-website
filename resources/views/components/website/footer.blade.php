@@ -1,3 +1,12 @@
+<section>
+    <div class="mx-auto mt-6 max-w-7xl px-3 sm:px-6 md:items-center lg:px-8">
+        <div class="grid grid-cols-8 gap-4">
+            <div class="col-span-8 space-y-10 ">
+                <x-website.partners />
+            </div>
+        </div>
+    </div>
+</section>
 <footer class="relative">
     <div class="relative mt-10 h-auto overflow-hidden bg-blue-700">
         <div class="absolute top-0 z-0">

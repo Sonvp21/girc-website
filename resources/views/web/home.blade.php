@@ -17,11 +17,15 @@
                     <x-website.home-post />
                     <x-website.education-program />
                     <x-website.staff />
+                    <x-website.sciencetechnology />
                     <x-website.infrastructure />
-                    <x-website.partners />
                 </div>
                 <div class="col-span-8 hidden space-y-3 md:col-span-2 lg:block">
                     <x-website.announcement />
+                    <x-website.digitalconvert />
+                    <x-website.inforscience />
+                    <x-website.learnspot />
+                    <x-website.activities />
                 </div>
             </div>
         </div>

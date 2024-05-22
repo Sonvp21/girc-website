@@ -30,4 +30,9 @@ return [
     'infrastructure' => 'Infrastructure',
     'infrastructure_title' => 'State-of-the-Art Facilities',
     'infrastructure_text' => 'Our campus is equipped with state-of-the-art facilities to provide students with a conducive learning environment. Our classrooms, laboratories, and research centers are all equipped with the latest technology to support teaching and research activities.',
+    'sciencetechnology' => 'Science and technology',
+    'digitalconvert' => 'Awareness of digital conversion',
+    'inforscience' => 'Information Science',
+    'learnspot' => 'Learn Spot',
+    'activities' => 'Extracurricular activities',
 ];

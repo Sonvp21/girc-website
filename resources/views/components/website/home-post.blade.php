@@ -29,7 +29,7 @@
             <div>
                 <div class="flex items-center gap-2 border-x-4 border-blue-700 bg-white px-4 py-3 font-semibold uppercase text-blue-700">
                     <x-heroicon-o-newspaper class="size-5" />
-                    <span>@lang('web.news_events')</span>
+                    <span class="text-red-500">@lang('web.news_events')</span>
                 </div>
                 <div class="mt-2 h-auto space-y-3">
                     @foreach ($posts as $post)

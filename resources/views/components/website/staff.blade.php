@@ -1,7 +1,7 @@
 <div>
     <h2 class="font-semibold text-green-700">@lang('web.staffs')</h2>
-    <p class="mb-4 mt-3 text-4xl font-extrabold">@lang('web.staffs_title')</p>
-    <p class="mb-6 text-slate-500">@lang('web.staffs_text')</p>
+    {{-- <p class="mb-4 mt-3 text-4xl font-extrabold">@lang('web.staffs_title')</p>
+    <p class="mb-6 text-slate-500">@lang('web.staffs_text')</p> --}}
     <ul class="grid grid-cols-4 gap-5 py-5 backdrop-blur">
         @foreach ($departments as $department)
             <li class="flex items-center justify-center">
