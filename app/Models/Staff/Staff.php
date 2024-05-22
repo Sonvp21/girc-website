@@ -15,6 +15,7 @@ class Staff extends Model implements HasMedia
 {
     use HasFactory;
     use InteractsWithMedia;
+
     protected $guarded = [];
 
     protected $table = 'staff';
@@ -27,6 +28,7 @@ class Staff extends Model implements HasMedia
     {
         return $this->belongsToMany(Department::class, 'staff_departments', 'staff_id', 'department_id');
     }
+
     public function registerMediaConversions(?Media $media = null): void
     {
         $this->addMediaConversion('lg')
@@ -57,12 +59,14 @@ class Staff extends Model implements HasMedia
             ->singleFile()
             ->useDisk('staff');
     }
+
     protected function updatedAtVi(): Attribute
     {
         return Attribute::make(
             get: fn () => Carbon::parse($this->updated_at)->format('d.m.Y h:i'),
         );
     }
+
     protected function createdAtVi(): Attribute
     {
         return Attribute::make(

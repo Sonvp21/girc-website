@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\Admin\Staff;
 
 use App\Http\Controllers\Controller;
-
-use App\Models\Staff\Staff;
 use App\Models\Staff\Department;
+use App\Models\Staff\Staff;
 use Illuminate\Http\Request;
 
 class StaffController extends Controller
@@ -22,6 +21,7 @@ class StaffController extends Controller
             )
             ->latest()
             ->get();
+
         return view('admin.staffs.staff.index', [
             'staffs' => $staffs,
         ]);
@@ -33,6 +33,7 @@ class StaffController extends Controller
     public function create()
     {
         $departments = Department::all();
+
         return view('admin.staffs.staff.create', compact('departments'));
     }
 
@@ -45,7 +46,7 @@ class StaffController extends Controller
             'name' => 'required|string|max:255',
             'content' => 'required|string',
             'departments' => 'required|array',
-            'departments.*' => 'exists:departments,id'
+            'departments.*' => 'exists:departments,id',
         ]);
 
         $staff = Staff::create($request->only(['name', 'content']));
@@ -57,6 +58,7 @@ class StaffController extends Controller
                 ->usingName($imageFile->getClientOriginalName())
                 ->toMediaCollection('staff_image');
         }
+
         return redirect()->route('admin.staffs.index')->with('success', 'Staff created successfully.');
     }
 
@@ -66,6 +68,7 @@ class StaffController extends Controller
     public function edit(Staff $staff)
     {
         $departments = Department::all();
+
         return view('admin.staffs.staff.edit', compact('staff', 'departments'));
     }
 
@@ -78,7 +81,7 @@ class StaffController extends Controller
             'name' => 'required|string|max:255',
             'content' => 'required|string',
             'departments' => 'required|array',
-            'departments.*' => 'exists:departments,id'
+            'departments.*' => 'exists:departments,id',
         ]);
 
         $staff->update($request->only(['name', 'content']));
@@ -91,6 +94,7 @@ class StaffController extends Controller
                 ->usingName($imageFile->getClientOriginalName())
                 ->toMediaCollection('staff_image');
         }
+
         return redirect()->route('admin.staffs.index')->with('success', 'Staff updated successfully.');
     }
 
