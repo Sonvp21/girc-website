@@ -21,11 +21,8 @@ class CategoryController extends Controller
             ->latest()
             ->get();
 
-        $buildCategoryTree = $this->buildCategoryTree($categories);
-
         return view('admin.categories.index', [
             'categories' => $categories,
-            'buildCategoryTree' => $buildCategoryTree,
         ]);
     }
 
@@ -44,32 +41,13 @@ class CategoryController extends Controller
 
     public function store(CategoryRequest $request): RedirectResponse
     {
-        $data = [
-            'title_en' => $request->title_en,
-            'parent_id' => $request->parent_id,
-            'in_menu' => $request->in_menu,
-            'user_id' => auth()->id(),
-        ];
-        if ($request->filled('order')) {
-            $data['order'] = $request->order;
-        }
-        $category = Category::updateOrCreate(
-            ['title' => $request->title],
-            $data
-        );
-        if ($category->wasRecentlyCreated) {
-            return back()->with([
-                'icon' => 'success',
-                'heading' => 'Success',
-                'message' => 'Category created successfully',
-            ]);
-        } else {
-            return back()->with([
-                'icon' => 'info',
-                'heading' => 'Updated',
-                'message' => 'Category updated successfully',
-            ]);
-        }
+        $category = Category::create($request->all());
+
+        return back()->with([
+            'icon' => 'success',
+            'heading' => 'Success',
+            'message' => 'Category created successfully',
+        ]);
     }
 
     public function edit($id): View
@@ -84,31 +62,9 @@ class CategoryController extends Controller
         return view('admin.categories.edit', compact('categories', 'selectedCategory'));
     }
 
-    private function renderCategoryOptions($categories, $level = 0)
+    public function update(CategoryRequest $request, Category $category): RedirectResponse
     {
-        $html = '';
-        foreach ($categories as $category) {
-            $indentClass = 'level-'.$level;
-            $html .= '<option class="'.$indentClass.'" value="'.$category->id.'">'.htmlspecialchars($category->name).'</option>';
-            if ($category->recursiveChildren->isNotEmpty()) {
-                $html .= $this->renderCategoryOptions($category->recursiveChildren, $level + 1);
-            }
-        }
-
-        return $html;
-    }
-
-    public function update(CategoryRequest $request, $id): RedirectResponse
-    {
-        $category = Category::findOrFail($id);
-
-        $category->update([
-            'order' => $request->order,
-            'title' => $request->title,
-            'title_en' => $request->title_en,
-            'parent_id' => $request->parent_id ?: null,
-            'in_menu' => $request->in_menu,
-        ]);
+        $category->update($request->all());
 
         return redirect()->route('admin.categories.index')->with([
             'icon' => 'success',
@@ -139,22 +95,5 @@ class CategoryController extends Controller
             'heading' => 'Success',
             'message' => trans('Deleted success'),
         ]);
-    }
-
-    private function buildCategoryTree($categories, $parentId = null)
-    {
-        $branch = collect();
-
-        foreach ($categories as $category) {
-            if ($category->parent_id == $parentId) {
-                $children = $this->buildCategoryTree($categories, $category->id);
-                if ($children->isNotEmpty()) {
-                    $category->children = $children;
-                }
-                $branch->push($category);
-            }
-        }
-
-        return $branch;
     }
 }

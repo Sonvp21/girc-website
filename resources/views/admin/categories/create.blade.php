@@ -18,6 +18,7 @@
                 <div class="bg-white px-8 pb-8 pt-0 shadow sm:rounded-lg">
                     <form action="{{ route('admin.categories.store') }}" method="POST" class="space-y-4 needs-validation" novalidate>
                         @csrf
+                        <input type="hidden" name="user_id" value="{{ auth()->id() }}">
                         <label class="form-control w-full">
                             <div class="label">
                                 <span class="label-text">@lang('admin.categories.title')</span>
@@ -28,7 +29,9 @@
                                     'input-bordered',
                                     'input-error' => $errors->has('title'),
                                     'w-full',
-                                ]) />
+                                ])
+                                value="{{ old('title') }}"
+                            />
                         </label>
                         <label class="form-control w-full">
                             <div class="label">
@@ -40,7 +43,9 @@
                                     'input-bordered',
                                     'input-error' => $errors->has('title_en'),
                                     'w-full',
-                                ]) />
+                                ])
+                                value="{{ old('title_en') }}"
+                            />
                         </label>
                         <label class="form-control w-full">
                             <div class="label">
@@ -67,8 +72,8 @@
                                 'input-bordered',
                                 'w-full',
                             ])>
-                                <option value="0">@lang('admin.false')</option>
-                                <option value="1">@lang('admin.true')</option>
+                                <option @selected(old('in_menu') == 0) value="0">@lang('admin.false')</option>
+                                <option @selected(old('in_menu') == 1) value="1">@lang('admin.true')</option>
                             </select>
                         </label>
                         <div class="flex justify-end gap-4">
@@ -80,7 +85,6 @@
                             </button>
                         </div>
                     </form>
-
                 </div>
             </div>
         </div>

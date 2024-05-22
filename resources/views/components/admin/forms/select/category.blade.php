@@ -5,7 +5,7 @@
     $space = str_repeat('&nbsp;', $level * 3);
 @endphp
 
-<option @selected($category->id === $selectedCategory?->parent_id ) value="{{ $category->id }}">
+<option @selected(in_array($category->id, [$selectedCategory?->parent_id, old('parent_id')]) ) value="{{ $category->id }}">
     {!! $space !!}{{ app()->getLocale() === 'en' ? $category->title_en : $category->title }}
 </option>
 

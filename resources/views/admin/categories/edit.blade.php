@@ -20,7 +20,7 @@
                         class="space-y-4 needs-validation" novalidate>
                         @csrf
                         @method('PUT')
-
+                        <input type="hidden" name="user_id" value="{{ auth()->id() }}">
                         <label class="form-control w-full">
                             <div class="label">
                                 <span class="label-text">@lang('admin.categories.order')</span>
