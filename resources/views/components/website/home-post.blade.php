@@ -1,29 +1,27 @@
 <div>
     <div class="grid h-auto grid-cols-5 gap-2">
-        <a
-            href="{{ route('news.show', $latestPost) }}"
-            class="group col-span-5 flex md:col-span-3"
-        >
+        <a href="{{ $latestPost ? route('news.show', ['post' => $latestPost->slug]) : '#' }}" class="group col-span-5 flex md:col-span-3">
+
             <article>
                 <figure>
                     <div class="relative overflow-hidden bg-red-500">
                         <img
-                            class="h-auto w-full transition-all group-hover:scale-110"
-                            src="{{ $latestPost->getFirstMedia('featured_image')->getUrl('lg') }}"
-                            alt=""
-                        />
+                        class="h-auto w-full transition-all group-hover:scale-110"
+                        src="{{ $latestPost && $latestPost->hasMedia('featured_image') ? $latestPost->getFirstMedia('featured_image')->getUrl('lg') : 'default-image-path.jpg' }}"
+                        alt="{{ $latestPost && $latestPost->hasMedia('featured_image') ? $latestPost->getFirstMedia('featured_image')->name : 'Default Image' }}"
+                    />                    
                         <div class="absolute bottom-0 right-0 flex w-fit items-center gap-2 bg-blue-700 p-2 text-xs text-white">
                             <x-heroicon-m-calendar class="size-4" />
-                            <span>{{ $latestPost->published_post_date }}</span>
+                            <span>{{ optional($latestPost)->published_post_date ?? 'No date available' }}</span>
                         </div>
                     </div>
                     <h2 class="line-clamp-2 h-20 py-2 text-justify font-roboto text-xl font-extrabold tracking-tight text-blue-700 group-hover:text-blue-800">
-                        {{ $latestPost->title }}
+                        {{ optional($latestPost)->title ?? 'No Title Available' }}
                     </h2>
                 </figure>
 
                 <p class="line-clamp-6 text-justify font-roboto font-normal leading-5 text-slate-500">
-                    {{ Str::limit(html_entity_decode(strip_tags($latestPost->content)), 500) }}
+                    {{ optional($latestPost)->content ? Str::limit(html_entity_decode(strip_tags($latestPost->content)), 500) : 'No content available' }}
                 </p>
             </article>
         </a>
