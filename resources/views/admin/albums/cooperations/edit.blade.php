@@ -71,7 +71,7 @@
                                         value="{{ $cooperation->getFirstMedia('album_cooperation')->getUrl('thumb') }}" />
                                 </label>
                             </div>
-                            
+
                         </div>
                         <div class="flex justify-end gap-4">
                             <a href="{{ route('admin.cooperations.index') }}" class="btn-light btn">@lang('admin.btn.cancel')
@@ -86,7 +86,7 @@
         </div>
     </div>
     @pushonce('bottom_scripts')
-        <x-admin.forms.tinymce-config column="description" />
+        <x-admin.forms.tinymce-config column="description" model="Cooperation"/>
         <script>
             var loadFile = function(event) {
                 var input = event.target

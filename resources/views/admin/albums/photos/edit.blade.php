@@ -86,7 +86,7 @@
         </div>
     </div>
     @pushonce('bottom_scripts')
-        <x-admin.forms.tinymce-config column="content"/>
+        <x-admin.forms.tinymce-config column="content" model="Photo"/>
         <script>
             var loadFile = function(event) {
                 var input = event.target

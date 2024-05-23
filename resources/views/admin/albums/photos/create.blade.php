@@ -31,7 +31,7 @@
                                     <option value="{{ $album->id }}" {{ old('album_id') == $album->id ? 'selected' : '' }}>{{ $album->name }}</option>
                                 @endforeach
                             </select>
-                        </label>                        
+                        </label>
                         <label class="form-control w-full">
                                     <div class="label">
                                         <span class="label-text">@lang('admin.post.title')</span>
@@ -77,7 +77,7 @@
         </div>
     </div>
     @pushonce('bottom_scripts')
-        <x-admin.forms.tinymce-config column="content"/>
+        <x-admin.forms.tinymce-config column="content" model="Photo"/>
         <script>
             var loadFile = function(event) {
                 var input = event.target

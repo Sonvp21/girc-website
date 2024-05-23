@@ -55,6 +55,6 @@
         </div>
     </div>
     @pushonce('bottom_scripts')
-        <x-admin.forms.tinymce-config column="content"/>
+        <x-admin.forms.tinymce-config column="content" model="Announcement"/>
     @endpushonce
 </x-app-layout>
