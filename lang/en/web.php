@@ -38,4 +38,11 @@ return [
     'science_information' => 'Science Information',
     'science_technology' => 'Science & Technology',
     'cooperation' => 'Cooperation',
+    'study_space' => 'Study Space',
+    'extra_curricular_activities' => 'Extra-curricular Activities',
+    'address' => 'Address',
+    'phone_number' => 'Phone Number',
+    'email' => 'Email',
+    'website' => 'Website',
+    'tuaf_address' => 'Thai Nguyen University of Agriculture and Forestry, Phu Do, Dai Tu, Thai Nguyen',
 ];

@@ -38,4 +38,11 @@ return [
     'science_information' => 'Thông tin khoa học',
     'science_technology' => 'Khoa học & Công nghệ',
     'cooperation' => 'Quan hệ hợp tác',
+    'study_space' => 'Góc học tập',
+    'extra_curricular_activities' => 'Hoạt động ngoại khóa',
+    'address' => 'Địa chỉ',
+    'phone_number' => 'Điện thoại',
+    'email' => 'Email',
+    'website' => 'Trang web',
+    'tuaf_address' => 'Đường Mỏ Bạch, Thành phố Thái Nguyên',
 ];

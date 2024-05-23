@@ -1,4 +1,4 @@
-<div class="sticky top-12 z-10 bg-gray-100">
+<div class="sticky top-12 z-30 bg-gray-200/60 backdrop-blur">
     <div class="items-left mx-auto flex h-10 max-w-7xl flex-row justify-between px-3 sm:px-6 lg:px-8">
         <div class="flex items-center gap-4 text-blue-800">
             <svg class="h-5 w-auto" fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="800" height="712" viewBox="0 0 600 534">
