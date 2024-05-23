@@ -7,6 +7,7 @@
                 @lang('admin.edit')
             </span>
         </div>
+        <x-admin.alerts.error />
         <div class="mt-6">
             <div class="overflow-hidden bg-white p-6 sm:rounded-lg">
                 <form
@@ -16,6 +17,8 @@
                     novalidate>
                         @csrf
                         @method('patch')
+
+                        <input type="hidden" name="user_id" value="{{ auth()->id() }}">
                         <label class="form-control w-full">
                             <div class="label">
                                 <span class="label-text">@lang('admin.albums.name')</span>

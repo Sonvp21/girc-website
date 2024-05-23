@@ -7,7 +7,9 @@
                 @lang('admin.contacts.show')
             </span>
         </div>
+        <x-admin.alerts.error />
         <div class="mt-6">
+            <input type="hidden" name="user_id" value="{{ auth()->id() }}">
             <a
                 href="{{ route('admin.contacts.index') }}"
                 class="bg-gray-300 text-gray-700 hover:bg-gray-400 active:bg-gray-500 focus:border-gray-500 focus:ring-gray-300 inline-flex items-center rounded-md px-4 py-2 text-xs font-semibold uppercase tracking-widest transition focus:outline-none focus:ring disabled:opacity-25"

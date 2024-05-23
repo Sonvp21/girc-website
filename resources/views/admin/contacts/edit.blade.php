@@ -7,6 +7,7 @@
                 @lang('admin.edit')
             </span>
         </div>
+        <x-admin.alerts.error />
         <div class="mt-6">
             <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                 <div class="bg-white px-8 pb-8 pt-0 shadow sm:rounded-lg">
@@ -14,6 +15,8 @@
                         class="space-y-4 needs-validation" novalidate>
                         @csrf
                         @method('patch')
+
+                        <input type="hidden" name="user_id" value="{{ auth()->id() }}">
                         <label class="form-control w-full">
                             <div class="label">
                                 <span class="label-text">@lang('admin.contacts.name')</span>

@@ -7,17 +7,19 @@
                 @lang('admin.add')
             </span>
         </div>
+        <x-admin.alerts.error />
         <div class="mt-6">
             <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                 <div class="bg-white px-8 pb-8 pt-0 shadow sm:rounded-lg">
                     <form action="{{ route('admin.contacts.store') }}" method="POST" class="space-y-4 needs-validation"
                         novalidate>
                         @csrf
+                        <input type="hidden" name="user_id" value="{{ auth()->id() }}">
                         <label class="form-control w-full">
                             <div class="label">
                                 <span class="label-text">@lang('admin.contacts.name')</span>
                             </div>
-                            <input type="text" name="name" placeholder="Put name"
+                            <input type="text" name="name" value="{{ old('name') }}" placeholder="Put name"
                                 @class([
                                     'input',
                                     'input-bordered',
@@ -29,7 +31,7 @@
                             <div class="label">
                                 <span class="label-text">@lang('admin.contacts.email')</span>
                             </div>
-                            <input type="text" name="email" placeholder="email..."
+                            <input type="email" name="email" value="{{ old('email') }}" placeholder="email..."
                                 @class([
                                     'input',
                                     'input-bordered',
@@ -41,7 +43,7 @@
                             <div class="label">
                                 <span class="label-text">@lang('admin.contacts.phone')</span>
                             </div>
-                            <input type="text" name="phone" placeholder="0987...."
+                            <input type="number" name="phone" value="{{ old('phone') }}" placeholder="0987...."
                                 @class([
                                     'input',
                                     'input-bordered',

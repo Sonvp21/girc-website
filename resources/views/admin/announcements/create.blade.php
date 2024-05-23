@@ -7,6 +7,7 @@
                 @lang('admin.add')
             </span>
         </div>
+        <x-admin.alerts.error />
         <div class="mt-6">
             <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                 <div class="bg-white px-8 pb-8 pt-0 shadow sm:rounded-lg">
@@ -14,12 +15,14 @@
                           method="POST" class="space-y-4 needs-validation"
                         novalidate enctype="multipart/form-data">
                         @csrf
+
+                        <input type="hidden" name="user_id" value="{{ auth()->id() }}">
                         <div class="flex gap-4">
                             <label class="form-control w-full">
                                 <span class="label">
                                     <span class="label-text">@lang('admin.post.title')</span>
                                 </span>
-                                <input type="text" name="title" placeholder="title" @class([
+                                <input type="text" name="title" value="{{ old('title') }}" placeholder="title" @class([
                                     'input',
                                     'input-bordered',
                                     'input-error' => $errors->has('title'),

@@ -7,6 +7,7 @@
                 @lang('admin.add')
             </span>
         </div>
+        <x-admin.alerts.error />
         <div class="mt-6">
             <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                 <div class="bg-white px-8 pb-8 pt-0 shadow sm:rounded-lg">
@@ -14,6 +15,7 @@
                         <form action="{{ route('admin.categories.posts.store', $category->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
 
+                            <input type="hidden" name="user_id" value="{{ auth()->id() }}">
                             <div class="space-y-4">
                                 <input type="hidden" name="category_id" value="{{ $category->id }}">
 
@@ -77,16 +79,6 @@
                                 </div>
                             </div>
                         </form>
-                        @if ($errors->any())
-                            <div class="alert alert-danger">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
-
                     </div>
                 </div>
             </div>

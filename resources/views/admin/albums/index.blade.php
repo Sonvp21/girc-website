@@ -3,6 +3,7 @@
         <h2 class="text-gray-800 text-normal font-semibold leading-tight">
             @lang('admin.album')
         </h2>
+        <x-admin.alerts.success />
         <div class="mt-6">
             <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                 <div class="overflow-x-auto">
@@ -61,7 +62,7 @@
                                 <tr>
                                     <th>{{ $albums->firstItem() + $loop->index }}</th>
                                     <td>{{ $album->name }}</td>
-                                    <td>{{ $album->createddAtVi }}</td>
+                                    <td>{{ $album->createdAtVi }}</td>
                                     <td>{{ $album->updatedAtVi }}</td>
 
                                     <td class="flex gap-3">

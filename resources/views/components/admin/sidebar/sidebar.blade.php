@@ -34,8 +34,8 @@
                 </li>
 
                 <li>
-                    <details @if (request()->routeIs('admin.albums.*', 'admin.photos.*', 'admin.videos.*', 'admin.cooperations.*')) open @endif
-                        class="{{ request()->routeIs('admin.albums.*', 'admin.photos.*', 'admin.videos.*', 'admin.cooperations.*') ? 'open' : '' }}">
+                    <details @if (request()->routeIs('admin.albums.*', 'admin.photos.*', 'admin.videos.*')) open @endif
+                        class="{{ request()->routeIs('admin.albums.*', 'admin.photos.*', 'admin.videos.*') ? 'open' : '' }}">
                         <summary>@lang('admin.album')</summary>
                         <ul>
                             <li>
@@ -56,12 +56,7 @@
                                     @lang('admin.videos.all')
                                 </a>
                             </li>
-                            <li>
-                                <a class="{{ request()->routeIs('admin.cooperations.*') ? 'active' : '' }}"
-                                    href="{{ route('admin.cooperations.index') }}">
-                                    @lang('admin.cooperations.all')
-                                </a>
-                            </li>
+                            
                         </ul>
                     </details>
                 </li>
@@ -84,6 +79,12 @@
                             </li>
                         </ul>
                     </details>
+                </li>
+                <li>
+                    <a class="{{ request()->routeIs('admin.cooperations.*') ? 'active' : '' }}"
+                        href="{{ route('admin.cooperations.index') }}">
+                        @lang('admin.cooperations.all')
+                    </a>
                 </li>
                 <li>
                     <a @class([

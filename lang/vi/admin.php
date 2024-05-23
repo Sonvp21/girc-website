@@ -113,4 +113,12 @@ return [
     'updated_at' => 'Ngày cập nhật',
     'publish_at' => 'Ngày đăng',
 
+    'alerts' => [
+        'success' => [
+            'create' =>'Thêm mới thành công',
+            'edit' =>'Cập nhật thành công',
+            'deleted' => 'Xoá thành công',
+        ],
+    ],
+
 ];

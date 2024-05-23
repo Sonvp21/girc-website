@@ -5,12 +5,7 @@
                 @lang('admin.departments.list')
             </span>
         </div>
-        @if (session('icon') && session('heading') && session('message'))
-        <div class="alert alert-{{ session('icon') === 'success' ? 'success' : 'danger' }}" role="alert">
-            <strong>{{ session('heading') }}:</strong>
-            {{ session('message') }}
-        </div>
-    @endif
+        <x-admin.alerts.success />
         <div class="mt-6">
             <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                 <div class="overflow-x-auto">
@@ -19,9 +14,8 @@
                             <div class="flex items-center justify-between">
                                 <div class="flex items-center">
                                     <label class="input input-bordered flex items-center gap-2">
-                                        <input name="search" type="text" class="grow"
-                                            placeholder="Search by name" style="border: unset"
-                                            value="{{ request()->search }}" />
+                                        <input name="search" type="text" class="grow" placeholder="Search by name"
+                                            style="border: unset" value="{{ request()->search }}" />
                                         <button type="submit">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"
                                                 fill="currentColor" class="h-4 w-4 opacity-70">
@@ -72,22 +66,13 @@
                                                 <x-heroicon-o-trash class="size-4 text-red-500" />
                                             </button>
                                         </form>
-
-                                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
                                         <script>
-                                            $(document).ready(function() {
-                                                setTimeout(function() {
-                                                    $(".alert").fadeOut(2000);
-                                                }, 3000); // thông báo sẽ ẩn sau 3 giây
-                                            });
-
-                                            function confirmDelete(categoryId) {
-                                                if (confirm('Are you sure you want to delete this category?')) {
-                                                    document.getElementById('delete-form-' + categoryId).submit();
+                                            function confirmDelete(departmentId) {
+                                                if (confirm('Are you sure you want to delete this department?')) {
+                                                    document.getElementById('delete-form-' + departmentId).submit()
                                                 }
                                             }
                                         </script>
-
                                     </td>
                                 </tr>
                             @endforeach
