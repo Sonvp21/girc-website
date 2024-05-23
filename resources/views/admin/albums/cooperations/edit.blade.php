@@ -7,6 +7,8 @@
                 @lang('admin.edit')
             </span>
         </div>
+        <x-admin.alerts.error />
+
         <div class="mt-6">
             <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                 <div class="bg-white px-8 pb-8 pt-0 shadow sm:rounded-lg">
@@ -15,31 +17,13 @@
                         @csrf
                         @method('patch')
 
+                        <input type="hidden" name="user_id" value="{{ auth()->id() }}">
                         <div class="space-y-4">
-                            <label class="form-control w-full">
-                                <div class="label" for="album_id">
-                                    <span class="label-text">@lang('admin.album')</span>
-                                </div>
-                                <select name="album_id" required @class([
-                                    'input',
-                                    'input-bordered',
-                                    'input-error' => $errors->has('album_id'),
-                                    'w-full',
-                                ])>
-                                    @foreach ($albums as $album)
-                                        <option value="{{ $album->id }}"
-                                            {{ $cooperation->album_id == $album->id ? 'selected' : '' }}>
-                                            {{ $album->name }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                            </label>
                             <label class="form-control w-full">
                                 <div class="label">
                                     <span class="label-text">@lang('admin.post.title')</span>
                                 </div>
-                                <input type="text" name="name"
-                                    value="{{ old('name', $cooperation->name) }}"
+                                <input type="text" name="name" value="{{ old('name', $cooperation->name) }}"
                                     placeholder="title cooperation..." @class([
                                         'input',
                                         'input-bordered',
@@ -48,18 +32,18 @@
                                     ]) />
                             </label>
                             <label class="form-control w-full">
-                                    <div class="label">
-                                        <span class="label-text">@lang('admin.cooperations.link')</span>
-                                    </div>
-                                    <input type="text" name="link_website"
-                                        value="{{ old('link_website', $cooperation->link_website) }}"
-                                        placeholder="link website..." @class([
-                                            'input',
-                                            'input-bordered',
-                                            'input-error' => $errors->has('link_website'),
-                                            'w-full',
-                                        ]) />
-                                </label>
+                                <div class="label">
+                                    <span class="label-text">@lang('admin.cooperations.link')</span>
+                                </div>
+                                <input type="text" name="link_website"
+                                    value="{{ old('link_website', $cooperation->link_website) }}"
+                                    placeholder="link website..." @class([
+                                        'input',
+                                        'input-bordered',
+                                        'input-error' => $errors->has('link_website'),
+                                        'w-full',
+                                    ]) />
+                            </label>
                             <label class="form-control w-full">
                                 <div class="label">
                                     <span class="label-text">@lang('admin.description')</span>
@@ -84,30 +68,13 @@
                                     </div>
 
                                     <input class="hidden" type="file" name="image" onchange="loadFile(event)"
-                                        class="file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100 block w-full text-sm text-slate-500 file:mr-4 file:rounded-full file:border-0 file:px-4 file:py-2 file:text-sm file:font-semibold" />
+                                        value="{{ $cooperation->getFirstMedia('album_cooperation')->getUrl('thumb') }}" />
                                 </label>
                             </div>
-                            <script>
-                                var loadFile = function(event) {
-                                    var input = event.target
-                                    var file = input.files[0]
-                                    var type = file.type
-
-                                    var output = document.getElementById('preview_img')
-                                    var fileNameSpan = document.getElementById('selected_file_name')
-
-                                    output.src = URL.createObjectURL(event.target.files[0])
-                                    output.onload = function() {
-                                        URL.revokeObjectURL(output.src) // free memory
-                                    }
-
-                                    fileNameSpan.innerText = file.name
-                                }
-                            </script>
+                            
                         </div>
                         <div class="flex justify-end gap-4">
-                            <a href="{{ route('admin.cooperations.index') }}"
-                                class="btn-light btn">@lang('admin.btn.cancel')
+                            <a href="{{ route('admin.cooperations.index') }}" class="btn-light btn">@lang('admin.btn.cancel')
                             </a>
                             <button type="submit" class="btn btn-success">
                                 @lang('admin.btn.submit')
@@ -119,6 +86,23 @@
         </div>
     </div>
     @pushonce('bottom_scripts')
-        <x-admin.forms.tinymce-config column="description"/>
+        <x-admin.forms.tinymce-config column="description" />
+        <script>
+            var loadFile = function(event) {
+                var input = event.target
+                var file = input.files[0]
+                var type = file.type
+
+                var output = document.getElementById('preview_img')
+                var fileNameSpan = document.getElementById('selected_file_name')
+
+                output.src = URL.createObjectURL(event.target.files[0])
+                output.onload = function() {
+                    URL.revokeObjectURL(output.src) // free memory
+                }
+
+                fileNameSpan.innerText = file.name
+            }
+        </script>
     @endpushonce
 </x-app-layout>
