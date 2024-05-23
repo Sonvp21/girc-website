@@ -20,8 +20,8 @@ class Photo extends Model implements HasMedia
         'album_id',
         'name',
         'content',
-        ];
-        
+    ];
+
     protected $table = 'photos';
 
     public function album(): BelongsTo

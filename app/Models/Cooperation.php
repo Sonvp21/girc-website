@@ -19,7 +19,7 @@ class Cooperation extends Model implements HasMedia
         'name',
         'link_website',
         'description',
-        ];
+    ];
 
     protected $table = 'cooperations';
 

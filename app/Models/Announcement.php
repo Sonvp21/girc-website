@@ -37,5 +37,4 @@ class Announcement extends Model
             get: fn () => Carbon::parse($this->updated_at)->format('d.m.Y h:i'),
         );
     }
-
 }

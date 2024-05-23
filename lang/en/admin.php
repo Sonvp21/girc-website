@@ -129,14 +129,14 @@ return [
 
     'alerts' => [
         'success' => [
-            'create' =>'Submittion Successful',
-            'edit' =>'Updated Successful',
+            'create' => 'Submittion Successful',
+            'edit' => 'Updated Successful',
             'deleted' => 'Deleted successfully',
         ],
     ],
 
     'field' => [
-        'required' => [        
+        'required' => [
             'name' => 'Please put name',
             'album_id' => 'Please select album',
             'content' => 'Please enter content',
@@ -152,7 +152,7 @@ return [
             'address' => 'Please enter address',
             'question' => 'Please enter question',
         ],
-        'unique' => [        
+        'unique' => [
             'name' => 'The name has, please enter another name',
             'title' => 'Duplicate title',
         ],

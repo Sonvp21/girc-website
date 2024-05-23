@@ -42,7 +42,7 @@ class PhotoController extends Controller
     public function store(PhotoRequest $request): RedirectResponse
     {
         $request->validate([
-            'image' => 'required'
+            'image' => 'required',
         ]);
         $photo = Photo::create($request->all());
 

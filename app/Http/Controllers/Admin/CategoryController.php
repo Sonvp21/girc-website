@@ -65,7 +65,7 @@ class CategoryController extends Controller
     public function destroy(Category $category): RedirectResponse
     {
         if ($category->posts()->exists()) {
-            return back()->with( 'success', 'Category cannot be deleted because it has posts associated with it.',
+            return back()->with('success', 'Category cannot be deleted because it has posts associated with it.',
             );
         }
         $category->delete();

@@ -36,16 +36,17 @@ class StaffController extends Controller
     public function create(): View
     {
         $departments = Department::all();
+
         return view('admin.staffs.staff.create', compact('departments'));
     }
 
     public function store(StaffRequest $request): RedirectResponse
     {
         $request->validate([
-            'image' => 'required'
+            'image' => 'required',
         ]);
         $staff = Staff::create($request->all());
-        
+
         $staff->departments()->attach($request->departments);
         if ($request->hasFile('image')) {
             $imageFile = $request->file('image');
@@ -76,7 +77,7 @@ class StaffController extends Controller
         $staff->update($request->all());
 
         $staff->departments()->sync($request->departments);
-        
+
         if ($request->hasFile('image')) {
             $imageFile = $request->file('image');
             $staff->clearMediaCollection('staff_image');

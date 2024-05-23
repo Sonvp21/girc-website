@@ -15,8 +15,10 @@ class Post extends Model implements HasMedia
 {
     use HasFactory;
     use InteractsWithMedia;
+
     protected $table = 'posts';
-    protected $fillable = ['user_id', 'category_id','title', 'slug', 'content','published_at'];
+
+    protected $fillable = ['user_id', 'category_id', 'title', 'slug', 'content', 'published_at'];
 
     protected $casts = [
         'published_at' => 'datetime:Y-m-d H:i:s',
@@ -89,7 +91,7 @@ class Post extends Model implements HasMedia
     * ACCESSOR & MUTATOR
     * -------------------------------------------------------------------------------------
     */
-    public function  publishedAtVi(): Attribute
+    public function publishedAtVi(): Attribute
     {
         return Attribute::make(
             get: fn () => Carbon::parse($this->published_at)->translatedFormat('l, d/m/Y'),

@@ -36,7 +36,7 @@ class PostController extends Controller
     public function store(PostRequest $request): RedirectResponse
     {
         $request->validate([
-            'image' => 'required'
+            'image' => 'required',
         ]);
         $post = Post::create($request->all());
 

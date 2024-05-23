@@ -32,7 +32,7 @@ class CooperationController extends Controller
     public function store(CooperationRequest $request): RedirectResponse
     {
         $request->validate([
-            'image' => 'required'
+            'image' => 'required',
         ]);
         $cooperation = Cooperation::create($request->all());
 
@@ -65,12 +65,14 @@ class CooperationController extends Controller
                 ->usingName($request->image->getClientOriginalName())
                 ->toMediaCollection('album_cooperation');
         }
+
         return redirect()->route('admin.cooperations.index')->with('success', trans('admin.alerts.success.edit'));
     }
 
     public function destroy(Cooperation $cooperation): RedirectResponse
     {
         $cooperation->delete();
+
         return redirect()->route('admin.cooperations.index')->with('success', trans('admin.alerts.success.deleted'));
     }
 }

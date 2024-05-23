@@ -42,10 +42,10 @@ class VideoController extends Controller
     public function store(VideoRequest $request): RedirectResponse
     {
         $request->validate([
-            'image' => 'required'
+            'image' => 'required',
         ]);
         $video = Video::create($request->all());
-        
+
         if ($request->hasFile('image')) {
             $imageFile = $request->file('image');
             $video->addMediaFromRequest('image')
@@ -89,9 +89,6 @@ class VideoController extends Controller
         return redirect()->route('admin.videos.index')->with('success', trans('admin.alerts.success.edit'));
     }
 
-    /**
-     * @return RedirectResponse
-     */
     public function destroy(Video $video): RedirectResponse
     {
         $video->delete();

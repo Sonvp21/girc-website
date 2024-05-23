@@ -25,7 +25,7 @@ class Staff extends Model implements HasMedia
         'content' => AsRichTextContent::class,
     ];
 
-    public function departments():BelongsToMany
+    public function departments(): BelongsToMany
     {
         return $this->belongsToMany(Department::class, 'staff_departments', 'staff_id', 'department_id');
     }

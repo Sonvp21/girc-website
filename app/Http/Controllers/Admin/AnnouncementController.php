@@ -49,8 +49,9 @@ class AnnouncementController extends Controller
     public function update(Announcement $announcement, Request $request): RedirectResponse
     {
         $announcement->update($request->all());
+
         return redirect()->route('admin.announcements.index')->with('success', trans('admin.alerts.success.edit'));
-        
+
     }
 
     public function destroy(Announcement $announcement)

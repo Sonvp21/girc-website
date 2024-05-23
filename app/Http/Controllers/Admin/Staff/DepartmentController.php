@@ -30,6 +30,7 @@ class DepartmentController extends Controller
     {
         $departments = Department::query()
             ->get();
+
         return view('admin.staffs.departments.create',
             [
                 'departments' => $departments,

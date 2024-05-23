@@ -33,7 +33,7 @@ class FaqController extends Controller
     {
         $faq = Faq::create($request->all());
 
-        return redirect()->route('admin.faqs.index',compact('faq'))->with('success', trans('admin.alerts.success.create'));
+        return redirect()->route('admin.faqs.index', compact('faq'))->with('success', trans('admin.alerts.success.create'));
     }
 
     /**
