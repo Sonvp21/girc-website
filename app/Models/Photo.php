@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Carbon;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
@@ -15,11 +16,15 @@ class Photo extends Model implements HasMedia
     use HasFactory;
     use InteractsWithMedia;
 
-    protected $guarded = [];
-
+    protected $fillable = [
+        'album_id',
+        'name',
+        'content',
+        ];
+        
     protected $table = 'photos';
 
-    public function album()
+    public function album(): BelongsTo
     {
         return $this->belongsTo(Album::class);
     }
@@ -52,7 +57,7 @@ class Photo extends Model implements HasMedia
             ->useDisk('album');
     }
 
-    protected function createddAtVi(): Attribute
+    protected function createdAtVi(): Attribute
     {
         return Attribute::make(
             get: fn () => Carbon::parse($this->created_at)->format('d.m.Y h:i'),

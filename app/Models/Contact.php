@@ -13,7 +13,7 @@ class Contact extends Model
 
     protected $table = 'contacts';
 
-    protected $guarded = [];
+    protected $fillable = ['name', 'content','email','phone', 'read_at'];
 
     protected function createdAtVi(): Attribute
     {

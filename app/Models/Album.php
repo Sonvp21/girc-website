@@ -6,6 +6,7 @@ use App\Enums\AlbumTypeEnum;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
 
 class Album extends Model
@@ -20,17 +21,17 @@ class Album extends Model
         'type' => AlbumTypeEnum::class,
     ];
 
-    public function photos()
+    public function photos(): HasMany
     {
         return $this->hasMany(Photo::class);
     }
 
-    public function videos()
+    public function videos(): HasMany
     {
         return $this->hasMany(Video::class);
     }
 
-    protected function createddAtVi(): Attribute
+    protected function createdAtVi(): Attribute
     {
         return Attribute::make(
             get: fn () => Carbon::parse($this->created_at)->format('d.m.Y h:i'),

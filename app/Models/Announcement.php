@@ -24,9 +24,11 @@ class Announcement extends Model
         return $query->whereDate('published_at', '<=', now());
     }
 
-    public function getPublishedAtViAttribute()
+    public function publishedAtVi(): Attribute
     {
-        return ucfirst(Carbon::parse($this->published_at)->translatedFormat('l, d/m/Y'));
+        return Attribute::make(
+            get: fn () => Carbon::parse($this->published_at)->translatedFormat('l, d/m/Y'),
+        );
     }
 
     protected function updatedAtVi(): Attribute
@@ -36,10 +38,4 @@ class Announcement extends Model
         );
     }
 
-    protected function publishedAt(): Attribute
-    {
-        return Attribute::make(
-            set: fn ($value) => Carbon::parse($value)->format('Y-m-d H:i:s'),
-        );
-    }
 }

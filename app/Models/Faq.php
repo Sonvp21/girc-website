@@ -7,20 +7,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 use Tonysm\RichTextLaravel\Casts\AsRichTextContent;
-use Tonysm\RichTextLaravel\Models\Traits\HasRichText;
 
 class Faq extends Model
 {
     use HasFactory;
-    use HasRichText;
 
     protected $table = 'faqs';
 
-    protected $guarded = [];
-
-    protected $richTextAttributes = [
-        'question',
-    ];
+    protected $fillable = ['name', 'email', 'phone', 'address', 'question', 'answer', 'read_at', 'answer_at'];
 
     protected $casts = [
         'question' => AsRichTextContent::class,
