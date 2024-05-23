@@ -14,31 +14,31 @@
         class="mx-auto hidden max-w-7xl flex-col justify-between px-3 sm:px-6 md:items-center lg:flex lg:flex-row lg:px-8"
         :class="{ 'flex': navOpen, 'hidden': !navOpen }"
     >
-        <ul class="text-normal flex w-full flex-col text-xs lg:flex-row lg:divide-x-0 lg:divide-y-0">
+        <ul class="text-normal flex w-full flex-col text-xs lg:flex-row lg:divide-x-0 lg:divide-y-0 divide-dashed">
             <li>
                 <a
-                    class="flex h-full w-full flex-row items-center justify-start gap-2 bg-blue-500 py-2 text-center font-semibold uppercase tracking-wider text-white hover:bg-blue-500 focus:outline-none"
+                    class="flex h-full w-full flex-row items-center justify-start gap-2 py-2 text-center font-semibold uppercase tracking-wider text-white hover:bg-blue-800 focus:outline-none"
                     href="/"
                 >
-                    <span class="border-white px-2">
+                    <span class="lg:border-r border-white px-2">
                         <x-heroicon-o-home class="size-5" />
                     </span>
                 </a>
             </li>
             <li class="relative flex-row whitespace-nowrap">
                 <a
-                    class="flex h-full items-center justify-start py-4 font-semibold uppercase tracking-wider text-white hover:bg-blue-500 hover:text-white"
+                    class="flex h-full items-center justify-start py-4 font-semibold uppercase tracking-wider text-white hover:bg-blue-800 hover:text-white"
                     href="{{ route('about') }}"
                 >
-                    <span class="border-white px-2">@lang('web.about')</span>
+                    <span class="lg:border-r border-white px-2">@lang('web.about')</span>
                 </a>
             </li>
             <li class="relative flex-row whitespace-nowrap">
                 <a
-                    class="flex h-full items-center justify-start py-4 font-semibold uppercase tracking-wider text-white hover:bg-blue-500 hover:text-white"
+                    class="flex h-full items-center justify-start py-4 font-semibold uppercase tracking-wider text-white hover:bg-blue-800 hover:text-white"
                     href="{{ route('news.index') }}"
                 >
-                    <span class="border-white px-2">@lang('web.news')</span>
+                    <span class="lg:border-r border-white px-2">@lang('web.news')</span>
                 </a>
             </li>
             <li
@@ -47,7 +47,7 @@
                 @mouseover.away="dropdownOpen = false"
             >
                 <div
-                    class="flex hover:bg-blue-500 hover:text-white"
+                    class="flex hover:bg-blue-800 hover:text-white"
                     :class="{ 'bg-black bg-opacity-20': dropdownOpen }"
                 >
                     <button
@@ -55,7 +55,7 @@
                         href="#"
                         @mouseover="dropdownOpen = true"
                     >
-                        <span class="flex w-full justify-between gap-2 border-white px-2 lg:w-auto lg:justify-start">
+                        <span class="lg:border-r flex w-full justify-between gap-2 border-white px-2 lg:w-auto lg:justify-start">
                             Chương trình đào tạo
                             <x-heroicon-c-chevron-down class="size-4" />
                         </span>
@@ -99,7 +99,7 @@
                 @mouseover.away="dropdownOpen = false"
             >
                 <div
-                    class="flex hover:bg-blue-500 hover:text-white"
+                    class="flex hover:bg-blue-800 hover:text-white"
                     :class="{ 'bg-black bg-opacity-20': dropdownOpen }"
                 >
                     <button
@@ -107,7 +107,7 @@
                         href="#"
                         @mouseover="dropdownOpen = true"
                     >
-                        <span class="flex w-full justify-between gap-2 border-white px-2 lg:w-auto lg:justify-start"> Tuyển sinh </span>
+                        <span class="lg:border-r flex w-full justify-between gap-2 border-white px-2 lg:w-auto lg:justify-start"> Tuyển sinh </span>
                     </button>
                 </div>
             </li>
@@ -117,7 +117,7 @@
                 @mouseover.away="dropdownOpen = false"
             >
                 <div
-                    class="flex hover:bg-blue-500 hover:text-white"
+                    class="flex hover:bg-blue-800 hover:text-white"
                     :class="{ 'bg-black bg-opacity-20': dropdownOpen }"
                 >
                     <button
@@ -125,7 +125,7 @@
                         href="#"
                         @mouseover="dropdownOpen = true"
                     >
-                        <span class="flex w-full justify-between gap-2 border-white px-2 lg:w-auto lg:justify-start"> Khoa học & công nghệ </span>
+                        <span class="lg:border-r flex w-full justify-between gap-2 border-white px-2 lg:w-auto lg:justify-start"> Khoa học & công nghệ </span>
                     </button>
                 </div>
             </li>
@@ -135,7 +135,7 @@
                 @mouseover.away="dropdownOpen = false"
             >
                 <div
-                    class="flex hover:bg-blue-500 hover:text-white"
+                    class="flex hover:bg-blue-800 hover:text-white"
                     :class="{ 'bg-black bg-opacity-20': dropdownOpen }"
                 >
                     <button
@@ -143,7 +143,7 @@
                         href="#"
                         @mouseover="dropdownOpen = true"
                     >
-                        <span class="flex w-full justify-between gap-2 border-white px-2 lg:w-auto lg:justify-start">
+                        <span class="lg:border-r flex w-full justify-between gap-2 border-white px-2 lg:w-auto lg:justify-start">
                             Quan hệ, hợp tác
                             <x-heroicon-c-chevron-down class="size-4" />
                         </span>
@@ -179,7 +179,7 @@
                 @mouseover.away="dropdownOpen = false"
             >
                 <div
-                    class="flex hover:bg-blue-500 hover:text-white"
+                    class="flex hover:bg-blue-800 hover:text-white"
                     :class="{ 'bg-black bg-opacity-20': dropdownOpen }"
                 >
                     <button

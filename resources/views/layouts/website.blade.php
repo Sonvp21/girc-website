@@ -31,16 +31,23 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="font-roboto antialiased">
-    <div
-        class="min-h-screen bg-white bg-fixed bg-right"
-        style="background-image: url('{{ asset('files/images/header-bg.png') }}')"
-    >
+    <div class="min-h-screen bg-fixed bg-right">
         <x-website.banner />
         <x-website.menu />
-        <x-website.date-time />
+        <section class="bg-[#f5fafd]">
+            <div class="mx-auto mt-1 max-w-7xl px-4 sm:px-2">
+                <img
+                    class="w-full"
+                    src="{{ asset('files/images/main_banner.png') }}"
+                />
+            </div>
+        </section>
 
-        <main>
-            {{ $slot }}
+        <main class="bg-white">
+            <x-website.date-time />
+            <div class="space-y-6">
+                {{ $slot }}
+            </div>
         </main>
         <x-website.footer />
     </div>
