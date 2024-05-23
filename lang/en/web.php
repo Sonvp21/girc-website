@@ -30,4 +30,12 @@ return [
     'infrastructure' => 'Infrastructure',
     'infrastructure_title' => 'State-of-the-Art Facilities',
     'infrastructure_text' => 'Our campus is equipped with state-of-the-art facilities to provide students with a conducive learning environment. Our classrooms, laboratories, and research centers are all equipped with the latest technology to support teaching and research activities.',
+    'login' => 'Login',
+    'faqs' => 'FAQs',
+    'digital_transformation' => 'Digital Transformation',
+    'education_program' => 'Education Program',
+    'teaching_staff' => 'Teaching Staff',
+    'science_information' => 'Science Information',
+    'science_technology' => 'Science & Technology',
+    'cooperation' => 'Cooperation',
 ];
