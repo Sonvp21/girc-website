@@ -13,7 +13,7 @@ use Illuminate\View\View;
 
 class PhotoController extends Controller
 {
-    public function index(Request $request)
+    public function index(Request $request): View
     {
         return view('admin.albums.photos.index', [
             'photos' => Photo::query()
@@ -39,14 +39,13 @@ class PhotoController extends Controller
         return view('admin.albums.photos.create', compact('albums'));
     }
 
-    public function store(PhotoRequest $request)
+    public function store(PhotoRequest $request): RedirectResponse
     {
-        $photo = new Photo([
-            'album_id' => $request->album_id,
-            'name' => $request->name,
-            'content' => $request->content,
+        $request->validate([
+            'image' => 'required'
         ]);
-        $photo->save();
+        $photo = Photo::create($request->all());
+
         if ($request->hasFile('image')) {
             $imageFile = $request->file('image');
             $photo->addMediaFromRequest('image')
@@ -55,15 +54,11 @@ class PhotoController extends Controller
                 ->toMediaCollection('album_photo');
         }
 
-        return redirect()->route('admin.photos.index')->with('success', 'Photo created successfully.');
+        return redirect()->route('admin.photos.index')->with('success', trans('admin.alerts.success.create'));
     }
 
-    /**
-     * @return Factory|View
-     */
-    public function edit($id): View
+    public function edit(Photo $photo): View
     {
-        $photo = Photo::findOrFail($id);
         $albums = Album::query()
             ->where('type', AlbumTypeEnum::PHOTO)
             ->select('id', 'name')
@@ -76,13 +71,10 @@ class PhotoController extends Controller
             ]);
     }
 
-    public function update(Request $request, Photo $photo)
+    public function update(PhotoRequest $request, Photo $photo): RedirectResponse
     {
-        $photo->update([
-            'album_id' => $request->album_id,
-            'name' => $request->name,
-            'content' => $request->content,
-        ]);
+        $photo->update($request->all());
+
         if ($request->hasFile('image')) {
             $photo->clearMediaCollection('album_photo');
             $photo->addMediaFromRequest('image')
@@ -91,16 +83,13 @@ class PhotoController extends Controller
                 ->toMediaCollection('album_photo');
         }
 
-        return redirect()->route('admin.photos.index')->with('success', 'Photo updated successfully.');
+        return redirect()->route('admin.photos.index')->with('success', trans('admin.alerts.success.edit'));
     }
 
-    /**
-     * @return RedirectResponse
-     */
-    public function destroy(Photo $photo)
+    public function destroy(Photo $photo): RedirectResponse
     {
         $photo->delete();
 
-        return redirect()->route('admin.photos.index')->with('success', 'Photo deleted successfully.');
+        return redirect()->route('admin.photos.index')->with('success', trans('admin.alerts.success.deleted'));
     }
 }

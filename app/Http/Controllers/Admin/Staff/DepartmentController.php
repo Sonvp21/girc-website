@@ -30,7 +30,6 @@ class DepartmentController extends Controller
     {
         $departments = Department::query()
             ->get();
-
         return view('admin.staffs.departments.create',
             [
                 'departments' => $departments,
@@ -39,27 +38,9 @@ class DepartmentController extends Controller
 
     public function store(DepartmentRequest $request): RedirectResponse
     {
-        $data = [
-            'name' => $request->name,
-            'description' => $request->description,
-        ];
-        $department = Department::updateOrCreate(
-            ['name' => $request->name],
-            $data
-        );
-        if ($department->wasRecentlyCreated) {
-            return back()->with([
-                'icon' => 'success',
-                'heading' => 'Success',
-                'message' => 'Department created successfully',
-            ]);
-        } else {
-            return back()->with([
-                'icon' => 'info',
-                'heading' => 'Updated',
-                'message' => 'Department updated successfully',
-            ]);
-        }
+        $department = Department::create($request->all());
+
+        return redirect()->route('admin.departments.index', compact('department'))->with('success', trans('admin.alerts.success.create'));
     }
 
     public function edit($id): View
@@ -69,19 +50,11 @@ class DepartmentController extends Controller
         return view('admin.staffs.departments.edit', compact('department'));
     }
 
-    public function update(DepartmentRequest $request, $id): RedirectResponse
+    public function update(DepartmentRequest $request, Department $department): RedirectResponse
     {
-        $department = Department::findOrFail($id);
+        $department->update($request->all());
 
-        $department->update([
-            'name' => $request->name,
-            'description' => $request->description,
-        ]);
-
-        return redirect()->route('admin.departments.index')->with([
-            'icon' => 'success',
-            'message' => 'Department updated successfully',
-        ]);
+        return redirect()->route('admin.departments.index')->with('success', trans('admin.alerts.success.edit'));
     }
 
     /**
@@ -90,22 +63,13 @@ class DepartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy($id)
+    public function destroy(Department $department)
     {
-        $department = Department::findOrFail($id);
         if ($department->staffs()->exists()) {
-            return back()->with([
-                'icon' => 'error',
-                'heading' => 'Failed',
-                'message' => 'Department cannot be deleted because it has posts associated with it.',
-            ]);
+            return back()->with('success', trans('Department cannot be deleted because it has posts associated with it.'));
         }
         $department->delete();
 
-        return back()->with([
-            'icon' => 'success',
-            'heading' => 'Success',
-            'message' => trans('Deleted success'),
-        ]);
+        return back()->with('success', trans('admin.alerts.success.deleted'));
     }
 }

@@ -35,15 +35,10 @@ class PostController extends Controller
 
     public function store(PostRequest $request): RedirectResponse
     {
-        $post = new Post([
-            'user_id' => auth()->id(),
-            'category_id' => $request->category_id,
-            'title' => $request->title,
-            'content' => $request->content,
-            'published_at' => $request->published_at,
+        $request->validate([
+            'image' => 'required'
         ]);
-
-        $post->save();
+        $post = Post::create($request->all());
 
         if ($request->tags) {
             $tagIds = [];
@@ -63,7 +58,7 @@ class PostController extends Controller
         }
         $category = Category::findOrFail($request->category_id);
 
-        return redirect()->route('admin.categories.posts.index', ['slug' => $category->slug])->with('success', 'Post created successfully.');
+        return redirect()->route('admin.categories.posts.index', ['slug' => $category->slug])->with('success', trans('admin.alerts.success.create'));
     }
 
     /**
@@ -85,12 +80,7 @@ class PostController extends Controller
 
         DB::beginTransaction();
         try {
-            $post->update([
-                'title' => $request->title,
-                'content' => $request->content,
-                'published_at' => $request->published_at,
-                'category_id' => $categoryId,
-            ]);
+            $post->update($request->all());
 
             if ($request->tags) {
                 $tagIds = collect(json_decode($request->tags, true))->pluck('value')->map(function ($name) {
@@ -114,7 +104,7 @@ class PostController extends Controller
             DB::commit();
             $category = Category::findOrFail($categoryId);
 
-            return redirect()->route('admin.categories.posts.index', ['slug' => $category->slug])->with('success', 'Post updated successfully.');
+            return redirect()->route('admin.categories.posts.index', ['slug' => $category->slug])->with('success', trans('admin.alerts.success.edit'));
         } catch (\Exception $e) {
             DB::rollBack();
 
@@ -134,10 +124,6 @@ class PostController extends Controller
             $unusedTag->delete();
         }
 
-        return back()->with([
-            'icon' => 'success',
-            'heading' => 'Success',
-            'message' => trans('admin.alert.deleted-success'),
-        ]);
+        return back()->with('success', trans('admin.alerts.success.deleted'));
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\ContactRequest;
 use App\Models\Contact;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -28,11 +29,11 @@ class ContactController extends Controller
         return view('admin.contacts.create');
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(ContactRequest $request): RedirectResponse
     {
         Contact::create($request->all());
 
-        return back();
+        return redirect()->route('admin.contacts.index')->with('success', trans('admin.alerts.success.create'));
     }
 
     /**
@@ -57,15 +58,11 @@ class ContactController extends Controller
             ]);
     }
 
-    public function update(Contact $contact, Request $request): RedirectResponse
+    public function update(Contact $contact, ContactRequest $request): RedirectResponse
     {
         $contact->update($request->all());
 
-        return redirect()->route('admin.contacts.index')->with([
-            'icon' => 'success',
-            'heading' => 'Success',
-            'message' => 'Update successfully',
-        ]);
+        return redirect()->route('admin.contacts.index')->with('success', trans('admin.alerts.success.edit'));
     }
 
     /**
@@ -76,10 +73,6 @@ class ContactController extends Controller
         $contact = Contact::findOrFail($id);
         $contact->delete();
 
-        return back()->with([
-            'icon' => 'success',
-            'heading' => 'Success',
-            'message' => trans('admin.alert.deleted-success'),
-        ]);
+        return back()->with('success', trans('admin.alerts.success.deleted'));
     }
 }

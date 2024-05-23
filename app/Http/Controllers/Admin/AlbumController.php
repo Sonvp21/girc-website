@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\AlbumRequest;
 use App\Models\Album;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -10,7 +11,7 @@ use Illuminate\View\View;
 
 class AlbumController extends Controller
 {
-    public function index(Request $request)
+    public function index(Request $request): View
     {
         return view('admin.albums.index', [
             'albums' => Album::query()
@@ -23,28 +24,18 @@ class AlbumController extends Controller
         ]);
     }
 
-    /**
-     * @return Factory|View
-     */
     public function create(): View
     {
         return view('admin.albums.create');
     }
 
-    public function store(Request $request)
+    public function store(AlbumRequest $request): RedirectResponse
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'type' => 'required',
-        ]);
-        Album::create($request->all());
+        $album = Album::create($request->all());
 
-        return redirect()->route('admin.albums.index')->with('success', 'Album created successfully.');
+        return redirect()->route('admin.albums.index', compact('album'))->with('success', trans('admin.alerts.success.create'));
     }
 
-    /**
-     * @return Factory|View
-     */
     public function edit(Album $album): View
     {
         return view('admin.albums.edit')
@@ -53,25 +44,17 @@ class AlbumController extends Controller
             ]);
     }
 
-    public function update(Request $request, Album $album)
+    public function update(AlbumRequest $request, Album $album): RedirectResponse
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'type' => 'required',
-        ]);
-
         $album->update($request->all());
 
-        return redirect()->route('admin.albums.index')->with('success', 'Album updated successfully.');
+        return redirect()->route('admin.albums.index')->with('success', trans('admin.alerts.success.edit'));
     }
 
-    /**
-     * @return RedirectResponse
-     */
-    public function destroy(Album $album)
+    public function destroy(Album $album): RedirectResponse
     {
         $album->delete();
 
-        return redirect()->route('admin.albums.index')->with('success', 'Album deleted successfully.');
+        return redirect()->route('admin.albums.index')->with('success', trans('admin.alerts.success.deleted'));
     }
 }
