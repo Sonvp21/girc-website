@@ -8,7 +8,7 @@ class PostRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return true;
+        return (int) $this->user_id === auth()->id();
     }
 
     public function rules(): array
@@ -26,10 +26,10 @@ class PostRequest extends FormRequest
         return [
             'category_id.required' => trans('admin.field.required'),
             'category_id.exists' => trans('admin.field.invalid_category'), // Custom message for non-existing category
-            'title.unique' => trans('admin.field.unique'),
-            'title.required' => trans('admin.field.required'),
-            'content.required' => trans('admin.field.required'),
-            'published_at.required' => trans('admin.field.required'),
+            'title.unique' => trans('admin.field.unique.title'),
+            'title.required' => trans('admin.field.required.title'),
+            'content.required' => trans('admin.field.required.content'),
+            'published_at.required' => trans('admin.field.required.published_at'),
             'published_at.date' => trans('admin.field.invalid_date'), // Custom message for invalid date
         ];
     }

@@ -32,8 +32,8 @@ class CategoryRequest extends FormRequest
     public function messages()
     {
         return [
-            'title.unique' => trans('admin.field.unique'),
-            'title.required' => trans('admin.field.required'),
+            'title.unique' => trans('admin.field.unique.title'),
+            'title.required' => trans('admin.field.required.title'),
         ];
     }
 }

@@ -8,28 +8,26 @@ class CooperationRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return true;
+        return (int) $this->user_id === auth()->id();
     }
 
     public function rules(): array
     {
         return [
-            'album_id' => 'required|exists:albums,id',
             'name' => 'required|string|max:255',
             'link_website' => 'required|string',
             'description' => 'required|string',
-            'image' => 'required|image|max:2048',
+            'image' => 'sometimes|required|image|max:2048',
         ];
     }
 
     public function messages()
     {
         return [
-            'album_id.required' => trans('admin.field.required'),
-            'name.required' => trans('admin.field.required'),
-            'link_website.required' => trans('admin.field.required'),
-            'description.required' => trans('admin.field.required'),
-            'image.required' => trans('admin.field.required'),
+            'name.required' => trans('admin.field.required.name'),
+            'link_website.required' => trans('admin.field.required.link'),
+            'description.required' => trans('admin.field.required.description'),
+            'image.required' => trans('admin.field.required.image'),
         ];
     }
 }

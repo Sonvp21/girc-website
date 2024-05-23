@@ -5,7 +5,7 @@ namespace App\Http\Requests\Admin;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class DepartmentRequest extends FormRequest
+class ContactRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -15,21 +15,19 @@ class DepartmentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => [
-                'required',
-                'string',
-                'max:255',
-                Rule::unique('departments')->ignore($this->department->id ?? null),
-            ],
-            'description' => 'nullable',
+            'name' => 'required',
+            'email' => 'required',
+            'phone' => 'nullable',
+            'content' => 'required',
         ];
     }
 
     public function messages()
     {
         return [
-            'name.unique' => trans('admin.field.unique.name'),
             'name.required' => trans('admin.field.required.name'),
+            'content.required' => trans('admin.field.required.content'),
+            'email.required' => trans('admin.field.required.email'),
         ];
     }
 }

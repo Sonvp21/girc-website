@@ -5,7 +5,7 @@ namespace App\Http\Requests\Admin;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class DepartmentRequest extends FormRequest
+class AlbumRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -21,7 +21,7 @@ class DepartmentRequest extends FormRequest
                 'max:255',
                 Rule::unique('departments')->ignore($this->department->id ?? null),
             ],
-            'description' => 'nullable',
+            'type' => 'required',
         ];
     }
 
@@ -30,6 +30,7 @@ class DepartmentRequest extends FormRequest
         return [
             'name.unique' => trans('admin.field.unique.name'),
             'name.required' => trans('admin.field.required.name'),
+            'type.required' => trans('admin.field.required.type'),
         ];
     }
 }

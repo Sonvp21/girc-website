@@ -4,7 +4,7 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PhotoRequest extends FormRequest
+class StaffRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -14,20 +14,21 @@ class PhotoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'album_id' => 'required|exists:albums,id',
             'name' => 'required|string|max:255',
             'content' => 'required|string',
             'image' => 'sometimes|required|image|max:2048',
+            'departments' => 'required|array',
+            'departments.*' => 'exists:departments,id',
         ];
     }
 
     public function messages()
     {
         return [
-            'album_id.required' => trans('admin.field.required.album_id'),
             'name.required' => trans('admin.field.required.name'),
             'content.required' => trans('admin.field.required.content'),
             'image.required' => trans('admin.field.required.image'),
+            'departments.required' => trans('admin.field.required.departments'),
         ];
     }
 }
