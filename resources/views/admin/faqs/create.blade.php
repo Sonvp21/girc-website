@@ -68,7 +68,7 @@
                                             <span class="label-text">@lang('admin.faqs.question')</span>
                                         </div>
                                         <textarea name="question" id="question" class="form-input rounded-md shadow-sm mt-1 block w-full" rows="5">{{ old('question', $faq->question ?? '') }}</textarea>
-    
+
                                     </label>
 
                                 <div class="flex justify-end gap-4">
@@ -86,6 +86,6 @@
         </div>
     </div>
     @pushonce('bottom_scripts')
-        <x-admin.forms.tinymce-config column="question"/>
+        <x-admin.forms.tinymce-config column="question" model="Faq"/>
     @endpushonce
 </x-app-layout>

@@ -92,6 +92,6 @@
         </div>
     </div>
     @pushonce('bottom_scripts')
-        <x-admin.forms.tinymce-config column="description"/>
+        <x-admin.forms.tinymce-config column="description" model="Cooperation"/>
     @endpushonce
 </x-app-layout>

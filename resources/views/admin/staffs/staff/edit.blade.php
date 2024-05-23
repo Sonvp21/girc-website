@@ -48,7 +48,7 @@
                                 <p class="text-red-500 text-xs italic">{{ $message }}</p>
                             @enderror
                         </label>
-                        
+
                         <label class="form-control w-full">
                             <div class="label">
                                 <span class="label-text">@lang('admin.content')</span>
@@ -88,7 +88,7 @@
         </div>
     </div>
     @pushonce('bottom_scripts')
-    <x-admin.forms.tinymce-config column="content" />
+    <x-admin.forms.tinymce-config column="content" model="Staff"/>
     <script>
         var loadFile = function(event) {
             var input = event.target

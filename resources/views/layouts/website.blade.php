@@ -34,15 +34,16 @@
     <div class="min-h-screen bg-fixed bg-right">
         <x-website.banner />
         <x-website.menu />
-        <section class="bg-[#f5fafd]">
-            <div class="mx-auto mt-1 max-w-7xl px-4 sm:px-2">
-                <img
-                    class="w-full"
-                    src="{{ asset('files/images/main_banner.png') }}"
-                />
-            </div>
-        </section>
-
+        @if(request()->routeIs('home'))
+            <section class="bg-[#f5fafd]">
+                <div class="mx-auto mt-1 max-w-7xl px-4 sm:px-2">
+                    <img
+                        class="w-full"
+                        src="{{ asset('files/images/main_banner.png') }}"
+                    />
+                </div>
+            </section>
+        @endif
         <main class="bg-white">
             <x-website.date-time />
             <div class="space-y-6">
