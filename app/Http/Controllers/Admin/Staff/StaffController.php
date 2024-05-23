@@ -72,7 +72,7 @@ class StaffController extends Controller
     /**
      * Update the specified staff in storage.
      */
-    public function update(Request $request, Staff $staff)
+    public function update(StaffRequest $request, Staff $staff)
     {
         $staff->update($request->all());
 
