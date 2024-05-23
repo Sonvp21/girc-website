@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\RichTextAttachmentController;
 use App\Http\Controllers\Admin\Staff\DepartmentController;
 use App\Http\Controllers\Admin\Staff\StaffController;
+use App\Http\Controllers\Admin\Support\TinymceController;
 use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -49,10 +50,15 @@ Route::middleware('auth')->group(function () {
         //faq
         Route::resource('faqs', FaqController::class);
 
-        Route::post('rich-text-attachment', RichTextAttachmentController::class)->name('rich-text.attachment');
         //Department and staff
         Route::resource('departments', DepartmentController::class);
         Route::resource('staffs', StaffController::class);
+
+        /*
+         *  KEEP THESE AT THE END OF THE FILE
+         */
+        Route::post('rich-text-attachment', RichTextAttachmentController::class)->name('rich-text.attachment');
+        Route::post('tinymce-attachment', TinymceController::class)->name('tinymce.attachment');
     });
 });
 
