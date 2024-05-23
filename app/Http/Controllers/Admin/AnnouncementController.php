@@ -31,15 +31,9 @@ class AnnouncementController extends Controller
 
     public function store(AnnouncementRequest $request): RedirectResponse
     {
-        $announcement = new Announcement([
-            'user_id' => auth()->id(),
-            'title' => $request->title,
-            'content' => $request->content,
-            'published_at' => $request->published_at,
-        ]);
-        $announcement->save();
+        $announcement = Announcement::create($request->all());
 
-        return redirect()->route('admin.announcements.index');
+        return redirect()->route('admin.announcements.index', compact('announcement'))->with('success', trans('admin.alerts.success.create'));
     }
 
     /**
@@ -54,28 +48,16 @@ class AnnouncementController extends Controller
 
     public function update(Announcement $announcement, Request $request): RedirectResponse
     {
-        $announcement->update([
-            'title' => $request->title,
-            'content' => $request->content,
-            'published_at' => $request->published_at,
-        ]);
+        $announcement->update($request->all());
 
-        return redirect()->route('admin.announcements.index')->with([
-            'icon' => 'success',
-            'heading' => 'Success',
-            'message' => 'Update successfully',
-        ]);
+        return redirect()->route('admin.announcements.index')->with('success', trans('admin.alerts.success.edit'));
+
     }
 
-    public function destroy($id)
+    public function destroy(Announcement $announcement)
     {
-        $announcement = Announcement::findOrFail($id);
         $announcement->delete();
 
-        return back()->with([
-            'icon' => 'success',
-            'heading' => 'Success',
-            'message' => trans('admin.alert.deleted-success'),
-        ]);
+        return back()->with('success', trans('admin.alerts.success.deleted'));
     }
 }

@@ -127,4 +127,35 @@ return [
     'cooperations.album_name' => 'Album"s',
     'cooperations.link' => 'Link',
 
+    'alerts' => [
+        'success' => [
+            'create' => 'Submittion Successful',
+            'edit' => 'Updated Successful',
+            'deleted' => 'Deleted successfully',
+        ],
+    ],
+
+    'field' => [
+        'required' => [
+            'name' => 'Please put name',
+            'album_id' => 'Please select album',
+            'content' => 'Please enter content',
+            'link' => 'Please put link',
+            'description' => 'Please put description',
+            'image' => 'Please select images',
+            'video_id' => 'Please enter video ID',
+            'source' => 'Please select Source',
+            'type' => 'Please select type',
+            'title' => 'Please enter title',
+            'email' => 'Please enter email',
+            'phone' => 'Please enter phone',
+            'address' => 'Please enter address',
+            'question' => 'Please enter question',
+        ],
+        'unique' => [
+            'name' => 'The name has, please enter another name',
+            'title' => 'Duplicate title',
+        ],
+    ],
+
 ];

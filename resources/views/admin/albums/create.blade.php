@@ -7,16 +7,18 @@
                 @lang('admin.create')
             </span>
         </div>
-
+        <x-admin.alerts.error />
         <div class="mt-6">
             <div class="overflow-hidden bg-white p-6 sm:rounded-lg">
                     <form action="{{ route('admin.albums.store') }}" method="POST" class="space-y-4 needs-validation" novalidate>
                         @csrf
+
+                        <input type="hidden" name="user_id" value="{{ auth()->id() }}">
                         <label class="form-control w-full">
                             <div class="label">
                                 <span class="label-text">@lang('admin.albums.name')</span>
                             </div>
-                            <input name="name" type="text" placeholder="Type here"
+                            <input name="name" type="text" value="{{ old('name') }}" placeholder="Type here"
                                 @class([
                                     'input',
                                     'input-bordered',

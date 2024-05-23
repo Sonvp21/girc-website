@@ -44,11 +44,7 @@ class CategoryController extends Controller
     {
         $category = Category::create($request->all());
 
-        return back()->with([
-            'icon' => 'success',
-            'heading' => 'Success',
-            'message' => 'Category created successfully',
-        ]);
+        return redirect()->route('admin.categories.index', compact('category'))->with('success', trans('admin.alerts.success.create'));
     }
 
     public function edit(Category $category): View
@@ -63,28 +59,17 @@ class CategoryController extends Controller
     {
         $category->update($request->all());
 
-        return redirect()->route('admin.categories.index')->with([
-            'icon' => 'success',
-            'message' => 'Category updated successfully',
-        ]);
+        return redirect()->route('admin.categories.index')->with('success', trans('admin.alerts.success.edit'));
     }
 
     public function destroy(Category $category): RedirectResponse
     {
         if ($category->posts()->exists()) {
-            return back()->with([
-                'icon' => 'error',
-                'heading' => 'Failed',
-                'message' => 'Category cannot be deleted because it has posts associated with it.',
-            ]);
+            return back()->with('success', 'Category cannot be deleted because it has posts associated with it.',
+            );
         }
-
         $category->delete();
 
-        return back()->with([
-            'icon' => 'success',
-            'heading' => 'Success',
-            'message' => trans('Deleted success'),
-        ]);
+        return back()->with('success', trans('admin.alerts.success.deleted'));
     }
 }

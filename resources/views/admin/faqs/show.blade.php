@@ -7,6 +7,7 @@
                 @lang('admin.faqs.show')
             </span>
         </div>
+        <x-admin.alerts.error />
         <div class="mt-6">
             <a
                 href="{{ route('admin.faqs.index') }}"
@@ -68,6 +69,7 @@
                         >
                             @method('PUT')
                             @csrf
+                            <input type="hidden" name="user_id" value="{{ auth()->id() }}">
                             <div class="flex">
                                 <h3 class="text-gray-900 text-lg font-medium leading-6">
                                     @lang('admin.faqs.answer')

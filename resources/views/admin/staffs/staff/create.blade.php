@@ -7,23 +7,19 @@
                 @lang('admin.add')
             </span>
         </div>
-        @if (session('icon') && session('heading') && session('message'))
-            <div class="alert alert-{{ session('icon') === 'success' ? 'success' : 'danger' }}" role="alert">
-                <strong>{{ session('heading') }}:</strong>
-                {{ session('message') }}
-            </div>
-        @endif
+        <x-admin.alerts.error />
         <div class="mt-6">
             <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                 <div class="bg-white px-8 pb-8 pt-0 shadow sm:rounded-lg">
                     <form action="{{ route('admin.staffs.store') }}" method="POST" class="space-y-4 needs-validation"
                         novalidate enctype="multipart/form-data">
                         @csrf
+                        <input type="hidden" name="user_id" value="{{ auth()->id() }}">
                         <label class="form-control w-full">
                             <div class="label">
                                 <span class="label-text">@lang('admin.staffs.name')</span>
                             </div>
-                            <input type="text" name="name" placeholder="name..." @class([
+                            <input type="text" name="name" value="{{ old('name') }}" placeholder="name..." @class([
                                 'input',
                                 'input-bordered',
                                 'input-error' => $errors->has('name'),

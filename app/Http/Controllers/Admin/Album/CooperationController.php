@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin\Album;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CooperationRequest;
-use App\Models\Album;
 use App\Models\Cooperation;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -12,7 +11,7 @@ use Illuminate\View\View;
 
 class CooperationController extends Controller
 {
-    public function index(Request $request)
+    public function index(Request $request): View
     {
         return view('admin.albums.cooperations.index', [
             'cooperations' => Cooperation::query()
@@ -25,25 +24,18 @@ class CooperationController extends Controller
         ]);
     }
 
-    /**
-     * @return Factory|View
-     */
     public function create(): View
     {
-        $albums = Album::query()->select('id', 'name')->get();
-
-        return view('admin.albums.cooperations.create', compact('albums'));
+        return view('admin.albums.cooperations.create');
     }
 
-    public function store(CooperationRequest $request)
+    public function store(CooperationRequest $request): RedirectResponse
     {
-        $cooperation = new Cooperation([
-            'album_id' => $request->album_id,
-            'name' => $request->name,
-            'link_website' => $request->link_website,
-            'description' => $request->description,
+        $request->validate([
+            'image' => 'required',
         ]);
-        $cooperation->save();
+        $cooperation = Cooperation::create($request->all());
+
         if ($request->hasFile('image')) {
             $imageFile = $request->file('image');
             $cooperation->addMediaFromRequest('image')
@@ -52,29 +44,20 @@ class CooperationController extends Controller
                 ->toMediaCollection('album_cooperation');
         }
 
-        return redirect()->route('admin.cooperations.index')->with('success', 'cooperation created successfully.');
+        return redirect()->route('admin.cooperations.index')->with('success', trans('admin.alerts.success.create'));
     }
 
-    /**
-     * @return Factory|View
-     */
-    public function edit($id): View
+    public function edit(Cooperation $cooperation): View
     {
-        $cooperation = Cooperation::findOrFail($id);
-        $albums = Album::query()->select('id', 'name')->get();
-
-        return view('admin.albums.cooperations.edit', compact('albums', 'cooperation'));
-    }
-
-    public function update(Request $request, Cooperation $cooperation)
-    {
-
-        $cooperation->update([
-            'album_id' => $request->album_id,
-            'name' => $request->name,
-            'link_website' => $request->link_website,
-            'description' => $request->description,
+        return view('admin.albums.cooperations.edit')->with([
+            'cooperation' => $cooperation,
         ]);
+    }
+
+    public function update(CooperationRequest $request, Cooperation $cooperation): RedirectResponse
+    {
+        $cooperation->update($request->all());
+
         if ($request->hasFile('image')) {
             $cooperation->clearMediaCollection('album_cooperation');
             $cooperation->addMediaFromRequest('image')
@@ -83,16 +66,13 @@ class CooperationController extends Controller
                 ->toMediaCollection('album_cooperation');
         }
 
-        return redirect()->route('admin.cooperations.index')->with('success', 'cooperation updated successfully.');
+        return redirect()->route('admin.cooperations.index')->with('success', trans('admin.alerts.success.edit'));
     }
 
-    /**
-     * @return RedirectResponse
-     */
-    public function destroy(Cooperation $cooperation)
+    public function destroy(Cooperation $cooperation): RedirectResponse
     {
         $cooperation->delete();
 
-        return redirect()->route('admin.cooperations.index')->with('success', 'cooperation deleted successfully.');
+        return redirect()->route('admin.cooperations.index')->with('success', trans('admin.alerts.success.deleted'));
     }
 }

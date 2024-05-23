@@ -7,6 +7,7 @@
                 @lang('admin.edit')
             </span>
         </div>
+        <x-admin.alerts.error />
         <div class="mt-6">
             <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                 <div class="bg-white p-4 shadow sm:rounded-lg sm:p-8">
@@ -16,6 +17,8 @@
                             method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
+
+                            <input type="hidden" name="user_id" value="{{ auth()->id() }}">
                             <input type="hidden" name="category_id" value="{{ $category->id }}">
 
                             <div class="space-y-4">
@@ -82,15 +85,6 @@
                                 </div>
                             </div>
                         </form>
-                        @if ($errors->any())
-                            <div class="alert alert-danger">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
                     </div>
                 </div>
             </div>

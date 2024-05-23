@@ -5,6 +5,7 @@
                 @lang('admin.photo')
             </span>
         </div>
+        <x-admin.alerts.success />
         <div class="mt-6">
             <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                 <div class="overflow-x-auto">
@@ -66,7 +67,7 @@
                                     <th>{{ $photos->firstItem() + $loop->index }}</th>
                                     <td>{{ $photo->name }}</td>
                                     <td>{{ $photo->album->name }}</td>
-                                    <td>{{ $photo->createddAtVi }}</td>
+                                    <td>{{ $photo->createdAtVi }}</td>
                                     <td>{{ $photo->updatedAtVi }}</td>
 
                                     <td class="flex gap-3">

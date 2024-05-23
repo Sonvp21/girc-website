@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\FaqRequest;
 use App\Models\Faq;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -28,18 +29,11 @@ class FaqController extends Controller
         return view('admin.faqs.create');
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(FaqRequest $request, Faq $faq): RedirectResponse
     {
-        $faq = new Faq([
-            'name' => $request->name,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'address' => $request->address,
-            'question' => $request->question,
-        ]);
-        $faq->save();
+        $faq = Faq::create($request->all());
 
-        return redirect()->route('admin.faqs.index');
+        return redirect()->route('admin.faqs.index', compact('faq'))->with('success', trans('admin.alerts.success.create'));
     }
 
     /**
@@ -61,28 +55,23 @@ class FaqController extends Controller
         $request->validate([
             'answer' => 'required',
         ]);
-
+        // dd($faq);
         $faq->update(['answer' => $request->answer]);
 
         if (! $faq->answer_at) {
             $faq->update(['answer_at' => now()->format('d.m.Y h:i')]);
         }
 
-        return redirect()->route('admin.faqs.index');
+        return redirect()->route('admin.faqs.index')->with('success', 'Anwer successfully');
     }
 
     /**
      * @return RedirectResponse
      */
-    public function destroy($id)
+    public function destroy(Faq $faq)
     {
-        $faq = Faq::findOrFail($id);
         $faq->delete();
 
-        return back()->with([
-            'icon' => 'success',
-            'heading' => 'Success',
-            'message' => trans('admin.alert.deleted-success'),
-        ]);
+        return back()->with('success', trans('admin.alerts.success.deleted'));
     }
 }

@@ -3,16 +3,19 @@
 namespace App\Http\Controllers\Admin\Staff;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\StaffRequest;
 use App\Models\Staff\Department;
 use App\Models\Staff\Staff;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class StaffController extends Controller
 {
     /**
      * Display a listing of the staff.
      */
-    public function index(Request $request)
+    public function index(Request $request): View
     {
         $staffs = Staff::query()
             ->when(
@@ -30,26 +33,20 @@ class StaffController extends Controller
     /**
      * Show the form for creating a new staff.
      */
-    public function create()
+    public function create(): View
     {
         $departments = Department::all();
 
         return view('admin.staffs.staff.create', compact('departments'));
     }
 
-    /**
-     * Store a newly created staff in storage.
-     */
-    public function store(Request $request)
+    public function store(StaffRequest $request): RedirectResponse
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            'content' => 'required|string',
-            'departments' => 'required|array',
-            'departments.*' => 'exists:departments,id',
+            'image' => 'required',
         ]);
+        $staff = Staff::create($request->all());
 
-        $staff = Staff::create($request->only(['name', 'content']));
         $staff->departments()->attach($request->departments);
         if ($request->hasFile('image')) {
             $imageFile = $request->file('image');
@@ -59,7 +56,7 @@ class StaffController extends Controller
                 ->toMediaCollection('staff_image');
         }
 
-        return redirect()->route('admin.staffs.index')->with('success', 'Staff created successfully.');
+        return redirect()->route('admin.staffs.index')->with('success', trans('admin.alerts.success.create'));
     }
 
     /**
@@ -75,17 +72,12 @@ class StaffController extends Controller
     /**
      * Update the specified staff in storage.
      */
-    public function update(Request $request, Staff $staff)
+    public function update(StaffRequest $request, Staff $staff)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'content' => 'required|string',
-            'departments' => 'required|array',
-            'departments.*' => 'exists:departments,id',
-        ]);
+        $staff->update($request->all());
 
-        $staff->update($request->only(['name', 'content']));
         $staff->departments()->sync($request->departments);
+
         if ($request->hasFile('image')) {
             $imageFile = $request->file('image');
             $staff->clearMediaCollection('staff_image');
@@ -95,7 +87,7 @@ class StaffController extends Controller
                 ->toMediaCollection('staff_image');
         }
 
-        return redirect()->route('admin.staffs.index')->with('success', 'Staff updated successfully.');
+        return redirect()->route('admin.staffs.index')->with('success', trans('admin.alerts.success.edit'));
     }
 
     /**
@@ -106,6 +98,6 @@ class StaffController extends Controller
         $staff->departments()->detach();
         $staff->delete();
 
-        return redirect()->route('admin.staffs.index')->with('success', 'Staff deleted successfully.');
+        return redirect()->route('admin.staffs.index')->with('success', trans('admin.alerts.success.deleted'));
     }
 }

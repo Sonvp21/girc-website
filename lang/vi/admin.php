@@ -113,4 +113,35 @@ return [
     'updated_at' => 'Ngày cập nhật',
     'publish_at' => 'Ngày đăng',
 
+    'alerts' => [
+        'success' => [
+            'create' => 'Thêm mới thành công',
+            'edit' => 'Cập nhật thành công',
+            'deleted' => 'Xoá thành công',
+        ],
+    ],
+
+    'field' => [
+        'required' => [
+            'name' => 'Vui lòng nhập tên',
+            'album_id' => 'Chọn album',
+            'content' => 'Nhập nội dung',
+            'link' => 'Nhập link',
+            'description' => 'Vui lòng nhập mô tả',
+            'image' => 'Chọn hình ảnh đại diện',
+            'video_id' => 'Nhập video ID',
+            'source' => 'Chọn nguồn',
+            'type' => 'Chọn loại',
+            'title' => 'Vui lòng nhập tiêu đề',
+            'email' => 'Vui lòng nhập email',
+            'phone' => 'Vui lòng nhập số điện thoại',
+            'address' => 'Vui lòng nhập địa chỉ',
+            'question' => 'Vui lòng nhập câu hỏi',
+        ],
+        'unique' => [
+            'name' => 'Tên đã tồn tại, vui lòng nhập tên khác',
+            'title' => 'Tiêu đề đã tồn tại, vui lòng nhập lại',
+        ],
+    ],
+
 ];

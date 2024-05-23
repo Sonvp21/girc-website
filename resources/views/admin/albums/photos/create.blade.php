@@ -7,12 +7,15 @@
                 @lang('admin.add')
             </span>
         </div>
+        <x-admin.alerts.error />
         <div class="mt-6">
             <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                 <div class="bg-white px-8 pb-8 pt-0 shadow sm:rounded-lg">
                     <form action="{{ route('admin.photos.store') }}" method="POST" class="space-y-4 needs-validation"
                         novalidate enctype="multipart/form-data">
                         @csrf
+
+                        <input type="hidden" name="user_id" value="{{ auth()->id() }}">
                         <label class="form-control w-full">
                             <div class="label" for="album_id">
                                 <span class="label-text">@lang('admin.album')</span>
@@ -25,15 +28,15 @@
                             ])>
                                 <option value="">Select Album</option>
                                 @foreach ($albums as $album)
-                                    <option value="{{ $album->id }}">{{ $album->name }}</option>
+                                    <option value="{{ $album->id }}" {{ old('album_id') == $album->id ? 'selected' : '' }}>{{ $album->name }}</option>
                                 @endforeach
                             </select>
-                        </label>
+                        </label>                        
                         <label class="form-control w-full">
                                     <div class="label">
                                         <span class="label-text">@lang('admin.post.title')</span>
                                     </div>
-                                    <input type="text" name="name" placeholder="title photo..."
+                                    <input type="text" name="name" value="{{ old('name') }}" placeholder="title photo..."
                                     @class([
                                         'input',
                                         'input-bordered',

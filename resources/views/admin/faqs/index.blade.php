@@ -5,6 +5,7 @@
                 @lang('admin.faqs')
             </span>
         </div>
+        <x-admin.alerts.success />
         <div class="mt-6">
             <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                 <div class="overflow-x-auto">

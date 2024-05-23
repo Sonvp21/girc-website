@@ -15,14 +15,13 @@ class Cooperation extends Model implements HasMedia
     use HasFactory;
     use InteractsWithMedia;
 
-    protected $guarded = [];
+    protected $fillable = [
+        'name',
+        'link_website',
+        'description',
+    ];
 
     protected $table = 'cooperations';
-
-    public function album()
-    {
-        return $this->belongsTo(Album::class);
-    }
 
     public function registerMediaConversions(?Media $media = null): void
     {
@@ -52,7 +51,7 @@ class Cooperation extends Model implements HasMedia
             ->useDisk('album');
     }
 
-    protected function createddAtVi(): Attribute
+    protected function createdAtVi(): Attribute
     {
         return Attribute::make(
             get: fn () => Carbon::parse($this->created_at)->format('d.m.Y h:i'),

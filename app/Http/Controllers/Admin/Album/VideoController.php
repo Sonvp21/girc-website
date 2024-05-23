@@ -41,18 +41,31 @@ class VideoController extends Controller
 
     public function store(VideoRequest $request): RedirectResponse
     {
-        Video::create($request->all());
+        $request->validate([
+            'image' => 'required',
+        ]);
+        $video = Video::create($request->all());
 
-        return redirect()->route('admin.videos.index')->with('success', 'Video created successfully.');
+        if ($request->hasFile('image')) {
+            $imageFile = $request->file('image');
+            $video->addMediaFromRequest('image')
+                ->usingFileName($imageFile->getClientOriginalName())
+                ->usingName($imageFile->getClientOriginalName())
+                ->toMediaCollection('album_video');
+        }
+
+        return redirect()->route('admin.videos.index')->with('success', trans('admin.alerts.success.create'));
     }
 
     /**
      * @return Factory|View
      */
-    public function edit($id): View
+    public function edit(Video $video): View
     {
-        $video = Video::findOrFail($id);
-        $albums = Album::query()->select('id', 'name')->get();
+        $albums = Album::query()
+            ->where('type', AlbumTypeEnum::VIDEO)
+            ->select('id', 'name')
+            ->get();
 
         return view('admin.albums.videos.edit')
             ->with([
@@ -61,25 +74,25 @@ class VideoController extends Controller
             ]);
     }
 
-    public function update(VideoRequest $request, Video $video)
+    public function update(VideoRequest $request, Video $video): RedirectResponse
     {
-        $video->update([
-            'album_id' => $request->album_id,
-            'name' => $request->name,
-            'video_id' => $request->video_id,
-            'source' => $request->source,
-        ]);
+        $video->update($request->all());
 
-        return redirect()->route('admin.videos.index')->with('success', 'Video updated successfully.');
+        if ($request->hasFile('image')) {
+            $video->clearMediaCollection('album_video');
+            $video->addMediaFromRequest('image')
+                ->usingFileName($request->image->getClientOriginalName())
+                ->usingName($request->image->getClientOriginalName())
+                ->toMediaCollection('album_video');
+        }
+
+        return redirect()->route('admin.videos.index')->with('success', trans('admin.alerts.success.edit'));
     }
 
-    /**
-     * @return RedirectResponse
-     */
-    public function destroy(Video $video)
+    public function destroy(Video $video): RedirectResponse
     {
         $video->delete();
 
-        return redirect()->route('admin.videos.index')->with('success', 'Video deleted successfully.');
+        return redirect()->route('admin.videos.index')->with('success', trans('admin.alerts.success.deleted'));
     }
 }

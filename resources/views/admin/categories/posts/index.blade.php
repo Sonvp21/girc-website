@@ -5,26 +5,7 @@
                 {{ app()->getLocale() === 'en' ? $category->title_en : $category->title }}
             </span>
         </div>
-        @if (session('icon') && session('heading') && session('message'))
-            <div role="alert" class="alert alert-success" id="successAlert">
-                <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none"
-                    viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                <span>{{ session('message') }}</span>
-            </div>
-            <script>
-                $(document).ready(function() {
-                    setTimeout(function() {
-                        $('#successAlert').fadeOut('slow');
-                    }, 3000);
-                });
-            </script>
-        @endif
-
-
-
+        <x-admin.alerts.success />
         <div class="mt-6">
             <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                 <div class="overflow-x-auto">
