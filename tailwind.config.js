@@ -18,6 +18,9 @@ export default {
                 roboto: ['Roboto', 'sans-serif'],
                 anton: ['Anton', 'sans-serif'],
             },
+            boxShadow: {
+                'calendar': '0 1px 0 #bdbdbd, 0 2px 0 #fff, 0 3px 0 #bdbdbd, 0 4px 0 #fff, 0 5px 0 #bdbdbd, 0 0 0 1px #bdbdbd',
+            }
         },
         keyframes: {
             bounceHorizontal: {
