@@ -10,7 +10,7 @@ use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\RichTextAttachmentController;
-use App\Http\Controllers\Admin\ScienceInforController;
+use App\Http\Controllers\Admin\ScienceInformationController;
 use App\Http\Controllers\Admin\Staff\DepartmentController;
 use App\Http\Controllers\Admin\Staff\StaffController;
 use App\Http\Controllers\Admin\Support\TinymceController;
@@ -38,7 +38,7 @@ Route::middleware('auth')->group(function () {
         Route::delete('category/{category}/posts/{post}', [PostController::class, 'destroy'])->name('categories.posts.destroy');
 
         Route::resource('announcements', AnnouncementController::class);
-        Route::resource('scienceinfors', ScienceInforController::class);
+        Route::resource('scienceinfors', ScienceInformationController::class);
         //album-photo-video
         Route::resource('albums', AlbumController::class);
         Route::resource('photos', PhotoController::class);

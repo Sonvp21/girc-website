@@ -2,12 +2,12 @@
 
 namespace App\View\Components\Website;
 
-use App\Models\ScienceInfor as ScienceInforModel;
+use App\Models\ScienceInformation;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class ScienceInfor extends Component
+class ScienceInformations extends Component
 {
     /**
      * Create a new component instance.
@@ -22,8 +22,8 @@ class ScienceInfor extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.website.science-infor', [
-            'scienceinfors' => ScienceInforModel::query()
+        return view('components.website.science-informations', [
+            'scienceinfors' => ScienceInformation::query()
                 ->where('keep_on_top', 1)
                 ->orderByDesc('published_at')
                 ->take(4)

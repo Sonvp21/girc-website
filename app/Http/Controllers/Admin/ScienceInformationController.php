@@ -3,18 +3,18 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\ScienceInforRequest;
-use App\Models\ScienceInfor;
+use App\Http\Requests\Admin\ScienceInformationRequest;
+use App\Models\ScienceInformation;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
-class ScienceInforController extends Controller
+class ScienceInformationController extends Controller
 {
     public function index(Request $request)
     {
         return view('admin.scienceinfors.index', [
-            'scienceinfors' => ScienceInfor::query()
+            'scienceinfors' => ScienceInformation::query()
                 ->when(
                     $request->search,
                     fn ($query) => $query->where('title', 'like', '%'.$request->search.'%')
@@ -29,12 +29,12 @@ class ScienceInforController extends Controller
         return view('admin.scienceinfors.create');
     }
 
-    public function store(ScienceInforRequest $request): RedirectResponse
+    public function store(ScienceInformationRequest $request): RedirectResponse
     {
         $request->validate([
             'image' => 'required',
         ]);
-        $scienceinfor = ScienceInfor::create($request->all());
+        $scienceinfor = ScienceInformation::create($request->all());
 
         if ($request->hasFile('image')) {
             $imageFile = $request->file('image');
@@ -50,12 +50,12 @@ class ScienceInforController extends Controller
     /**
      * @return RedirectResponse
      */
-    public function edit(ScienceInfor $scienceinfor): View
+    public function edit(ScienceInformation $scienceinfor): View
     {
         return view('admin.scienceinfors.edit', compact('scienceinfor'));
     }
 
-    public function update(ScienceInfor $scienceinfor, ScienceInforRequest $request): RedirectResponse
+    public function update(ScienceInformation $scienceinfor, ScienceInformationRequest $request): RedirectResponse
     {
         $scienceinfor->update($request->all());
         if ($request->hasFile('image')) {
@@ -70,7 +70,7 @@ class ScienceInforController extends Controller
 
     }
 
-    public function destroy(ScienceInfor $scienceinfor)
+    public function destroy(ScienceInformation $scienceinfor)
     {
         $scienceinfor->delete();
 

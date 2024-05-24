@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('science_infors', function (Blueprint $table) {
+        Schema::create('science_informations', function (Blueprint $table) {
             $table->id();
             $table->unsignedInteger('user_id');
             $table->string('title');
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('science_infors');
+        Schema::dropIfExists('science_informations');
     }
 };

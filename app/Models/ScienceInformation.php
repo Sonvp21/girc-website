@@ -10,14 +10,14 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class ScienceInfor extends Model implements HasMedia
+class ScienceInformation extends Model implements HasMedia
 {
     use HasFactory;
     use InteractsWithMedia;
 
     protected $fillable = ['user_id', 'title_en', 'title', 'slug', 'keep_on_top', 'content', 'published_at'];
 
-    protected $table = 'science_infors';
+    protected $table = 'science_informations';
 
     protected $casts = [
         'published_at' => 'datetime:Y-m-d H:i:s',

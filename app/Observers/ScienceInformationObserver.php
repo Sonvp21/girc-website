@@ -2,12 +2,12 @@
 
 namespace App\Observers;
 
-use App\Models\ScienceInfor;
+use App\Models\ScienceInformation;
 use Illuminate\Support\Str;
 
-class ScienceInforObserver
+class ScienceInformationObserver
 {
-    public function saving(ScienceInfor $scienceinfor)
+    public function saving(ScienceInformation $scienceinfor)
     {
         $scienceinfor->title = Str::ucfirst($scienceinfor->title);
         $scienceinfor->slug = Str::slug($scienceinfor->title);
