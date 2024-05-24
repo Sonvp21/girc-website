@@ -13,7 +13,7 @@ class AnnouncementsController extends Controller
         return view('web.announcements.index', [
             'announcements' => Announcement::query()
                 ->orderByDesc('published_at')
-                ->paginate(10),
+                ->paginate(6),
         ]);
     }
 

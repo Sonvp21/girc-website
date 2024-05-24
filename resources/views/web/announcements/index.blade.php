@@ -8,22 +8,22 @@
                             @lang('web.announcements')
                         </h2>
                     </div>
-                    <ul class="mt-10">
+                    <ul class="mt-5 ">
                         @foreach ($announcements as $announcement)
-                            <li class="flex border-b border-red-500 border-dashed">
-                                <span class="pt-1"><x-heroicon-c-chevron-double-right class="h-4 w-4"/> </span>
-                                <article class="group">
-                                    <div class="flex gap-3">
-                                        <div class="flex flex-col items-start justify-between">
-                                            <div>
-                                                <a href="{{ route('announcements.show', $announcement) }}" class="group-hover:underline">
-                                                    <h3 class="line-clamp-2 text-lg font-semibold leading-relaxed text-blue-950 ">
-                                                        {{ $announcement->title }}
-                                                    </h3>
-                                                </a>
+                            <li class="flex border-b border-yellow-500 border-dashed py-4">
+                                <article class="group w-full">
+                                    <div class="flex gap-3 ">
+                                        <div class="gap float-left mr-2 divide-y divide-blue-200 bg-yellow-400 text-red-500">
+                                            <div class="h-4 w-12 whitespace-nowrap text-center text-[10px]">
+                                                @lang('web.month')
+                                                {{ $announcement->published_at->translatedFormat('m') }}
                                             </div>
-                                            <span class="text-xs ml-auto">{{ $announcement->published_at }}</span>
+                                            <div class="text h-8 w-12 text-center text-xl font-extrabold">{{ $announcement->published_at->translatedFormat('d') }}</div>
                                         </div>
+                                        <h3 class="line-clamp-3 h-12 font-normal leading-4 tracking-normal text-blue-950 hover:text-red-500 text-justify">
+                                            <a href="{{ route('announcements.show', $announcement) }}">{{ $announcement->title }}</a>
+                                        </h3>
+                                        
                                     </div>
                                 </article>
                             </li>
