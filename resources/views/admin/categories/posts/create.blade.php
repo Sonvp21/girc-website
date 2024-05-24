@@ -20,7 +20,7 @@
                                 <input type="hidden" name="category_id" value="{{ $category->id }}">
 
                                 <div class="flex">
-                                    <x-admin.forms.calendar />
+                                    <x-admin.forms.calendar name="published_at"/>
                                 </div>
                                 <label class="form-control w-full">
                                     <div class="label">
