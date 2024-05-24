@@ -10,18 +10,18 @@ class ScienceInformationController extends Controller
 {
     public function index(): View
     {
-        return view('web.scienceinfors.index', [
-            'scienceinfors' => ScienceInformation::query()
+        return view('web.science-information.index', [
+            'science-information' => ScienceInformation::query()
                 ->where('keep_on_top', 1)
                 ->orderByDesc('published_at')
                 ->paginate(6),
         ]);
     }
 
-    public function show(ScienceInformation $scienceinfor): View
+    public function show(ScienceInformation $scienceInformation): View
     {
-        return view('web.scienceinfors.show', [
-            'scienceinfor' => $scienceinfor,
+        return view('web.science-information.show', [
+            'scienceInformation' => $scienceInformation,
         ]);
     }
 }

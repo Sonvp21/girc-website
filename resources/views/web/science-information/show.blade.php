@@ -7,16 +7,13 @@
                         <h2 class="inline-block bg-blue-700 px-6 py-3 text-xl font-bold text-white">@lang('web.scienceinfors_lists')</h2>
                     </div>
                     <article class="group">
-                        <div
-                            class="tooltip tooltip-top flex items-center gap-2 text-green-700"
-                            data-tip="{{ $scienceinfor->publishedAtVi }}"
-                        >
+                        <div class="tooltip tooltip-top flex items-center gap-2 text-green-700" data-tip="{{ $scienceInformation->publishedAtVi }}">
                             <x-heroicon-m-calendar class="size-4" />
-                            <span class="text-xs">{{ $scienceinfor->publishedAtVi }}</span>
+                            <span class="text-xs">{{ $scienceInformation->publishedAtVi }}</span>
                         </div>
-                        <h2 class="text-xl font-bold">{{ $scienceinfor->title }}</h2>
+                        <h2 class="text-xl font-bold">{{ $scienceInformation->title }}</h2>
                         <div class="">
-                            {!! $scienceinfor->content !!}
+                            {!! $scienceInformation->content !!}
                         </div>
                     </article>
                 </div>
