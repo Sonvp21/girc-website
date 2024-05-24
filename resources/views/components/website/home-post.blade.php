@@ -7,13 +7,13 @@
             >
                 <article>
                     <figure>
-                        <div class="relative overflow-hidden bg-red-500">
+                        <div class="relative overflow-hidden bg-white h-[347px]">
                             <img
                                 class="h-auto w-full transition-all group-hover:scale-105"
                                 src="{{ $latestPost->getFirstMedia('featured_image')->getUrl('lg') }}"
                                 alt=""
                             />
-                            <h2 class="absolute bottom-0 right-0 flex w-fit items-center gap-2 bg-white/90 text-normal uppercase text-black px-6 text-center py-4">
+                            <h2 class="w-full absolute bottom-0 right-0 flex items-center justify-center gap-2 bg-white/70 backdrop-blur text-normal uppercase text-black px-6 py-4 text-center">
                                 {{ $latestPost->title }}
                             </h2>
                         </div>
@@ -24,14 +24,14 @@
         <div class="col-span-5 flex flex-col justify-between md:col-span-2">
             <div>
                 <x-website.partials.header title="{{ __('web.news_events') }}" textAlign="left" paddingTop="0" textColor="text-red-500" />
-                <div class="mt-2 h-auto divide-y divide-solid divide-gray-300">
+                <div class="h-auto divide-y divide-solid divide-gray-300">
                     @foreach ($posts as $post)
                         @unless ($loop->first)
                             <a
-                                class="py-4 inline-block"
+                                class="py-2 inline-block"
                                 href="{{ route('news.show', $post) }}"
                             >
-                                <article>
+                                <article class="h-16 flex items-center">
                                     <figure class="group relative flex rounded-t-xl">
                                         <div
                                             href="{{ route('news.show', $post) }}"
