@@ -16,13 +16,18 @@
                     </a>
                 </li>
                 <li>
-                    <details @if (request()->routeIs('admin.categories.*', 'admin.posts.*')) open @endif
-                        class="{{ request()->routeIs('admin.categories.*', 'admin.posts.*') ? 'active' : '' }}">
+                    <a @class([
+                        'active' => request()->routeIs('admin.science-information.*'),
+                    ]) href="{{ route('admin.science-information.index') }}">
+                        @lang('admin.science-information')
+                    </a>
+                </li>
+                <li>
+                    <details @if (request()->routeIs('admin.categories.*', 'admin.posts.*')) open @endif class="{{ request()->routeIs('admin.categories.*', 'admin.posts.*') ? 'active' : '' }}">
                         <summary>@lang('admin.categories')</summary>
                         <ul class="menu">
                             <li>
-                                <a class="{{ request()->routeIs('admin.categories.index') ? 'active' : '' }}"
-                                    href="{{ route('admin.categories.index') }}">
+                                <a class="{{ request()->routeIs('admin.categories.index') ? 'active' : '' }}" href="{{ route('admin.categories.index') }}">
                                     @lang('admin.categories.list')
                                 </a>
                             </li>
@@ -34,46 +39,39 @@
                 </li>
 
                 <li>
-                    <details @if (request()->routeIs('admin.albums.*', 'admin.photos.*', 'admin.videos.*')) open @endif
-                        class="{{ request()->routeIs('admin.albums.*', 'admin.photos.*', 'admin.videos.*') ? 'open' : '' }}">
+                    <details @if (request()->routeIs('admin.albums.*', 'admin.photos.*', 'admin.videos.*')) open @endif class="{{ request()->routeIs('admin.albums.*', 'admin.photos.*', 'admin.videos.*') ? 'open' : '' }}">
                         <summary>@lang('admin.album')</summary>
                         <ul>
                             <li>
-                                <a class="{{ request()->routeIs('admin.albums.*') ? 'active' : '' }}"
-                                    href="{{ route('admin.albums.index') }}">
+                                <a class="{{ request()->routeIs('admin.albums.*') ? 'active' : '' }}" href="{{ route('admin.albums.index') }}">
                                     @lang('admin.albums.all')
                                 </a>
                             </li>
                             <li>
-                                <a class="{{ request()->routeIs('admin.photos.*') ? 'active' : '' }}"
-                                    href="{{ route('admin.photos.index') }}">
+                                <a class="{{ request()->routeIs('admin.photos.*') ? 'active' : '' }}" href="{{ route('admin.photos.index') }}">
                                     @lang('admin.photos.all')
                                 </a>
                             </li>
                             <li>
-                                <a class="{{ request()->routeIs('admin.videos.*') ? 'active' : '' }}"
-                                    href="{{ route('admin.videos.index') }}">
+                                <a class="{{ request()->routeIs('admin.videos.*') ? 'active' : '' }}" href="{{ route('admin.videos.index') }}">
                                     @lang('admin.videos.all')
                                 </a>
                             </li>
-                            
+
                         </ul>
                     </details>
                 </li>
                 <li>
-                    <details @if (request()->routeIs('admin.departments.*', 'admin.staffs.*')) open @endif
-                        class="{{ request()->routeIs('admin.departments.*', 'admin.staffs.*') ? 'open' : '' }}">
+                    <details @if (request()->routeIs('admin.departments.*', 'admin.staffs.*')) open @endif class="{{ request()->routeIs('admin.departments.*', 'admin.staffs.*') ? 'open' : '' }}">
                         <summary>@lang('admin.teaching_staff')</summary>
                         <ul>
                             <li>
-                                <a class="{{ request()->routeIs('admin.departments.*') ? 'active' : '' }}"
-                                    href="{{ route('admin.departments.index') }}">
+                                <a class="{{ request()->routeIs('admin.departments.*') ? 'active' : '' }}" href="{{ route('admin.departments.index') }}">
                                     @lang('admin.departments.list')
                                 </a>
                             </li>
                             <li>
-                                <a class="{{ request()->routeIs('admin.staffs.*') ? 'active' : '' }}"
-                                    href="{{ route('admin.staffs.index') }}">
+                                <a class="{{ request()->routeIs('admin.staffs.*') ? 'active' : '' }}" href="{{ route('admin.staffs.index') }}">
                                     @lang('admin.staffs.list')
                                 </a>
                             </li>
@@ -81,8 +79,7 @@
                     </details>
                 </li>
                 <li>
-                    <a class="{{ request()->routeIs('admin.cooperations.*') ? 'active' : '' }}"
-                        href="{{ route('admin.cooperations.index') }}">
+                    <a class="{{ request()->routeIs('admin.cooperations.*') ? 'active' : '' }}" href="{{ route('admin.cooperations.index') }}">
                         @lang('admin.cooperations.all')
                     </a>
                 </li>

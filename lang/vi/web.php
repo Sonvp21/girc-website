@@ -47,7 +47,7 @@ return [
     'tuaf_address' => 'Đường Mỏ Bạch, Thành phố Thái Nguyên',
 
     'announcements' => 'Danh sách thông báo',
-    'announcement' => 'Thông báo',
+    'announcement_home' => 'Thông báo',
     'published_at' => 'Ngày đăng',
 
     //web contact
@@ -91,5 +91,7 @@ return [
             'contact' => 'Gửi thành công!',
         ],
     ],
+
+    'scienceinfors_lists' => 'Thông tin khoa học',
 
 ];

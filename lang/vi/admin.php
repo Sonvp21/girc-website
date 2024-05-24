@@ -145,4 +145,31 @@ return [
         ],
     ],
 
+    'science-information' => 'Thông tin khoa học',
+    'published_at' => 'Ngày đăng',
+    'science-information.title' => 'Tiêu đề',
+    'science-information.title_en' => 'Tiêu đề tiếng anh',
+    'science-information.keep_on_top' => 'Trạng thái',
+
+    'science_infor' => [
+        'required' => [
+            'title' => 'Trường tiêu đề là bắt buộc.',
+            'content' => 'Trường nội dung là bắt buộc.',
+            'published_at' => 'Ngày xuất bản là bắt buộc.',
+        ],
+        'max' => [
+            'title' => 'Tiêu đề không được vượt quá :max ký tự.',
+            'title_en' => 'Tiêu đề tiếng Anh không được vượt quá :max ký tự.',
+        ],
+        'unique' => [
+            'title' => 'Tiêu đề đã tồn tại.',
+        ],
+        'boolean' => [
+            'keep_on_top' => 'Phải chọn cho phép hiển thị hoặc không.',
+        ],
+        'date' => [
+            'published_at' => 'Ngày xuất bản phải là một ngày hợp lệ.',
+        ],
+    ],
+
 ];

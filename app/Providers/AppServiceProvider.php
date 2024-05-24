@@ -5,9 +5,11 @@ namespace App\Providers;
 use App\Models\Announcement;
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\ScienceInformation;
 use App\Observers\AnnouncementObserver;
 use App\Observers\CategoryObserver;
 use App\Observers\PostObserver;
+use App\Observers\ScienceInformationObserver;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -26,6 +28,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Announcement::observe(AnnouncementObserver::class);
+        ScienceInformation::observe(ScienceInformationObserver::class);
         Category::observe(CategoryObserver::class);
         Post::observe(PostObserver::class);
     }

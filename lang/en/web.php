@@ -93,4 +93,6 @@ return [
         ],
     ],
 
+    'scienceinfors_lists' => 'Science information',
+
 ];

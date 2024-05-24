@@ -23,7 +23,7 @@
                                     <div class="label">
                                         <span class="label-text">@lang('admin.post.published_at')</span>
                                     </div>
-                                    <x-admin.forms.calendar name="published_at"/>
+                                    <x-admin.forms.calendar name="published_at" value="{{ old('published_at') }}"/>
 
                                 </label>
                                 <label class="form-control w-full">
