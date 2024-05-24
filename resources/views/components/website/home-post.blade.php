@@ -7,7 +7,7 @@
             >
                 <article>
                     <figure>
-                        <div class="relative overflow-hidden bg-red-500">
+                        <div class="relative overflow-hidden bg-white h-[347px]">
                             <img
                                 class="h-auto w-full transition-all group-hover:scale-105"
                                 src="{{ $latestPost->getFirstMedia('featured_image')->getUrl('lg') }}"
