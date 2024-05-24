@@ -31,7 +31,12 @@
                                         ])
                                     />
                             </label>
-                            <x-admin.forms.calendar :publish_at="$announcement->published_at" />
+                            <label class="form-control w-full">
+                                <div class="label">
+                                    <span class="label-text">@lang('admin.post.published_at')</span>
+                                </div>
+                                <x-admin.forms.calendar name="published_at" value="{{ $announcement->published_at }}"/>
+                            </label>
                         </div>
                         <label class="form-control w-full">
                             <div class="label">

@@ -22,9 +22,12 @@
                             <input type="hidden" name="category_id" value="{{ $category->id }}">
 
                             <div class="space-y-4">
-                                <div class="flex">
-                                    <x-admin.forms.calendar :publish_at="$post->published_at"/>
-                                </div>
+                                <label class="form-control w-full">
+                                    <div class="label">
+                                        <span class="label-text">@lang('admin.post.published_at')</span>
+                                    </div>
+                                    <x-admin.forms.calendar name="published_at" value="{{ $post->published_at }}"/>
+                                </label>
 
                                 <label class="form-control w-full">
                                     <div class="label">
