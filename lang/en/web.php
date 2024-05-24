@@ -56,6 +56,7 @@ return [
     'address_web' => 'ADDRESS',
     'contact_web' => 'CONTACT',
     'email_web' => 'EMAIL',
+    'email_web_sp' => 'Support 24/7 - Online 24 hours',
     'title_girc' => 'Geoinformatics Research Centre - GIRC',
     'time_work' => 'Working hours: 7:30AM - 5:30PM - Closed',
 

@@ -56,6 +56,7 @@ return [
     'address_web' => 'ĐỊA CHỈ',
     'contact_web' => 'LIÊN HỆ',
     'email_web' => 'EMAIL',
+    'email_web_sp' => 'Hỗ trợ 24/7 - Trực tuyến 24 giờ',
     'title_girc' => 'Trung tâm Nghiên cứu Địa tin học - GIRC',
     'time_work' => 'Làm việc từ: 7:30AM - 5:30PM - Nghỉ',
 

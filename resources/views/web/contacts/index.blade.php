@@ -14,21 +14,21 @@
                                 @csrf
                                 <div class="grid grid-cols-3 gap-4">
                                     <div>
-                                        <input type="text" name="name" placeholder="@lang('web.contacts.name')"
+                                        <input type="text" name="name" value="{{ old('name') }}" placeholder="@lang('web.contacts.name')"
                                             class="input input-bordered input-success w-full">
                                         @error('name')
                                             <div class="text-red-500 mt-2 text-sm">{{ $message }}</div>
                                         @enderror
                                     </div>
                                     <div>
-                                        <input type="text" name="email" placeholder="@lang('web.contacts.email')"
+                                        <input type="text" name="email" value="{{ old('email') }}" placeholder="@lang('web.contacts.email')"
                                             class="input input-bordered input-success w-full">
                                         @error('email')
                                             <div class="text-red-500 mt-2 text-sm">{{ $message }}</div>
                                         @enderror
                                     </div>
                                     <div>
-                                        <input type="text" name="phone" placeholder="@lang('web.contacts.phone')"
+                                        <input type="text" name="phone" value="{{ old('phone') }}" placeholder="@lang('web.contacts.phone')"
                                             class="input input-bordered input-success w-full">
                                         @error('phone')
                                             <div class="text-red-500 mt-2 text-sm">{{ $message }}</div>
@@ -37,7 +37,7 @@
                                 </div>
 
                                 <textarea name="content" placeholder="@lang('web.contacts.content')" class="textarea textarea-bordered textarea-success w-full"
-                                    rows="8"></textarea>
+                                    rows="8">{{ old('content') }}</textarea>
                                 @error('content')
                                     <div class="text-red-500 mt-2 text-sm">{{ $message }}</div>
                                 @enderror
@@ -98,7 +98,7 @@
                                     <a href="mailto:girc.tuaf@gmail.com"
                                         class="hover:text-green-900">girc.tuaf@gmail.com</a>
                                 </p>
-                                <p class="pl-8">Support 24/7 - Online 24 hours</p>
+                                <p class="pl-8">@lang('web.email_web_sp')</p>
                             </div>
 
                         </div>
