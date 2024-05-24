@@ -29,24 +29,24 @@ class ScienceInformation extends Model implements HasMedia
             ->crop(1020, 603)
             ->sharpen(5)
             ->format('jpg')
-            ->performOnCollections('scienceinfor_photo');
+            ->performOnCollections('science_information_photo');
 
         $this->addMediaConversion('md')
             ->crop(541, 320)
             ->sharpen(5)
             ->format('jpg')
-            ->performOnCollections('scienceinfor_photo');
+            ->performOnCollections('science_information_photo');
 
         $this->addMediaConversion('thumb')
             ->crop(368, 276)
             ->sharpen(10)
             ->format('jpg')
-            ->performOnCollections('scienceinfor_photo');
+            ->performOnCollections('science_information_photo');
     }
 
     public function registerMediaCollections(): void
     {
-        $this->addMediaCollection('scienceinfor_photo')
+        $this->addMediaCollection('science_information_photo')
             ->singleFile()
             ->useDisk('scienceinfor');
     }

@@ -145,11 +145,11 @@ return [
         ],
     ],
 
-    'scienceinfors' => 'Thông tin khoa học',
+    'science-information' => 'Thông tin khoa học',
     'published_at' => 'Ngày đăng',
-    'scienceinfors.title' => 'Tiêu đề',
-    'scienceinfors.title_en' => 'Tiêu đề tiếng anh',
-    'scienceinfors.keep_on_top' => 'Trạng thái',
+    'science-information.title' => 'Tiêu đề',
+    'science-information.title_en' => 'Tiêu đề tiếng anh',
+    'science-information.keep_on_top' => 'Trạng thái',
 
     'science_infor' => [
         'required' => [

@@ -7,9 +7,9 @@ use Illuminate\Support\Str;
 
 class ScienceInformationObserver
 {
-    public function saving(ScienceInformation $scienceinfor)
+    public function saving(ScienceInformation $scienceInformation)
     {
-        $scienceinfor->title = Str::ucfirst($scienceinfor->title);
-        $scienceinfor->slug = Str::slug($scienceinfor->title);
+        $scienceInformation->title = Str::ucfirst($scienceInformation->title);
+        $scienceInformation->slug = Str::slug($scienceInformation->title);
     }
 }
