@@ -45,4 +45,9 @@ return [
     'email' => 'Email',
     'website' => 'Website',
     'tuaf_address' => 'Thai Nguyen University of Agriculture and Forestry, Phu Do, Dai Tu, Thai Nguyen',
+
+    'announcements' => 'Announcement list',
+    'announcement' => 'Announcement',
+    'published_at' => 'Publish at',
+
 ];
