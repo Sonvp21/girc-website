@@ -15,7 +15,7 @@ return [
     'Update your accounts profile information and email address.' => 'Update your accounts profile information and email address.',
     'update_password' => 'Update Password',
     'delete_account' => 'Delete Account',
-    '' => '',
+    'back' => 'Back',
     '' => '',
     '' => '',
 
