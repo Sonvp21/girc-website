@@ -29,7 +29,12 @@
                                     'w-full',
                                 ]) />
                             </label>
-                            <x-admin.forms.calendar name="published_at"/>
+                            <label class="form-control w-full">
+                                <div class="label">
+                                    <span class="label-text">@lang('admin.post.published_at')</span>
+                                </div>
+                                <x-admin.forms.calendar name="published_at"/>
+                            </label>
                         </div>
 
                         <label class="form-control w-full">
