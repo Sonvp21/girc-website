@@ -9,8 +9,8 @@
                 {{ now()->translatedFormat('l d/m/Y') }}
             </div>
         </div>
-        <div class="flex items-center gap-6 whitespace-nowrap pl-4 text-sm">
-            <a class="flex items-center gap-2 text-slate-700 hover:text-blue-700" href="{{ route('contacts.index') }}">
+        <div class="flex w-full items-center gap-6 whitespace-nowrap pl-4 text-sm sm:w-auto">
+            <a class="flex w-full items-center gap-2 text-slate-700 hover:text-blue-700" href="{{ route('contacts.index') }}">
                 <div class="rounded bg-yellow-500 p-1 text-white">
                     <x-heroicon-s-phone class="size-4" />
                 </div>
