@@ -1,5 +1,5 @@
 <div @class(['mt-5' => !request()->routeIs('home')])>
-    <x-website.partials.header title="<a href='{{ route('announcements.index') }}' class='text-red-500'>{{ __('web.announcements') }}</a>" paddingTop="0" textColor="text-red-500" />
+    <x-website.partials.header title="<a href='{{ route('announcements.index') }}' class='text-red-500'>{{ __('web.announcement_home') }}</a>" paddingTop="0" textColor="text-red-500" />
     <ul class="flex h-auto flex-col divide-y divide-solid divide-gray-300 overflow-scroll overflow-y-auto overscroll-contain border border-slate-200 bg-gray-100 px-4 text-sm scrollbar-hide">
         @foreach ($announcements as $announcement)
             <li class="gap-2 py-4 text-xs">
