@@ -43,22 +43,19 @@ class Post extends Model implements HasMedia
     public function registerMediaConversions(?Media $media = null): void
     {
         $this->addMediaConversion('lg')
-            ->width(1020)
-            ->height(603)
+            ->crop(900, 800)
             ->sharpen(5)
             ->format('jpg')
             ->performOnCollections('featured_image');
 
         $this->addMediaConversion('md')
-            ->width(541)
-            ->height(320)
+            ->crop(541, 320)
             ->sharpen(5)
             ->format('jpg')
             ->performOnCollections('featured_image');
 
         $this->addMediaConversion('thumb')
-            ->width(368)
-            ->height(276)
+            ->crop(368, 276)
             ->sharpen(10)
             ->format('jpg')
             ->performOnCollections('featured_image');
