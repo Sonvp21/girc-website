@@ -4,7 +4,7 @@ return [
     'month' => 'Tháng',
     'announcements' => 'Thông báo',
     'show_more_posts' => 'Xem thêm bài viết',
-    'news_events' => 'Tin mới',
+    'news_events' => 'Tin tức - Sự kiện',
     'news' => 'Tin tức',
     'showing' => 'Hiển thị từ',
     'to' => 'đến',
@@ -49,4 +49,47 @@ return [
     'announcements' => 'Danh sách thông báo',
     'announcement' => 'Thông báo',
     'published_at' => 'Ngày đăng',
+
+    //web contact
+    'title_web_contact' => 'GỬI THÔNG TIN YÊU CẦU',
+    'cmt_web_contact' => 'Để liên hệ với chúng tôi, xin vui lòng gửi thông tin theo form bên dưới:',
+    'address_web' => 'ĐỊA CHỈ',
+    'contact_web' => 'LIÊN HỆ',
+    'email_web' => 'EMAIL',
+    'email_web_sp' => 'Hỗ trợ 24/7 - Trực tuyến 24 giờ',
+    'title_girc' => 'Trung tâm Nghiên cứu Địa tin học - GIRC',
+    'time_work' => 'Làm việc từ: 7:30AM - 5:30PM - Nghỉ',
+
+    'contacts.name' => 'Họ & tên',
+    'contacts.email' => 'Email',
+    'contacts.phone' => 'Số điện thoại',
+    'contacts.content' => 'Nội dung',
+    'send' => 'Gửi',
+
+    'contact_validate' => [
+        'name' => [
+            'required' => 'Vui lòng nhập tên.',
+            'min' => 'Tên phải có ít nhất :min ký tự.',
+            'max' => 'Tên không được vượt quá :max ký tự.',
+        ],
+        'email' => [
+            'required' => 'Vui lòng nhập email.',
+            'email' => 'Định dạng email không hợp lệ.',
+        ],
+        'phone' => [
+            'required' => 'Vui lòng nhập số điện thoại.',
+            'digits' => 'Số điện thoại phải có đúng :digits chữ số.',
+        ],
+        'content' => [
+            'required' => 'Vui lòng nhập nội dung.',
+            'min' => 'Nội dung phải có ít nhất :min ký tự.',
+        ],
+    ],
+
+    'alerts' => [
+        'success' => [
+            'contact' => 'Gửi thành công!',
+        ],
+    ],
+
 ];

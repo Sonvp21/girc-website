@@ -15,6 +15,7 @@ return [
     'Update your accounts profile information and email address.' => 'Cập nhật thông tin hồ sơ tài khoản của bạn và địa chỉ email.',
     'update_password' => 'Cập nhật mật khẩu mới',
     'delete_account' => 'Xoá tài khoản',
+    'back' => 'Quay lại',
 
     //Thông báo
     'announcements' => 'Thông báo',

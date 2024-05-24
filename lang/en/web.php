@@ -50,4 +50,47 @@ return [
     'announcement' => 'Announcement',
     'published_at' => 'Publish at',
 
+    //web contact
+    'title_web_contact' => 'SEND REQUEST INFORMATION',
+    'cmt_web_contact' => 'To contact us, please fill out the form below:',
+    'address_web' => 'ADDRESS',
+    'contact_web' => 'CONTACT',
+    'email_web' => 'EMAIL',
+    'email_web_sp' => 'Support 24/7 - Online 24 hours',
+    'title_girc' => 'Geoinformatics Research Centre - GIRC',
+    'time_work' => 'Working hours: 7:30AM - 5:30PM - Closed',
+
+    'contacts.name' => 'Name',
+    'contacts.email' => 'Email',
+    'contacts.phone' => 'Phone',
+    'contacts.content' => 'Content',
+
+    'contact_validate' => [
+        'name' => [
+            'required' => 'Please enter a name.',
+            'min' => 'The name must be at least :min characters.',
+            'max' => 'The name may not be greater than :max characters.',
+        ],
+        'email' => [
+            'required' => 'Please enter an email address.',
+            'email' => 'The email must be a valid email address.',
+        ],
+        'phone' => [
+            'required' => 'Please enter a phone number.',
+            'digits' => 'The phone number must be exactly :digits digits.',
+        ],
+        'content' => [
+            'required' => 'Please enter content.',
+            'min' => 'The content must be at least :min characters.',
+        ],
+    ],
+
+    'send' => 'Send',
+
+    'alerts' => [
+        'success' => [
+            'contact' => 'Submitted successfully',
+        ],
+    ],
+
 ];
