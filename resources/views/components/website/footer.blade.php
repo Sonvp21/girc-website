@@ -2,7 +2,7 @@
     <div class="relative mt-10 h-auto overflow-hidden bg-blue-800">
         <div class="relative z-10 mx-auto h-full w-full max-w-7xl grid-cols-2 gap-10 overflow-hidden px-3 py-6 flex justify-center items-center">
             <div class="flex flex-col md:flex-row gap-14">
-                <div class="flex flex-col items-center justify-center gap-2 text-white">
+                <div class="flex flex-col items-start sm:items-center justify-center gap-2 text-white">
                     <div class="flex items-start gap-1 sm:gap-4">
                         <div class="">
                             <x-website.girc-logo-svg class="size-20 text-white" />
