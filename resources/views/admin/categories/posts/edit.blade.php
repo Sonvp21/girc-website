@@ -23,7 +23,7 @@
 
                             <div class="space-y-4">
                                 <div class="flex">
-                                    <x-admin.forms.calendar :publish_at="$post->published_at"/>
+                                    <x-admin.forms.calendar name="published_at" value="{{ $post->published_at }}"/>
                                 </div>
 
                                 <label class="form-control w-full">

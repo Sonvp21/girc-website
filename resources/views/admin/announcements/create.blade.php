@@ -29,7 +29,7 @@
                                     'w-full',
                                 ]) />
                             </label>
-                            <x-admin.forms.calendar />
+                            <x-admin.forms.calendar name="published_at"/>
                         </div>
 
                         <label class="form-control w-full">

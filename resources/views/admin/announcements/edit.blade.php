@@ -31,7 +31,7 @@
                                         ])
                                     />
                             </label>
-                            <x-admin.forms.calendar :publish_at="$announcement->published_at" />
+                            <x-admin.forms.calendar name="published_at" value="{{ $announcement->published_at }}"/>
                         </div>
                         <label class="form-control w-full">
                             <div class="label">
