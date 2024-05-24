@@ -80,6 +80,14 @@ return [
             'throw' => false,
         ],
 
+        'scienceinfor' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/scienceinfor'),
+            'url' => env('APP_URL').'/storage/scienceinfor',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
     ],
 
     /*

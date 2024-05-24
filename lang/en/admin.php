@@ -158,4 +158,38 @@ return [
         ],
     ],
 
+    'scienceinfors' => 'Science information',
+    'published_at' => 'Published at',
+    'scienceinfors.title' => 'Title',
+    'scienceinfors.title_en' => 'Title english',
+    'scienceinfors.keep_on_top' => 'Status',
+    '' => '',
+    '' => '',
+    '' => '',
+    '' => '',
+
+
+
+        'science_infor' => [
+
+                    'required' => [
+                        'title' => 'The title field is required.',
+                        'content' => 'The content field is required.',
+                        'published_at' => 'The publish date is required.'
+                    ],
+                    'max' => [
+                        'title' => 'The title may not be greater than :max characters.',
+                        'title_en' => 'The English title may not be greater than :max characters.',
+                    ],
+                    'unique' => [
+                        'title' => 'The title has already been taken.',
+                    ],
+                    'boolean' => [
+                        'keep_on_top' => 'The keep on top field must be true or false.'
+                    ],
+                    'date' => [
+                        'published_at' => 'The publish date must be a valid date.'
+                    ]
+                ],
+    
 ];

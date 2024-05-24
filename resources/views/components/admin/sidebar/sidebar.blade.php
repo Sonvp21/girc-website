@@ -16,6 +16,13 @@
                     </a>
                 </li>
                 <li>
+                    <a @class([
+                        'active' => request()->routeIs('admin.scienceinfors.*'),
+                    ]) href="{{ route('admin.scienceinfors.index') }}">
+                        @lang('admin.scienceinfors')
+                    </a>
+                </li>
+                <li>
                     <details @if (request()->routeIs('admin.categories.*', 'admin.posts.*')) open @endif
                         class="{{ request()->routeIs('admin.categories.*', 'admin.posts.*') ? 'active' : '' }}">
                         <summary>@lang('admin.categories')</summary>
