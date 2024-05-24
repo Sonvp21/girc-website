@@ -14,7 +14,6 @@ use App\Http\Controllers\Admin\ScienceInforController;
 use App\Http\Controllers\Admin\Staff\DepartmentController;
 use App\Http\Controllers\Admin\Staff\StaffController;
 use App\Http\Controllers\Admin\Support\TinymceController;
-use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 

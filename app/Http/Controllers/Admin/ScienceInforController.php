@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\ScienceInfor;
 use App\Http\Requests\Admin\ScienceInforRequest;
+use App\Models\ScienceInfor;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\View\View;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class ScienceInforController extends Controller
 {
@@ -35,7 +35,7 @@ class ScienceInforController extends Controller
             'image' => 'required',
         ]);
         $scienceinfor = ScienceInfor::create($request->all());
-        
+
         if ($request->hasFile('image')) {
             $imageFile = $request->file('image');
             $scienceinfor->addMediaFromRequest('image')
@@ -43,7 +43,6 @@ class ScienceInforController extends Controller
                 ->usingName($imageFile->getClientOriginalName())
                 ->toMediaCollection('scienceinfor_photo');
         }
-
 
         return redirect()->route('admin.scienceinfors.index', compact('scienceinfor'))->with('success', trans('admin.alerts.success.create'));
     }
@@ -66,6 +65,7 @@ class ScienceInforController extends Controller
                 ->usingName($request->image->getClientOriginalName())
                 ->toMediaCollection('scienceinfor_photo');
         }
+
         return redirect()->route('admin.scienceinfors.index')->with('success', trans('admin.alerts.success.edit'));
 
     }

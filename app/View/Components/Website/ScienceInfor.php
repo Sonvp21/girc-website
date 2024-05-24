@@ -2,9 +2,9 @@
 
 namespace App\View\Components\Website;
 
+use App\Models\ScienceInfor as ScienceInforModel;
 use Closure;
 use Illuminate\Contracts\View\View;
-use App\Models\ScienceInfor as ScienceInforModel;
 use Illuminate\View\Component;
 
 class ScienceInfor extends Component
@@ -29,6 +29,6 @@ class ScienceInfor extends Component
                 ->take(4)
                 ->get(),
         ]);
-        
+
     }
 }

@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use App\Models\ScienceInfor;
 use Illuminate\View\View;
-use Illuminate\Http\Request;
 
 class ScienceInforController extends Controller
 {
