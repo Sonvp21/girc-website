@@ -92,4 +92,6 @@ return [
         ],
     ],
 
+    'scienceinfors_lists' => 'Thông tin khoa học',
+
 ];

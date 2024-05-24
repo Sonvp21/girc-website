@@ -1,5 +1,5 @@
 <div class="bg-gray-100">
-    <x-website.partials.header title="{{ __('web.science_information') }}" />
+    <x-website.partials.header title="<a href='{{ route('scienceinfors.index') }}' class='text-red-500'>{{ __('web.science_information') }}</a>" textColor="text-red-500"/>
     <div class="">
         <ul class="divide-y divide-solid px-2">
             @foreach ($scienceinfors as $scienceinfor)
@@ -11,7 +11,7 @@
                         <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
                     </svg>
                     <p class="line-clamp-3 text-xs hover:text-red-600">
-                        <a href="">{{ $scienceinfor->title }}</a></p>
+                        <a href="{{ route('scienceinfors.show', $scienceinfor) }}">{{ $scienceinfor->title }}</a></p>
                 </li>
             @endforeach
 
