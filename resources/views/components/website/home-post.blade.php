@@ -13,7 +13,7 @@
                                 src="{{ $latestPost->getFirstMedia('featured_image')->getUrl('lg') }}"
                                 alt=""
                             />
-                            <h2 class="w-full absolute bottom-0 right-0 flex items-center justify-center gap-2 bg-white/70 backdrop-blur text-normal uppercase text-black px-6 py-4 text-center">
+                            <h2 class="w-full absolute bottom-0 right-0 flex items-center justify-center gap-2 bg-white/70 text-normal uppercase text-black px-6 py-4 text-center">
                                 {{ $latestPost->title }}
                             </h2>
                         </div>
@@ -33,10 +33,7 @@
                             >
                                 <article class="h-16 flex items-center">
                                     <figure class="group relative flex rounded-t-xl">
-                                        <div
-                                            href="{{ route('news.show', $post) }}"
-                                            class="h-auto w-20 flex-none overflow-hidden"
-                                        >
+                                        <div href="{{ route('news.show', $post) }}" class="h-auto w-20 flex-none overflow-hidden">
                                             <img
                                                 class="h-auto w-auto transition-all group-hover:scale-105"
                                                 src="{{ $post->getFirstMedia('featured_image')->getUrl('thumb') }}"
@@ -44,7 +41,16 @@
                                             />
                                         </div>
                                         <figcaption class="w-full px-3 text-sm">
-                                            <div class="text-blue-700 hover:text-red-600 line-clamp-3 leading-5 text-xs text-justify">{{ $post->title }}</div>
+                                            <div class="text-blue-700 hover:text-red-600 line-clamp-3 leading-5 text-xs text-justify">
+                                                {{ $post->title }}
+                                                @if (strlen($post->title) < 150)  {{-- Giả sử một dòng có khoảng 50 ký tự, 2 dòng là 100 ký tự --}}
+                                                <p>
+                                                   :{{ Str::limit(html_entity_decode(strip_tags($post->content)), 200) }} 
+                                                </p>
+                                                
+                                                @endif
+                                            </div>
+                                            
                                         </figcaption>
                                     </figure>
                                 </article>

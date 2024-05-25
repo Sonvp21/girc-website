@@ -13,7 +13,12 @@ class HomePost extends Component
     {
         $posts = Post::query()
             ->with('category')
-            ->latest()->take(5)->get();
+            ->whereHas('category', function ($query) {
+                $query->where('slug', 'tin-tuc-su-kien');
+            })
+            ->latest('published_at')
+            ->take(5)
+            ->get();
 
         return view('components.website.home-post', [
             'posts' => $posts,
