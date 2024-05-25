@@ -40,7 +40,7 @@ class DynamicMenu extends Component
         } elseif ($postCount > 1) {
             return route('categories.posts.index', ['category_slug' => $category->slug]);
         } else {
-            return '';
+            return '#';
         }
     }
 }
