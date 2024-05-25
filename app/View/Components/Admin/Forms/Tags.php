@@ -9,6 +9,7 @@ use Illuminate\View\Component;
 class Tags extends Component
 {
     public $tags;
+
     public $value;
 
     public function __construct($tags = [], $value = '')
