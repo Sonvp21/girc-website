@@ -36,9 +36,9 @@ class DynamicMenu extends Component
         $postCount = $category->posts->count();
         if ($postCount == 1) {
             $post = $category->posts->first();
-            return route('categories.posts.show', ['category_slug' => $category->slug, 'post_slug' => $post->slug]);
+            return route('categories.posts.show', ['category' => $category->slug, 'post' => $post->slug]);
         } elseif ($postCount > 1) {
-            return route('categories.posts.index', ['category_slug' => $category->slug]);
+            return route('categories.posts.index', ['category' => $category->slug]);
         } else {
             return '#';
         }

@@ -18,9 +18,6 @@
                                 <span class="text-xs">{{ $post->published_post_date_thumb }}</span>
                             </div>
                         @endif
-                        @if ($post->category->posts->count() > 1)
-                            <h2 class="text-2xl font-bold">{{ $post->title }}</h2>
-                        @endif
                         <div class="">
                             {!! $post->content !!}
                         </div>

@@ -21,9 +21,8 @@ Route::post('/lien-he', [ContactController::class, 'store'])->name('contacts.sto
 
 // Route::get('/gioi-thieu', fn () => view('web.about'))->name('about');
 
-Route::get('/categories/{category_slug}/posts', [CategoryController::class, 'showAllPosts'])->name('categories.posts.index');
-Route::get('/categories/{category_slug}/posts/{post_slug}', [CategoryController::class, 'showPost'])->name('categories.posts.show');
-
+Route::get('/categories/{category:slug}/posts', [CategoryController::class, 'showAllPosts'])->name('categories.posts.index');
+Route::get('/categories/{category:slug}/posts/{post:slug}', [CategoryController::class, 'showPost'])->name('categories.posts.show');
 
 
 require __DIR__.'/admin.php';

@@ -12,7 +12,7 @@
                                 <article class="group">
                                     <div class="flex gap-3">
                                         <a
-                                            href="{{ route('categories.posts.show', ['category_slug' => $category->slug, 'post_slug' => $post->slug]) }}"
+                                            href="{{ route('categories.posts.show', ['category' => $category->slug, 'post' => $post->slug]) }}"
                                             class="h-32 w-48 flex-none overflow-hidden"
                                         >
                                             <img
@@ -24,7 +24,7 @@
                                         <div class="flex flex-col items-start justify-between">
                                             <div>
                                                 <a
-                                                    href="{{ route('categories.posts.show', ['category_slug' => $category->slug, 'post_slug' => $post->slug]) }}"
+                                                    href="{{ route('categories.posts.show', ['category' => $category->slug, 'post' => $post->slug]) }}"
                                                     class="group-hover:underline"
                                                 >
                                                     <h3 class="line-clamp-2 text-lg font-semibold leading-5 text-blue-950">{{ $post->title }}</h3>

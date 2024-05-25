@@ -9,19 +9,16 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    public function showPost($category_slug, $post_slug)
-    {
-        $category = Category::where('slug', $category_slug)->firstOrFail();
-        $post = Post::where('slug', $post_slug)->firstOrFail();
 
+    public function showPost(Category $category, Post $post)
+    {
+        $post = Post::where('slug', $post->slug)->firstOrFail();
         return view('web.categories.show_post_first_category', compact('category', 'post'));
     }
 
-    public function showAllPosts($category_slug)
+    public function showAllPosts(Category $category)
     {
-        $category = Category::where('slug', $category_slug)->firstOrFail();
         $posts = Post::where('category_id', $category->id)->paginate(10);
-
         return view('web.categories.all_post_of_category', compact('category', 'posts'));
     }
 }
