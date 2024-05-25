@@ -18,7 +18,7 @@ class CategoryController extends Controller
     public function showAllPosts(Category $category)
     {
         $posts = Post::where('category_id', $category->id)
-            ->where('published_at', '<=', now())
+            ->published()
             ->latest('published_at')
             ->paginate(6);
 

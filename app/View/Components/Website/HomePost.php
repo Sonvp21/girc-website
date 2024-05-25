@@ -11,14 +11,12 @@ class HomePost extends Component
 {
     public function render(): View|Closure|string
     {
-        $categoryId = config('app.home_category_id');
-
         $posts = Post::query()
             ->with('category')
-            ->whereHas('category', function ($query) use ($categoryId) {
-                $query->whereId($categoryId);
+            ->published()
+            ->whereHas('category', function ($query) {
+                $query->whereId(config('app.home_category_id'));
             })
-            ->where('published_at', '<=', now())
             ->latest('published_at')
             ->take(5)
             ->get();

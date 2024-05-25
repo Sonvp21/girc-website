@@ -13,7 +13,7 @@ class ScienceInformationController extends Controller
         return view('web.science-information.index', [
             'science-information' => ScienceInformation::query()
                 ->where('keep_on_top', 1)
-                ->where('published_at', '<=', now())
+                ->published()
                 ->latest('published_at')
                 ->paginate(6),
         ]);

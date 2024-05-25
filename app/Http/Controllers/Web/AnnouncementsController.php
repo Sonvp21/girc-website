@@ -12,7 +12,7 @@ class AnnouncementsController extends Controller
     {
         return view('web.announcements.index', [
             'announcements' => Announcement::query()
-                ->where('published_at', '<=', now())
+                ->published()
                 ->latest('published_at')
                 ->paginate(6),
         ]);
