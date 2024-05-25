@@ -95,21 +95,13 @@
         <script>
             var input = document.querySelector('input[name=tags]');
             var tagify = new Tagify(input, {
-                delimiters: " ",
-                pattern: /[^ ]+/,
+                delimiters: "\n",
+                pattern: /[^,]+/,
             });
             var existingTags = @json($tags);
             tagify.addTags(existingTags);
-            tagify.on('add', function(e) {
-                if (e.detail.data.value.indexOf(' ') > -1) {
-                    var splitTags = e.detail.data.value.split(' ');
-                    splitTags.forEach(function(tag) {
-                        tagify.addTags(tag.trim());
-                    });
-                    tagify.removeTag(e.detail.data.value);
-                }
-            });
         </script>
+        
         <script>
             var loadFile = function(event) {
                 var input = event.target
