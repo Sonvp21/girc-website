@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Web\AnnouncementsController;
+use App\Http\Controllers\Web\CategoryController;
 use App\Http\Controllers\Web\ContactController;
 use App\Http\Controllers\Web\HomeController;
 use App\Http\Controllers\Web\NewsController;
@@ -18,6 +19,10 @@ Route::get('/thong-tin-khoa-hoc/{scienceInformation:slug}', [ScienceInformationC
 Route::get('/lien-he', [ContactController::class, 'index'])->name('contacts.index');
 Route::post('/lien-he', [ContactController::class, 'store'])->name('contacts.store');
 
-Route::get('/gioi-thieu', fn () => view('web.about'))->name('about');
+// Route::get('/gioi-thieu', fn () => view('web.about'))->name('about');
+
+Route::get('/categories/{category:slug}/posts', [CategoryController::class, 'showAllPosts'])->name('categories.posts.index');
+Route::get('/categories/{category:slug}/posts/{post:slug}', [CategoryController::class, 'showPost'])->name('categories.posts.show');
+
 
 require __DIR__.'/admin.php';
