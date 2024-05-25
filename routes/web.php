@@ -24,5 +24,4 @@ Route::post('/lien-he', [ContactController::class, 'store'])->name('contacts.sto
 Route::get('/categories/{category:slug}/posts', [CategoryController::class, 'showAllPosts'])->name('categories.posts.index');
 Route::get('/categories/{category:slug}/posts/{post:slug}', [CategoryController::class, 'showPost'])->name('categories.posts.show');
 
-
 require __DIR__.'/admin.php';

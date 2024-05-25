@@ -43,11 +43,10 @@
                                         <figcaption class="w-full px-3 text-sm">
                                             <div class="text-blue-700 hover:text-red-600 line-clamp-3 leading-5 text-xs text-justify">
                                                 {{ $post->title }}
-                                                @if (strlen($post->title) < 150)  {{-- Giả sử một dòng có khoảng 50 ký tự, 2 dòng là 100 ký tự --}}
+                                                @if (strlen($post->title) < 150)
                                                 <p>
                                                    :{{ Str::limit(html_entity_decode(strip_tags($post->content)), 200) }} 
                                                 </p>
-                                                
                                                 @endif
                                             </div>
                                             

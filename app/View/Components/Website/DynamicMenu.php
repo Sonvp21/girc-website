@@ -10,7 +10,9 @@ use Illuminate\View\Component;
 class DynamicMenu extends Component
 {
     public Category $category;
+
     public bool $isChild;
+
     public string $link;
 
     /**
@@ -36,6 +38,7 @@ class DynamicMenu extends Component
         $postCount = $category->posts->count();
         if ($postCount == 1) {
             $post = $category->posts->first();
+
             return route('categories.posts.show', ['category' => $category->slug, 'post' => $post->slug]);
         } elseif ($postCount > 1) {
             return route('categories.posts.index', ['category' => $category->slug]);
@@ -44,4 +47,3 @@ class DynamicMenu extends Component
         }
     }
 }
-
