@@ -15,6 +15,7 @@
             return false;
         }
     }
+    
 @endphp
 
 @if ($category->children->isNotEmpty())
@@ -38,15 +39,18 @@
 @else
     @if($isChild)
         <li class="hover:bg-black hover:bg-opacity-5">
-            <a href="" class="flex items-center justify-start space-x-2 px-2 py-4 text-slate-800" style="text-wrap: balance;">
+            <a href="{{ $link }}" class="flex items-center justify-start space-x-2 px-2 py-4 text-slate-800" style="text-wrap: balance;">
                 {{ $category->title }}
             </a>
         </li>
     @else
         <li>
-            <a href="#" class="flex h-full items-center justify-start py-4 font-semibold uppercase tracking-wider text-white hover:bg-blue-800 hover:text-white">
+            <a href="{{ $link }}" class="flex h-full items-center justify-start py-4 font-semibold uppercase tracking-wider text-white hover:bg-blue-800 hover:text-white">
                 <span class="lg:border-r border-white px-2">{{ $category->title }}</span>
             </a>
         </li>
     @endif
 @endif
+
+
+
