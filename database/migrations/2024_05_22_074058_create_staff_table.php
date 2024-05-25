@@ -11,24 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('departments', function (Blueprint $table) {
+        Schema::create('teaching_staffs', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->text('description')->nullable();
-            $table->timestamps();
-        });
-        Schema::create('staff', function (Blueprint $table) {
-            $table->id();
+            $table->string('category');
             $table->string('name');
             $table->longText('content');
-            $table->timestamps();
-        });
-        Schema::create('staff_departments', function (Blueprint $table) {
-            $table->increments('id');
-            $table->unsignedInteger('department_id')->index();
-            $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade');
-            $table->unsignedInteger('staff_id')->index();
-            $table->foreign('staff_id')->references('id')->on('staff')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -38,8 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('staff');
-        Schema::dropIfExists('departments');
-        Schema::dropIfExists('staff_departments');
+        Schema::dropIfExists('teaching_staffs');
     }
 };

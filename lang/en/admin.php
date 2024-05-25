@@ -109,6 +109,7 @@ return [
     'staffs' => 'Staff',
     'staffs.list' => 'Staff',
     'staffs.name' => 'Staff name',
+    'staffs.category' => 'Category',
     '' => '',
 
     // Common
@@ -190,4 +191,8 @@ return [
         ],
     ],
 
+    'basic_science' => 'Basic science',
+    'information_technology' => 'Information technology',
+    'economy_and_created_news' => 'Economy and created news',
+    'inter_industry_application' => 'Inter-industry application',
 ];
