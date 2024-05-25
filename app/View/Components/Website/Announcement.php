@@ -13,7 +13,8 @@ class Announcement extends Component
     {
         return view('components.website.announcement', [
             'announcements' => AnnouncementModel::query()
-                ->orderByDesc('published_at')
+                ->publsihed()
+                ->latest('published_at')
                 ->take(10)
                 ->get(),
         ]);

@@ -18,7 +18,8 @@ class CategoryController extends Controller
     public function showAllPosts(Category $category)
     {
         $posts = Post::where('category_id', $category->id)
-            ->orderBy('published_at', 'desc')
+            ->published()
+            ->latest('published_at')
             ->paginate(6);
 
         return view('web.categories.all_post_of_category', compact('category', 'posts'));

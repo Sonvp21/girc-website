@@ -13,6 +13,7 @@ class HomePost extends Component
     {
         $posts = Post::query()
             ->with('category')
+            ->published()
             ->whereHas('category', function ($query) {
                 $query->whereId(config('app.home_category_id'));
             })

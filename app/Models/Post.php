@@ -9,7 +9,6 @@ use Illuminate\Support\Carbon;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
-use Tonysm\RichTextLaravel\Casts\AsRichTextContent;
 
 class Post extends Model implements HasMedia
 {
@@ -22,7 +21,6 @@ class Post extends Model implements HasMedia
 
     protected $casts = [
         'published_at' => 'datetime:Y-m-d H:i:s',
-        'content' => AsRichTextContent::class,
     ];
 
     /*
