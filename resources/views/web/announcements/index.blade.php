@@ -13,7 +13,7 @@
                             <li class="flex border-b border-dashed border-yellow-500 py-4">
                                 <article class="group w-full">
                                     <div class="flex gap-3">
-                                        <div class="gap float-left mr-2 divide-y divide-blue-200 overflow-hidden rounded-lg bg-[#fd9f1b] shadow-calendar">
+                                        <div class="gap float-left mr-2 divide-y divide-blue-200 rounded-lg bg-[#fd9f1b] shadow-calendar">
                                             <div class="flex-none whitespace-nowrap py-0.5 text-center text-[0.6rem] font-bold text-white">
                                                 <span class="px-2">{{ $announcement->published_at->format('n/Y') }}</span>
                                                 <div class="w-full border-b border-dashed border-[#f37303]"></div>
