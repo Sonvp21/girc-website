@@ -11,8 +11,7 @@ use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\RichTextAttachmentController;
 use App\Http\Controllers\Admin\ScienceInformationController;
-use App\Http\Controllers\Admin\Staff\DepartmentController;
-use App\Http\Controllers\Admin\Staff\StaffController;
+use App\Http\Controllers\Admin\StaffController;
 use App\Http\Controllers\Admin\Support\TinymceController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -50,8 +49,7 @@ Route::middleware('auth')->group(function () {
         //faq
         Route::resource('faqs', FaqController::class);
 
-        //Department and staff
-        Route::resource('departments', DepartmentController::class);
+        //Teaching Staff
         Route::resource('staffs', StaffController::class);
 
         /*

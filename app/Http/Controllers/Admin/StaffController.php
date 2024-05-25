@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Staff;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StaffRequest;
-use App\Models\Staff\Staff;
+use App\Models\Staff;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -24,7 +24,7 @@ class StaffController extends Controller
             ->latest()
             ->get();
 
-        return view('admin.staffs.staff.index', [
+        return view('admin.staffs.index', [
             'staffs' => $staffs,
         ]);
     }
@@ -34,7 +34,7 @@ class StaffController extends Controller
      */
     public function create(): View
     {
-        return view('admin.staffs.staff.create');
+        return view('admin.staffs.create');
     }
 
     public function store(StaffRequest $request): RedirectResponse
@@ -60,7 +60,7 @@ class StaffController extends Controller
      */
     public function edit(Staff $staff)
     {
-        return view('admin.staffs.staff.edit', compact('staff'));
+        return view('admin.staffs.edit', compact('staff'));
     }
 
     /**

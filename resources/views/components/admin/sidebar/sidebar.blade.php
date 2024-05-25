@@ -62,21 +62,9 @@
                     </details>
                 </li>
                 <li>
-                    <details @if (request()->routeIs('admin.departments.*', 'admin.staffs.*')) open @endif class="{{ request()->routeIs('admin.departments.*', 'admin.staffs.*') ? 'open' : '' }}">
-                        <summary>@lang('admin.teaching_staff')</summary>
-                        <ul>
-                            <li>
-                                <a class="{{ request()->routeIs('admin.departments.*') ? 'active' : '' }}" href="{{ route('admin.departments.index') }}">
-                                    @lang('admin.departments.list')
-                                </a>
-                            </li>
-                            <li>
-                                <a class="{{ request()->routeIs('admin.staffs.*') ? 'active' : '' }}" href="{{ route('admin.staffs.index') }}">
-                                    @lang('admin.staffs.list')
-                                </a>
-                            </li>
-                        </ul>
-                    </details>
+                    <a class="{{ request()->routeIs('admin.staffs.*') ? 'active' : '' }}" href="{{ route('admin.staffs.index') }}">
+                        @lang('admin.staffs.list')
+                    </a>
                 </li>
                 <li>
                     <a class="{{ request()->routeIs('admin.cooperations.*') ? 'active' : '' }}" href="{{ route('admin.cooperations.index') }}">
