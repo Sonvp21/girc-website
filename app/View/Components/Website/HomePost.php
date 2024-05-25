@@ -10,19 +10,22 @@ use Illuminate\View\Component;
 class HomePost extends Component
 {
     public function render(): View|Closure|string
-    {
-        $posts = Post::query()
-            ->with('category')
-            ->whereHas('category', function ($query) {
-                $query->where('slug', 'tin-tuc-su-kien');
-            })
-            ->latest('published_at')
-            ->take(5)
-            ->get();
+{
+    $categoryId = config('app.home_category_id');
 
-        return view('components.website.home-post', [
-            'posts' => $posts,
-            'latestPost' => $posts->first(),
-        ]);
-    }
+    $posts = Post::query()
+        ->with('category')
+        ->whereHas('category', function ($query) use ($categoryId) {
+            $query->whereId($categoryId);
+        })
+        ->latest('published_at')
+        ->take(5)
+        ->get();
+
+    return view('components.website.home-post', [
+        'posts' => $posts,
+        'latestPost' => $posts->first(),
+    ]);
+}
+
 }

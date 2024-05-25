@@ -123,4 +123,6 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    'home_category_id' => env('HOME_CATEGORY_ID', 1),
+
 ];
