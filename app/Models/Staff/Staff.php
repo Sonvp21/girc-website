@@ -5,30 +5,23 @@ namespace App\Models\Staff;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Carbon;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
-use Tonysm\RichTextLaravel\Casts\AsRichTextContent;
 
 class Staff extends Model implements HasMedia
 {
     use HasFactory;
     use InteractsWithMedia;
 
-    protected $fillable = ['name', 'content'];
-
-    protected $table = 'staff';
-
-    protected $casts = [
-        'content' => AsRichTextContent::class,
+    protected $fillable = [
+        'name',
+        'category',
+        'content',
     ];
 
-    public function departments(): BelongsToMany
-    {
-        return $this->belongsToMany(Department::class, 'staff_departments', 'staff_id', 'department_id');
-    }
+    protected $table = 'teaching_staffs';
 
     public function registerMediaConversions(?Media $media = null): void
     {

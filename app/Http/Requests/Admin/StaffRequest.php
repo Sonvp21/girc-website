@@ -17,8 +17,7 @@ class StaffRequest extends FormRequest
             'name' => 'required|string|max:255',
             'content' => 'required|string',
             'image' => 'sometimes|required|image|max:2048',
-            'departments' => 'required|array',
-            'departments.*' => 'exists:departments,id',
+            'category' => 'required|string:enum:App\Enums\StaffCategoryEnum',
         ];
     }
 

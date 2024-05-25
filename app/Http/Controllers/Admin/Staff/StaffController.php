@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin\Staff;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StaffRequest;
-use App\Models\Staff\Department;
 use App\Models\Staff\Staff;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -35,9 +34,7 @@ class StaffController extends Controller
      */
     public function create(): View
     {
-        $departments = Department::all();
-
-        return view('admin.staffs.staff.create', compact('departments'));
+        return view('admin.staffs.staff.create');
     }
 
     public function store(StaffRequest $request): RedirectResponse
@@ -47,7 +44,6 @@ class StaffController extends Controller
         ]);
         $staff = Staff::create($request->all());
 
-        $staff->departments()->attach($request->departments);
         if ($request->hasFile('image')) {
             $imageFile = $request->file('image');
             $staff->addMedia($imageFile->getRealPath())
@@ -64,9 +60,7 @@ class StaffController extends Controller
      */
     public function edit(Staff $staff)
     {
-        $departments = Department::all();
-
-        return view('admin.staffs.staff.edit', compact('staff', 'departments'));
+        return view('admin.staffs.staff.edit', compact('staff'));
     }
 
     /**
@@ -75,8 +69,6 @@ class StaffController extends Controller
     public function update(StaffRequest $request, Staff $staff)
     {
         $staff->update($request->all());
-
-        $staff->departments()->sync($request->departments);
 
         if ($request->hasFile('image')) {
             $imageFile = $request->file('image');
@@ -95,7 +87,6 @@ class StaffController extends Controller
      */
     public function destroy(Staff $staff)
     {
-        $staff->departments()->detach();
         $staff->delete();
 
         return redirect()->route('admin.staffs.index')->with('success', trans('admin.alerts.success.deleted'));
