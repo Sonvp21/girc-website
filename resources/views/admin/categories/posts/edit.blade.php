@@ -47,20 +47,8 @@
                                     </div>
                                     <textarea name="content" id="content" class="form-input rounded-md shadow-sm mt-1 block w-full" rows="5">{{ old('content', $post->content) }}</textarea>
                                 </label>
-                                <label class="form-control w-full">
-                                    <div class="label">
-                                        <span class="label-text">@lang('admin.post.tag')</span>
-                                    </div>
-                                    <input type="text" name="tags" id="tags"
-                                        value="{{ old('tags', $tagNames) }}"
-                                        placeholder="Enter tags separated by spaces" @class([
-                                            'input',
-                                            'input-bordered',
-                                            'input-error' => $errors->has('tags'),
-                                            'w-full',
-                                            'h-fit',
-                                        ]) />
-                                </label>
+                                <x-admin.forms.tags :tags="$tags" :value="old('tags', $tagNames)" />
+
                                 <div class="flex items-center space-x-6">
                                     <div class="shrink-0">
                                         <img id="preview_img" class="h-16 w-16 rounded-full object-cover"
@@ -95,30 +83,5 @@
     </div>
     @pushonce('bottom_scripts')
         <x-admin.forms.tinymce-config column="content" model="Post"/>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" />
-        <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.min.js"></script>
-        <script>
-            var input = document.querySelector('input[name=tags]');
-            var tagify = new Tagify(input, {
-                delimiters: "\n",
-                pattern: /[^,]+/,
-            });
-            var existingTags = @json($tags);
-            tagify.addTags(existingTags);
-        </script>
-        <script>
-            var loadFile = function(event) {
-                var input = event.target
-                var file = input.files[0]
-                var type = file.type
-
-                var output = document.getElementById('preview_img')
-
-                output.src = URL.createObjectURL(event.target.files[0])
-                output.onload = function() {
-                    URL.revokeObjectURL(output.src) // free memory
-                }
-            }
-        </script>
     @endpushonce
 </x-app-layout>
