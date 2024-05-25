@@ -108,6 +108,7 @@ return [
     'staffs' => 'Nhân viên',
     'staffs.list' => 'Nhân viên',
     'staffs.name' => 'Họ tên',
+    'staffs.category' => 'Chức vụ',
     '' => '',
 
     'created_at' => 'Ngày tạo',
@@ -172,4 +173,8 @@ return [
         ],
     ],
 
+    'basic_science' => 'Khoa học cơ bản',
+    'information_technology' => 'Công nghệ thông tin',
+    'economy_and_created_news' => 'Kinh tế & đối mới sáng tạo',
+    'inter_industry_application' => 'Ứng dụng liên ngành',
 ];
