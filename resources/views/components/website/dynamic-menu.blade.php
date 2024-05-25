@@ -27,7 +27,7 @@
                 </span>
             </button>
         </div>
-        <div class="hidden w-full origin-top-left bg-white shadow-md md:w-auto lg:absolute" :class="{ 'block': dropdownOpen, 'hidden': !dropdownOpen }">
+        <div class="hidden origin-top-left bg-white shadow-md md:w-auto lg:absolute" :class="{ 'block': dropdownOpen, 'hidden': !dropdownOpen }" style="width: -webkit-fill-available;">
             <ul class="text-denim-600 divide-denim-400 w-full origin-top-left divide-y divide-dashed whitespace-nowrap bg-white">
                 @foreach ($category->children as $child)
                     <x-website.dynamic-menu :category="$child" isChild="true" />
@@ -38,7 +38,7 @@
 @else
     @if($isChild)
         <li class="hover:bg-black hover:bg-opacity-5">
-            <a href="" class="flex items-center justify-start space-x-2 px-2 py-4 text-slate-800" >
+            <a href="" class="flex items-center justify-start space-x-2 px-2 py-4 text-slate-800" style="text-wrap: balance;">
                 {{ $category->title }}
             </a>
         </li>
