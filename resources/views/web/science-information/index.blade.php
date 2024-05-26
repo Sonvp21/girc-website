@@ -7,7 +7,7 @@
                         <h2 class="inline-block bg-blue-700 px-6 py-3 text-xl font-bold text-white">@lang('web.scienceinfors_lists')</h2>
                     </div>
                     <ul class="space-y-4">
-                        @foreach ($scienceInformation as $scienceInformation)
+                        @forelse ($scienceInformations as $scienceInformation)
                             <li>
                                 <article class="group">
                                     <div class="flex gap-3">
@@ -31,9 +31,13 @@
                                     </div>
                                 </article>
                             </li>
-                        @endforeach
+                        @empty
+                            <li>
+                                <p class="italic">@lang('web.no_data')</p>
+                            </li>
+                        @endforelse
                     </ul>
-                    {{ $scienceInformation->links('pagination.web-tailwind') }}
+                    {{ $scienceInformations->links('pagination.web-tailwind') }}
                 </div>
                 <div class="col-span-8 hidden space-y-3 md:col-span-2 lg:block">
                     <x-website.announcement />

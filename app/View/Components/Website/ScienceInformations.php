@@ -16,6 +16,7 @@ class ScienceInformations extends Component
     {
         return view('components.website.science-informations', [
             'scienceInformations' => ScienceInformation::query()
+                ->published()
                 ->where('keep_on_top', 1)
                 ->orderByDesc('published_at')
                 ->take(4)

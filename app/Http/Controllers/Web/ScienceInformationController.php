@@ -11,9 +11,9 @@ class ScienceInformationController extends Controller
     public function index(): View
     {
         return view('web.science-information.index', [
-            'science-information' => ScienceInformation::query()
-                ->where('keep_on_top', 1)
+            'scienceInformations' => ScienceInformation::query()
                 ->published()
+                ->where('keep_on_top', 1)
                 ->latest('published_at')
                 ->paginate(6),
         ]);

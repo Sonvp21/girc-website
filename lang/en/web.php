@@ -94,5 +94,5 @@ return [
     ],
 
     'scienceinfors_lists' => 'Science information',
-
+    'no_data' => 'No data',
 ];

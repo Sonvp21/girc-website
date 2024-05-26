@@ -93,5 +93,5 @@ return [
     ],
 
     'scienceinfors_lists' => 'Thông tin khoa học',
-
+    'no_data' => 'Không có dữ liệu',
 ];

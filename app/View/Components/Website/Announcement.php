@@ -13,7 +13,7 @@ class Announcement extends Component
     {
         return view('components.website.announcement', [
             'announcements' => AnnouncementModel::query()
-                ->publsihed()
+                ->published()
                 ->latest('published_at')
                 ->take(10)
                 ->get(),
