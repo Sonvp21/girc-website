@@ -2,7 +2,7 @@
     <x-website.partials.header title="<a href='{{ route('scienceinformation.index') }}' class='text-red-500'>{{ __('web.science_information') }}</a>" textColor="text-red-500" />
     <div class="">
         <ul class="divide-y divide-solid px-2">
-            @foreach ($scienceinformations as $scienceinformation)
+            @forelse($scienceinformations as $scienceinformation)
                 <li class="flex w-full items-start gap-2 py-2">
                     <svg class="size-4 mt-1 flex-none text-blue-700" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="9 11 12 14 22 4"></polyline>

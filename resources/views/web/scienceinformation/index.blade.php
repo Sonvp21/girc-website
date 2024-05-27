@@ -7,14 +7,15 @@
                         <div class="text-sm breadcrumbs p-4 text-blue-800">
                             <ul>
                                 <li>
-                                    <a href="{{ route('home') }}">
-                                        <x-heroicon-o-home class="size-5" />
+                                    <a class="flex gap-2 items-center" href="{{ route('home') }}">
+                                        <x-heroicon-o-home class="size-4" />
                                         Home
                                     </a>
                                 </li>
 
                                 <li>
-                                    <a href="{{ route('scienceinformation.index') }}"><x-heroicon-o-folder class="size-5" />
+                                    <a class="flex gap-2 items-center" href="{{ route('scienceinformation.index') }}">
+                                        <x-heroicon-o-folder class="size-4" />
                                         @lang('web.scienceinfors_lists')
                                     </a>
                                 </li>
@@ -24,7 +25,7 @@
                         <div class="bg-gradient-to-r from-blue-400 via-blue-500 via-70% to-red-500 h-0.5"></div>
                     </div>
                     <ul class="space-y-4 mt-5">
-                        @foreach ($scienceinformations as $scienceinformation)
+                        @forelse ($scienceinformations as $scienceinformation)
                             <li>
                                 <article class="group">
                                     <div class="flex gap-3">
@@ -54,11 +55,7 @@
                             </li>
                         @endforelse
                     </ul>
-<<<<<<< HEAD:resources/views/web/science-information/index.blade.php
-                    {{ $scienceInformations->links('pagination.web-tailwind') }}
-=======
                     {{ $scienceinformations->links('pagination.web-tailwind') }}
->>>>>>> 77c5107 (edit title route and fix name science infomation):resources/views/web/scienceinformation/index.blade.php
                 </div>
                 <div class="col-span-8 hidden space-y-3 md:col-span-2 lg:block">
                     <x-website.announcement />
