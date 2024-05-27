@@ -125,4 +125,9 @@ return [
 
     'home_category_id' => env('HOME_CATEGORY_ID', 1),
 
+    'home_album_science_and_technology_id' => env('HOME_ALBUM_SCIENCE_AND_TECHNOLOGY_ID', 1),
+    'home_album_infrastructure_id' => env('HOME_ALBUM_INFRASTRUCTURE_ID', 1),
+    'home_album_digital_transformation_id' => env('HOME_ALBUM_DIGITAL_TRANSFORMATION_ID', 1),
+    'home_album_study_space_id' => env('HOME_ALBUM_STUDY_SPACE_ID', 1),
+    'home_album_extra_curricular_activity_id' => env('HOME_ALBUM_EXTRA_CURRICULAR_ACTIVITYID', 1),
 ];

@@ -1,17 +1,29 @@
 <div class="col-span-8 space-y-3 md:col-span-6 lg:col-span-6">
     <x-website.partials.header main="true" title="{{ __('web.science_technology') }}" textAlign="left" />
-    <ul class="flex gap-6 w-ful overflow-x-auto">
-        <li class="rounded-lg bg-gray-200 h-40 w-full flex items-center justify-center">
-            <x-heroicon-s-play-circle class="size-24 text-white"/>
+
+    @if ($youtubeVideos->isEmpty() && $googleDriveVideos->isEmpty())
+        <li class="flex w-full items-start gap-2 py-2">
+            <p class="text-xs italic hover:text-red-600">@lang('web.no_data')</p>
         </li>
-        <li class="rounded-lg bg-gray-200 h-40 w-full flex items-center justify-center">
-            <x-heroicon-s-play-circle class="size-24 text-white"/>
-        </li>
-        <li class="rounded-lg bg-gray-200 h-40 w-full flex items-center justify-center">
-            <x-heroicon-s-play-circle class="size-24 text-white"/>
-        </li>
-        <li class="rounded-lg bg-gray-200 h-40 w-full flex items-center justify-center">
-            <x-heroicon-s-play-circle class="size-24 text-white"/>
-        </li>
-    </ul>
+    @else
+        <ul class="video-list">
+            @forelse ($youtubeVideos as $video)
+                <li class="video-item">
+                    <iframe src="https://www.youtube.com/embed/{{ $video->video_id }}"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </li>
+            @empty
+            @endforelse
+
+            @forelse ($googleDriveVideos as $video)
+                <li class="video-item">
+                    <iframe src="https://drive.google.com/file/d/{{ $video->video_id }}/preview"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </li>
+            @empty
+            @endforelse
+        </ul>
+    @endif
 </div>
