@@ -32,7 +32,7 @@
                     <x-website.staff />
                 </div>
                 <div class="col-span-8 hidden space-y-3 md:col-span-2 lg:block">
-                    <x-website.science-informations/>
+                    <x-website.scienceinformations/>
                 </div>
             </div>
         </div>

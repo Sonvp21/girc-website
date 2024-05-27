@@ -10,8 +10,8 @@ class ScienceInformationController extends Controller
 {
     public function index(): View
     {
-        return view('web.science-information.index', [
-            'scienceInformations' => ScienceInformation::query()
+        return view('web.scienceinformation.index', [
+            'scienceinformations' => ScienceInformation::query()
                 ->published()
                 ->where('keep_on_top', 1)
                 ->latest('published_at')
@@ -19,10 +19,10 @@ class ScienceInformationController extends Controller
         ]);
     }
 
-    public function show(ScienceInformation $scienceInformation): View
+    public function show(ScienceInformation $scienceinformation): View
     {
-        return view('web.science-information.show', [
-            'scienceInformation' => $scienceInformation,
+        return view('web.scienceinformation.show', [
+            'scienceinformation' => $scienceinformation,
         ]);
     }
 }

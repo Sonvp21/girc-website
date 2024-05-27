@@ -17,9 +17,9 @@
                 </li>
                 <li>
                     <a @class([
-                        'active' => request()->routeIs('admin.science-information.*'),
-                    ]) href="{{ route('admin.science-information.index') }}">
-                        @lang('admin.science-information')
+                        'active' => request()->routeIs('admin.scienceinformation.*'),
+                    ]) href="{{ route('admin.scienceinformation.index') }}">
+                        @lang('admin.scienceinformation')
                     </a>
                 </li>
                 <li>

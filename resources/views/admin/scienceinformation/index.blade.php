@@ -2,7 +2,7 @@
     <div class="p-6">
         <div class="text-normal font-semibold leading-tight text-gray-800">
             <span class="text-normal flex items-center gap-2 font-semibold leading-tight text-gray-800">
-                @lang('admin.science-information')
+                @lang('admin.scienceinformation')
             </span>
         </div>
         <x-admin.alerts.success />
@@ -10,7 +10,7 @@
             <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                 <div class="overflow-x-auto">
                     <div class="flex px-6 py-4">
-                        <form action="{{ route('admin.science-information.index') }}" method="GET" class="w-full">
+                        <form action="{{ route('admin.scienceinformation.index') }}" method="GET" class="w-full">
                             <div class="flex items-center justify-between">
                                 <div class="flex items-center">
                                     <label class="input input-bordered flex items-center gap-2">
@@ -22,7 +22,7 @@
                                         </button>
                                     </label>
                                 </div>
-                                <a class="btn-ghosdt btn" href="{{ route('admin.science-information.create') }}">
+                                <a class="btn-ghosdt btn" href="{{ route('admin.scienceinformation.create') }}">
                                     <x-heroicon-s-plus class="size-4" />
                                     <span>@lang('admin.add')</span>
                                 </a>
@@ -34,29 +34,29 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>@lang('admin.science-information.title')</th>
+                                <th>@lang('admin.scienceinformation.title')</th>
                                 <th>@lang('admin.published_at')</th>
                                 <th>@lang('admin.updated_at')</th>
-                                <th>@lang('admin.science-information.keep_on_top')</th>
+                                <th>@lang('admin.scienceinformation.keep_on_top')</th>
                                 <th>@lang('admin.funtion')</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($scienceInformations as $scienceInformation)
+                            @foreach ($scienceinformations as $scienceinformation)
                                 <tr>
-                                    <th>{{ $scienceInformations->firstItem() + $loop->index }}</th>
-                                    <td>{{ app()->getLocale() === 'en' ? $scienceInformation->title_en : $scienceInformation->title }}</td>
-                                    <td>{{ $scienceInformation->publishedAtVi }}</td>
-                                    <td>{{ $scienceInformation->updatedAtVi }}</td>
-                                    <td style="color: {{ $scienceInformation->keep_on_top == 0 ? 'red' : 'green' }}">
-                                        {{ $scienceInformation->keep_on_top == 0 ? 'Chưa phê duyệt' : 'Đã phê duyệt' }}
+                                    <th>{{ $scienceinformations->firstItem() + $loop->index }}</th>
+                                    <td>{{ app()->getLocale() === 'en' ? $scienceinformation->title_en : $scienceinformation->title }}</td>
+                                    <td>{{ $scienceinformation->publishedAtVi }}</td>
+                                    <td>{{ $scienceinformation->updatedAtVi }}</td>
+                                    <td style="color: {{ $scienceinformation->keep_on_top == 0 ? 'red' : 'green' }}">
+                                        {{ $scienceinformation->keep_on_top == 0 ? 'Chưa phê duyệt' : 'Đã phê duyệt' }}
                                     </td>
                                     <td class="flex gap-3">
-                                        <a href="{{ route('admin.science-information.edit', $scienceInformation->id) }}"><x-heroicon-s-pencil-square class="size-4 text-green-600" /></a>
-                                        <form id="delete-form-{{ $scienceInformation->id }}" action="{{ route('admin.science-information.destroy', $scienceInformation) }}" method="POST">
+                                        <a href="{{ route('admin.scienceinformation.edit', $scienceinformation->id) }}"><x-heroicon-s-pencil-square class="size-4 text-green-600" /></a>
+                                        <form id="delete-form-{{ $scienceinformation->id }}" action="{{ route('admin.scienceinformation.destroy', $scienceinformation) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="button" onclick="confirmDelete({{ $scienceInformation->id }})">
+                                            <button type="button" onclick="confirmDelete({{ $scienceinformation->id }})">
                                                 <x-heroicon-o-trash class="size-4 text-red-500" />
                                             </button>
                                         </form>
@@ -77,7 +77,7 @@
             </div>
         </div>
         <div class="mt-4">
-            {{ $scienceInformations->links('pagination.web-tailwind') }}
+            {{ $scienceinformations->links('pagination.web-tailwind') }}
         </div>
     </div>
 </x-app-layout>

@@ -4,8 +4,9 @@
     'paddingTop'  => 'pt-2',
     'textColor' => 'text-blue-700',
     'textAlign' => 'center',
+    'link' => '#',
     ])
-<div>
+<a href="{{ $link }}">
     <div class="gap-2 px-0 font-semibold uppercase {{ $textColor }} text-{{ $textAlign }}">
         @if ($main)
             <div class="bg-blue-800 inline-block relative py-2 px-4">
@@ -19,4 +20,4 @@
         @endif
     </div>
     <div class="bg-gradient-to-r from-blue-400 via-blue-500 via-70% to-red-500 h-0.5"></div>
-</div>
+</a>

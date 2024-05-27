@@ -14,8 +14,8 @@ class ScienceInformations extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.website.science-informations', [
-            'scienceInformations' => ScienceInformation::query()
+        return view('components.website.scienceinformations', [
+            'scienceinformations' => ScienceInformation::query()
                 ->published()
                 ->where('keep_on_top', 1)
                 ->orderByDesc('published_at')

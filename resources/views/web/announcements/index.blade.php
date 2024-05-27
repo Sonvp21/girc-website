@@ -3,11 +3,13 @@
         <div class="mx-auto max-w-7xl px-3 sm:px-6 md:items-center lg:px-8">
             <div class="grid grid-cols-8 gap-4">
                 <div class="col-span-8 md:col-span-6 lg:col-span-6">
-                    <div class="border-b-2 border-blue-700">
-                        <h2 class="inline-block bg-blue-700 px-6 py-3 text-xl font-bold text-white">
-                            @lang('web.announcements')
-                        </h2>
+                    <div class="text-sm breadcrumbs py-4 text-blue-800">
+                        <ul>
+                            <x-website.breadcrumbs/>
+                            <x-website.breadcrumbs :route="route('announcements.index')" :name="__('web.announcements')" />
+                        </ul>
                     </div>
+                    <div class="bg-gradient-to-r from-blue-400 via-blue-500 via-70% to-red-500 h-0.5"></div>
                     <ul class="mt-5">
                         @foreach ($announcements as $announcement)
                             <li class="flex border-b border-dashed border-yellow-500 py-4">
