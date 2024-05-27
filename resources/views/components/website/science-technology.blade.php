@@ -6,24 +6,33 @@
             <p class="text-xs italic hover:text-red-600">@lang('web.no_data')</p>
         </li>
     @else
-        <ul class="video-list">
+        <div class="main-carousel h-36 overflow-hidden p-5 pt-0"
+            data-flickity='{ 
+                "autoPlay": true, 
+                "pageDots": false, 
+                "wrapAround": true, 
+                "contain": true, 
+                "cellAlign": "left",
+                "index": 0
+            }'>
             @forelse ($youtubeVideos as $video)
-                <li class="video-item">
-                    <iframe src="https://www.youtube.com/embed/{{ $video->video_id }}"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </li>
+                <div class="carousel-cell">
+                    <a href="" target="_blank"
+                        class="mx-2 flex h-36 w-52 items-center justify-center overflow-hidden rounded-lg border border-gray-300 bg-white">
+                        <img class="w-full h-full" src="{{ $video->getFirstMedia('album_video')->getUrl() }}" alt="{{ $video->name }}">
+                    </a>
+                </div>
             @empty
             @endforelse
-
             @forelse ($googleDriveVideos as $video)
-                <li class="video-item">
-                    <iframe src="https://drive.google.com/file/d/{{ $video->video_id }}/preview"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </li>
+                <div class="carousel-cell">
+                    <a href="" target="_blank"
+                        class="mx-2 flex h-36 w-52 items-center justify-center overflow-hidden rounded-lg border border-gray-300 bg-white">
+                        <img class="w-full h-full" src="{{ $video->getFirstMedia('album_video')->getUrl() }}" alt="{{ $video->name }}">
+                    </a>
+                </div>
             @empty
             @endforelse
-        </ul>
+        </div>
     @endif
 </div>
