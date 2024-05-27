@@ -6,13 +6,7 @@
                     <div>
                         <div class="text-sm breadcrumbs p-4 text-blue-800">
                             <ul>
-                                <li>
-                                    <a href="{{ route('home') }}">
-                                        <x-heroicon-o-home class="size-5" />
-                                        Home
-                                    </a>
-                                </li>
-
+                                <x-website.breadcrumbs/>
                                 <li>
                                     <a href="{{ route('scienceinformation.index') }}"><x-heroicon-o-folder class="size-5" />
                                         @lang('web.scienceinfors_lists')

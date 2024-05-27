@@ -5,12 +5,7 @@
                 <div class="col-span-8 md:col-span-6 lg:col-span-6">
                     <div class="text-sm breadcrumbs p-4 text-blue-800">
                         <ul>
-                            <li>
-                                <a class="flex gap-2 items-center" href="{{ route('home') }}">
-                                    <x-heroicon-o-home class="size-4" />
-                                    Home
-                                </a>
-                            </li>
+                            <x-website.breadcrumbs/>
                             <li>
                                 <a href="/thong-bao"><svg class="mr-1" xmlns="http://www.w3.org/2000/svg" width="14"
                                         height="14" fill="currentColor" class="bi bi-megaphone" viewBox="0 0 16 16">

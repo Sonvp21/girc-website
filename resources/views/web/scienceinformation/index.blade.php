@@ -6,13 +6,7 @@
                     <div>
                         <div class="text-sm breadcrumbs p-4 text-blue-800">
                             <ul>
-                                <li>
-                                    <a class="flex gap-2 items-center" href="{{ route('home') }}">
-                                        <x-heroicon-o-home class="size-4" />
-                                        Home
-                                    </a>
-                                </li>
-
+                                <x-website.breadcrumbs/>
                                 <li>
                                     <a class="flex gap-2 items-center" href="{{ route('scienceinformation.index') }}">
                                         <x-heroicon-o-folder class="size-4" />
