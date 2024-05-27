@@ -48,7 +48,7 @@ return [
     'tuaf_address' => 'Thai Nguyen University of Agriculture and Forestry, Phu Do, Dai Tu, Thai Nguyen',
 
     'announcements' => 'Announcement list',
-    'announcement' => 'Announcement',
+    'announcement_home' => 'Announcement',
     'published_at' => 'Publish at',
 
     //web contact

@@ -4,7 +4,6 @@ use App\Http\Controllers\Web\AnnouncementsController;
 use App\Http\Controllers\Web\CategoryController;
 use App\Http\Controllers\Web\ContactController;
 use App\Http\Controllers\Web\HomeController;
-use App\Http\Controllers\Web\NewsController;
 use App\Http\Controllers\Web\ScienceInformationController;
 use Illuminate\Support\Facades\Route;
 
