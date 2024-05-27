@@ -3,10 +3,34 @@
         <div class="mx-auto max-w-7xl px-3 sm:px-6 md:items-center lg:px-8">
             <div class="grid grid-cols-8 gap-4">
                 <div class="col-span-8 space-y-3 md:col-span-6 lg:col-span-6">
-                    <div class="border-b-2 border-blue-700">
-                        <h2 class="inline-block bg-blue-700 px-6 py-3 text-xl font-bold text-white">
-                            {{ app()->getLocale() === 'en' ? $post->category->title_en : $post->category->title }}
-                        </h2>
+                    <div>
+                        <div class="text-sm breadcrumbs p-4 text-blue-800">
+                            <ul>
+                                <li>
+                                    <a href="{{ route('home') }}">
+                                        <x-heroicon-o-home class="size-5" />
+                                        Home
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="{{ route('categories.posts.index', $category) }}"><x-heroicon-o-folder
+                                            class="size-5" />
+                                        {{ app()->getLocale() === 'en' ? $category->title_en : $category->title }}
+                                    </a>
+                                </li>
+                                @if ($post->category->posts->count() > 1)
+                                    <li>
+                                        <a
+                                            href="{{ route('categories.posts.show', ['category' => $category->id, 'post' => $post->id]) }}">
+                                            <x-heroicon-o-folder-open class="size-5" />
+                                            {{ Str::limit($post->title, 100) }}
+                                        </a>
+                                    </li>
+                                @endif
+                            </ul>
+                        </div>
+                        <div class="bg-gradient-to-r from-blue-400 via-blue-500 via-70% to-red-500 h-0.5"></div>
                     </div>
                     <article class="group">
                         @if ($post->category->posts->count() > 1)

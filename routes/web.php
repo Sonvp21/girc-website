@@ -13,8 +13,8 @@ Route::get('/tin-tuc', [NewsController::class, 'index'])->name('news.index');
 Route::get('/tin-tuc/{post:slug}', [NewsController::class, 'show'])->name('news.show');
 Route::get('/thong-bao', [AnnouncementsController::class, 'index'])->name('announcements.index');
 Route::get('/thong-bao/{announcement:slug}', [AnnouncementsController::class, 'show'])->name('announcements.show');
-Route::get('/thong-tin-khoa-hoc', [ScienceInformationController::class, 'index'])->name('science-information.index');
-Route::get('/thong-tin-khoa-hoc/{scienceInformation:slug}', [ScienceInformationController::class, 'show'])->name('science-information.show');
+Route::get('/thong-tin-khoa-hoc', [ScienceInformationController::class, 'index'])->name('scienceinformation.index');
+Route::get('/thong-tin-khoa-hoc/{scienceinformation:slug}', [ScienceInformationController::class, 'show'])->name('scienceinformation.show');
 
 Route::get('/lien-he', [ContactController::class, 'index'])->name('contacts.index');
 Route::post('/lien-he', [ContactController::class, 'store'])->name('contacts.store');

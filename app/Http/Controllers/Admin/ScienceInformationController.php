@@ -13,8 +13,8 @@ class ScienceInformationController extends Controller
 {
     public function index(Request $request)
     {
-        return view('admin.science-information.index', [
-            'scienceInformations' => ScienceInformation::query()
+        return view('admin.scienceinformation.index', [
+            'scienceinformations' => ScienceInformation::query()
                 ->when(
                     $request->search,
                     fn ($query) => $query->where('title', 'like', '%'.$request->search.'%')
@@ -26,7 +26,7 @@ class ScienceInformationController extends Controller
 
     public function create(): View
     {
-        return view('admin.science-information.create');
+        return view('admin.scienceinformation.create');
     }
 
     public function store(ScienceInformationRequest $request): RedirectResponse
@@ -34,44 +34,44 @@ class ScienceInformationController extends Controller
         $request->validate([
             'image' => 'required',
         ]);
-        $scienceInformation = ScienceInformation::create($request->all());
+        $scienceinformation = ScienceInformation::create($request->all());
 
         if ($request->hasFile('image')) {
             $imageFile = $request->file('image');
-            $scienceInformation->addMediaFromRequest('image')
+            $scienceinformation->addMediaFromRequest('image')
                 ->usingFileName($imageFile->getClientOriginalName())
                 ->usingName($imageFile->getClientOriginalName())
                 ->toMediaCollection('science_information_photo');
         }
 
-        return redirect()->route('admin.science-information.index', compact('scienceInformation'))->with('success', trans('admin.alerts.success.create'));
+        return redirect()->route('admin.scienceinformation.index', compact('scienceinformation'))->with('success', trans('admin.alerts.success.create'));
     }
 
     /**
      * @return RedirectResponse
      */
-    public function edit(ScienceInformation $scienceInformation): View
+    public function edit(ScienceInformation $scienceinformation): View
     {
-        return view('admin.science-information.edit', compact('scienceInformation'));
+        return view('admin.scienceinformation.edit', compact('scienceinformation'));
     }
 
-    public function update(ScienceInformation $scienceInformation, ScienceInformationRequest $request): RedirectResponse
+    public function update(ScienceInformation $scienceinformation, ScienceInformationRequest $request): RedirectResponse
     {
-        $scienceInformation->update($request->all());
+        $scienceinformation->update($request->all());
         if ($request->hasFile('image')) {
-            $scienceInformation->clearMediaCollection('science_information_photo');
-            $scienceInformation->addMediaFromRequest('image')
+            $scienceinformation->clearMediaCollection('science_information_photo');
+            $scienceinformation->addMediaFromRequest('image')
                 ->usingFileName($request->image->getClientOriginalName())
                 ->usingName($request->image->getClientOriginalName())
                 ->toMediaCollection('science_information_photo');
         }
 
-        return redirect()->route('admin.science-information.index')->with('success', trans('admin.alerts.success.edit'));
+        return redirect()->route('admin.scienceinformation.index')->with('success', trans('admin.alerts.success.edit'));
     }
 
-    public function destroy(ScienceInformation $scienceInformation)
+    public function destroy(ScienceInformation $scienceinformation)
     {
-        $scienceInformation->delete();
+        $scienceinformation->delete();
 
         return back()->with('success', trans('admin.alerts.success.deleted'));
     }
