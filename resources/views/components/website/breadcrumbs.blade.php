@@ -1,6 +1,16 @@
+@props([
+    'route' => '/',
+    'name' => null,
+    ])
+
 <li>
-    <a class="flex gap-2 items-center" href="{{ route('home') }}">
-        <x-heroicon-o-home class="size-4" />
-        Home
+    <a href="{{ $route }}">
+        @if(is_string($name))
+            {{ $name }}
+        @elseif($name)
+            {{ app()->getLocale() === 'en' ? $name->title_en : $name->title }}
+        @else
+            @lang('web.home')
+        @endif
     </a>
 </li>

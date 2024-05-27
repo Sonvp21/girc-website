@@ -1,7 +1,11 @@
 <div>
     <div class="grid h-auto grid-cols-5 gap-2">
         @if ($posts->isNotEmpty())
-            <a href="{{ route('news.show', $latestPost) }}" class="group col-span-5 flex md:col-span-3">
+            <a href="{{ route('categories.posts.show', [
+                'category' => $latestPost->category,
+                'post' => $latestPost,
+            ]) }}"
+                class="group col-span-5 flex md:col-span-3">
                 <article>
                     <figure>
                         <div class="relative overflow-hidden bg-white h-[347px]">
@@ -18,15 +22,22 @@
         @endif
         <div class="col-span-5 flex flex-col justify-between md:col-span-2">
             <div>
-                <x-website.partials.header title="{{ __('web.news_events') }}" textAlign="left" paddingTop="0"
-                    textColor="text-red-500" />
+                <x-website.partials.header :link="route('categories.posts.index', $latestPost->category)" title="{{ __('web.news_events') }}" textAlign="left"
+                    paddingTop="0" textColor="text-red-500" />
                 <div class="h-auto divide-y divide-solid divide-gray-300">
                     @foreach ($posts as $post)
                         @unless ($loop->first)
-                            <a class="py-2 inline-block" href="{{ route('news.show', $post) }}">
+                            <a class="py-2 inline-block"
+                                href="{{ route('categories.posts.show', [
+                                    'category' => $post->category,
+                                    'post' => $post,
+                                ]) }}">
                                 <article class="h-16 flex items-center">
                                     <figure class="group relative flex rounded-t-xl">
-                                        <div href="{{ route('news.show', $post) }}"
+                                        <div href="{{ route('categories.posts.show', [
+                                            'category' => $post->category,
+                                            'post' => $post,
+                                        ]) }}"
                                             class="h-auto w-20 flex-none overflow-hidden">
                                             <img class="h-auto w-auto transition-all group-hover:scale-105"
                                                 src="{{ $post->getFirstMedia('featured_image')->getUrl('thumb') }}"

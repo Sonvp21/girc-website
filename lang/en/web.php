@@ -7,6 +7,7 @@ return [
     'news_events' => 'News & Events',
     'news' => 'News',
     'showing' => 'Showing',
+    'home' => 'Home',
     'to' => 'to',
     'of' => 'of',
     'results' => 'results',

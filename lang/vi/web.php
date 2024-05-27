@@ -7,6 +7,7 @@ return [
     'news_events' => 'Tin tức - Sự kiện',
     'news' => 'Tin tức',
     'showing' => 'Hiển thị từ',
+    'home' => 'Trang chủ',
     'to' => 'đến',
     'of' => 'của',
     'results' => 'kết quả',
