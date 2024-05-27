@@ -1,5 +1,5 @@
 <div class="col-span-8 space-y-3 md:col-span-6 lg:col-span-6">
-    <x-website.partials.header main="true" title="{{ __('web.science_technology') }}" textAlign="left" />
+    <x-website.partials.header main="true" title="{{ __('web.infrastructure') }}" textAlign="left" />
 
     @if ($youtubeVideos->isEmpty() && $googleDriveVideos->isEmpty())
         <li class="flex w-full items-start gap-2 py-2">
