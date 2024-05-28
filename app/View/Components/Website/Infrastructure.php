@@ -2,11 +2,11 @@
 
 namespace App\View\Components\Website;
 
+use App\Enums\VideoSourceEnum;
+use App\Models\Video;
 use Closure;
 use Illuminate\Contracts\View\View;
-use App\Models\Video;
 use Illuminate\View\Component;
-use App\Enums\VideoSourceEnum;
 
 class Infrastructure extends Component
 {
@@ -37,5 +37,4 @@ class Infrastructure extends Component
             'googleDriveVideos' => $googleDriveVideos,
         ]);
     }
-
 }

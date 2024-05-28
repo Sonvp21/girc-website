@@ -2,11 +2,11 @@
 
 namespace App\View\Components\Website;
 
+use App\Enums\VideoSourceEnum;
 use App\Models\Video;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
-use App\Enums\VideoSourceEnum;
 
 class ShowVideo extends Component
 {
@@ -36,6 +36,7 @@ class ShowVideo extends Component
                 $googleDriveVideos->push($video);
             }
         });
+
         return view('components.website.show-video', [
             'youtubeVideos' => $youtubeVideos,
             'googleDriveVideos' => $googleDriveVideos,
