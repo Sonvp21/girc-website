@@ -19,7 +19,7 @@
                     <x-website.education-program />
                 </div>
                 <div class="col-span-8 hidden space-y-3 md:col-span-2 lg:block">
-                    <x-website.aside.digital-transformation/>
+                    <x-website.aside.digital-transformation />
                 </div>
             </div>
         </div>
@@ -32,7 +32,7 @@
                     <x-website.staff />
                 </div>
                 <div class="col-span-8 hidden space-y-3 md:col-span-2 lg:block">
-                    <x-website.scienceinformations/>
+                    <x-website.scienceinformation />
                 </div>
             </div>
         </div>
