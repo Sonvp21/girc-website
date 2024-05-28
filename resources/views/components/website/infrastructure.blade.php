@@ -17,22 +17,52 @@
             }'>
             @forelse ($youtubeVideos as $video)
                 <div class="carousel-cell">
-                    <a href="" target="_blank"
+                    <a title="{{ $video->name }}"
+                        onclick="event.preventDefault(); openVideoModalInfrastructure('https://www.youtube.com/embed/{{ $video->video_id }}', '{{ $video->name }}')"
                         class="mx-2 flex h-36 w-52 items-center justify-center overflow-hidden rounded-lg border border-gray-300 bg-white">
-                        <img class="w-full h-full" src="{{ $video->getFirstMedia('album_video')->getUrl() }}" alt="{{ $video->name }}">
+                        <img class="w-full h-full" src="{{ $video->getFirstMedia('album_video')->getUrl() }}"
+                            alt="{{ $video->name }}">
                     </a>
                 </div>
             @empty
             @endforelse
             @forelse ($googleDriveVideos as $video)
                 <div class="carousel-cell">
-                    <a href="" target="_blank"
+                    <a title="{{ $video->name }}"
+                        onclick="event.preventDefault(); openVideoModalInfrastructure('https://drive.google.com/file/d/{{ $video->video_id }}/preview', '{{ $video->name }}')"
                         class="mx-2 flex h-36 w-52 items-center justify-center overflow-hidden rounded-lg border border-gray-300 bg-white">
-                        <img class="w-full h-full" src="{{ $video->getFirstMedia('album_video')->getUrl() }}" alt="{{ $video->name }}">
+                        <img class="w-full h-full" src="{{ $video->getFirstMedia('album_video')->getUrl() }}"
+                            alt="{{ $video->name }}">
                     </a>
                 </div>
             @empty
             @endforelse
         </div>
+
     @endif
+
+    <dialog id="my_modal_2" class="modal">
+        <div class="modal-box relative min-w-[80%] min-h-[100%] p-9 h-full">
+            <x-website.show-video-infrastructure />
+            <div class="modal-action absolute top-0 right-0">
+                <button class="btn" onclick="closeModalInfrastructure()">X</button>
+            </div>
+        </div>
+    </dialog>
+
 </div>
+<script>
+    function openVideoModalInfrastructure(videoUrlIframeInfrastructure, videoTitleInfrastructure) {
+        const iframe = document.getElementById('videoIframeInfrastructure');
+        const titleElement = document.getElementById('videoTitleInfrastructure');
+        iframe.src = videoUrlIframeInfrastructure;
+        titleElement.textContent = videoTitleInfrastructure;
+        document.getElementById('my_modal_2').showModal();
+    }
+
+    function closeModalInfrastructure() {
+        const iframe = document.getElementById('videoIframeInfrastructure');
+        iframe.src = '';
+        document.getElementById('my_modal_2').close();
+    }
+</script>

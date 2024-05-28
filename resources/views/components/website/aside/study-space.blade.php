@@ -4,7 +4,7 @@
         <div class="h-44">
             <div class="h-full" style="text-align: -webkit-center;">
                 @if ($latestVideo)
-                    <a href="" target="_blank"
+                    <a onclick="event.preventDefault(); openVideoModalStudy('https://drive.google.com/file/d/{{ $latestVideo->video_id }}/preview', '{{ $latestVideo->name }}')"
                         class="mx-2 h-full flex items-center justify-center overflow-hidden rounded-lg border border-gray-300 bg-white">
                         <img class="w-full h-full" src="{{ $latestVideo->getFirstMedia('album_video')->getUrl() }}"
                             alt="{{ $latestVideo->name }}">
@@ -14,5 +14,58 @@
                 @endif
             </div>
         </div>
+        <ul class="divide-y divide-solid px-2" hidden>
+            @if ($youtubeVideos->isEmpty() && $googleDriveVideos->isEmpty())
+                <li class="flex w-full items-start gap-2 py-2">
+                    <p class="text-xs italic hover:text-red-600">@lang('web.no_data')</p>
+                </li>
+            @else
+                @forelse ($youtubeVideos as $video)
+                    <li class="flex items-center gap-2 w-full py-2">
+                        <a class="flex items-center" title="{{ $video->name }}"
+                            onclick="event.preventDefault(); openVideoModalStudy('https://www.youtube.com/embed/{{ $video->video_id }}', '{{ $video->name }}')"><x-heroicon-o-play-circle
+                                class="size-5 flex-none" />
+                            <p class="line-clamp-1 text-xs ml-1">{{ $video->name }}</p>
+                        </a>
+
+                    </li>
+                @empty
+                @endforelse
+                @forelse ($googleDriveVideos as $video)
+                    <li class="flex items-center gap-2 w-full py-2">
+                        <a class="flex items-center" title="{{ $video->name }}"
+                            onclick="event.preventDefault(); openVideoModalStudy('https://drive.google.com/file/d/{{ $video->video_id }}/preview', '{{ $video->name }}')">
+                            <x-heroicon-o-play-circle class="size-5 flex-none" />
+                            <p class="line-clamp-1 text-xs ml-1">{{ $video->name }}</p>
+                        </a>
+
+                    </li>
+                @empty
+                @endforelse
+            @endif
+        </ul>
     </div>
+    <dialog id="my_modal_4" class="modal">
+        <div class="modal-box relative min-w-[80%] min-h-[100%] p-9 h-full">
+            <x-website.show-video-study />
+            <div class="modal-action absolute top-0 right-0">
+                <button class="btn" onclick="closeModalStudy()">X</button>
+            </div>
+        </div>
+    </dialog>
 </div>
+<script>
+    function openVideoModalStudy(videoUrlIframeStudy, videoTitleStudy) {
+        const iframe = document.getElementById('videoIframeStudy');
+        const titleElement = document.getElementById('videoTitleStudy');
+        iframe.src = videoUrlIframeStudy;
+        titleElement.textContent = videoTitleStudy;
+        document.getElementById('my_modal_4').showModal();
+    }
+
+    function closeModalStudy() {
+        const iframe = document.getElementById('videoIframeStudy');
+        iframe.src = '';
+        document.getElementById('my_modal_4').close();
+    }
+</script>

@@ -1,19 +1,16 @@
 <div class="mx-auto mt-2 max-w-7xl px-4 sm:px-2 h-full">
     <div class="bg-blue-800 inline-block relative py-2 px-4">
-        <svg fill="currentColor" class="absolute -right-[3rem] top-0 z-0 h-10 text-blue-700 transform scale-y-[-1]"
-            xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision" text-rendering="geometricPrecision"
-            viewBox="0 0 120 36">
-            <path d="M77.103718 36C98.551859 36 98.551859 0 120 0H42.896282C21.448141 0 21.448141 36 0 36h77.103718Z">
-            </path>
+        <svg fill="currentColor" class="absolute -right-[3rem] top-0 z-0 h-10 text-blue-700 transform scale-y-[-1]" xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" viewBox="0 0 120 36">
+            <path d="M77.103718 36C98.551859 36 98.551859 0 120 0H42.896282C21.448141 0 21.448141 36 0 36h77.103718Z"></path>
         </svg>
-        <h3 class="relative z-20 text-white uppercase whitespace-nowrap">@lang('web.science_technology')</h3>
+        <h3 class="relative z-20 text-white uppercase whitespace-nowrap">@lang('web.digital_transformation')</h3>
     </div>
     <div class="row-span-1 w-full h-[70%]">
-        <iframe id="videoIframe" class="w-full h-full"
+        <iframe id="videoIframeDigital" class="w-full h-full"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
         </iframe>
-        <p id="videoTitle" class="text-lg font-semibold text-gray-800"></p>
+        <p id="videoTitleDigital" class="text-lg font-semibold text-gray-800"></p>
     </div>
 
     <div class="mt-8">
@@ -33,7 +30,7 @@
                 @forelse ($youtubeVideos as $video)
                     <div class="carousel-cell">
                         <a title="{{ $video->name }}"
-                            onclick="event.preventDefault(); updateVideoSource('https://www.youtube.com/embed/{{ $video->video_id }}', '{{ $video->name }}')"
+                            onclick="event.preventDefault(); updateVideoSourceIframeDigital('https://www.youtube.com/embed/{{ $video->video_id }}', '{{ $video->name }}')"
                             class="mx-2 flex h-36 w-52 items-center justify-center overflow-hidden rounded-lg border border-gray-300 bg-white">
                             <img class="w-full h-full" src="{{ $video->getFirstMedia('album_video')->getUrl() }}">
                         </a>
@@ -43,7 +40,7 @@
                 @forelse ($googleDriveVideos as $video)
                     <div class="carousel-cell">
                         <a title="{{ $video->name }}"
-                            onclick="event.preventDefault(); updateVideoSource('https://drive.google.com/file/d/{{ $video->video_id }}/preview', '{{ $video->name }}')"
+                            onclick="event.preventDefault(); updateVideoSourceIframeDigital('https://drive.google.com/file/d/{{ $video->video_id }}/preview', '{{ $video->name }}')"
                             class="mx-2 flex h-36 w-52 items-center justify-center overflow-hidden rounded-lg border border-gray-300 bg-white">
                             <img class="w-full h-full" src="{{ $video->getFirstMedia('album_video')->getUrl() }}"
                                 alt="{{ $video->name }}">
@@ -58,10 +55,10 @@
 
 </div>
 <script>
-    function updateVideoSource(videoUrl, videoTitle) {
-        const iframe = document.getElementById('videoIframe');
-        const titleElement = document.getElementById('videoTitle');
-        iframe.src = videoUrl;
-        titleElement.textContent = videoTitle;
+    function updateVideoSourceIframeDigital(videoUrlIframeDigital, videoTitleDigital) {
+        const iframe = document.getElementById('videoIframeDigital');
+        const titleElement = document.getElementById('videoTitleDigital');
+        iframe.src = videoUrlIframeDigital;
+        titleElement.textContent = videoTitleDigital;
     }
 </script>

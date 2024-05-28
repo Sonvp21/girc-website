@@ -1,4 +1,4 @@
-<div>
+<div class="h-full ">
     <div class="grid h-auto grid-cols-5 gap-2">
         @if ($posts->isNotEmpty())
             <a href="{{ route('categories.posts.show', [
@@ -9,7 +9,7 @@
                 <article>
                     <figure>
                         <div class="relative overflow-hidden bg-white h-[347px]">
-                            <img class="h-auto w-full transition-all group-hover:scale-105"
+                            <img class="h-full w-full transition-all group-hover:scale-105"
                                 src="{{ $latestPost->getFirstMedia('featured_image')->getUrl('lg') }}" alt="" />
                             <h2
                                 class="w-full absolute bottom-0 right-0 flex items-center justify-center gap-2 bg-white/70 text-normal uppercase text-black px-6 py-4 text-center">
@@ -24,10 +24,10 @@
             <div>
                 <x-website.partials.header :link="route('categories.posts.index', $latestPost->category)" title="{{ __('web.news_events') }}" textAlign="left"
                     paddingTop="0" textColor="text-red-500" />
-                <div class="h-auto divide-y divide-solid divide-gray-300">
+                <div class="divide-y divide-solid divide-gray-300 h-full">
                     @foreach ($posts as $post)
                         @unless ($loop->first)
-                            <a class="py-2 inline-block"
+                            <a class="py-[0.55rem] inline-block"
                                 href="{{ route('categories.posts.show', [
                                     'category' => $post->category,
                                     'post' => $post,
@@ -38,8 +38,8 @@
                                             'category' => $post->category,
                                             'post' => $post,
                                         ]) }}"
-                                            class="h-auto w-20 flex-none overflow-hidden">
-                                            <img class="h-auto w-auto transition-all group-hover:scale-105"
+                                            class="h-full w-20 flex-none overflow-hidden">
+                                            <img class="h-full w-auto transition-all group-hover:scale-105"
                                                 src="{{ $post->getFirstMedia('featured_image')->getUrl('thumb') }}"
                                                 alt="{{ $post->title }}" />
                                         </div>
