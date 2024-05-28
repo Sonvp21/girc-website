@@ -16,7 +16,7 @@
                 </div>
                 <span>@lang('web.contact')</span>
             </a>
-            <a class="flex w-full items-center gap-2 text-slate-700 hover:text-blue-700 sm:w-auto" href="#">
+            <a class="flex w-full items-center gap-2 text-slate-700 hover:text-blue-700 sm:w-auto" href="{{ route('faqs.index') }}">
                 <div class="rounded bg-yellow-500 p-1 text-white">
                     <x-heroicon-m-question-mark-circle class="size-4" />
                 </div>
