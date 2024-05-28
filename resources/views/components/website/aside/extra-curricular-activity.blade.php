@@ -4,10 +4,8 @@
         <div class="h-44">
             <div class="h-full" style="text-align: -webkit-center;">
                 @if ($latestVideo)
-                    <a onclick="event.preventDefault(); openVideoModalActivity('https://drive.google.com/file/d/{{ $latestVideo->video_id }}/preview', '{{ $latestVideo->name }}')"
-                        class="mx-2 h-full flex items-center justify-center overflow-hidden rounded-lg border border-gray-300 bg-white">
-                        <img class="w-full h-full" src="{{ $latestVideo->getFirstMedia('album_video')->getUrl() }}"
-                            alt="{{ $latestVideo->name }}">
+                    <a onclick="event.preventDefault(); openVideoModalActivity('https://drive.google.com/file/d/{{ $latestVideo->video_id }}/preview', '{{ $latestVideo->name }}')" class="w-full bg-white">
+                        <img class="h-full w-full" src="{{ $latestVideo->getFirstMedia('album_video')->getUrl('photo_aside') }}" alt="{{ $latestVideo->name }}">
                     </a>
                 @else
                     <p class="text-xs italic hover:text-red-600">@lang('web.no_data')</p>
@@ -21,22 +19,19 @@
                 </li>
             @else
                 @forelse ($youtubeVideos as $video)
-                    <li class="flex items-center gap-2 w-full py-2">
-                        <a class="flex items-center" title="{{ $video->name }}"
-                            onclick="event.preventDefault(); openVideoModalActivity('https://www.youtube.com/embed/{{ $video->video_id }}', '{{ $video->name }}')"><x-heroicon-o-play-circle
-                                class="size-5 flex-none" />
-                            <p class="line-clamp-1 text-xs ml-1">{{ $video->name }}</p>
+                    <li class="flex w-full items-center gap-2 py-2">
+                        <a class="flex items-center" title="{{ $video->name }}" onclick="event.preventDefault(); openVideoModalActivity('https://www.youtube.com/embed/{{ $video->video_id }}', '{{ $video->name }}')"><x-heroicon-o-play-circle class="size-5 flex-none" />
+                            <p class="ml-1 line-clamp-1 text-xs">{{ $video->name }}</p>
                         </a>
 
                     </li>
                 @empty
                 @endforelse
                 @forelse ($googleDriveVideos as $video)
-                    <li class="flex items-center gap-2 w-full py-2">
-                        <a class="flex items-center" title="{{ $video->name }}"
-                            onclick="event.preventDefault(); openVideoModalActivity('https://drive.google.com/file/d/{{ $video->video_id }}/preview', '{{ $video->name }}')">
+                    <li class="flex w-full items-center gap-2 py-2">
+                        <a class="flex items-center" title="{{ $video->name }}" onclick="event.preventDefault(); openVideoModalActivity('https://drive.google.com/file/d/{{ $video->video_id }}/preview', '{{ $video->name }}')">
                             <x-heroicon-o-play-circle class="size-5 flex-none" />
-                            <p class="line-clamp-1 text-xs ml-1">{{ $video->name }}</p>
+                            <p class="ml-1 line-clamp-1 text-xs">{{ $video->name }}</p>
                         </a>
 
                     </li>
@@ -46,9 +41,9 @@
         </ul>
     </div>
     <dialog id="my_modal_5" class="modal">
-        <div class="modal-box relative min-w-[80%] min-h-[100%] p-1 h-full">
+        <div class="modal-box relative h-full min-h-[100%] min-w-[80%] p-1">
             <x-website.show-video-activity />
-            <div class="modal-action absolute top-0 right-0">
+            <div class="modal-action absolute right-0 top-0">
                 <button class="btn mt-[-22px]" onclick="closeModalActivity()">X</button>
             </div>
         </div>

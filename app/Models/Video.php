@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Carbon;
+use Spatie\Image\Enums\Fit;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -46,6 +47,18 @@ class Video extends Model implements HasMedia
 
         $this->addMediaConversion('thumb')
             ->crop(368, 276)
+            ->sharpen(10)
+            ->format('jpg')
+            ->performOnCollections('album_video');
+
+        $this->addMediaConversion('photo')
+            ->fit(Fit::Crop, 206, 142)
+            ->sharpen(10)
+            ->format('jpg')
+            ->performOnCollections('album_video');
+
+        $this->addMediaConversion('photo_aside')
+            ->fit(Fit::Crop, 287, 174)
             ->sharpen(10)
             ->format('jpg')
             ->performOnCollections('album_video');
