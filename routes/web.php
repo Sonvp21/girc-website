@@ -3,6 +3,7 @@
 use App\Http\Controllers\Web\AnnouncementsController;
 use App\Http\Controllers\Web\CategoryController;
 use App\Http\Controllers\Web\ContactController;
+use App\Http\Controllers\Web\FaqController;
 use App\Http\Controllers\Web\HomeController;
 use App\Http\Controllers\Web\ScienceInformationController;
 use Illuminate\Support\Facades\Route;
@@ -15,6 +16,9 @@ Route::get('/thong-tin-khoa-hoc/{scienceInformation:slug}', [ScienceInformationC
 
 Route::get('/lien-he', [ContactController::class, 'index'])->name('contacts.index');
 Route::post('/lien-he', [ContactController::class, 'store'])->name('contacts.store');
+
+Route::get('/hoi-dap', [FaqController::class, 'index'])->name('faqs.index');
+Route::post('/hoi-dap', [FaqController::class, 'store'])->name('faqs.store');
 
 // Route::get('/gioi-thieu', fn () => view('web.about'))->name('about');
 

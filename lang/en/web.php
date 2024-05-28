@@ -96,4 +96,12 @@ return [
 
     'scienceinfors_lists' => 'Science information',
     'no_data' => 'No data',
+
+    'faq_page' => [
+        'faq_page' => 'FAQs',
+        'title_page' => 'Do You Have Questions?',
+        'description_page' => 'We have answers (well, most of the times!)',
+        'contact_page' => 'Below you’ll find answers to the most common questions you may have on our products & services. If you still can’t find the answer you’re looking for, just',
+        'contact_us_page' => 'Contact us!'
+    ],
 ];
