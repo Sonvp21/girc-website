@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
-use App\Models\Faq;
 use App\Http\Requests\Admin\FaqRequest;
+use App\Models\Faq;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 

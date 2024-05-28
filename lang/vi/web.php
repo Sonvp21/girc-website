@@ -101,7 +101,7 @@ return [
         'title_page' => 'Bạn có câu hỏi?',
         'description_page' => 'Chúng tôi có câu trả lời (hầu hết các trường hợp!) ',
         'contact_page' => 'Dưới đây bạn sẽ tìm thấy câu trả lời cho những câu hỏi phổ biến nhất mà bạn có thể có về chúng tôi. Nếu bạn vẫn không thể tìm thấy câu trả lời mình đang tìm kiếm, Hãy',
-        'contact_us_page' => 'Liên hệ với chúng tôi!'
+        'contact_us_page' => 'Liên hệ với chúng tôi!',
     ],
-    
+
 ];
