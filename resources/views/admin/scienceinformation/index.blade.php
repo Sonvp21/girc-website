@@ -42,9 +42,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($scienceinformations as $scienceinformation)
+                            @foreach ($scienceInformations as $scienceinformation)
                                 <tr>
-                                    <th>{{ $scienceinformations->firstItem() + $loop->index }}</th>
+                                    <th>{{ $scienceInformations->firstItem() + $loop->index }}</th>
                                     <td>{{ app()->getLocale() === 'en' ? $scienceinformation->title_en : $scienceinformation->title }}</td>
                                     <td>{{ $scienceinformation->publishedAtVi }}</td>
                                     <td>{{ $scienceinformation->updatedAtVi }}</td>
@@ -77,7 +77,7 @@
             </div>
         </div>
         <div class="mt-4">
-            {{ $scienceinformations->links('pagination.web-tailwind') }}
+            {{ $scienceInformations->links('pagination.web-tailwind') }}
         </div>
     </div>
 </x-app-layout>
