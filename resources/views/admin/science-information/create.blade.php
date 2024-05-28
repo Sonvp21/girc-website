@@ -2,18 +2,17 @@
     <div class="p-6">
         <div class="text-normal font-semibold leading-tight text-gray-800">
             <span class="text-normal flex items-center gap-2 font-semibold leading-tight text-gray-800">
-                @lang('admin.scienceinformation')
+                @lang('admin.science_information')
                 <x-heroicon-m-arrow-small-right class="size-4" />
-                @lang('admin.edit')
+                @lang('admin.add')
             </span>
         </div>
         <x-admin.alerts.error />
         <div class="mt-6">
             <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                 <div class="bg-white px-8 pb-8 pt-0 shadow sm:rounded-lg">
-                    <form action="{{ route('admin.scienceinformation.update', $scienceinformation) }}" method="POST" class="needs-validation space-y-4" novalidate enctype="multipart/form-data">
+                    <form action="{{ route('admin.science-information.store') }}" method="POST" class="needs-validation space-y-4" novalidate enctype="multipart/form-data">
                         @csrf
-                        @method('patch')
 
                         <input type="hidden" name="user_id" value="{{ auth()->id() }}">
                         <div class="flex gap-4">
@@ -21,15 +20,16 @@
                                 <div class="label">
                                     <span class="label-text">@lang('admin.post.published_at')</span>
                                 </div>
-                                <x-admin.forms.calendar name="published_at" value="{{ $scienceinformation->published_at }}" />
+                                <x-admin.forms.calendar name="published_at" value="{{ old('published_at') }}" />
                             </label>
                         </div>
+
                         <div class="flex gap-4">
                             <label class="form-control w-full">
-                                <div class="label">
-                                    <span class="label-text">@lang('admin.scienceinformation.title')</span>
-                                </div>
-                                <input type="text" name="title" placeholder="Type here" value="{{ $scienceinformation->title }}" @class([
+                                <span class="label">
+                                    <span class="label-text">@lang('admin.post.title')</span>
+                                </span>
+                                <input type="text" name="title" value="{{ old('title') }}" placeholder="title" @class([
                                     'input',
                                     'input-bordered',
                                     'input-error' => $errors->has('title'),
@@ -38,55 +38,47 @@
                             </label>
                             <label class="form-control w-full">
                                 <div class="label">
-                                    <span class="label-text">@lang('admin.scienceinformation.title_en')</span>
+                                    <span class="label-text">@lang('admin.science_information.title_en')</span>
                                 </div>
-                                <input type="text" name="title_en" value="{{ $scienceinformation->title_en }}" placeholder="Title english(if have)" @class([
+                                <input type="text" name="title_en" value="{{ old('title_en') }}" placeholder="Title english(if have)" @class([
                                     'input',
                                     'input-bordered',
                                     'input-error' => $errors->has('title_en'),
                                     'w-full',
                                 ]) />
                             </label>
+
                         </div>
+
                         <label class="form-control w-full">
-                            <div class="label">
+                            <span class="label">
                                 <span class="label-text">@lang('admin.content')</span>
-                            </div>
+                            </span>
                             <textarea name="content" id="content" class="hidden">
-                                {!! $scienceinformation->content !!}
+                                {{ old('content') }}
                             </textarea>
                         </label>
                         <div class="flex items-center space-x-6">
                             <div class="shrink-0">
-                                <img id="preview_img" class="h-16 w-16 rounded-full object-cover"
-                                    src="{{ $scienceinformation->getFirstMedia('science_information_photo')->getUrl('thumb') }}"
-                                    alt="{{ $scienceinformation->getFirstMedia('science_information_photo')->name }}" />
+                                <img id="preview_img" class="h-16 w-16 rounded-full object-cover" src="https://lh3.googleusercontent.com/a-/AFdZucpC_6WFBIfaAbPHBwGM9z8SxyM1oV4wB4Ngwp_UyQ=s96-c" alt="Current photo" />
                             </div>
                             <label class="block">
                                 <span class="sr-only">Choose photo</span>
-                                <div class="input input-bordered flex items-center gap-2 border px-3 py-2">
-                                    File:
-                                    <span
-                                        id="selected_file_name">{{ $scienceinformation->getFirstMedia('science_information_photo')->name }}</span>
-                                </div>
-
-                                <input class="hidden" type="file" name="image" onchange="loadFile(event)"
-                                    class="file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100 block w-full text-sm text-slate-500 file:mr-4 file:rounded-full file:border-0 file:px-4 file:py-2 file:text-sm file:font-semibold" />
+                                <input type="file" name="image" onchange="loadFile(event)" class="file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100 block w-full text-sm text-slate-500 file:mr-4 file:rounded-full file:border-0 file:px-4 file:py-2 file:text-sm file:font-semibold" />
                             </label>
                         </div>
                         <label class="form-control w-full">
                             <div class="label">
-                                <span class="label-text">@lang('admin.scienceinformation.keep_on_top')</span>
+                                <span class="label-text">@lang('admin.science_information.keep_on_top')</span>
                             </div>
                             <select name="keep_on_top" @class(['input', 'input-bordered', 'w-full'])>
-                                <option value="0" {{ $scienceinformation->keep_on_top ? '' : 'selected' }}>@lang('admin.false')
-                                </option>
-                                <option value="1" {{ $scienceinformation->keep_on_top ? 'selected' : '' }}>@lang('admin.true')
-                                </option>
+                                <option @selected(old('keep_on_top') == 0) value="0">@lang('admin.false')</option>
+                                <option @selected(old('keep_on_top') == 1) value="1">@lang('admin.true')</option>
                             </select>
                         </label>
+
                         <div class="flex justify-end gap-4">
-                            <a href="{{ route('admin.scienceinformation.index') }}" class="btn-light btn">@lang('admin.btn.cancel')
+                            <a href="{{ route('admin.science-information.index') }}" class="btn-light btn">@lang('admin.btn.cancel')
                             </a>
                             <button type="submit" class="btn btn-success ml-2">
                                 @lang('admin.btn.submit')

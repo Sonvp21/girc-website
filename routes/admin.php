@@ -37,7 +37,7 @@ Route::middleware('auth')->group(function () {
         Route::delete('category/{category}/posts/{post}', [PostController::class, 'destroy'])->name('categories.posts.destroy');
 
         Route::resource('announcements', AnnouncementController::class);
-        Route::resource('scienceinformation', ScienceInformationController::class);
+        Route::resource('science-information', ScienceInformationController::class);
         //album-photo-video
         Route::resource('albums', AlbumController::class);
         Route::resource('photos', PhotoController::class);
