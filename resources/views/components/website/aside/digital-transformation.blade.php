@@ -44,10 +44,10 @@
             @endif
 
             <dialog id="my_modal_3" class="modal">
-                <div class="modal-box relative min-w-[80%] min-h-[100%] p-1 h-full">
+                <div class="modal-box relative sm:min-h-fit md:h-[inherit] p-2 min-w-[60%] md:min-h-[80%]">
                     <x-website.show-video-digital />
                     <div class="modal-action absolute top-0 right-0">
-                        <button class="btn mt-[-22px]" onclick="closeModalDigital()">X</button>
+                        <button class="btn btn-outline btn-error  mt-[-14px] mr-3 min-h-fit h-fit p-2 rounded-full" onclick="closeModalDigital()">X</button>
                     </div>
                 </div>
             </dialog>

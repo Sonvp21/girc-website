@@ -41,10 +41,10 @@
         </ul>
     </div>
     <dialog id="my_modal_5" class="modal">
-        <div class="modal-box relative h-full min-h-[100%] min-w-[80%] p-1">
+        <div class="modal-box relative sm:min-h-fit md:h-[inherit] p-2 min-w-[60%] md:min-h-[80%]">
             <x-website.show-video-activity />
             <div class="modal-action absolute right-0 top-0">
-                <button class="btn mt-[-22px]" onclick="closeModalActivity()">X</button>
+                <button class="btn btn-outline btn-error  mt-[-14px] mr-3 min-h-fit h-fit p-2 rounded-full" onclick="closeModalActivity()">X</button>
             </div>
         </div>
     </dialog>
