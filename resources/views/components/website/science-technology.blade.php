@@ -35,10 +35,10 @@
     @endif
 
     <dialog id="my_modal_1" class="modal">
-        <div class="modal-box relative h-full min-h-[100%] min-w-[80%] p-1">
+        <div class="modal-box relative sm:min-h-fit md:h-[inherit] p-2 min-w-[60%] md:min-h-[80%]">
             <x-website.show-video />
             <div class="modal-action absolute right-0 top-0">
-                <button class="btn mt-[-22px]" onclick="closeModal()">X</button>
+                <button class="btn btn-outline btn-error  mt-[-14px] mr-3 min-h-fit h-fit p-2 rounded-full" onclick="closeModal()">X</button>
             </div>
         </div>
     </dialog>
