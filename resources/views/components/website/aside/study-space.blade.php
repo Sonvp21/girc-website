@@ -46,10 +46,10 @@
         </ul>
     </div>
     <dialog id="my_modal_4" class="modal">
-        <div class="modal-box relative min-w-[80%] min-h-[100%] p-9 h-full">
+        <div class="modal-box relative min-w-[80%] min-h-[100%] p-1 h-full">
             <x-website.show-video-study />
             <div class="modal-action absolute top-0 right-0">
-                <button class="btn" onclick="closeModalStudy()">X</button>
+                <button class="btn  mt-[-22px]" onclick="closeModalStudy()">X</button>
             </div>
         </div>
     </dialog>

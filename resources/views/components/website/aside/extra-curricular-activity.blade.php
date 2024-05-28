@@ -46,10 +46,10 @@
         </ul>
     </div>
     <dialog id="my_modal_5" class="modal">
-        <div class="modal-box relative min-w-[80%] min-h-[100%] p-9 h-full">
+        <div class="modal-box relative min-w-[80%] min-h-[100%] p-1 h-full">
             <x-website.show-video-activity />
             <div class="modal-action absolute top-0 right-0">
-                <button class="btn" onclick="closeModalActivity()">X</button>
+                <button class="btn mt-[-22px]" onclick="closeModalActivity()">X</button>
             </div>
         </div>
     </dialog>
