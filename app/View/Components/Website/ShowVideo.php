@@ -8,8 +8,13 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class ScienceTechnology extends Component
+class ShowVideo extends Component
 {
+    public function __construct()
+    {
+        //
+    }
+
     public function render(): View|Closure|string
     {
         $videos = Video::query()
@@ -32,7 +37,7 @@ class ScienceTechnology extends Component
             }
         });
 
-        return view('components.website.science-technology', [
+        return view('components.website.show-video', [
             'youtubeVideos' => $youtubeVideos,
             'googleDriveVideos' => $googleDriveVideos,
         ]);

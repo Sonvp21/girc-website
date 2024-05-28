@@ -61,7 +61,7 @@
                                 @foreach (App\Enums\VideoSourceEnum::cases() as $source)
                                     <option value="{{ $source->value }}"
                                         {{ $video->source == $source ? 'selected' : '' }}>
-                                        {{ $source->value }}
+                                        @lang('admin.' . $source->value)
                                     </option>
                                 @endforeach
                             </select>

@@ -39,7 +39,7 @@
 @else
     @if($isChild)
         <li class="hover:bg-black hover:bg-opacity-5">
-            <a href="{{ $link }}" class="flex items-center justify-start space-x-2 px-2 py-4 text-slate-800" style="text-wrap: balance;">
+            <a href="{{ $link }}" class="flex items-center justify-start space-x-2 px-2 py-4 text-slate-800">
                 {{ $category->title }}
             </a>
         </li>

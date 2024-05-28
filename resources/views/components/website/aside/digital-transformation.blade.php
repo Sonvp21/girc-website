@@ -1,20 +1,71 @@
 <div>
     <x-website.partials.header title="{{ __('web.digital_transformation') }}" />
     <div class="">
-        <div class="h-40 bg-green-200"></div>
+        <div class="h-40 bg-white" style="text-align: -webkit-center;">
+            @if ($latestVideo)
+                <a title="{{ $latestVideo->name }}" onclick="event.preventDefault(); openVideoModalDigital('https://drive.google.com/file/d/{{ $latestVideo->video_id }}/preview', '{{ $latestVideo->name }}')"
+                    class="mx-2 flex items-center justify-center overflow-hidden rounded-lg border border-gray-300 bg-white">
+                    <img class="w-full h-full" src="{{ $latestVideo->getFirstMedia('album_video')->getUrl() }}"
+                        alt="{{ $latestVideo->name }}">
+                </a>
+            @else
+                <p class="text-xs italic hover:text-red-600">@lang('web.no_data')</p>
+            @endif
+        </div>
+
         <ul class="divide-y divide-solid px-2">
-            <li class="flex items-center gap-2 w-full py-2">
-                <x-heroicon-o-play-circle  class="size-5 flex-none"/>
-                <p class="line-clamp-1 text-xs">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa est itaque pariatur veniam vero? Aliquam beatae deleniti, ducimus incidunt magnam modi natus nulla similique sit voluptatum. Alias minus recusandae rerum.</p>
-            </li>
-            <li class="flex items-center gap-2 w-full py-2">
-                <x-heroicon-o-play-circle  class="size-5 flex-none"/>
-                <p class="line-clamp-1 text-xs">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem deserunt id iusto nisi perferendis velit. Alias, deserunt harum iure laudantium maxime minus odio officiis perspiciatis provident quos recusandae, rem velit!</p>
-            </li>
-            <li class="flex items-center gap-2 w-full py-2">
-                <x-heroicon-o-play-circle  class="size-5 flex-none"/>
-                <p class="line-clamp-1 text-xs">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aliquid amet animi assumenda, aut consectetur debitis doloribus eius eos harum in minima officia quasi ratione similique totam voluptate? Animi, aut.</p>
-            </li>
+            @if ($youtubeVideos->isEmpty() && $googleDriveVideos->isEmpty())
+                <li class="flex w-full items-start gap-2 py-2">
+                    <p class="text-xs italic hover:text-red-600">@lang('web.no_data')</p>
+                </li>
+            @else
+                @forelse ($youtubeVideos as $video)
+                    <li class="flex items-center gap-2 w-full py-2">
+                        <a class="flex items-center" title="{{ $video->name }}"
+                            onclick="event.preventDefault(); openVideoModalDigital('https://www.youtube.com/embed/{{ $video->video_id }}', '{{ $video->name }}')"><x-heroicon-o-play-circle
+                                class="size-5 flex-none" />
+                            <p class="line-clamp-1 text-xs ml-1">{{ $video->name }}</p>
+                        </a>
+
+                    </li>
+                @empty
+                @endforelse
+                @forelse ($googleDriveVideos as $video)
+                    <li class="flex items-center gap-2 w-full py-2">
+                        <a class="flex items-center" title="{{ $video->name }}"
+                            onclick="event.preventDefault(); openVideoModalDigital('https://drive.google.com/file/d/{{ $video->video_id }}/preview', '{{ $video->name }}')">
+                            <x-heroicon-o-play-circle class="size-5 flex-none" />
+                            <p class="line-clamp-1 text-xs ml-1">{{ $video->name }}</p>
+                        </a>
+
+                    </li>
+                @empty
+                @endforelse
+            @endif
+
+            <dialog id="my_modal_3" class="modal">
+                <div class="modal-box relative min-w-[80%] min-h-[100%] p-1 h-full">
+                    <x-website.show-video-digital />
+                    <div class="modal-action absolute top-0 right-0">
+                        <button class="btn mt-[-22px]" onclick="closeModalDigital()">X</button>
+                    </div>
+                </div>
+            </dialog>
         </ul>
     </div>
 </div>
+<script>
+    function openVideoModalDigital(videoUrlIframeDigital, videoTitleDigital) {
+        const iframe = document.getElementById('videoIframeDigital');
+        const titleElement = document.getElementById('videoTitleDigital');
+        iframe.src = videoUrlIframeDigital;
+        titleElement.textContent = videoTitleDigital;
+        document.getElementById('my_modal_3').showModal();
+    }
+
+    function closeModalDigital() {
+        const iframe = document.getElementById('videoIframeDigital');
+        iframe.src = '';
+        document.getElementById('my_modal_3').close();
+    }
+</script>

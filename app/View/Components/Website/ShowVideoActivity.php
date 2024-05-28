@@ -8,14 +8,14 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class ScienceTechnology extends Component
+class ShowVideoActivity extends Component
 {
     public function render(): View|Closure|string
     {
         $videos = Video::query()
             ->with('album')
             ->whereHas('album', function ($query) {
-                $query->whereId(config('app.home_album_science_and_technology_id'));
+                $query->whereId(config('app.home_album_extra_curricular_activity_id'));
             })
             ->latest('updated_at')
             ->get();
@@ -32,9 +32,13 @@ class ScienceTechnology extends Component
             }
         });
 
-        return view('components.website.science-technology', [
+        $allVideos = $youtubeVideos->merge($googleDriveVideos);
+        $latestVideo = $allVideos->sortByDesc('updated_at')->first();
+
+        return view('components.website.show-video-activity', [
             'youtubeVideos' => $youtubeVideos,
             'googleDriveVideos' => $googleDriveVideos,
+            'latestVideo' => $latestVideo,
         ]);
     }
 }
