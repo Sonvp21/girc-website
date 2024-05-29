@@ -16,7 +16,7 @@ return [
     'update_password' => 'Update Password',
     'delete_account' => 'Delete Account',
     'back' => 'Back',
-    '' => '',
+    'export_excel' => 'Export file excel',
     '' => '',
 
     //Announcement
@@ -191,4 +191,26 @@ return [
     'information_technology' => 'Information technology',
     'economy_and_created_news' => 'Economy and created news',
     'inter_industry_application' => 'Inter-industry application',
+
+    'information_management_engineer' => 'Information management engineer',
+    'innovative_technology_engineer' => 'Innovative technology engineer',
+    'expert_training_course' => 'Expert training course',
+
+    'apply' => [
+        'required' => [
+            'name' => 'Please put name',
+            'phone' => 'Please enter phone',
+            'major' => 'Please select major',
+            'question' => 'Please enter question',
+        ],
+    ],
+    'applies' => 'Aplly', 
+    'applies.name' => 'Name', 
+    'applies.phone' => 'Phone', 
+    'applies.email' => 'Email', 
+    'applies.school' => 'Your school', 
+    'applies.major' => 'Major', 
+    'applies.question' => 'Information needs advice', 
+    'applies.created_at' => 'Received date', 
+    'applies.select_major' => 'Select major', 
 ];

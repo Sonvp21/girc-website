@@ -16,6 +16,7 @@ return [
     'update_password' => 'Cập nhật mật khẩu mới',
     'delete_account' => 'Xoá tài khoản',
     'back' => 'Quay lại',
+    'export_excel' => 'Xuất file excel',
 
     //Thông báo
     'announcements' => 'Thông báo',
@@ -177,4 +178,27 @@ return [
     'information_technology' => 'Công nghệ thông tin',
     'economy_and_created_news' => 'Kinh tế & đối mới sáng tạo',
     'inter_industry_application' => 'Ứng dụng liên ngành',
+
+    'information_management_engineer' => 'Kỹ sư quản lý thông tin',
+    'innovative_technology_engineer' => 'Kỹ sư công nghệ đổi mới sáng tạo',
+    'expert_training_course' => 'Khoá đào tạo chuyên gia',
+
+    'apply' => [
+        'required' => [
+            'name' => 'Vui lòng nhập họ tên của bạn',
+            'phone' => 'Vui lòng nhập số điện thoại của bạn',
+            'major' => 'Vui lòng chọn ngành',
+            'question' => 'Vui lòng nhập thông tin cần tư vấn',
+        ],
+    ],
+
+    'applies' => 'Danh sách đăng ký', 
+    'applies.name' => 'Họ & tên', 
+    'applies.phone' => 'Số điện thoại', 
+    'applies.email' => 'Email', 
+    'applies.school' => 'Trường học', 
+    'applies.major' => 'Ngành đăng ký', 
+    'applies.question' => 'Thông tin cần tư vấn', 
+    'applies.created_at' => 'Ngày gửi', 
+    'applies.select_major' => 'Chọn ngành', 
 ];

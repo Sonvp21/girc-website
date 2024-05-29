@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\Album\PhotoController;
 use App\Http\Controllers\Admin\Album\VideoController;
 use App\Http\Controllers\Admin\AlbumController;
 use App\Http\Controllers\Admin\AnnouncementController;
+use App\Http\Controllers\Admin\ApplyController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\FaqController;
@@ -14,6 +15,7 @@ use App\Http\Controllers\Admin\ScienceInformationController;
 use App\Http\Controllers\Admin\StaffController;
 use App\Http\Controllers\Admin\Support\TinymceController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ExportController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/dashboard', function () {
@@ -52,6 +54,9 @@ Route::middleware('auth')->group(function () {
         //Teaching Staff
         Route::resource('staffs', StaffController::class);
 
+        //Apply student
+        Route::resource('applies', ApplyController::class);
+
         /*
          *  KEEP THESE AT THE END OF THE FILE
          */
@@ -59,5 +64,7 @@ Route::middleware('auth')->group(function () {
         Route::post('tinymce-attachment', TinymceController::class)->name('tinymce.attachment');
     });
 });
+Route::get('/export-applies', [ExportController::class, 'exportExcel']);
+
 
 require __DIR__.'/auth.php';
