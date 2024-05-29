@@ -128,7 +128,7 @@
             </a>
         </div>
         <div class="sub-button shadow">
-            <a href="google.com" target="_blank">
+            <a href="https://www.google.com/" target="_blank">
                 <span class="material-icons">help_outline</span>
             </a>
         </div>

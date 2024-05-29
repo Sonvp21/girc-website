@@ -3,8 +3,9 @@ class="modal-box group from-blue-600/30 to-blue-200/5 [background-image:linear-g
 <form>
     <button
         class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 focus:border-none focus:outline-none"
-        onclick="document.getElementById('modal_regiser').close()">✕</button>
+        onclick="event.preventDefault(); document.getElementById('modal_regiser').close()">✕</button>
 </form>
+
 <div class="text-center">
     <h1 class="font-bold text-2xl uppercase h-8">@lang('web.consulting_registration')</h1>
     <p>@lang('web.register_comment')</p>

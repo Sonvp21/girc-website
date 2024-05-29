@@ -3,7 +3,7 @@
             <div class="flex gap-3">
                 <a
                     class="flex items-center justify-center gap-1 hover:text-green-700"
-                    href=""
+                    href="https://tuaf.edu.vn/"
                 >
                     <x-heroicon-c-globe-alt class="size-4" />
                     <span class="hidden sm:block">TUAF</span>
@@ -25,7 +25,7 @@
                     </a>
                     <a
                         class="flex items-center justify-center gap-1 hover:text-green-700"
-                        href=""
+                        href="mailto:girc.tuaf@gmail.com"
                     >
                         <x-heroicon-s-envelope class="size-4" />
                         <span class="hidden sm:block">girc@tuaf.edu.vn</span>
