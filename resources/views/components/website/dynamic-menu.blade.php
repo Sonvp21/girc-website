@@ -11,10 +11,10 @@
                 </span>
             </button>
         </div>
-        <div class="hidden origin-top-left bg-gray-300 shadow-md md:w-auto lg:absolute"
+        <div class="hidden origin-top-left bg-gray-200 shadow-md md:w-auto lg:absolute"
             :class="{ 'block': dropdownOpen, 'hidden': !dropdownOpen }">
             <ul
-                class="text-black divide-gray-400 origin-top-left divide-y divide-dashed whitespace-nowrap bg-white w-auto">
+                class="text-black divide-gray-200 origin-top-left divide-y divide-dashed whitespace-nowrap bg-white w-auto">
                 @foreach ($category->children as $child)
                     <x-website.dynamic-menu :category="$child" isChild="true" />
                 @endforeach
@@ -22,7 +22,7 @@
         </div>
     </li>
 @else
-    <li class="{{ request()->is('categories/' . $category->slug) || request()->is('categories/' . $category->slug . '/*') ? ($isChild ? 'active bg-gray-300 text-black' : 'active bg-blue-600 text-white') : ($isChild ? 'hover:bg-gray-300 hover:text-black' : 'hover:bg-blue-600 hover:text-white') }}">
+    <li class="{{ request()->is('categories/' . $category->slug) || request()->is('categories/' . $category->slug . '/*') ? ($isChild ? 'active bg-gray-100 text-black' : 'active bg-blue-600 text-white') : ($isChild ? 'hover:bg-gray-200 hover:text-black' : 'hover:bg-blue-600 hover:text-white') }}">
         <a href="{{ $link }}"
             class="flex h-full items-center justify-start py-4 font-semibold uppercase tracking-wider {{ $isChild ? 'text-black' : 'text-white' }}" style="background-color: inherit;">
             <span class="{{ $isChild ? 'text-black normal-case font-sans' : 'lg:border-r text-white font-roboto' }} border-white px-2">{{ $category->title }}</span>
