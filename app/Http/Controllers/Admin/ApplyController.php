@@ -33,7 +33,7 @@ class ApplyController extends Controller
     {
         Apply::create($request->all());
 
-        return redirect()->route('admin.applies.index')->with('success', trans('admin.alerts.success.create'));
+        return back()->with('success', trans('admin.alerts.success.create'));
     }
 
     public function destroy(Apply $apply): RedirectResponse

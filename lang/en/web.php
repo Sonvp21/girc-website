@@ -104,4 +104,12 @@ return [
         'contact_page' => 'Below you’ll find answers to the most common questions you may have on our products & services. If you still can’t find the answer you’re looking for, just',
         'contact_us_page' => 'Contact us!',
     ],
+
+    'register_now'=> 'Register now',
+    'consulting_registration'=> 'Consulting registration',
+    'register_comment'=> 'Invite parents and students to fill in information for the fastest advice.',
+    'register_now'=> 'Register now',
+    'register_now'=> 'Register now',
+    'register_now'=> 'Register now',
+
 ];

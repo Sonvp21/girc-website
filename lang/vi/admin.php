@@ -196,9 +196,9 @@ return [
     'applies.name' => 'Họ & tên', 
     'applies.phone' => 'Số điện thoại', 
     'applies.email' => 'Email', 
-    'applies.school' => 'Trường học', 
+    'applies.school' => 'Trường THPT bạn học', 
     'applies.major' => 'Ngành đăng ký', 
     'applies.question' => 'Thông tin cần tư vấn', 
     'applies.created_at' => 'Ngày gửi', 
-    'applies.select_major' => 'Chọn ngành', 
+    'applies.select_major' => 'Chọn ngành học bạn quan tâm', 
 ];

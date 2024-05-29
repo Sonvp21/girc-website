@@ -104,4 +104,7 @@ return [
         'contact_us_page' => 'Liên hệ với chúng tôi!',
     ],
 
+    'register_now'=> 'Đăng ký ngay',
+    'consulting_registration'=> 'Đăng ký tư vấn',
+    'register_comment'=> 'Mời quý phụ huynh và học viên điền thông tin để được tư vấn nhanh nhất.',
 ];
