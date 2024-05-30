@@ -11,7 +11,7 @@
             @endif
         </div>
 
-        <ul class="divide-y divide-solid px-2">
+        <ul class="divide-y divide-solid px-2 mt-3">
             @if ($youtubeVideos->isEmpty() && $googleDriveVideos->isEmpty())
                 <li class="flex w-full items-start gap-2 py-2">
                     <p class="text-xs italic hover:text-red-600">@lang('web.no_data')</p>
