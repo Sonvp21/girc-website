@@ -6,14 +6,17 @@
                     <div>
                         <div class="text-sm breadcrumbs py-4 text-blue-800">
                             <ul>
-                                <x-website.breadcrumbs/>
+                                <x-website.breadcrumbs />
                                 <x-website.breadcrumbs :route="route('categories.posts.index', $category)" :name="app()->getLocale() === 'en' ? $category->title_en : $category->title" />
                             </ul>
                         </div>
                         <div class="bg-gradient-to-r from-blue-400 via-blue-500 via-70% to-red-500 h-0.5"></div>
                     </div>
+                    @php
+                        $postCount = $post->category->posts->count();
+                    @endphp
                     <article class="group">
-                        @if ($post->category->posts->count() > 1)
+                        @if ($postCount > 1)
                             <h2 class="text-2xl font-bold">{{ $post->title }}</h2>
 
                             <div class="tooltip tooltip-top flex items-center gap-2 text-green-700"
@@ -25,7 +28,7 @@
                         <div class="">
                             {!! $post->content !!}
                         </div>
-                        @if ($post->category->posts->count() > 1)
+                        @if ($postCount > 1)
                             <div class="flex items-center gap-2">
                                 <div class="flex items-center gap-1">
                                     <x-heroicon-o-tag class="size-4" />

@@ -10,10 +10,6 @@ class CategoryService
 {
     public function getCachedCategoriesForMenu(): Collection
     {
-        if (Cache::get('categories_menu')) {
-            return Cache::get('categories_menu');
-        }
-
         return $this->cachedCategoriesForMenu();
     }
 

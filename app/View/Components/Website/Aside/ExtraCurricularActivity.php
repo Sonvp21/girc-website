@@ -7,18 +7,21 @@ use App\Models\Video;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
+use Illuminate\Support\Facades\Cache;
 
 class ExtraCurricularActivity extends Component
 {
     public function render(): View|Closure|string
     {
-        $videos = Video::query()
-            ->with('album')
-            ->whereHas('album', function ($query) {
-                $query->whereId(config('app.home_album_extra_curricular_activity_id'));
-            })
-            ->latest('updated_at')
-            ->get();
+        $videos = Cache::remember('extra_curricular_activity_videos', 60, function () {
+            return Video::query()
+                ->with('album')
+                ->whereHas('album', function ($query) {
+                    $query->whereId(config('app.home_album_extra_curricular_activity_id'));
+                })
+                ->latest('updated_at')
+                ->get();
+        });
 
         $youtubeVideos = collect();
         $googleDriveVideos = collect();

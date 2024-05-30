@@ -42,7 +42,7 @@
     </div>
     <dialog id="my_modal_4" class="modal">
         <div class="modal-box relative min-w-[60%] p-2 sm:min-h-fit md:h-[inherit] md:min-h-[80%]">
-            <x-website.show-video-study />
+            @include('components.website.show-video-study')
             <div class="modal-action absolute right-0 top-0">
                 <button class="btn btn-outline btn-error mr-3 mt-[-14px] h-fit min-h-fit rounded-full p-2" onclick="closeModalStudy()">X</button>
             </div>
