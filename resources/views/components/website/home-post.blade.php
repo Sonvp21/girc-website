@@ -44,7 +44,7 @@
 
                                     <figcaption class="w-full px-3 text-sm">
                                         <div
-                                            class="text-blue-700 hover:text-red-600 line-clamp-3 leading-5 text-sm text-justify">
+                                            class="text-blue-900 hover:text-red-600 line-clamp-3 leading-5 text-sm text-justify">
                                             {{ $post->title }}
                                             @if (strlen($post->title) < 100)
                                                 <p class="contents">

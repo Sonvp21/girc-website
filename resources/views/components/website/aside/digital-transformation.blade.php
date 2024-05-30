@@ -20,7 +20,7 @@
                 @forelse ($youtubeVideos as $video)
                     <li class="flex w-full items-center gap-2 py-2">
                         <a class="flex items-center" title="{{ $video->name }}" onclick="event.preventDefault(); openVideoModalDigital('https://www.youtube.com/embed/{{ $video->video_id }}', '{{ $video->name }}')"><x-heroicon-o-play-circle class="size-5 flex-none" />
-                            <p class="ml-1 line-clamp-1 text-sm">{{ $video->name }}</p>
+                            <span class="ml-1 line-clamp-1 text-sm cursor-pointer hover:text-red-600">{{ $video->name }}</span>
                         </a>
 
                     </li>
@@ -30,9 +30,8 @@
                     <li class="flex w-full items-center gap-2 py-2">
                         <a class="flex items-center" title="{{ $video->name }}" onclick="event.preventDefault(); openVideoModalDigital('https://drive.google.com/file/d/{{ $video->video_id }}/preview', '{{ $video->name }}')">
                             <x-heroicon-o-play-circle class="size-5 flex-none" />
-                            <p class="ml-1 line-clamp-1 text-sm">{{ $video->name }}</p>
+                            <span class="ml-1 line-clamp-1 text-sm cursor-pointer hover:text-red-600">{{ $video->name }}</span>
                         </a>
-
                     </li>
                 @empty
                 @endforelse
