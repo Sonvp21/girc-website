@@ -1,6 +1,6 @@
 <div>
     <x-website.partials.header title="{{ __('web.digital_transformation') }}" />
-    <div class="">
+    <div class="mt-2.5">
         <div class="h-40 bg-white">
             @if ($latestVideo)
                 <a title="{{ $latestVideo->name }}" onclick="event.preventDefault(); openVideoModalDigital('https://drive.google.com/file/d/{{ $latestVideo->video_id }}/preview', '{{ $latestVideo->name }}')" class="flex items-center justify-center overflow-hidden bg-white">

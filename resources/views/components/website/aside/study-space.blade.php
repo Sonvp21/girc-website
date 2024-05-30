@@ -1,6 +1,6 @@
 <div class="bg-white">
     <x-website.partials.header title="{{ __('web.study_space') }}" />
-    <div class="">
+    <div class="mt-2.5">
         <div class="h-44">
             <div class="h-full">
                 @if ($latestVideo)

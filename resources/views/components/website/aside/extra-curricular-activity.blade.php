@@ -1,6 +1,6 @@
 <div>
     <x-website.partials.header title="{{ __('web.extra_curricular_activities') }}" />
-    <div class="">
+    <div class="mt-2.5">
         <div class="h-44">
             <div class="h-full">
                 @if ($latestVideo)
