@@ -1,5 +1,26 @@
-<head>
-    <link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
+<div class="cd__main">
+    <div class="fab-container">
+        <div class="fab shadow">
+            <div class="fab-content">
+                <span class="material-icons">support_agent</span>
+            </div>
+        </div>
+        <div class="sub-button shadow">
+            <a href="tel:0904031103" target="_blank">
+                <span class="material-icons">phone</span>
+            </a>
+        </div>
+        <div class="sub-button shadow">
+            <a href="mailto:girc.tuaf@gmail.com" target="_blank">
+                <span class="material-icons">mail_outline</span>
+            </a>
+        </div>
+        <div class="sub-button shadow">
+            <a href="https://www.google.com/" target="_blank">
+                <span class="material-icons">help_outline</span>
+            </a>
+        </div>
+    </div>
     <style>
         .fab-container {
             display: flex;
@@ -109,29 +130,4 @@
             });
         });
     </script>
-</head>
-<div class="cd__main">
-    <div class="fab-container">
-        <div class="fab shadow">
-            <div class="fab-content">
-                <span class="material-icons">support_agent</span>
-            </div>
-        </div>
-        <div class="sub-button shadow">
-            <a href="tel:0904031103" target="_blank">
-                <span class="material-icons">phone</span>
-            </a>
-        </div>
-        <div class="sub-button shadow">
-            <a href="mailto:girc.tuaf@gmail.com" target="_blank">
-                <span class="material-icons">mail_outline</span>
-            </a>
-        </div>
-        <div class="sub-button shadow">
-            <a href="https://www.google.com/" target="_blank">
-                <span class="material-icons">help_outline</span>
-            </a>
-        </div>
-    </div>
-
 </div>
