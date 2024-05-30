@@ -14,7 +14,7 @@
                             <span class="h-4 text-[0.5rem] font-bold capitalize text-[#fd9f1b]">{{ $announcement->published_at->translatedFormat('l') }}</span>
                         </div>
                     </div>
-                    <h3 class="line-clamp-3 h-12 text-justify font-normal leading-4 tracking-normal">
+                    <h3 class="line-clamp-3 h-12 text-sm text-justify font-normal leading-4 tracking-normal">
                         {{ $announcement->title }}
                     </h3>
                 </a>

@@ -8,13 +8,13 @@
                         <polyline points="9 11 12 14 22 4"></polyline>
                         <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
                     </svg>
-                    <p class="line-clamp-3 text-xs hover:text-red-600">
+                    <p class="line-clamp-3 text-sm hover:text-red-600 leading-4 text-justify tracking-normal">
                         <a href="{{ route('science-information.show', $scienceInformation) }}">{{ $scienceInformation->title }}</a>
                     </p>
                 </li>
             @empty
                 <li class="flex w-full items-start gap-2 py-2">
-                    <p class="text-xs italic hover:text-red-600">@lang('web.no_data')</p>
+                    <p class="text-sm italic hover:text-red-600">@lang('web.no_data')</p>
                 </li>
             @endforelse
         </ul>

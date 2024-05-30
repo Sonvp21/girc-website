@@ -4,10 +4,10 @@ namespace App\View\Components\Website\Aside;
 
 use App\Enums\VideoSourceEnum;
 use App\Models\Video;
+use App\Services\VideoService;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
-use App\Services\VideoService;
 
 class StudySpace extends Component
 {
@@ -15,16 +15,16 @@ class StudySpace extends Component
         public VideoService $videoService
     ) {
     }
+
     public function render(): View|Closure|string
     {
         $videos = Video::query()
-                ->with('album')
-                ->whereHas('album', function ($query) {
-                    $query->whereId(config('app.home_album_study_space_id'));
-                })
-                ->latest('updated_at')
-                ->get();
-
+            ->with('album')
+            ->whereHas('album', function ($query) {
+                $query->whereId(config('app.home_album_study_space_id'));
+            })
+            ->latest('updated_at')
+            ->get();
 
         $youtubeVideos = collect();
         $googleDriveVideos = collect();

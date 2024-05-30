@@ -7,8 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\VideoRequest;
 use App\Models\Album;
 use App\Models\Video;
-use Illuminate\Http\RedirectResponse;
 use App\Services\VideoService;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
