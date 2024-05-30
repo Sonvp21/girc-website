@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Http\Requests\Admin\ApplyRequest;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\View\View;
 use App\Models\Apply;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class ApplyController extends Controller
 {
@@ -42,5 +42,4 @@ class ApplyController extends Controller
 
         return redirect()->route('admin.applies.index')->with('success', trans('admin.alerts.success.deleted'));
     }
-
 }

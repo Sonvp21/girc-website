@@ -2,12 +2,11 @@
 
 namespace App\Http\Requests\Admin;
 
-use Illuminate\Foundation\Http\FormRequest;
 use App\Enums\ApplyMajorEnum;
+use Illuminate\Foundation\Http\FormRequest;
 
 class ApplyRequest extends FormRequest
 {
-
     public function rules(): array
     {
         return [
@@ -15,7 +14,7 @@ class ApplyRequest extends FormRequest
             'phone' => 'required',
             'email' => 'nullable',
             'school' => 'nullable',
-            'major' => 'required|in:' . implode(',', array_column(ApplyMajorEnum::cases(), 'value')),
+            'major' => 'required|in:'.implode(',', array_column(ApplyMajorEnum::cases(), 'value')),
             'question' => 'required',
         ];
     }

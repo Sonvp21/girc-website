@@ -105,11 +105,11 @@ return [
         'contact_us_page' => 'Contact us!',
     ],
 
-    'register_now'=> 'Register now',
-    'consulting_registration'=> 'Consulting registration',
-    'register_comment'=> 'Invite parents and students to fill in information for the fastest advice.',
-    'register_now'=> 'Register now',
-    'register_now'=> 'Register now',
-    'register_now'=> 'Register now',
+    'register_now' => 'Register now',
+    'consulting_registration' => 'Consulting registration',
+    'register_comment' => 'Invite parents and students to fill in information for the fastest advice.',
+    'register_now' => 'Register now',
+    'register_now' => 'Register now',
+    'register_now' => 'Register now',
 
 ];

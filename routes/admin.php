@@ -14,8 +14,8 @@ use App\Http\Controllers\Admin\RichTextAttachmentController;
 use App\Http\Controllers\Admin\ScienceInformationController;
 use App\Http\Controllers\Admin\StaffController;
 use App\Http\Controllers\Admin\Support\TinymceController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ExportController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/dashboard', function () {
@@ -65,6 +65,5 @@ Route::middleware('auth')->group(function () {
     });
 });
 Route::get('/export-applies', [ExportController::class, 'exportExcel']);
-
 
 require __DIR__.'/auth.php';

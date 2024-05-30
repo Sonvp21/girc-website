@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Apply;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
-use App\Models\Apply;
 
 class ExportController extends Controller
 {
@@ -27,12 +27,12 @@ class ExportController extends Controller
 
         // Điền dữ liệu vào từng hàng
         foreach ($applies as $apply) {
-            $sheet->setCellValue('A' . $row, $apply->name);
-            $sheet->setCellValue('B' . $row, $apply->phone);
-            $sheet->setCellValue('C' . $row, $apply->email);
-            $sheet->setCellValue('D' . $row, $apply->school);
-            $sheet->setCellValue('E' . $row, $apply->major);
-            $sheet->setCellValue('F' . $row, $apply->question);
+            $sheet->setCellValue('A'.$row, $apply->name);
+            $sheet->setCellValue('B'.$row, $apply->phone);
+            $sheet->setCellValue('C'.$row, $apply->email);
+            $sheet->setCellValue('D'.$row, $apply->school);
+            $sheet->setCellValue('E'.$row, $apply->major);
+            $sheet->setCellValue('F'.$row, $apply->question);
             $row++;
         }
 
