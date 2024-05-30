@@ -12,17 +12,15 @@ class HomePost extends Component
 {
     public function render(): View|Closure|string
     {
-        $posts = Cache::remember('home_category_posts', now()->addMinutes(10), function () {
-            return Post::query()
+        $posts = Post::query()
                 ->with('category')
                 ->published()
                 ->whereHas('category', function ($query) {
                     $query->whereId(config('app.home_category_id'));
                 })
                 ->latest('published_at')
-                ->take(5)
+                ->take(4)
                 ->get();
-        });
 
         return view('components.website.home-post', [
             'posts' => $posts,
