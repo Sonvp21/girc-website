@@ -22,9 +22,9 @@
         </div>
     </li>
 @else
-    <li class="{{ request()->is('categories/' . $category->slug) || request()->is('categories/' . $category->slug . '/*') ? ($isChild ? 'active bg-gray-100 text-black' : 'active bg-blue-600 text-white') : ($isChild ? 'hover:bg-gray-100 hover:text-black h-9' : 'hover:bg-blue-600 hover:text-white') }}">
+    <li class="{{ request()->is('categories/' . $category->slug) || request()->is('categories/' . $category->slug . '/*') ? ($isChild ? 'active bg-gray-100 text-black h-9' : 'active bg-blue-600 text-white') : ($isChild ? 'hover:bg-gray-100 hover:text-black h-9' : 'hover:bg-blue-600 hover:text-white') }}">
         <a href="{{ $link }}"
-            class="flex h-full items-center justify-start py-4 uppercase tracking-wider {{ $isChild ? 'text-black font-sans' : 'text-white font-semibold' }}" style="background-color: inherit;">
+            class="flex h-full items-center justify-start py-4 uppercase tracking-wider {{ $isChild ? 'text-black font-sans text-[13px]' : 'text-white font-semibold' }}" style="background-color: inherit;">
             @if ($isChild)
             <x-heroicon-o-chevron-right class="size-3 text-gray-600 ml-2"/>
             @endif
