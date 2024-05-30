@@ -9,9 +9,9 @@ use App\Models\ScienceInformation;
 use App\Models\Video;
 use App\Observers\AnnouncementObserver;
 use App\Observers\CategoryObserver;
-use App\Observers\VideoObserver;
 use App\Observers\PostObserver;
 use App\Observers\ScienceInformationObserver;
+use App\Observers\VideoObserver;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
