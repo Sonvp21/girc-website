@@ -72,19 +72,24 @@
                     </a>
                 </li>
                 <li>
+                    <a class="{{ request()->routeIs('admin.applies.*') ? 'active' : '' }}" href="{{ route('admin.applies.index') }}">
+                        @lang('admin.applies')
+                    </a>
+                </li>
+                <li>
                     <a @class([
                         'active' => request()->routeIs('admin.contacts.*'),
                     ]) href="{{ route('admin.contacts.index') }}">
                         @lang('admin.contacts')
                     </a>
                 </li>
-                <li>
+                {{-- <li>
                     <a @class([
                         'active' => request()->routeIs('admin.faqs.*'),
                     ]) href="{{ route('admin.faqs.index') }}">
                         @lang('admin.faqs')
                     </a>
-                </li>
+                </li> --}}
             </ul>
         </div>
     </div>
