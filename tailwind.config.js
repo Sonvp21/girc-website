@@ -20,7 +20,16 @@ export default {
             },
             boxShadow: {
                 'calendar': '0 1px 0 #bdbdbd, 0 2px 0 #fff, 0 3px 0 #bdbdbd, 0 4px 0 #fff, 0 5px 0 #bdbdbd, 0 0 0 1px #bdbdbd',
-            }
+            },
+            keyframes: {
+                scale: {
+                  '0%, 100%': { transform: 'scale(1)' },
+                  '50%': { transform: 'scale(1.1)' },
+                },
+              },
+              animation: {
+                'scale-up-down': 'scale 2s infinite',
+              }
         },
         keyframes: {
             bounceHorizontal: {
