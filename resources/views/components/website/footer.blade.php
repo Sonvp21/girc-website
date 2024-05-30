@@ -20,7 +20,8 @@
                 <div class="text-white flex items-center justify-center gap-8">
                     <ul class="mt-2 space-y-1 text-left text-xs sm:text-sm border-l-4 pl-3">
                         <li class="group flex items-center gap-2 text-blue-100 hover:text-white">
-                            @lang('web.address'): @lang('web.tuaf_address')
+                            @lang('web.address'): <a target="_blank"
+                                href="https://www.google.com/maps/place/Trung+t%C3%A2m+Nghi%C3%AAn+c%E1%BB%A9u+%C4%90%E1%BB%8Ba+tin+h%E1%BB%8Dc+-+GIRC/@21.5938519,105.810809,17z/data=!3m1!4b1!4m6!3m5!1s0x313527142d4a273b:0x93ac520307150ed8!8m2!3d21.5938519!4d105.810809!16s%2Fg%2F11f15j5hkn?entry=ttu">@lang('web.tuaf_address')</a>
                         </li>
                         <li class="group flex items-center gap-2 text-blue-100 hover:text-white">
                             @lang('web.phone_number'): <a class="font-black" href="tel:0904031103">0904.031.103</a>
