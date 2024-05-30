@@ -8,11 +8,17 @@ use App\Http\Requests\Admin\VideoRequest;
 use App\Models\Album;
 use App\Models\Video;
 use Illuminate\Http\RedirectResponse;
+use App\Services\VideoService;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class VideoController extends Controller
 {
+    public function __construct(
+        public VideoService $videoService
+    ) {
+    }
+
     public function index(Request $request)
     {
         return view('admin.albums.videos.index', [
@@ -36,7 +42,10 @@ class VideoController extends Controller
             ->select('id', 'name')
             ->get();
 
-        return view('admin.albums.videos.create', compact('albums'));
+        return view('admin.albums.videos.create', [
+            'albums' => $albums,
+            'videos' => $this->videoService->cachedVideosForHome(),
+        ]);
     }
 
     public function store(VideoRequest $request): RedirectResponse
@@ -67,11 +76,10 @@ class VideoController extends Controller
             ->select('id', 'name')
             ->get();
 
-        return view('admin.albums.videos.edit')
-            ->with([
-                'video' => $video,
-                'albums' => $albums,
-            ]);
+        return view('admin.albums.videos.edit', [
+            'albums' => $albums,
+            'videos' => $this->videoService->cachedVideosForHome(),
+        ]);
     }
 
     public function update(VideoRequest $request, Video $video): RedirectResponse

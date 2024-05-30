@@ -7,21 +7,24 @@ use App\Models\Video;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
-use Illuminate\Support\Facades\Cache;
+use App\Services\VideoService;
 
 class StudySpace extends Component
 {
+    public function __construct(
+        public VideoService $videoService
+    ) {
+    }
     public function render(): View|Closure|string
     {
-        $videos = Cache::remember('study_space_videos', 60, function () {
-            return Video::query()
+        $videos = Video::query()
                 ->with('album')
                 ->whereHas('album', function ($query) {
                     $query->whereId(config('app.home_album_study_space_id'));
                 })
                 ->latest('updated_at')
                 ->get();
-        });
+
 
         $youtubeVideos = collect();
         $googleDriveVideos = collect();
@@ -42,6 +45,7 @@ class StudySpace extends Component
             'youtubeVideos' => $youtubeVideos,
             'googleDriveVideos' => $googleDriveVideos,
             'latestVideo' => $latestVideo,
+            'videos' => $this->videoService->cachedVideosForHome(),
         ]);
     }
 }

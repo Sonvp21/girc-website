@@ -7,21 +7,23 @@ use App\Models\Video;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
-use Illuminate\Support\Facades\Cache;
+use App\Services\VideoService;
 
 class ScienceTechnology extends Component
 {
+    public function __construct(
+        public VideoService $videoService
+    ) {
+    }
     public function render(): View|Closure|string
     {
-        $videos = Cache::remember('science_technology_videos', 60, function () {
-            return Video::query()
+        $videos = Video::query()
                 ->with('album')
                 ->whereHas('album', function ($query) {
                     $query->whereId(config('app.home_album_science_and_technology_id'));
                 })
                 ->latest('updated_at')
                 ->get();
-        });
 
         $youtubeVideos = collect();
         $googleDriveVideos = collect();
@@ -38,6 +40,7 @@ class ScienceTechnology extends Component
         return view('components.website.science-technology', [
             'youtubeVideos' => $youtubeVideos,
             'googleDriveVideos' => $googleDriveVideos,
+            'videos' => $this->videoService->cachedVideosForHome(),
         ]);
     }
 }
