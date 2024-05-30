@@ -1,7 +1,7 @@
 <div class="relative col-span-8 space-y-3 md:col-span-6 lg:col-span-6">
     <x-website.partials.header main="true" title="{{ __('web.education_program') }}" textAlign="left" />
     <div class="relative">
-        <img src="{{ asset('files/images/banner_2.png') }}" alt="" class="w-full" />
+        <img src="{{ asset('files/images/application_banner.png') }}" alt="" class="w-full" />
         <div class="inset-0 flex items-end justify-center pt-3 sm:absolute sm:pt-0">
             <button class="transform-center lg:text-normal relative bottom-3 flex cursor-pointer items-center justify-center overflow-hidden rounded-2xl border-2 border-red-700 bg-white text-xs font-bold uppercase text-red-700 hover:bg-red-700 hover:text-white sm:bottom-[14%] md:text-sm lg:bottom-[16%]" onclick="document.getElementById('modal_regiser').showModal()">
                 <span class="px-4">{{ __('web.register_now') }}</span>
