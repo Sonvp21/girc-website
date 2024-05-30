@@ -79,6 +79,7 @@ class VideoController extends Controller
         return view('admin.albums.videos.edit', [
             'albums' => $albums,
             'videos' => $this->videoService->cachedVideosForHome(),
+            'selectedVideo' => $video,
         ]);
     }
 

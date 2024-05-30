@@ -11,7 +11,7 @@
         <div class="mt-6">
             <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                 <div class="bg-white px-8 pb-8 pt-0 shadow sm:rounded-lg">
-                    <form action="{{ route('admin.videos.update', ['video' => $video->id]) }}" method="POST"
+                    <form action="{{ route('admin.videos.update', $selectedVideo) }}" method="POST"
                         class="space-y-4 needs-validation" novalidate enctype="multipart/form-data">
                         @csrf
                         @method('patch')
@@ -30,7 +30,7 @@
                                 <option value="">Select Album</option>
                                 @foreach ($albums as $album)
                                     <option value="{{ $album->id }}"
-                                        {{ $video->album_id == $album->id ? 'selected' : '' }}>
+                                        {{ $selectedVideo->album_id == $album->id ? 'selected' : '' }}>
                                         {{ $album->name }}
                                     </option>
                                 @endforeach
@@ -40,7 +40,7 @@
                             <div class="label">
                                 <span class="label-text">@lang('admin.post.title')</span>
                             </div>
-                            <input type="text" name="name" value="{{ old('name', $video->name) }}"
+                            <input type="text" name="name" value="{{ old('name', $selectedVideo->name) }}"
                                 placeholder="title video..." @class([
                                     'input',
                                     'input-bordered',
@@ -60,7 +60,7 @@
                             ])>
                                 @foreach (App\Enums\VideoSourceEnum::cases() as $source)
                                     <option value="{{ $source->value }}"
-                                        {{ $video->source == $source ? 'selected' : '' }}>
+                                        {{ $selectedVideo->source == $source ? 'selected' : '' }}>
                                         @lang('admin.' . $source->value)
                                     </option>
                                 @endforeach
@@ -70,7 +70,7 @@
                             <div class="label">
                                 <span class="label-text">@lang('admin.videos.videoID')</span>
                             </div>
-                            <input type="text" name="video_id" value="{{ old('video_id', $video->video_id) }}"
+                            <input type="text" name="video_id" value="{{ old('video_id', $selectedVideo->video_id) }}"
                                 placeholder="put on video ID..." @class([
                                     'input',
                                     'input-bordered',
@@ -81,19 +81,19 @@
                         <div class="flex items-center space-x-6">
                             <div class="shrink-0">
                                 <img id="preview_img" class="h-16 w-16 rounded-full object-cover"
-                                    src="{{ $video->getFirstMedia('album_video')->getUrl('thumb') }}"
-                                    alt="{{ $video->getFirstMedia('album_video')->name }}" />
+                                    src="{{ $selectedVideo->getFirstMedia('album_video')->getUrl('thumb') }}"
+                                    alt="{{ $selectedVideo->getFirstMedia('album_video')->name }}" />
                             </div>
                             <label class="block">
                                 <span class="sr-only">Choose</span>
                                 <div class="input input-bordered flex items-center gap-2 border px-3 py-2">
                                     File:
                                     <span
-                                        id="selected_file_name">{{ $video->getFirstMedia('album_video')->name }}</span>
+                                        id="selected_file_name">{{ $selectedVideo->getFirstMedia('album_video')->name }}</span>
                                 </div>
 
                                 <input class="hidden" type="file" name="image" onchange="loadFile(event)"
-                                    value="{{ $video->getFirstMedia('album_video')->getUrl('thumb') }}" />
+                                    value="{{ $selectedVideo->getFirstMedia('album_video')->getUrl('thumb') }}" />
                             </label>
                         </div>
                         <div class="flex justify-end gap-4">
