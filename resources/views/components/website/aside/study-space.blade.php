@@ -2,7 +2,7 @@
     <x-website.partials.header title="{{ __('web.study_space') }}" />
     <div class="">
         <div class="h-44">
-            <div class="h-full" style="text-align: -webkit-center;">
+            <div class="h-full">
                 @if ($latestVideo)
                     <a onclick="event.preventDefault(); openVideoModalStudy('https://drive.google.com/file/d/{{ $latestVideo->video_id }}/preview', '{{ $latestVideo->name }}')" class="w-full bg-white">
                         <img class="h-full w-full" src="{{ $latestVideo->getFirstMedia('album_video')->getUrl('photo_aside') }}" alt="{{ $latestVideo->name }}">
@@ -41,10 +41,10 @@
         </ul>
     </div>
     <dialog id="my_modal_4" class="modal">
-        <div class="modal-box relative sm:min-h-fit md:h-[inherit] p-2 min-w-[60%] md:min-h-[80%]">
+        <div class="modal-box relative min-w-[60%] p-2 sm:min-h-fit md:h-[inherit] md:min-h-[80%]">
             <x-website.show-video-study />
             <div class="modal-action absolute right-0 top-0">
-                <button class="btn btn-outline btn-error  mt-[-14px] mr-3 min-h-fit h-fit p-2 rounded-full" onclick="closeModalStudy()">X</button>
+                <button class="btn btn-outline btn-error mr-3 mt-[-14px] h-fit min-h-fit rounded-full p-2" onclick="closeModalStudy()">X</button>
             </div>
         </div>
     </dialog>

@@ -1,12 +1,10 @@
 <div>
     <x-website.partials.header title="{{ __('web.digital_transformation') }}" />
     <div class="">
-        <div class="h-40 bg-white" style="text-align: -webkit-center;">
+        <div class="h-40 bg-white">
             @if ($latestVideo)
-                <a title="{{ $latestVideo->name }}" onclick="event.preventDefault(); openVideoModalDigital('https://drive.google.com/file/d/{{ $latestVideo->video_id }}/preview', '{{ $latestVideo->name }}')"
-                    class="mx-2 flex items-center justify-center overflow-hidden rounded-lg border border-gray-300 bg-white">
-                    <img class="w-full h-full" src="{{ $latestVideo->getFirstMedia('album_video')->getUrl() }}"
-                        alt="{{ $latestVideo->name }}">
+                <a title="{{ $latestVideo->name }}" onclick="event.preventDefault(); openVideoModalDigital('https://drive.google.com/file/d/{{ $latestVideo->video_id }}/preview', '{{ $latestVideo->name }}')" class="flex items-center justify-center overflow-hidden bg-white">
+                    <img class="h-full w-full" src="{{ $latestVideo->getFirstMedia('album_video')->getUrl() }}" alt="{{ $latestVideo->name }}">
                 </a>
             @else
                 <p class="text-xs italic hover:text-red-600">@lang('web.no_data')</p>
@@ -20,22 +18,19 @@
                 </li>
             @else
                 @forelse ($youtubeVideos as $video)
-                    <li class="flex items-center gap-2 w-full py-2">
-                        <a class="flex items-center" title="{{ $video->name }}"
-                            onclick="event.preventDefault(); openVideoModalDigital('https://www.youtube.com/embed/{{ $video->video_id }}', '{{ $video->name }}')"><x-heroicon-o-play-circle
-                                class="size-5 flex-none" />
-                            <p class="line-clamp-1 text-xs ml-1">{{ $video->name }}</p>
+                    <li class="flex w-full items-center gap-2 py-2">
+                        <a class="flex items-center" title="{{ $video->name }}" onclick="event.preventDefault(); openVideoModalDigital('https://www.youtube.com/embed/{{ $video->video_id }}', '{{ $video->name }}')"><x-heroicon-o-play-circle class="size-5 flex-none" />
+                            <p class="ml-1 line-clamp-1 text-xs">{{ $video->name }}</p>
                         </a>
 
                     </li>
                 @empty
                 @endforelse
                 @forelse ($googleDriveVideos as $video)
-                    <li class="flex items-center gap-2 w-full py-2">
-                        <a class="flex items-center" title="{{ $video->name }}"
-                            onclick="event.preventDefault(); openVideoModalDigital('https://drive.google.com/file/d/{{ $video->video_id }}/preview', '{{ $video->name }}')">
+                    <li class="flex w-full items-center gap-2 py-2">
+                        <a class="flex items-center" title="{{ $video->name }}" onclick="event.preventDefault(); openVideoModalDigital('https://drive.google.com/file/d/{{ $video->video_id }}/preview', '{{ $video->name }}')">
                             <x-heroicon-o-play-circle class="size-5 flex-none" />
-                            <p class="line-clamp-1 text-xs ml-1">{{ $video->name }}</p>
+                            <p class="ml-1 line-clamp-1 text-xs">{{ $video->name }}</p>
                         </a>
 
                     </li>
@@ -44,10 +39,10 @@
             @endif
 
             <dialog id="my_modal_3" class="modal">
-                <div class="modal-box relative sm:min-h-fit md:h-[inherit] p-2 min-w-[60%] md:min-h-[80%]">
+                <div class="modal-box relative min-w-[60%] p-2 sm:min-h-fit md:h-[inherit] md:min-h-[80%]">
                     <x-website.show-video-digital />
-                    <div class="modal-action absolute top-0 right-0">
-                        <button class="btn btn-outline btn-error  mt-[-14px] mr-3 min-h-fit h-fit p-2 rounded-full" onclick="closeModalDigital()">X</button>
+                    <div class="modal-action absolute right-0 top-0">
+                        <button class="btn btn-outline btn-error mr-3 mt-[-14px] h-fit min-h-fit rounded-full p-2" onclick="closeModalDigital()">X</button>
                     </div>
                 </div>
             </dialog>
