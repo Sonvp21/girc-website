@@ -8,22 +8,22 @@ use App\Services\VideoService;
 class VideoObserver
 {
     public function __construct(
-        public VideoService $VideoService
+        public VideoService $videoService
     ) {
     }
 
     public function saving(Video $Video): void
     {
-        $this->VideoService->deletecachedVideosForHome();
+        $this->videoService->deletecachedVideosForHome();
     }
 
     public function saved(Video $Video): void
     {
-        $this->VideoService->cachedVideosForHome();
+        $this->videoService->cachedVideosForHome();
     }
 
     public function deleted(Video $Video): void
     {
-        $this->VideoService->deletecachedVideosForHome();
+        $this->videoService->deletecachedVideosForHome();
     }
 }
