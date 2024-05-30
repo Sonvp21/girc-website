@@ -1,6 +1,6 @@
 <div>
     <x-website.partials.header title="{{ __('web.extra_curricular_activities') }}" />
-    <div class="">
+    <div class="mt-2.5">
         <div class="h-44">
             <div class="h-full">
                 @if ($latestVideo)
@@ -42,7 +42,7 @@
     </div>
     <dialog id="my_modal_5" class="modal">
         <div class="modal-box relative min-w-[60%] p-2 sm:min-h-fit md:h-[inherit] md:min-h-[80%]">
-            <x-website.show-video-activity />
+            @include('components.website.show-video-activity')
             <div class="modal-action absolute right-0 top-0">
                 <button class="btn btn-outline btn-error mr-3 mt-[-14px] h-fit min-h-fit rounded-full p-2" onclick="closeModalActivity()">X</button>
             </div>

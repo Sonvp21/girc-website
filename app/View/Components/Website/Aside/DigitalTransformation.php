@@ -7,18 +7,24 @@ use App\Models\Video;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
+use App\Services\VideoService;
 
 class DigitalTransformation extends Component
 {
+    public function __construct(
+        public VideoService $videoService
+    ) {
+    }
+    
     public function render(): View|Closure|string
     {
         $videos = Video::query()
-            ->with('album')
-            ->whereHas('album', function ($query) {
-                $query->whereId(config('app.home_album_digital_transformation_id'));
-            })
-            ->latest('updated_at')
-            ->get();
+                ->with('album')
+                ->whereHas('album', function ($query) {
+                    $query->whereId(config('app.home_album_digital_transformation_id'));
+                })
+                ->latest('updated_at')
+                ->get();
 
         $youtubeVideos = collect();
         $googleDriveVideos = collect();
@@ -39,6 +45,7 @@ class DigitalTransformation extends Component
             'youtubeVideos' => $youtubeVideos,
             'googleDriveVideos' => $googleDriveVideos,
             'latestVideo' => $latestVideo,
+            'videos' => $this->videoService->cachedVideosForHome(),
         ]);
     }
 }

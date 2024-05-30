@@ -1,6 +1,6 @@
 <div>
     <x-website.partials.header title="{{ __('web.digital_transformation') }}" />
-    <div class="">
+    <div class="mt-2.5">
         <div class="h-40 bg-white">
             @if ($latestVideo)
                 <a title="{{ $latestVideo->name }}" onclick="event.preventDefault(); openVideoModalDigital('https://drive.google.com/file/d/{{ $latestVideo->video_id }}/preview', '{{ $latestVideo->name }}')" class="flex items-center justify-center overflow-hidden bg-white">
@@ -11,7 +11,7 @@
             @endif
         </div>
 
-        <ul class="divide-y divide-solid px-2">
+        <ul class="divide-y divide-solid px-2 mt-3">
             @if ($youtubeVideos->isEmpty() && $googleDriveVideos->isEmpty())
                 <li class="flex w-full items-start gap-2 py-2">
                     <p class="text-xs italic hover:text-red-600">@lang('web.no_data')</p>
@@ -40,7 +40,7 @@
 
             <dialog id="my_modal_3" class="modal">
                 <div class="modal-box relative min-w-[60%] p-2 sm:min-h-fit md:h-[inherit] md:min-h-[80%]">
-                    <x-website.show-video-digital />
+                    @include('components.website.show-video-digital')
                     <div class="modal-action absolute right-0 top-0">
                         <button class="btn btn-outline btn-error mr-3 mt-[-14px] h-fit min-h-fit rounded-full p-2" onclick="closeModalDigital()">X</button>
                     </div>
