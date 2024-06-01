@@ -6,8 +6,10 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
-class Announcement extends Model
+use Spatie\Searchable\Searchable;
+use Spatie\Searchable\SearchResult;
+ 
+class Announcement extends Model implements Searchable
 {
     use HasFactory;
 
@@ -18,6 +20,17 @@ class Announcement extends Model
     protected $casts = [
         'published_at' => 'datetime:Y-m-d H:i:s',
     ];
+
+    public function getSearchResult(): SearchResult
+    {
+        $url = route('announcements.show', ['announcement' => $this->slug]);
+
+        return new SearchResult(
+            $this,
+            $this->title,
+            $url
+        );
+    }
 
     public function scopePublished($query)
     {

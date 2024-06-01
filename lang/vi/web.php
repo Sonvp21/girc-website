@@ -37,7 +37,7 @@ return [
     'education_program' => 'Chương trình đào tạo',
     'teaching_staff' => 'Đội ngũ giảng viên',
     'science_information' => 'Thông tin khoa học',
-    'science_technology' => 'Khoa học & Công nghệ',
+    'science_technology' => 'Khoa học và Công nghệ',
     'cooperation' => 'Quan hệ hợp tác',
     'study_space' => 'Góc học tập',
     'extra_curricular_activities' => 'Hoạt động ngoại khóa',
@@ -61,7 +61,7 @@ return [
     'title_girc' => 'Trung tâm Nghiên cứu Địa tin học - GIRC',
     'time_work' => 'Làm việc từ: 7:30AM - 5:30PM - Nghỉ',
 
-    'contacts.name' => 'Họ & tên',
+    'contacts.name' => 'Họ và tên',
     'contacts.email' => 'Email',
     'contacts.phone' => 'Số điện thoại',
     'contacts.content' => 'Nội dung',
@@ -107,4 +107,11 @@ return [
     'register_now' => 'Đăng ký ngay',
     'consulting_registration' => 'Đăng ký tư vấn',
     'register_comment' => 'Mời quý phụ huynh và học viên điền thông tin để được tư vấn nhanh nhất.',
+
+    'info_teaching' => 'Thông tin giảng viên',
+    'teaching' => 'Giảng viên',
+
+    'website_search' => 'Tìm kiếm',
+    'website_search_result' => 'Kết quả tìm kiếm',
+    'no_results_found' => 'Không tìm thấy kết quả nào',
 ];
