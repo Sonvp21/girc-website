@@ -17,6 +17,7 @@
             <div class="grid grid-cols-8 gap-4">
                 <div class="col-span-8 space-y-10 md:col-span-6 lg:col-span-6">
                     <x-website.education-program />
+
                 </div>
                 <div class="col-span-8 hidden space-y-3 md:col-span-2 lg:block">
                     <x-website.aside.digital-transformation />
@@ -29,7 +30,7 @@
         <div class="mx-auto mt-2 max-w-7xl px-4 sm:px-2">
             <div class="grid grid-cols-8 gap-4">
                 <div class="col-span-8 space-y-10 md:col-span-6 lg:col-span-6">
-                    <x-website.staff />
+                    <livewire:website.staff-detail />
                 </div>
                 <div class="col-span-8 hidden space-y-3 md:col-span-2 lg:block">
                     <x-website.science-information />
