@@ -2,21 +2,24 @@
 
 namespace App\Livewire\Website;
 
-use Livewire\Component;
 use App\Enums\StaffCategoryEnum;
 use App\Models\Staff;
 use Livewire\Attributes\Layout;
+use Livewire\Component;
 
 class StaffDetail extends Component
 {
     public $categories;
+
     public $staffs;
+
     public $selectedCategory;
+
     public $isModalOpen = false;
+
     public $currentIndex = 0;
 
     #[Layout('layouts.website')]
-
     public function mount()
     {
         $this->categories = StaffCategoryEnum::cases();
