@@ -25,7 +25,11 @@
         <div class="flex flex-row gap-3 py-4 lg:py-0">
             <div x-data="searchComponent()" x-cloak>
                 <x-heroicon-o-magnifying-glass class="size-5 text-white cursor-pointer" @click="open = true" />
-
+                <style>
+                    [x-cloak] {
+                    display: none;
+                }
+                </style>
                 <div x-show="open" class="fixed inset-0 flex items-center justify-center z-50" x-cloak>
                     <div class="bg-black bg-opacity-50 absolute inset-0" @click="open = false"></div>
                     <div class="bg-white p-8 rounded shadow-lg relative z-10 w-1/2">
