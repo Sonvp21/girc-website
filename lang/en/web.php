@@ -115,5 +115,6 @@ return [
     'website_search' => 'Search',
     'website_search_result' => 'Search result',
     'no_results_found' => 'No found',
+    'register_now' => 'Register now',
 
 ];

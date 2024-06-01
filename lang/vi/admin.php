@@ -109,7 +109,7 @@ return [
     'staffs' => 'Nhân viên',
     'staffs.list' => 'Nhân viên',
     'staffs.name' => 'Họ tên',
-    'staffs.category' => 'Chức vụ',
+    'staffs.category' => 'Phòng ban',
     '' => '',
 
     'created_at' => 'Ngày tạo',
@@ -176,7 +176,7 @@ return [
 
     'basic_science' => 'Khoa học cơ bản',
     'information_technology' => 'Công nghệ thông tin',
-    'economy_and_created_news' => 'Kinh tế & đối mới sáng tạo',
+    'economy_and_created_news' => 'Kinh tế & đổi mới sáng tạo',
     'inter_industry_application' => 'Ứng dụng liên ngành',
 
     'information_management_engineer' => 'Kỹ sư quản lý thông tin',

@@ -17,6 +17,7 @@
             <div class="grid grid-cols-8 gap-4">
                 <div class="col-span-8 space-y-10 md:col-span-6 lg:col-span-6">
                     <x-website.education-program />
+
                 </div>
                 <div class="col-span-8 hidden space-y-3 md:col-span-2 lg:block">
                     <x-website.aside.digital-transformation />
