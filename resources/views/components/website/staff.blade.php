@@ -6,4 +6,5 @@
         <li class="w-full"><img src="{{ asset('files/images/staff_3.png') }}" alt="" /></li>
         <li class="w-full"><img src="{{ asset('files/images/staff_4.png') }}" alt="" /></li>
     </ul>
+    <livewire:website.staff-detail />
 </div>
