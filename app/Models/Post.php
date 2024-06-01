@@ -9,8 +9,10 @@ use Illuminate\Support\Carbon;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Spatie\Searchable\Searchable;
+use Spatie\Searchable\SearchResult;
 
-class Post extends Model implements HasMedia
+class Post extends Model implements HasMedia, Searchable
 {
     use HasFactory;
     use InteractsWithMedia;
@@ -22,6 +24,18 @@ class Post extends Model implements HasMedia
     protected $casts = [
         'published_at' => 'datetime:Y-m-d H:i:s',
     ];
+
+    //search for web
+    public function getSearchResult(): SearchResult
+    {
+        $url = route('categories.posts.show', ['category' => $this->category->slug, 'post' => $this->slug]);
+
+        return new SearchResult(
+            $this,
+            $this->title,
+            $url
+        );
+    }
 
     /*
     * -------------------------------------------------------------------------------------

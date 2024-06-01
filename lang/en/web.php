@@ -108,8 +108,12 @@ return [
     'register_now' => 'Register now',
     'consulting_registration' => 'Consulting registration',
     'register_comment' => 'Invite parents and students to fill in information for the fastest advice.',
-    'register_now' => 'Register now',
-    'register_now' => 'Register now',
-    'register_now' => 'Register now',
+
+    'info_teaching' => 'Lecturer information',
+    'teaching' => 'Lecturer',
+
+    'website_search' => 'Search',
+    'website_search_result' => 'Search result',
+    'no_results_found' => 'No found',
 
 ];
