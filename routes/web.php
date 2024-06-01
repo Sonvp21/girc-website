@@ -1,7 +1,5 @@
 <?php
 
-use App\Http\Controllers\Admin\AnnouncementController;
-use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Web\AnnouncementsController;
 use App\Http\Controllers\Web\CategoryController;
 use App\Http\Controllers\Web\ContactController;
@@ -27,7 +25,6 @@ Route::post('/hoi-dap', [FaqController::class, 'store'])->name('faqs.store');
 
 Route::get('/categories/{category:slug}/posts', [CategoryController::class, 'showAllPosts'])->name('categories.posts.index');
 Route::get('/categories/{category:slug}/posts/{post:slug}', [CategoryController::class, 'showPost'])->name('categories.posts.show');
-
 
 // routes/web.php
 Route::get('/search', [SearchController::class, 'index'])->name('search.index');
