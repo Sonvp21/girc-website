@@ -21,7 +21,7 @@
                 </svg>
                 <h3 class="relative z-20 text-white uppercase whitespace-nowrap">@lang('web.teaching_staff')</h3>
             </div>
-            <div class="border border-black rounded-lg rounded-l-none mx-auto max-w-7xl sm:px-2 h-full sm:h-[90%]">
+            <div class="border border-black rounded-lg rounded-l-none mx-auto max-w-7xl sm:px-2 h-full sm:h-[88%]">
                 <div class="py-1 h-full">
                     <h3 class="font-bold text-lg text-center font-times tracking-wide relative flex items-center justify-center">
                         <div class="flex-grow mx-2 bg-gradient-to-r from-blue-400 via-blue-500 via-50% to-red-500 h-0.5"></div>

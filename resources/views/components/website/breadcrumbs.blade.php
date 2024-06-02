@@ -4,7 +4,7 @@
     ])
 
 <li>
-    <a href="{{ $route }}">
+    <a href="{{ $route }}" class="text-red-900">
         @if(is_string($name))
             {{ $name }}
         @elseif($name)
