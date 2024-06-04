@@ -17,9 +17,9 @@
                             <x-heroicon-m-calendar class="size-4" />
                             <span class="text-xs">{{ $scienceInformation->publishedAtVi }}</span>
                         </div>
-                        <h2 class="text-xl font-bold">{{ $scienceInformation->title }}</h2>
+                        <h2 class="text-xl font-bold">{{ app()->getLocale() === 'en' ? $scienceInformation->title_en : $scienceInformation->title }}</h2>
                         <div class="">
-                            {!! $scienceInformation->content !!}
+                            {!! app()->getLocale() === 'en' && !empty($scienceInformation->content_en) ? $scienceInformation->content_en : $scienceInformation->content !!}
                         </div>
                     </article>
                 </div>
