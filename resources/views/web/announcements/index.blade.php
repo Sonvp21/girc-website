@@ -26,7 +26,7 @@
                                             </div>
                                         </div>
                                         <h3 class="line-clamp-3 h-12 text-justify font-normal leading-4 tracking-normal text-blue-950 hover:text-red-500">
-                                            <a href="{{ route('announcements.show', $announcement) }}">{{ $announcement->title }}</a>
+                                            <a href="{{ route('announcements.show', $announcement) }}">{{ app()->getLocale() === 'en' && !empty($announcement->title_en) ? $announcement->title_en : $announcement->title }}</a>
                                         </h3>
                                     </div>
                                 </article>

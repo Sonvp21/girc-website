@@ -5,7 +5,7 @@
                 <div class="col-span-8 md:col-span-6 lg:col-span-6">
                     <div class="text-sm breadcrumbs py-4 text-blue-800">
                         <ul>
-                            <x-website.breadcrumbs/>
+                            <x-website.breadcrumbs />
                             <x-website.breadcrumbs :route="route('announcements.index')" :name="__('web.announcement_home')" />
                         </ul>
                     </div>
@@ -16,10 +16,14 @@
                             <x-heroicon-m-calendar class="size-4" />
                             <span class="text-xs">{{ $announcement->publishedAtVi }}</span>
                         </div>
-                        <h2 class="text-2xl font-bold">{{ $announcement->title }}</h2>
+                        <h2 class="text-2xl font-bold">
+                            {{ app()->getLocale() === 'en' && !empty($announcement->title_en) ? $announcement->title_en : $announcement->title }}
+                        </h2>
 
                         <div class="">
-                            {!! $announcement->content !!}
+                            {!! app()->getLocale() === 'en' && !empty($announcement->content_en)
+                                ? $announcement->content_en
+                                : $announcement->content !!}
                         </div>
                     </article>
                 </div>

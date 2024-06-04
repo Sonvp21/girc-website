@@ -15,7 +15,7 @@ class Announcement extends Component
             'announcements' => AnnouncementModel::query()
                 ->published()
                 ->latest('published_at')
-                ->take(10)
+                ->take(4)
                 ->get(),
         ]);
     }
