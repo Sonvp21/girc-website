@@ -16,28 +16,37 @@
                         @csrf
                         @method('patch')
 
-                        <input type="hidden" name="user_id" value="{{ auth()->id() }}">
-                        <div class="flex gap-4">
-                            <label class="form-control w-full">
-                                <div class="label">
-                                    <span class="label-text">@lang('admin.post.title')</span>
-                                </div>
-                                <input type="text" name="title" placeholder="Type here"
-                                        value="{{ $announcement->title }}" @class([
-                                            'input',
-                                            'input-bordered',
-                                            'input-error' => $errors->has('title'),
-                                            'w-full',
-                                        ])
-                                    />
-                            </label>
-                            <label class="form-control w-full">
-                                <div class="label">
-                                    <span class="label-text">@lang('admin.post.published_at')</span>
-                                </div>
-                                <x-admin.forms.calendar name="published_at" value="{{ $announcement->published_at }}"/>
-                            </label>
-                        </div>
+                        <input type="hidden" name="user_id" value="{{ auth()->id() }}"><label
+                            class="form-control w-full">
+                            <div class="label">
+                                <span class="label-text">@lang('admin.post.published_at')</span>
+                            </div>
+                            <x-admin.forms.calendar name="published_at" value="{{ $announcement->published_at }}" />
+                        </label>
+                        <label class="form-control w-full">
+                            <div class="label">
+                                <span class="label-text">@lang('admin.post.title')</span>
+                            </div>
+                            <input type="text" name="title" placeholder="Type here"
+                                value="{{ $announcement->title }}" @class([
+                                    'input',
+                                    'input-bordered',
+                                    'input-error' => $errors->has('title'),
+                                    'w-full',
+                                ]) />
+                        </label>
+                        <label class="form-control w-full">
+                            <div class="label">
+                                <span class="label-text">@lang('admin.post.title_en')</span>
+                            </div>
+                            <input type="text" name="title_en" placeholder="Type here"
+                                value="{{ $announcement->title_en }}" @class([
+                                    'input',
+                                    'input-bordered',
+                                    'input-error' => $errors->has('title_en'),
+                                    'w-full',
+                                ]) />
+                        </label>
                         <label class="form-control w-full">
                             <div class="label">
                                 <span class="label-text">@lang('admin.content')</span>
@@ -46,9 +55,16 @@
                                 {!! $announcement->content !!}
                             </textarea>
                         </label>
+                        <label class="form-control w-full">
+                            <div class="label">
+                                <span class="label-text">@lang('admin.content_en')</span>
+                            </div>
+                            <textarea name="content_en" id="content_en" class="hidden">
+                                {!! $announcement->content_en !!}
+                            </textarea>
+                        </label>
                         <div class="flex justify-end gap-4">
-                            <a href="{{ route('admin.announcements.index') }}"
-                                class="btn-light btn">@lang('admin.btn.cancel')
+                            <a href="{{ route('admin.announcements.index') }}" class="btn-light btn">@lang('admin.btn.cancel')
                             </a>
                             <button type="submit" class="btn btn-success ml-2">
                                 @lang('admin.btn.submit')
@@ -60,6 +76,6 @@
         </div>
     </div>
     @pushonce('bottom_scripts')
-        <x-admin.forms.tinymce-config column="content" model="Announcement"/>
+        <x-admin.forms.tinymce-config-en-vi column="content" columnen="content_en" model="Announcement" />
     @endpushonce
 </x-app-layout>
