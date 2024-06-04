@@ -9,15 +9,13 @@ use Illuminate\View\Component;
 class TinymceConfig extends Component
 {
     public string $column;
+
     public string $columnen;
+
     public string $model;
 
     /**
      * Create a new component instance.
-     *
-     * @param string $column
-     * @param string $columnen
-     * @param string $model
      */
     public function __construct(string $column, string $columnen, string $model)
     {

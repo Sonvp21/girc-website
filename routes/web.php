@@ -30,9 +30,10 @@ Route::get('/categories/{category:slug}/posts/{post:slug}', [CategoryController:
 Route::get('/categories/{category:slug}/no-data', function ($categorySlug) {
     $category = Category::where('slug', $categorySlug)->firstOrFail();
     $siblingCategories = Category::where('parent_id', $category->parent_id)
-                                 ->where('id', '!=', $category->id)
-                                 ->get();
+        ->where('id', '!=', $category->id)
+        ->get();
     $posts = collect(); // Không có bài viết nào
+
     return view('web.categories.no_data', compact('category', 'posts', 'siblingCategories'));
 })->name('categories.posts.no_data');
 
