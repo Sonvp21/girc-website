@@ -23,7 +23,7 @@
                                         <div class="flex flex-col items-start justify-between">
                                             <div>
                                                 <a href="{{ route('science-information.show', $scienceInformation) }}">
-                                                    <h3 class="line-clamp-2 h-12 text-justify font-normal leading-4 tracking-normal text-blue-950 hover:text-red-500">
+                                                    <h3 class="line-clamp-2 text-justify font-normal tracking-normal text-blue-950 hover:text-red-500">
                                                         {{ app()->getLocale() === 'en' ? $scienceInformation->title_en : $scienceInformation->title }}
                                                     </h3>
                                                 </a>
@@ -50,6 +50,9 @@
                 </div>
                 <div class="col-span-8 hidden space-y-3 md:col-span-2 lg:block">
                     <x-website.announcement />
+                    <x-website.science-information />
+                    <x-website.aside.extra-curricular-activity />
+                    <x-website.aside.study-space />
                 </div>
             </div>
         </div>

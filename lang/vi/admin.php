@@ -11,7 +11,7 @@ return [
     'logout' => 'Đăng xuất',
     'register' => 'Đăng ký',
     'link_to_website' => 'Đi tới trang chủ',
-    'profile' => 'Thông tin cá nhân',
+    'proflie' => 'Thông tin cá nhân',
     'Update your accounts profile information and email address.' => 'Cập nhật thông tin hồ sơ tài khoản của bạn và địa chỉ email.',
     'update_password' => 'Cập nhật mật khẩu mới',
     'delete_account' => 'Xoá tài khoản',
@@ -28,10 +28,12 @@ return [
     //Bài viết
     'posts' => 'Bài viết',
     'post.title' => 'Tiêu đề ',
+    'post.title_en' => 'Tiêu đề tiếng anh',
     'post.category_of' => 'Danh mục thuộc',
     'post.published_at' => 'Ngày đăng',
     'post.updated_at' => 'Ngày cập nhật',
     'post.tag' => 'Từ khoá',
+    'content_en' => 'Nội dung bằng tiếng anh',
 
     //Danh mục bài viết
     'categories' => 'Danh mục bài viết',
@@ -152,6 +154,7 @@ return [
     'science_information.title' => 'Tiêu đề',
     'science_information.title_en' => 'Tiêu đề tiếng anh',
     'science_information.keep_on_top' => 'Trạng thái',
+    'scienceInformation.title_en' => 'Tiêu đề tiếng anh',
 
     'science_infor' => [
         'required' => [

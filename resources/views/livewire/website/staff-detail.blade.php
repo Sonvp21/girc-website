@@ -54,7 +54,7 @@
                             <div
                                 class="flex-grow mx-2 bg-gradient-to-r from-blue-400 via-blue-500 via-50% to-red-500 h-0.5">
                             </div>
-                            <span class="px-2 font-serif italic">Giảng viên @lang('admin.' . $selectedCategory)</span>
+                            <span class="px-2 font-serif italic">@lang('admin.' . $selectedCategory) {{ __('web.teaching') }} </span>
                             <div
                                 class="flex-grow mx-2 bg-gradient-to-r from-red-500 via-blue-500 via-50% to-blue-400 h-0.5">
                             </div>

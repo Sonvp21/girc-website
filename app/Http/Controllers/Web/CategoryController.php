@@ -24,7 +24,8 @@ class CategoryController extends Controller
         $posts = Post::where('category_id', $category->id)
             ->published()
             ->latest('published_at')
-            ->paginate(6);
+            ->latest('updated_at')
+            ->paginate(7);
 
         return view('web.categories.all_post_of_category', compact('category', 'posts'));
     }

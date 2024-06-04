@@ -6,7 +6,7 @@
                 class="flex h-full w-full flex-row items-center justify-between gap-2 py-4 text-center font-semibold uppercase tracking-wider text-white focus:outline-none"
                 @mouseover="dropdownOpen = true">
                 <span class="flex w-full justify-between gap-2 border-white px-2 lg:w-auto lg:justify-start {{ $isChild ? '' : 'lg:border-r' }}">
-                    {{ $category->title }}
+                    {{ app()->getLocale() === 'en' ? $category->title_en : $category->title }}
                     <x-heroicon-c-chevron-down class="size-4" />
                 </span>
             </button>
@@ -28,7 +28,7 @@
             @if ($isChild)
             <x-heroicon-o-chevron-right class="size-3 text-gray-600 ml-2"/>
             @endif
-            <span class="{{ $isChild ? 'text-gray-600 normal-case font-sans' : 'lg:border-r text-white font-roboto' }} border-white px-2">{{ $category->title }}</span>
+            <span class="{{ $isChild ? 'text-gray-600 normal-case font-sans' : 'lg:border-r text-white font-roboto' }} border-white px-2">{{ app()->getLocale() === 'en' ? $category->title_en : $category->title }}</span>
         </a>
     </li>
 @endif

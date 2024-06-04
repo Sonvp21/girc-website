@@ -10,7 +10,7 @@
                         </ul>
                     </div>
                     <div class="bg-gradient-to-r from-blue-400 via-blue-500 via-70% to-red-500 h-0.5"></div>
-                    <ul class="mt-5">
+                    <ul class="mt-1">
                         @foreach ($announcements as $announcement)
                             <li class="flex border-b border-dashed border-yellow-500 py-4">
                                 <article class="group w-full">
@@ -38,6 +38,9 @@
                 </div>
                 <div class="col-span-8 hidden space-y-3 md:col-span-2 lg:block">
                     <x-website.announcement />
+                    <x-website.science-information />
+                    <x-website.aside.extra-curricular-activity />
+                    <x-website.aside.study-space />
                 </div>
             </div>
         </div>

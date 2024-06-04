@@ -50,6 +50,9 @@
                 </div>
                 <div class="col-span-8 hidden space-y-3 md:col-span-2 lg:block">
                     <x-website.announcement />
+                    <x-website.science-information />
+                    <x-website.aside.extra-curricular-activity />
+                    <x-website.aside.study-space />
                 </div>
             </div>
         </div>
