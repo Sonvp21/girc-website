@@ -30,10 +30,10 @@
                                                         class="group-hover:underline">
                                                         <h3
                                                             class="line-clamp-2 text-lg font-semibold leading-5 text-blue-950">
-                                                            {{ $post->title }}</h3>
+                                                            {{ app()->getLocale() === 'en' && !empty($post->title_en) ? $post->title_en : $post->title }}</h3>
                                                     </a>
                                                     <p class="mt-2 line-clamp-3 text-sm text-slate-500">
-                                                        {{ Str::limit(html_entity_decode(strip_tags($post->content)), 500) }}
+                                                        {!! Str::limit(html_entity_decode(strip_tags( app()->getLocale() === 'en' && !empty($post->content_en) ? $post->content_en : $post->content )), 500) !!}
                                                     </p>
                                                 </div>
                                                 <div class="tooltip tooltip-top flex items-center gap-2 text-green-700"
