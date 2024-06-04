@@ -50,7 +50,8 @@
                             @foreach ($announcements as $announcement)
                                 <tr>
                                     <th>{{ $announcements->firstItem() + $loop->index }}</th>
-                                    <td>{{ $announcement->title }}</td>
+                                    <td>{{ app()->getLocale() === 'en' && !empty($announcement->title_en) ? $announcement->title_en : $announcement->title }}
+                                    </td>
                                     <td>{{ $announcement->publishedAtVi }}</td>
                                     <td>{{ $announcement->updatedAtVi }}</td>
 
