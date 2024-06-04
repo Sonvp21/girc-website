@@ -17,6 +17,8 @@ class PostRequest extends FormRequest
             'category_id' => 'required|exists:categories,id',
             'title' => 'required',
             'content' => 'required',
+            'title_en' => 'nullable',
+            'content_en' => 'nullable',
             'published_at' => 'required|date', // Ensure this is a valid date
         ];
     }

@@ -42,11 +42,36 @@
                                     @endif
 
                                 </label>
+
+                                <label class="form-control w-full">
+                                    <div class="label">
+                                        <span class="label-text">@lang('admin.post.title_en')</span>
+                                    </div>
+                                    <input type="text" name="title_en" placeholder="Type here"
+                                        value="{{ old('title_en') }}" @class([
+                                            'input',
+                                            'input-bordered',
+                                            'input-error' => $errors->has('title_en'),
+                                            'w-full',
+                                        ]) />
+                                        @if($errors->has('title_en'))
+                                        <div class="text-red-500 text-sm">{{ $errors->first('title_en') }}</div>
+                                    @endif
+
+                                </label>
                                 <label class="form-control w-full">
                                     <div class="label">
                                         <span class="label-text">@lang('admin.content')</span>
                                     </div>
                                     <textarea name="content" id="content" class="form-input rounded-md shadow-sm mt-1 block w-full" rows="5">{{ old('content', $post->content ?? '') }}</textarea>
+
+                                </label>
+
+                                <label class="form-control w-full">
+                                    <div class="label">
+                                        <span class="label-text">@lang('admin.content_en')</span>
+                                    </div>
+                                    <textarea name="content_en" id="content_en" class="form-input rounded-md shadow-sm mt-1 block w-full" rows="5">{{ old('content_en', $post->content_en ?? '') }}</textarea>
 
                                 </label>
                                 <x-admin.forms.tags :tags="$tags" :value="old('tags')"/>
@@ -78,7 +103,7 @@
         </div>
     </div>
     @pushonce('bottom_scripts')
-        <x-admin.forms.tinymce-config column="content" model="Post"/>
+        <x-admin.forms.tinymce-config-en-vi column="content" columnen="content_en" model="Post"/>
         
         <script>
             var loadFile = function(event) {

@@ -22,6 +22,8 @@ class AnnouncementRequest extends FormRequest
                 Rule::unique('announcements')->ignore($this->route('announcement')),
             ],
             'content' => 'required|string',
+            'title_en' => 'nullable',
+            'content_en' => 'nullable',
             'published_at' => 'nullable|date',
         ];
     }

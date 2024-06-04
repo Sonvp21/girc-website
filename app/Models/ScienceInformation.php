@@ -15,7 +15,7 @@ class ScienceInformation extends Model implements HasMedia
     use HasFactory;
     use InteractsWithMedia;
 
-    protected $fillable = ['user_id', 'title_en', 'title', 'slug', 'keep_on_top', 'content', 'published_at'];
+    protected $fillable = ['user_id', 'title_en', 'title', 'slug', 'keep_on_top', 'content', 'content_en','published_at'];
 
     protected $table = 'science_informations';
 

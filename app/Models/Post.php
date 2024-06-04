@@ -19,7 +19,7 @@ class Post extends Model implements HasMedia, Searchable
 
     protected $table = 'posts';
 
-    protected $fillable = ['user_id', 'category_id', 'title', 'slug', 'content', 'published_at'];
+    protected $fillable = ['user_id', 'category_id', 'title', 'slug', 'content', 'published_at', 'title_en', 'content_en'];
 
     protected $casts = [
         'published_at' => 'datetime:Y-m-d H:i:s',
