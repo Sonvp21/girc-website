@@ -58,6 +58,14 @@
                                 {{ old('content') }}
                             </textarea>
                         </label>
+                        <label class="form-control w-full">
+                            <span class="label">
+                                <span class="label-text">@lang('admin.content_en')</span>
+                            </span>
+                            <textarea name="content_en" id="content_en" class="hidden">
+                                {{ old('content_en') }}
+                            </textarea>
+                        </label>
                         <div class="flex items-center space-x-6">
                             <div class="shrink-0">
                                 <img id="preview_img" class="h-16 w-16 rounded-full object-cover" src="https://lh3.googleusercontent.com/a-/AFdZucpC_6WFBIfaAbPHBwGM9z8SxyM1oV4wB4Ngwp_UyQ=s96-c" alt="Current photo" />
@@ -90,7 +98,7 @@
         </div>
     </div>
     @pushonce('bottom_scripts')
-        <x-admin.forms.tinymce-config column="content" model="ScienceInformation" />
+    <x-admin.forms.tinymce-config-en-vi column="content" columnen="content_en" model="ScienceInformation"/>
         <script>
             var loadFile = function(event) {
                 var input = event.target

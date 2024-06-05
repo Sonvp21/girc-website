@@ -113,21 +113,24 @@
             padding-top: 6px;
         }
     </style>
-    <script>
-        $(document).ready(function() {
-            $('.fab-container').hide();
+    @pushonce('bottom_scripts')
+        <script>
+            $(document).ready(function() {
+                $('.fab-container').hide();
 
-            function checkScroll() {
-                if ($(window).scrollTop() > 100) {
-                    $('.fab-container').fadeIn();
-                } else {
-                    $('.fab-container').fadeOut();
+                function checkScroll() {
+                    if ($(window).scrollTop() > 100) {
+                        $('.fab-container').fadeIn();
+                    } else {
+                        $('.fab-container').fadeOut();
+                    }
                 }
-            }
-            checkScroll();
-            $(window).scroll(function() {
                 checkScroll();
+                $(window).scroll(function() {
+                    checkScroll();
+                });
             });
-        });
-    </script>
+        </script>
+    @endpushonce
+
 </div>

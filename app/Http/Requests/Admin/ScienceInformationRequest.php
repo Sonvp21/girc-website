@@ -22,6 +22,7 @@ class ScienceInformationRequest extends FormRequest
             'title_en' => 'nullable|string|max:255',
             'keep_on_top' => 'required|boolean',
             'content' => 'required|string',
+            'content_en' => 'nullable',
             'published_at' => 'required|date',
             'image' => 'sometimes|required|image|max:2048',
         ];

@@ -19,9 +19,9 @@
                             <x-heroicon-m-calendar class="size-4" />
                             <span class="text-xs">{{ $post->published_post_date_thumb }}</span>
                         </div>
-                        <h2 class="text-2xl font-bold">{{ $post->title }}</h2>
+                        <h2 class="text-2xl font-bold">{{ app()->getLocale() === 'en' && !empty($post->title_en) ? $post->title_en : $post->title }}</h2>
                         <div class="">
-                            {!! $post->content !!}
+                            {!! app()->getLocale() === 'en' && !empty($post->content_en) ? $post->content_en : $post->content !!}
                         </div>
                     </article>
                     <div class="flex items-center gap-2">
@@ -40,6 +40,9 @@
                 </div>
                 <div class="col-span-8 hidden space-y-3 md:col-span-2 lg:block">
                     <x-website.announcement />
+                    <x-website.science-information />
+                    <x-website.aside.extra-curricular-activity />
+                    <x-website.aside.study-space />
                 </div>
             </div>
         </div>

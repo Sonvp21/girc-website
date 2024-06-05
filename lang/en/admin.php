@@ -11,7 +11,7 @@ return [
     'logout' => 'Logout',
     'register' => 'Register',
     'link_to_website' => 'Link to website',
-    'proflie' => 'Profile',
+    'profile' => 'Profile',
     'Update your accounts profile information and email address.' => 'Update your accounts profile information and email address.',
     'update_password' => 'Update Password',
     'delete_account' => 'Delete Account',
@@ -29,10 +29,12 @@ return [
     //Post
     'posts' => 'Post',
     'post.title' => 'Title',
+    'post.title_en' => 'English Title',
     'post.category_of' => 'Category Post',
     'post.published_at' => 'Publish',
     'post.updated_at' => 'Update at',
     'post.tag' => 'Tags',
+    'content_en' => 'English Content',
 
     //Category
     'categories' => 'Category Post',
@@ -160,10 +162,7 @@ return [
     'science_information.title' => 'Title',
     'science_information.title_en' => 'Title english',
     'science_information.keep_on_top' => 'Status',
-    '' => '',
-    '' => '',
-    '' => '',
-    '' => '',
+    'scienceInformation.title_en' => 'English title',
 
     'science_infor' => [
 

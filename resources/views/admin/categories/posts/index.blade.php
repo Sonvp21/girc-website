@@ -53,7 +53,7 @@
                             @foreach ($posts as $post)
                                 <tr>
                                     <th>{{ $posts->firstItem() + $loop->index }}</th>
-                                    <td>{{ $post->title }}</td>
+                                    <td>{{ app()->getLocale() === 'en' && !empty($post->title_en) ? $post->title_en : $post->title }}</td>
                                     <td>{{ $post->category->title }}</td>
                                     <td>{{ $post->publishedAtVi }}</td>
                                     <td>{{ $post->updatedAtVi }}</td>

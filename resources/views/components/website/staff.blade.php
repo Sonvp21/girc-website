@@ -45,7 +45,7 @@
                         </div>
                         <h3 class="font-bold text-lg text-center font-times tracking-wide relative flex items-center justify-center">
                             <div class="flex-grow mx-2 bg-gradient-to-r from-blue-400 via-blue-500 via-50% to-red-500 h-0.5"></div>
-                            <span class="px-2 font-serif italic text-red-500">Giảng viên {{ __('admin.' . strtolower($category->name)) }}</span>
+                            <span class="px-2 font-serif italic text-red-500"> {{ __('admin.' . strtolower($category->name)) }} {{ __('web.teaching') }}</span>
                             <div class="flex-grow mx-2 bg-gradient-to-r from-red-500 via-blue-500 via-50% to-blue-400 h-0.5"></div>
                         </h3>
                         <div class="main-carousel h-36 overflow-hidden mt-[1%]"

@@ -32,7 +32,7 @@
                                 'category' => $post->category,
                                 'post' => $post,
                             ]) }}"
-                            data-title="{{ $post->title }}"
+                            data-title="{{ app()->getLocale() === 'en' && !empty($post->title_en) ? $post->title_en : $post->title }}"
                             data-image="{{ $post->getFirstMedia('featured_image')->getUrl('lg') }}">
                             <article class="h-16 flex items-center">
                                 <figure class="group relative flex rounded-t-xl">
@@ -45,11 +45,12 @@
                                     <figcaption class="w-full px-3 text-sm">
                                         <div
                                             class="text-blue-900 hover:text-red-600 line-clamp-3 leading-5 text-sm text-justify">
-                                            {{ $post->title }}
-                                            @if (strlen($post->title) < 100)
+                                            {{ app()->getLocale() === 'en' && !empty($post->title_en) ? $post->title_en : $post->title }}
+                                            @if (strlen(app()->getLocale() === 'en' && !empty($post->title_en) ? $post->title_en : $post->title) < 100)
                                                 <p class="contents">
-                                                    :{{ Str::limit(html_entity_decode(strip_tags($post->content)), 200) }}
+                                                    :{!! Str::limit(html_entity_decode(strip_tags( app()->getLocale() === 'en' && !empty($post->content_en) ? $post->content_en : $post->content )), 200) !!}
                                                 </p>
+                                                
                                             @endif
                                         </div>
                                     </figcaption>

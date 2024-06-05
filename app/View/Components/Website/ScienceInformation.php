@@ -19,7 +19,7 @@ class ScienceInformation extends Component
                 ->published()
                 ->where('keep_on_top', 1)
                 ->orderByDesc('published_at')
-                ->take(4)
+                ->take(5)
                 ->get(),
         ]);
     }

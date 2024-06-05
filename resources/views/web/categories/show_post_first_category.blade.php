@@ -54,7 +54,7 @@
                     @endphp
                     <article class="group">
                         @if ($postCount > 1)
-                            <h2 class="text-2xl font-bold">{{ $post->title }}</h2>
+                            <h2 class="text-2xl font-bold">{{ app()->getLocale() === 'en' && !empty($post->title_en) ? $post->title_en : $post->title }}</h2>
 
                             <div class="tooltip tooltip-top flex items-center gap-2 text-green-700"
                                 data-tip="{{ $post->published_post_date }}">
@@ -63,7 +63,7 @@
                             </div>
 
                             <div class="">
-                                {!! $post->content !!}
+                                {!! app()->getLocale() === 'en' && !empty($post->content_en) ? $post->content_en : $post->content !!}
                             </div>
                         @else
                             <img class="h-auto w-full transition-all"
@@ -89,6 +89,9 @@
                 </div>
                 <div class="col-span-8 hidden space-y-3 md:col-span-2 lg:block">
                     <x-website.announcement />
+                    <x-website.science-information />
+                    <x-website.aside.extra-curricular-activity />
+                    <x-website.aside.study-space />
                 </div>
             </div>
         </div>

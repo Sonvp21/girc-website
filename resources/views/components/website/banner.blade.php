@@ -27,11 +27,13 @@
         <div class="flex flex-row gap-3">
             <div class="flex-none">
                 <div class="flex items-center gap-3">
-                    <a href="#vi">
+                    <a href="{{ url('/locale/vi') }}">
                         <img class="w-5 grayscale hover:filter-none" src="{{ asset('files/images/vn.png') }}"
                             alt="" />
                     </a>
-                    <a href="#en">
+                    {{-- <p>Current locale: {{ App::getLocale() }}</p> --}}
+
+                    <a href="{{ url('/locale/en') }}">
                         <img class="w-5 grayscale hover:filter-none" src="{{ asset('files/images/uk.png') }}"
                             alt="" />
                     </a>

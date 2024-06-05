@@ -15,7 +15,8 @@ class ScienceInformationController extends Controller
                 ->published()
                 ->where('keep_on_top', 1)
                 ->latest('published_at')
-                ->paginate(6),
+                ->latest('updated_at')
+                ->paginate(10),
         ]);
     }
 

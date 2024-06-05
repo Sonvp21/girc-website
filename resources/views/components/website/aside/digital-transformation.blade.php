@@ -41,7 +41,7 @@
                 <div class="modal-box relative min-w-[60%] p-2 sm:min-h-fit md:h-[inherit] md:min-h-[80%]">
                     @include('components.website.show-video-digital')
                     <div class="modal-action absolute right-0 top-0">
-                        <button class="btn btn-outline btn-error mr-3 mt-[-14px] h-fit min-h-fit rounded-full p-2" onclick="closeModalDigital()">X</button>
+                        <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-[-1rem] focus:border-none focus:outline-none" onclick="closeModalDigital()">X</button>
                     </div>
                 </div>
             </dialog>

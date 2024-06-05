@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LocalizationController;
 use App\Http\Controllers\Web\AnnouncementsController;
 use App\Http\Controllers\Web\CategoryController;
 use App\Http\Controllers\Web\ContactController;
@@ -30,11 +31,15 @@ Route::get('/categories/{category:slug}/posts/{post:slug}', [CategoryController:
 Route::get('/categories/{category:slug}/no-data', function ($categorySlug) {
     $category = Category::where('slug', $categorySlug)->firstOrFail();
     $siblingCategories = Category::where('parent_id', $category->parent_id)
-                                 ->where('id', '!=', $category->id)
-                                 ->get();
+        ->where('id', '!=', $category->id)
+        ->get();
     $posts = collect(); // Không có bài viết nào
+
     return view('web.categories.no_data', compact('category', 'posts', 'siblingCategories'));
 })->name('categories.posts.no_data');
 
 Route::get('/search', [SearchController::class, 'index'])->name('search.index');
+
+Route::get('/locale/{lang}', [LocalizationController::class, 'setLocale']);
+
 require __DIR__.'/admin.php';

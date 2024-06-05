@@ -18,6 +18,7 @@ class HomePost extends Component
                 $query->whereId(config('app.home_category_id'));
             })
             ->latest('published_at')
+            ->latest('updated_at')
             ->take(4)
             ->get();
 

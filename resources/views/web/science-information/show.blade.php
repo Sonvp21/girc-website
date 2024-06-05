@@ -17,14 +17,17 @@
                             <x-heroicon-m-calendar class="size-4" />
                             <span class="text-xs">{{ $scienceInformation->publishedAtVi }}</span>
                         </div>
-                        <h2 class="text-xl font-bold">{{ $scienceInformation->title }}</h2>
+                        <h2 class="text-xl font-bold">{{ app()->getLocale() === 'en' ? $scienceInformation->title_en : $scienceInformation->title }}</h2>
                         <div class="">
-                            {!! $scienceInformation->content !!}
+                            {!! app()->getLocale() === 'en' && !empty($scienceInformation->content_en) ? $scienceInformation->content_en : $scienceInformation->content !!}
                         </div>
                     </article>
                 </div>
                 <div class="col-span-8 hidden space-y-3 md:col-span-2 lg:block">
                     <x-website.announcement />
+                    <x-website.science-information />
+                    <x-website.aside.extra-curricular-activity />
+                    <x-website.aside.study-space />
                 </div>
             </div>
         </div>

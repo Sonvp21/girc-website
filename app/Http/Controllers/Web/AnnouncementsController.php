@@ -14,6 +14,7 @@ class AnnouncementsController extends Controller
             'announcements' => Announcement::query()
                 ->published()
                 ->latest('published_at')
+                ->latest('updated_at')
                 ->paginate(6),
         ]);
     }
