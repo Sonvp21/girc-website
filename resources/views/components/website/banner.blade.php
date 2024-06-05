@@ -31,7 +31,7 @@
                         <img class="w-5 grayscale hover:filter-none" src="{{ asset('files/images/vn.png') }}"
                             alt="" />
                     </a>
-                    <p>Current locale: {{ App::getLocale() }}</p>
+                    {{-- <p>Current locale: {{ App::getLocale() }}</p> --}}
 
                     <a href="{{ url('/locale/en') }}">
                         <img class="w-5 grayscale hover:filter-none" src="{{ asset('files/images/uk.png') }}"
