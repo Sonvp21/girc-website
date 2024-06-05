@@ -46,7 +46,7 @@
                                         <div
                                             class="text-blue-900 hover:text-red-600 line-clamp-3 leading-5 text-sm text-justify">
                                             {{ app()->getLocale() === 'en' && !empty($post->title_en) ? $post->title_en : $post->title }}
-                                            @if (strlen($post->title) < 100)
+                                            @if (strlen(app()->getLocale() === 'en' && !empty($post->title_en) ? $post->title_en : $post->title) < 100)
                                                 <p class="contents">
                                                     :{!! Str::limit(html_entity_decode(strip_tags( app()->getLocale() === 'en' && !empty($post->content_en) ? $post->content_en : $post->content )), 200) !!}
                                                 </p>
